@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Kourosh Game.ir | فروش اکانت بازی</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -48,6 +48,7 @@
       display: flex;
       align-items: center;
       gap: 28px;
+      flex-wrap: wrap;
     }
     .nav-menu a {
       text-decoration: none;
@@ -60,9 +61,11 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      cursor: pointer;
     }
     .nav-menu a i { color: #FF5F02; font-size: 1.1rem; }
     .nav-menu a:hover { color: #FF5F02; border-bottom-color: #FF5F02; }
+    .nav-menu a.active-tab { color: #FF5F02; border-bottom-color: #FF5F02; }
     .nav-menu .cart-btn {
       background: #FF5F02;
       color: #fff;
@@ -459,6 +462,94 @@
     }
     .btn-clear-cart:hover { background: #e0d8d0; }
 
+    /* ===== PAYMENT MODAL (پرداخت) ===== */
+    .payment-modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(6px);
+      z-index: 10000;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.25s ease;
+    }
+    .payment-modal-overlay.active { display: flex; }
+    .payment-modal {
+      background: #fff;
+      max-width: 480px;
+      width: 92%;
+      border-radius: 32px;
+      padding: 32px 28px;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.3);
+      animation: slideUp 0.3s ease;
+      text-align: center;
+    }
+    .payment-modal .payment-icon {
+      font-size: 4.5rem;
+      color: #FF5F02;
+      margin-bottom: 10px;
+    }
+    .payment-modal h2 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    .payment-modal p {
+      color: #555;
+      margin-bottom: 20px;
+    }
+    .payment-modal .total-amount {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: #FF5F02;
+      margin: 10px 0 24px;
+    }
+    .payment-modal .pay-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .payment-modal .pay-actions button {
+      flex: 1;
+      padding: 14px;
+      border-radius: 60px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      font-family: 'Vazirmatn', sans-serif;
+      font-size: 1rem;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-width: 120px;
+    }
+    .btn-pay-confirm {
+      background: #FF5F02;
+      color: #fff;
+    }
+    .btn-pay-confirm:hover { background: #d94f00; transform: scale(1.02); }
+    .btn-pay-cancel {
+      background: #f0ece8;
+      color: #444;
+    }
+    .btn-pay-cancel:hover { background: #e0d8d0; }
+    .payment-success {
+      display: none;
+      padding: 20px 0;
+    }
+    .payment-success i {
+      font-size: 5rem;
+      color: #2ecc71;
+      margin-bottom: 12px;
+    }
+    .payment-success h3 { font-size: 1.6rem; color: #2ecc71; }
+
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     @keyframes slideUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
@@ -525,9 +616,10 @@
       .filter-flex { flex-direction: column; align-items: stretch; }
       .search-box { width: 100%; }
       .search-box input { width: 100%; }
-      .nav-menu { gap: 16px; flex-wrap: wrap; }
+      .nav-menu { gap: 16px; }
       .product-grid { grid-template-columns: 1fr; }
       .cart-modal { padding: 20px; }
+      .payment-modal { padding: 24px; }
     }
   </style>
 </head>
@@ -540,10 +632,10 @@
       <h1><i class="fas fa-gamepad"></i>Kourosh <span class="text-orange">Game</span>.ir</h1>
       <span class="sub"><i class="fas fa-crown"></i> معتبر‌ترین فروش اکانت بازی</span>
     </div>
-    <div class="nav-menu">
-      <a href="#"><i class="fas fa-home"></i> خانه</a>
-      <a href="#"><i class="fas fa-store"></i> فروشگاه</a>
-      <a href="#"><i class="fas fa-trophy"></i> ویژه</a>
+    <div class="nav-menu" id="navMenu">
+      <a class="active-tab" data-tab="home"><i class="fas fa-home"></i> خانه</a>
+      <a data-tab="store"><i class="fas fa-store"></i> فروشگاه</a>
+      <a data-tab="special"><i class="fas fa-trophy"></i> ویژه</a>
       <button class="cart-btn" id="openCartBtn">
         <i class="fas fa-shopping-cart"></i> سبد خرید
         <span class="cart-badge" id="cartCount">0</span>
@@ -553,41 +645,39 @@
 </header>
 
 <!-- ===== HERO ===== -->
-<section class="hero">
+<section class="hero" id="heroSection">
   <div class="container hero-grid">
     <div class="hero-text">
       <h2><i class="fas fa-bolt"></i> اکانت‌های اورجینال <span class="highlight">با بهترین قیمت</span></h2>
       <p><i class="fas fa-check-circle"></i> تضمین اصالت &nbsp;|&nbsp; <i class="fas fa-shield-alt"></i> پشتیبانی ۲۴/۷</p>
-      <button class="hero-btn"><i class="fas fa-rocket"></i> مشاهده اکانت‌ها</button>
+      <button class="hero-btn" onclick="document.querySelector('[data-tab=\"store\"]').click();"><i class="fas fa-rocket"></i> مشاهده اکانت‌ها</button>
     </div>
     <div class="hero-image"><i class="fas fa-controller"></i></div>
   </div>
 </section>
 
 <!-- ===== FILTER ===== -->
-<section class="filter-section">
+<section class="filter-section" id="filterSection">
   <div class="container filter-flex">
-    <div class="filter-tabs">
-      <button class="active"><i class="fas fa-fire"></i> همه</button>
-      <button><i class="fas fa-playstation"></i> پلی‌استیشن</button>
-      <button><i class="fab fa-xbox"></i> ایکس‌باکس</button>
-      <button><i class="fas fa-desktop"></i> پی‌سی</button>
-      <button><i class="fas fa-crown"></i> ویژه</button>
+    <div class="filter-tabs" id="filterTabs">
+      <button class="active" data-filter="all"><i class="fas fa-fire"></i> همه</button>
+      <button data-filter="ps"><i class="fas fa-playstation"></i> پلی‌استیشن</button>
+      <button data-filter="xbox"><i class="fab fa-xbox"></i> ایکس‌باکس</button>
+      <button data-filter="pc"><i class="fas fa-desktop"></i> پی‌سی</button>
+      <button data-filter="special"><i class="fas fa-crown"></i> ویژه</button>
     </div>
     <div class="search-box">
-      <input type="text" placeholder="جستجوی اکانت...">
-      <button><i class="fas fa-search"></i> جستجو</button>
+      <input type="text" id="searchInput" placeholder="جستجوی اکانت...">
+      <button id="searchBtn"><i class="fas fa-search"></i> جستجو</button>
     </div>
   </div>
 </section>
 
 <!-- ===== PRODUCTS ===== -->
-<section class="products">
+<section class="products" id="productsSection">
   <div class="container">
-    <div class="section-title"><i class="fas fa-cubes"></i> جدیدترین اکانت‌ها</div>
-    <div class="product-grid" id="productGrid">
-      <!-- محصولات توسط JS درج می‌شوند -->
-    </div>
+    <div class="section-title" id="sectionTitle"><i class="fas fa-cubes"></i> جدیدترین اکانت‌ها</div>
+    <div class="product-grid" id="productGrid"></div>
   </div>
 </section>
 
@@ -598,16 +688,36 @@
       <h2><i class="fas fa-shopping-cart"></i> سبد خرید</h2>
       <button class="cart-close" id="closeCartBtn"><i class="fas fa-times"></i></button>
     </div>
-    <div class="cart-items" id="cartItems">
-      <!-- آیتم‌ها توسط JS درج می‌شوند -->
-    </div>
+    <div class="cart-items" id="cartItems"></div>
     <div class="cart-total">
       <span>مجموع</span>
       <span id="cartTotalPrice">۰ تومان</span>
     </div>
     <div class="cart-actions">
-      <button class="btn-checkout"><i class="fas fa-credit-card"></i> پرداخت</button>
+      <button class="btn-checkout" id="checkoutBtn"><i class="fas fa-credit-card"></i> پرداخت</button>
       <button class="btn-clear-cart" id="clearCartBtn"><i class="fas fa-trash-alt"></i> خالی کن</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MODAL پرداخت ===== -->
+<div class="payment-modal-overlay" id="paymentModal">
+  <div class="payment-modal">
+    <div id="paymentContent">
+      <div class="payment-icon"><i class="fas fa-wallet"></i></div>
+      <h2>تکمیل پرداخت</h2>
+      <p>لطفاً مبلغ زیر را پرداخت کنید تا اکانت‌ها به شما تحویل داده شوند.</p>
+      <div class="total-amount" id="paymentTotal">۰ تومان</div>
+      <div class="pay-actions">
+        <button class="btn-pay-confirm" id="payConfirmBtn"><i class="fas fa-check"></i> پرداخت نهایی</button>
+        <button class="btn-pay-cancel" id="payCancelBtn"><i class="fas fa-times"></i> انصراف</button>
+      </div>
+    </div>
+    <div class="payment-success" id="paymentSuccess">
+      <i class="fas fa-check-circle"></i>
+      <h3>پرداخت با موفقیت انجام شد!</h3>
+      <p style="color:#555; margin-top:8px;">اکانت‌ها به ایمیل شما ارسال شدند.</p>
+      <button class="btn-pay-confirm" style="margin-top:20px; width:100%;" id="paySuccessCloseBtn"><i class="fas fa-thumbs-up"></i> عالی!</button>
     </div>
   </div>
 </div>
@@ -651,12 +761,13 @@
 <script>
   // ===== دیتای محصولات =====
   const products = [
-    { id: 1, name: 'God of War Ragnarok', tag: 'پلی‌استیشن ۵', price: 2450000, desc: 'اکانت اورجینال با تمام محتوای اضافه و دی‌ال‌سی‌ها.', img: 'https://cdn2.unrealengine.com/gowr-3840x2160-c3a86faeb09f.jpg?resize=1&w=1920', badge: 'ویژه' },
-    { id: 2, name: 'Halo Infinite', tag: 'ایکس‌باکس سری ایکس', price: 1980000, desc: 'اکانت کامل با تمام اسکین‌ها و بتل‌پس فصل ۵.', img: 'https://assets.xboxservices.com/assets/0a/0d/0a0d4e4c-8c4a-4b6e-8c4a-4b6e8c4a4b6e.jpg?n=Halo-Infinite_GLP-Page-Hero-1084_1920x1080.jpg', badge: 'اورجینال' },
-    { id: 3, name: 'Counter-Strike 2', tag: 'پی‌سی (استیم)', price: 750000, desc: 'اکانت با رنک رقابتی بالا و اسکین‌های کمیاب.', img: 'https://cdn.akamai.steamstatic.com/steam/apps/730/header.jpg', badge: null },
-    { id: 4, name: 'FIFA 24', tag: 'PS5 / PS4', price: 3200000, desc: 'اکانت با تیم آلتیمیت و ۵۰۰۰ پوینت اضافه.', img: 'https://cdn1.epicgames.com/offer/7d2e1e4e3f1e4e2e9c1e4e2e9c1e4e2e/EGS_FIFA24_EA_S2_1200x1600-7d2e1e4e3f1e4e2e9c1e4e2e9c1e4e2e', badge: 'طلایی' },
-    { id: 5, name: 'Fortnite', tag: 'کراس‌پلتفرم', price: 550000, desc: 'اکانت با بیش از ۲۰۰ اسکین نادر و ۱۰۰۰۰ وی‌باکس.', img: 'https://cdn1.epicgames.com/offer/fn/fortnite_hero_1920x1080_0.jpg', badge: null },
-    { id: 6, name: 'Cyberpunk 2077', tag: 'پی‌سی / ایکس‌باکس', price: 1250000, desc: 'نسخه آلتیمیت با تمام آپدیت‌ها و دی‌ال‌سی Phantom Liberty.', img: 'https://cdn1.epicgames.com/offer/cyberpunk2077/cyberpunk_hero_1920x1080.jpg', badge: 'حراج' }
+    { id: 1, name: 'God of War Ragnarok', tag: 'پلی‌استیشن ۵', price: 2450000, desc: 'اکانت اورجینال با تمام محتوای اضافه و دی‌ال‌سی‌ها.', img: 'https://cdn2.unrealengine.com/gowr-3840x2160-c3a86faeb09f.jpg?resize=1&w=1920', badge: 'ویژه', platform: 'ps' },
+    { id: 2, name: 'Halo Infinite', tag: 'ایکس‌باکس سری ایکس', price: 1980000, desc: 'اکانت کامل با تمام اسکین‌ها و بتل‌پس فصل ۵.', img: 'https://assets.xboxservices.com/assets/0a/0d/0a0d4e4c-8c4a-4b6e-8c4a-4b6e8c4a4b6e.jpg?n=Halo-Infinite_GLP-Page-Hero-1084_1920x1080.jpg', badge: 'اورجینال', platform: 'xbox' },
+    { id: 3, name: 'Counter-Strike 2', tag: 'پی‌سی (استیم)', price: 750000, desc: 'اکانت با رنک رقابتی بالا و اسکین‌های کمیاب.', img: 'https://cdn.akamai.steamstatic.com/steam/apps/730/header.jpg', badge: null, platform: 'pc' },
+    { id: 4, name: 'FIFA 24', tag: 'PS5 / PS4', price: 3200000, desc: 'اکانت با تیم آلتیمیت و ۵۰۰۰ پوینت اضافه.', img: 'https://cdn1.epicgames.com/offer/7d2e1e4e3f1e4e2e9c1e4e2e9c1e4e2e/EGS_FIFA24_EA_S2_1200x1600-7d2e1e4e3f1e4e2e9c1e4e2e9c1e4e2e', badge: 'طلایی', platform: 'ps' },
+    { id: 5, name: 'Fortnite', tag: 'کراس‌پلتفرم', price: 550000, desc: 'اکانت با بیش از ۲۰۰ اسکین نادر و ۱۰۰۰۰ وی‌باکس.', img: 'https://cdn1.epicgames.com/offer/fn/fortnite_hero_1920x1080_0.jpg', badge: null, platform: 'pc' },
+    { id: 6, name: 'Cyberpunk 2077', tag: 'پی‌سی / ایکس‌باکس', price: 1250000, desc: 'نسخه آلتیمیت با تمام آپدیت‌ها و دی‌ال‌سی Phantom Liberty.', img: 'https://cdn1.epicgames.com/offer/cyberpunk2077/cyberpunk_hero_1920x1080.jpg', badge: 'حراج', platform: 'xbox' },
+    { id: 7, name: 'Spider-Man 2', tag: 'پلی‌استیشن ۵', price: 2800000, desc: 'اکانت نسخه دیجیتال با تمام محتوای اضافی.', img: 'https://cdn1.epicgames.com/offer/7d2e1e4e3f1e4e2e9c1e4e2e9c1e4e2e/EGS_SpiderMan2_PS5_1200x1600.jpg', badge: 'جدید', platform: 'ps' }
   ];
 
   // ===== مدیریت سبد خرید =====
@@ -671,15 +782,119 @@
   const cartTotalPrice = document.getElementById('cartTotalPrice');
   const cartCount = document.getElementById('cartCount');
   const clearCartBtn = document.getElementById('clearCartBtn');
+  const checkoutBtn = document.getElementById('checkoutBtn');
+  const paymentModal = document.getElementById('paymentModal');
+  const paymentTotal = document.getElementById('paymentTotal');
+  const payConfirmBtn = document.getElementById('payConfirmBtn');
+  const payCancelBtn = document.getElementById('payCancelBtn');
+  const paySuccessCloseBtn = document.getElementById('paySuccessCloseBtn');
+  const paymentContent = document.getElementById('paymentContent');
+  const paymentSuccess = document.getElementById('paymentSuccess');
 
-  // رندر محصولات
+  // فیلتر و جستجو
+  let currentFilter = 'all';
+  let searchQuery = '';
+
+  // ===== تب‌های منو =====
+  const navLinks = document.querySelectorAll('.nav-menu a[data-tab]');
+  const sectionTitle = document.getElementById('sectionTitle');
+  const heroSection = document.getElementById('heroSection');
+  const filterSection = document.getElementById('filterSection');
+
+  const tabTitles = {
+    home: '🏠 صفحه اصلی',
+    store: '🛒 همه اکانت‌ها',
+    special: '⭐ ویژه‌ها'
+  };
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const tab = this.dataset.tab;
+      // active class
+      navLinks.forEach(l => l.classList.remove('active-tab'));
+      this.classList.add('active-tab');
+
+      if (tab === 'home') {
+        heroSection.style.display = 'flex';
+        filterSection.style.display = 'block';
+        sectionTitle.innerHTML = '<i class="fas fa-cubes"></i> جدیدترین اکانت‌ها';
+        currentFilter = 'all';
+        document.querySelector('#filterTabs .active')?.classList.remove('active');
+        document.querySelector('#filterTabs [data-filter="all"]')?.classList.add('active');
+        renderProducts();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (tab === 'store') {
+        heroSection.style.display = 'flex';
+        filterSection.style.display = 'block';
+        sectionTitle.innerHTML = '<i class="fas fa-store"></i> همه اکانت‌ها';
+        currentFilter = 'all';
+        document.querySelector('#filterTabs .active')?.classList.remove('active');
+        document.querySelector('#filterTabs [data-filter="all"]')?.classList.add('active');
+        renderProducts();
+        document.getElementById('productsSection').scrollIntoView({ behavior: 'smooth' });
+      } else if (tab === 'special') {
+        heroSection.style.display = 'none';
+        filterSection.style.display = 'none';
+        sectionTitle.innerHTML = '<i class="fas fa-crown"></i> اکانت‌های ویژه';
+        currentFilter = 'special';
+        renderProducts();
+        document.getElementById('productsSection').scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // ===== فیلترها =====
+  document.querySelectorAll('#filterTabs button').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('#filterTabs button').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      currentFilter = this.dataset.filter;
+      renderProducts();
+    });
+  });
+
+  // ===== جستجو =====
+  const searchInput = document.getElementById('searchInput');
+  const searchBtn = document.getElementById('searchBtn');
+  function doSearch() {
+    searchQuery = searchInput.value.trim().toLowerCase();
+    renderProducts();
+  }
+  searchBtn.addEventListener('click', doSearch);
+  searchInput.addEventListener('keyup', (e) => { if (e.key === 'Enter') doSearch(); });
+
+  // ===== رندر محصولات =====
   function renderProducts() {
-    productGrid.innerHTML = products.map(p => {
+    let filtered = [...products];
+
+    // فیلتر
+    if (currentFilter === 'special') {
+      filtered = filtered.filter(p => p.badge && (p.badge === 'ویژه' || p.badge === 'طلایی' || p.badge === 'جدید'));
+    } else if (currentFilter !== 'all') {
+      filtered = filtered.filter(p => p.platform === currentFilter);
+    }
+
+    // جستجو
+    if (searchQuery) {
+      filtered = filtered.filter(p =>
+        p.name.toLowerCase().includes(searchQuery) ||
+        p.tag.toLowerCase().includes(searchQuery) ||
+        p.desc.toLowerCase().includes(searchQuery)
+      );
+    }
+
+    if (filtered.length === 0) {
+      productGrid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:60px 0; color:#888;"><i class="fas fa-search" style="font-size:3rem; display:block; margin-bottom:16px;"></i> محصولی یافت نشد</div>`;
+      return;
+    }
+
+    productGrid.innerHTML = filtered.map(p => {
       const badgeHtml = p.badge ? `<span class="product-badge"><i class="fas fa-star"></i> ${p.badge}</span>` : '';
       return `
         <div class="product-card">
           <div class="product-image">
-            <img src="${p.img}" alt="${p.name}" loading="lazy">
+            <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.src='https://placehold.co/600x400/FF5F02/FFF?text=${encodeURIComponent(p.name)}'">
             ${badgeHtml}
           </div>
           <div class="product-body">
@@ -703,7 +918,7 @@
     });
   }
 
-  // افزودن به سبد
+  // ===== سبد خرید =====
   function addToCart(product) {
     const existing = cart.find(item => item.id === product.id);
     if (existing) {
@@ -712,18 +927,15 @@
       cart.push({ ...product, qty: 1 });
     }
     updateCartUI();
-    // انیمیشن کوچک برای بازخورد
     openCartBtn.style.transform = 'scale(1.1)';
     setTimeout(() => openCartBtn.style.transform = '', 200);
   }
 
-  // حذف از سبد
   function removeFromCart(id) {
     cart = cart.filter(item => item.id !== id);
     updateCartUI();
   }
 
-  // تغییر تعداد
   function changeQty(id, delta) {
     const item = cart.find(i => i.id === id);
     if (!item) return;
@@ -734,19 +946,19 @@
     updateCartUI();
   }
 
-  // خالی کردن سبد
   function clearCart() {
     cart = [];
     updateCartUI();
   }
 
-  // بروزرسانی UI سبد
+  function getTotal() {
+    return cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+  }
+
   function updateCartUI() {
-    // شمارنده
     const totalItems = cart.reduce((sum, i) => sum + i.qty, 0);
     cartCount.textContent = totalItems;
 
-    // رندر آیتم‌ها
     if (cart.length === 0) {
       cartItems.innerHTML = `<div class="cart-empty"><i class="fas fa-shopping-basket"></i> سبد خرید خالی است</div>`;
       cartTotalPrice.textContent = '۰ تومان';
@@ -754,13 +966,11 @@
     }
 
     let html = '';
-    let total = 0;
     cart.forEach(item => {
       const itemTotal = item.price * item.qty;
-      total += itemTotal;
       html += `
         <div class="cart-item">
-          <img class="cart-item-img" src="${item.img}" alt="${item.name}">
+          <img class="cart-item-img" src="${item.img}" alt="${item.name}" onerror="this.src='https://placehold.co/60x60/FF5F02/FFF?text=${encodeURIComponent(item.name.substring(0,2))}'">
           <div class="cart-item-info">
             <h4>${item.name}</h4>
             <div>
@@ -776,51 +986,78 @@
       `;
     });
     cartItems.innerHTML = html;
-    cartTotalPrice.textContent = total.toLocaleString() + ' تومان';
+    cartTotalPrice.textContent = getTotal().toLocaleString() + ' تومان';
 
-    // رویدادهای دکمه‌های حذف
     document.querySelectorAll('.cart-item-remove').forEach(btn => {
       btn.addEventListener('click', function() {
-        const id = parseInt(this.dataset.id);
-        removeFromCart(id);
+        removeFromCart(parseInt(this.dataset.id));
       });
     });
-
-    // رویدادهای دکمه‌های تغییر تعداد
     document.querySelectorAll('.cart-qty-btn').forEach(btn => {
       btn.addEventListener('click', function() {
-        const id = parseInt(this.dataset.id);
-        const delta = parseInt(this.dataset.delta);
-        changeQty(id, delta);
+        changeQty(parseInt(this.dataset.id), parseInt(this.dataset.delta));
       });
     });
   }
 
-  // ===== مودال =====
-  function openModal() {
+  // ===== مودال سبد =====
+  function openCartModal() {
     cartModal.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
-  function closeModal() {
+  function closeCartModal() {
     cartModal.classList.remove('active');
     document.body.style.overflow = '';
   }
-
-  openCartBtn.addEventListener('click', openModal);
-  closeCartBtn.addEventListener('click', closeModal);
+  openCartBtn.addEventListener('click', openCartModal);
+  closeCartBtn.addEventListener('click', closeCartModal);
   cartModal.addEventListener('click', function(e) {
-    if (e.target === this) closeModal();
+    if (e.target === this) closeCartModal();
   });
-
   clearCartBtn.addEventListener('click', function() {
     if (cart.length === 0) return;
     if (confirm('آیا مطمئن هستید؟')) clearCart();
+  });
+
+  // ===== پرداخت =====
+  checkoutBtn.addEventListener('click', function() {
+    if (cart.length === 0) {
+      alert('سبد خرید خالی است!');
+      return;
+    }
+    closeCartModal();
+    const total = getTotal();
+    paymentTotal.textContent = total.toLocaleString() + ' تومان';
+    paymentContent.style.display = 'block';
+    paymentSuccess.style.display = 'none';
+    paymentModal.classList.add('active');
+  });
+
+  payCancelBtn.addEventListener('click', function() {
+    paymentModal.classList.remove('active');
+  });
+  paymentModal.addEventListener('click', function(e) {
+    if (e.target === this) paymentModal.classList.remove('active');
+  });
+
+  payConfirmBtn.addEventListener('click', function() {
+    // شبیه‌سازی پرداخت موفق
+    paymentContent.style.display = 'none';
+    paymentSuccess.style.display = 'block';
+    // خالی کردن سبد بعد از پرداخت
+    cart = [];
+    updateCartUI();
+  });
+
+  paySuccessCloseBtn.addEventListener('click', function() {
+    paymentModal.classList.remove('active');
+    paymentContent.style.display = 'block';
+    paymentSuccess.style.display = 'none';
   });
 
   // ===== مقداردهی اولیه =====
   renderProducts();
   updateCartUI();
 </script>
-
 </body>
-</html>
+  </html>
