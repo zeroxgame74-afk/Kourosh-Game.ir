@@ -1,659 +1,397 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kourosh Game.ir | فروش اکانت بازی</title>
-
-    <!-- فونت وزیر -->
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" />
-    <!-- Font Awesome 6 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
-    <style>
-        /* ===== ریست ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Vazir', sans-serif;
-            background: #ffffff;
-            color: #1a1a1a;
-            font-weight: 700;
-            direction: rtl;
-            padding: 0 20px;
-        }
-
-        .container {
-            max-width: 1140px;
-            margin: 0 auto;
-        }
-
-        :root {
-            --orange: #FF5F02;
-            --orange-dark: #e05500;
-            --orange-light: #ff8a3c;
-            --gray: #f5f5f5;
-            --shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
-        }
-
-        /* ===== هدر ===== */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            padding: 18px 0;
-            border-bottom: 3px solid var(--orange);
-            margin-bottom: 40px;
-        }
-
-        .logo {
-            font-size: 26px;
-            font-weight: 900;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo i {
-            color: var(--orange);
-            font-size: 32px;
-        }
-
-        .logo span {
-            color: var(--orange);
-        }
-
-        .nav {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-        }
-
-        .nav a {
-            text-decoration: none;
-            color: #1a1a1a;
-            font-weight: 700;
-            font-size: 15px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: 0.2s;
-            padding: 6px 10px;
-            border-radius: 30px;
-        }
-
-        .nav a i {
-            color: var(--orange);
-        }
-
-        .nav a:hover {
-            color: var(--orange);
-            background: rgba(255, 95, 2, 0.06);
-        }
-
-        .header-left {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 9px 20px;
-            border-radius: 40px;
-            border: none;
-            font-family: 'Vazir', sans-serif;
-            font-weight: 700;
-            font-size: 14px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: 0.25s;
-        }
-
-        .btn-orange {
-            background: var(--orange);
-            color: #fff;
-        }
-
-        .btn-orange i {
-            color: #fff;
-        }
-
-        .btn-orange:hover {
-            background: var(--orange-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(255, 95, 2, 0.25);
-        }
-
-        .btn-white {
-            background: #fff;
-            color: var(--orange);
-            border: 2px solid var(--orange);
-        }
-
-        .btn-white i {
-            color: var(--orange);
-        }
-
-        .btn-white:hover {
-            background: var(--orange);
-            color: #fff;
-        }
-
-        .btn-white:hover i {
-            color: #fff;
-        }
-
-        /* ===== هیرو ===== */
-        .hero {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-            flex-wrap: wrap;
-            background: linear-gradient(135deg, #fffaf5, #ffffff);
-            border-radius: 40px;
-            padding: 50px 45px;
-            margin-bottom: 50px;
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(255, 95, 2, 0.08);
-        }
-
-        .hero-right {
-            flex: 1 1 380px;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            background: var(--orange);
-            color: #fff;
-            font-size: 13px;
-            padding: 4px 18px;
-            border-radius: 40px;
-            margin-bottom: 15px;
-        }
-
-        .hero-right h1 {
-            font-size: 40px;
-            font-weight: 900;
-            line-height: 1.2;
-            margin-bottom: 14px;
-        }
-
-        .hero-right h1 .hl {
-            color: var(--orange);
-        }
-
-        .hero-right p {
-            font-size: 17px;
-            color: #444;
-            font-weight: 500;
-            margin-bottom: 25px;
-        }
-
-        .hero-right p i {
-            color: var(--orange);
-            margin-left: 6px;
-        }
-
-        .hero-btns {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
-        }
-
-        .btn-lg {
-            padding: 14px 34px;
-            font-size: 16px;
-            border-radius: 60px;
-        }
-
-        .hero-stats {
-            display: flex;
-            gap: 35px;
-            flex-wrap: wrap;
-        }
-
-        .hero-stats div {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 15px;
-        }
-
-        .hero-stats i {
-            font-size: 24px;
-            color: var(--orange);
-        }
-
-        .hero-left {
-            flex: 1 1 260px;
-            background: #fff;
-            border-radius: 32px;
-            padding: 35px 20px;
-            text-align: center;
-            border: 2px solid var(--orange);
-            box-shadow: 0 12px 40px rgba(255, 95, 2, 0.08);
-        }
-
-        .hero-left i {
-            font-size: 72px;
-            color: var(--orange);
-        }
-
-        .hero-left h3 {
-            font-size: 22px;
-            margin-top: 8px;
-        }
-
-        .hero-left small {
-            color: #777;
-            font-weight: 400;
-        }
-
-        /* ===== عنوان ===== */
-        .section-head {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            margin: 40px 0 28px;
-        }
-
-        .section-head h2 {
-            font-size: 28px;
-            font-weight: 900;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .section-head h2 i {
-            color: var(--orange);
-        }
-
-        .section-head a {
-            color: var(--orange);
-            text-decoration: none;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .section-head a:hover {
-            color: var(--orange-dark);
-        }
-
-        /* ===== محصولات ===== */
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 28px;
-            margin-bottom: 45px;
-        }
-
-        .product {
-            background: #ffffff;
-            border-radius: 28px;
-            padding: 24px 16px 20px;
-            text-align: center;
-            border: 1px solid #eee;
-            transition: 0.3s;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-        }
-
-        .product:hover {
-            transform: translateY(-8px);
-            border-color: var(--orange);
-            box-shadow: 0 20px 50px rgba(255, 95, 2, 0.10);
-        }
-
-        .product .icon {
-            font-size: 44px;
-            color: var(--orange);
-            background: rgba(255, 95, 2, 0.06);
-            width: 80px;
-            height: 80px;
-            line-height: 80px;
-            border-radius: 50%;
-            margin: 0 auto 12px;
-        }
-
-        .product .tag {
-            font-size: 11px;
-            background: var(--orange);
-            color: #fff;
-            padding: 2px 14px;
-            border-radius: 30px;
-            display: inline-block;
-            margin-bottom: 6px;
-        }
-
-        .product h3 {
-            font-size: 19px;
-            font-weight: 900;
-        }
-
-        .product .price {
-            font-size: 24px;
-            font-weight: 900;
-            color: var(--orange);
-            margin: 8px 0 4px;
-        }
-
-        .product .price i {
-            font-size: 16px;
-        }
-
-        .product .desc {
-            font-size: 13px;
-            color: #666;
-            font-weight: 400;
-            margin-bottom: 16px;
-        }
-
-        .product .buy {
-            background: var(--orange);
-            color: #fff;
-            border: none;
-            padding: 10px 28px;
-            border-radius: 60px;
-            font-family: 'Vazir', sans-serif;
-            font-weight: 700;
-            font-size: 14px;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: 0.25s;
-        }
-
-        .product .buy i {
-            color: #fff;
-        }
-
-        .product .buy:hover {
-            background: var(--orange-dark);
-            transform: scale(0.94);
-        }
-
-        /* ===== ویژگی‌ها ===== */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 22px;
-            margin: 40px 0 45px;
-        }
-
-        .feature {
-            background: #fafafa;
-            padding: 26px 14px;
-            border-radius: 28px;
-            text-align: center;
-            border: 1px solid #f0f0f0;
-            transition: 0.25s;
-        }
-
-        .feature:hover {
-            border-color: var(--orange);
-            background: #fff;
-            transform: translateY(-4px);
-        }
-
-        .feature i {
-            font-size: 36px;
-            color: var(--orange);
-            margin-bottom: 10px;
-        }
-
-        .feature h4 {
-            font-weight: 900;
-            font-size: 17px;
-        }
-
-        .feature p {
-            font-weight: 400;
-            color: #555;
-            font-size: 13px;
-        }
-
-        /* ===== فوتر ===== */
-        .footer {
-            border-top: 3px solid var(--orange);
-            padding: 28px 0 18px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 18px;
-            margin-top: 20px;
-        }
-
-        .footer .copy {
-            font-weight: 700;
-            font-size: 14px;
-        }
-
-        .footer .copy i {
-            color: var(--orange);
-        }
-
-        .social a {
-            color: #222;
-            font-size: 26px;
-            margin-right: 18px;
-            transition: 0.2s;
-            display: inline-block;
-        }
-
-        .social a:hover {
-            color: var(--orange);
-            transform: translateY(-3px);
-        }
-
-        /* ===== ریسپانسیو ===== */
-        @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                gap: 14px;
-            }
-            .nav {
-                justify-content: center;
-            }
-            .header-left {
-                justify-content: center;
-            }
-            .hero {
-                padding: 30px 20px;
-            }
-            .hero-right h1 {
-                font-size: 30px;
-            }
-            .hero-left i {
-                font-size: 56px;
-            }
-            .section-head h2 {
-                font-size: 22px;
-            }
-            .products {
-                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-                gap: 18px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            body {
-                padding: 0 12px;
-            }
-            .hero-right h1 {
-                font-size: 24px;
-            }
-            .btn-lg {
-                padding: 11px 20px;
-                font-size: 14px;
-            }
-            .hero-stats {
-                gap: 16px;
-            }
-            .products {
-                grid-template-columns: 1fr 1fr;
-            }
-            .product .icon {
-                width: 60px;
-                height: 60px;
-                line-height: 60px;
-                font-size: 32px;
-            }
-            .product h3 {
-                font-size: 16px;
-            }
-            .product .price {
-                font-size: 20px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="فروش اکانت بازی‌های کامپیوتری و کنسولی - KouroshGame.ir">
+  <title>KouroshGame.ir | فروش اکانت بازی</title>
+  <!-- Font Awesome (آیکون‌های حرفه‌ای) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- فایل استایل اصلی -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="container">
-
-        <!-- ===== HEADER ===== -->
-        <header class="header">
-            <div class="logo">
-                <i class="fas fa-gamepad"></i>
-                Kourosh <span>Game</span>.ir
-            </div>
-            <nav class="nav">
-                <a href="#"><i class="fas fa-store"></i> فروشگاه</a>
-                <a href="#"><i class="fas fa-trophy"></i> اکانت‌ها</a>
-                <a href="#"><i class="fas fa-gem"></i> ویژه</a>
-                <a href="#"><i class="fas fa-headset"></i> پشتیبانی</a>
-            </nav>
-            <div class="header-left">
-                <button class="btn btn-orange"><i class="fas fa-cart-shopping"></i> سبد</button>
-                <button class="btn btn-white"><i class="fas fa-user"></i> ورود</button>
-            </div>
-        </header>
-
-        <!-- ===== HERO ===== -->
-        <section class="hero">
-            <div class="hero-right">
-                <span class="hero-badge"><i class="fas fa-bolt"></i> تحویل فوری</span>
-                <h1>
-                    اکانت بازی <span class="hl">حرفه‌ای</span>
-                </h1>
-                <p>
-                    <i class="fas fa-check-circle"></i> ضمانت اصالت ۱۰۰٪
-                    &nbsp;&nbsp;
-                    <i class="fas fa-shield"></i> امنیت کامل
-                </p>
-                <div class="hero-btns">
-                    <button class="btn btn-orange btn-lg"><i class="fas fa-rocket"></i> مشاهده اکانت‌ها</button>
-                    <button class="btn btn-white btn-lg"><i class="fas fa-play"></i> معرفی</button>
-                </div>
-                <div class="hero-stats">
-                    <div><i class="fas fa-users"></i> ۱۲٬۴۰۰+ کاربر</div>
-                    <div><i class="fas fa-star"></i> ۴.۹/۵</div>
-                    <div><i class="fas fa-clock"></i> تحویل آنی</div>
-                </div>
-            </div>
-            <div class="hero-left">
-                <i class="fas fa-gamepad"></i>
-                <h3>Kourosh Game</h3>
-                <small>اورجینال و امن</small>
-            </div>
-        </section>
-
-        <!-- ===== PRODUCTS TITLE ===== -->
-        <div class="section-head">
-            <h2><i class="fas fa-fire"></i> پرفروش‌ترین‌ها</h2>
-            <a href="#">مشاهده همه <i class="fas fa-arrow-left"></i></a>
-        </div>
-
-        <!-- ===== PRODUCTS ===== -->
-        <div class="products">
-
-            <div class="product">
-                <span class="tag"><i class="fas fa-star"></i> ویژه</span>
-                <div class="icon"><i class="fas fa-futbol"></i></div>
-                <h3>FIFA 24</h3>
-                <div class="price"><i class="fas fa-toman"></i> ۲,۴۵۰,۰۰۰</div>
-                <div class="desc">نسخه اولتریمیت + کوین</div>
-                <button class="buy"><i class="fas fa-bag-shopping"></i> خرید</button>
-            </div>
-
-            <div class="product">
-                <div class="icon"><i class="fas fa-crosshairs"></i></div>
-                <h3>Call of Duty</h3>
-                <div class="price"><i class="fas fa-toman"></i> ۱,۸۹۰,۰۰۰</div>
-                <div class="desc">سطح بالا + اسکین نادر</div>
-                <button class="buy"><i class="fas fa-bag-shopping"></i> خرید</button>
-            </div>
-
-            <div class="product">
-                <div class="icon"><i class="fas fa-flag"></i></div>
-                <h3>PUBG Mobile</h3>
-                <div class="price"><i class="fas fa-toman"></i> ۹۹۰,۰۰۰</div>
-                <div class="desc">رنک Ace + آیتم ویژه</div>
-                <button class="buy"><i class="fas fa-bag-shopping"></i> خرید</button>
-            </div>
-
-            <div class="product">
-                <div class="icon"><i class="fas fa-car"></i></div>
-                <h3>GTA V</h3>
-                <div class="price"><i class="fas fa-toman"></i> ۳,۲۰۰,۰۰۰</div>
-                <div class="desc">پول + ماشین‌های لوکس</div>
-                <button class="buy"><i class="fas fa-bag-shopping"></i> خرید</button>
-            </div>
-
-        </div>
-
-        <!-- ===== FEATURES ===== -->
-        <div class="features">
-            <div class="feature">
-                <i class="fas fa-shield-halved"></i>
-                <h4>ضمانت اصالت</h4>
-                <p>همه اکانت‌ها تایید شده</p>
-            </div>
-            <div class="feature">
-                <i class="fas fa-rotate-left"></i>
-                <h4>بازگشت وجه</h4>
-                <p>تا ۴۸ ساعت</p>
-            </div>
-            <div class="feature">
-                <i class="fas fa-headset"></i>
-                <h4>پشتیبانی ۲۴/۷</h4>
-                <p>پاسخگویی سریع</p>
-            </div>
-            <div class="feature">
-                <i class="fas fa-bolt"></i>
-                <h4>تحویل فوری</h4>
-                <p>کمتر از ۵ دقیقه</p>
-            </div>
-        </div>
-
-        <!-- ===== FOOTER ===== -->
-        <footer class="footer">
-            <div class="copy">
-                <i class="fas fa-copyright"></i> ۲۰۲۶ Kourosh Game.ir
-                <i class="fas fa-gamepad" style="margin-right:10px; color:var(--orange);"></i>
-            </div>
-            <div class="social">
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-telegram"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-            </div>
-        </footer>
-
+<!-- ========== هدر حرفه‌ای ========== -->
+<header class="header">
+  <div class="container header-container">
+    <!-- لوگو -->
+    <div class="logo">
+      <a href="index.html">
+        <i class="fas fa-gamepad" style="color: #FF5F02;"></i>
+        <span>KouroshGame</span><span class="dot">.ir</span>
+      </a>
     </div>
 
+    <!-- منوی ناوبری -->
+    <nav class="main-nav">
+      <ul class="nav-list">
+        <li><a href="index.html" class="active">خانه</a></li>
+        <li><a href="store.html">فروشگاه</a></li>
+        <li><a href="#features">مزایا</a></li>
+        <li><a href="#testimonials">نظرات</a></li>
+        <li><a href="#faq">سوالات</a></li>
+      </ul>
+    </nav>
+
+    <!-- ابزارهای هدر (جستجو، ورود، سبد خرید) -->
+    <div class="header-tools">
+      <a href="store.html" class="search-icon"><i class="fas fa-search"></i></a>
+      <a href="login.html" class="login-icon"><i class="fas fa-user"></i></a>
+      <a href="cart.html" class="cart-icon"><i class="fas fa-shopping-bag"></i><span class="cart-count">3</span></a>
+    </div>
+
+    <!-- همبرگر موبایل -->
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<!-- ========== اسلایدر تبلیغاتی ========== -->
+<section class="slider-section">
+  <div class="slider-container">
+    <div class="slider-track" id="sliderTrack">
+      <div class="slide active">
+        <div class="slide-content">
+          <h2>بهترین اکانت‌های بازی</h2>
+          <p>با ضمانت بازگشت وجه و پشتیبانی ۲۴ ساعته</p>
+          <a href="store.html" class="btn-slider">مشاهده محصولات</a>
+        </div>
+        <img src="https://via.placeholder.com/1200x400/1a1a2e/FF5F02?text=KouroshGame+Slides" alt="اسلاید ۱">
+      </div>
+      <div class="slide">
+        <div class="slide-content">
+          <h2>تخفیف ویژه روز</h2>
+          <p>تا ۵۰٪ تخفیف روی اکانت‌های محبوب</p>
+          <a href="store.html" class="btn-slider">حراج</a>
+        </div>
+        <img src="https://via.placeholder.com/1200x400/16213e/FF5F02?text=تخفیف+ویژه" alt="اسلاید ۲">
+      </div>
+      <div class="slide">
+        <div class="slide-content">
+          <h2>جدیدترین اکانت‌ها</h2>
+          <p>همین الان سفارش دهید</p>
+          <a href="store.html" class="btn-slider">جدیدها</a>
+        </div>
+        <img src="https://via.placeholder.com/1200x400/0f3460/FF5F02?text=جدیدترین+ها" alt="اسلاید ۳">
+      </div>
+    </div>
+    <!-- دکمه‌های کنترل -->
+    <button class="slider-btn prev" id="prevBtn"><i class="fas fa-chevron-right"></i></button>
+    <button class="slider-btn next" id="nextBtn"><i class="fas fa-chevron-left"></i></button>
+    <!-- نقاط -->
+    <div class="slider-dots" id="sliderDots">
+      <span class="dot active" data-index="0"></span>
+      <span class="dot" data-index="1"></span>
+      <span class="dot" data-index="2"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ========== بخش محصولات ویژه ========== -->
+<section class="products-section" id="featured">
+  <div class="container">
+    <h2 class="section-title">محصولات ویژه <i class="fas fa-star" style="color: #FF5F02;"></i></h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <div class="product-badge">ویژه</div>
+        <div class="product-img"><img src="https://via.placeholder.com/300x300/1a1a2e/FF5F02?text=Game+1" alt="محصول ۱"></div>
+        <div class="product-info">
+          <h3>اکانت بازی شماره ۱</h3>
+          <div class="product-rating"><i class="fas fa-star" style="color: #FF5F02;"></i> ۴.۹</div>
+          <p class="product-price">۱,۲۰۰,۰۰۰ تومان</p>
+          <div class="product-actions">
+            <a href="product.html" class="btn-detail">مشاهده</a>
+            <button class="btn-add-cart"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-badge">پرطرفدار</div>
+        <div class="product-img"><img src="https://via.placeholder.com/300x300/16213e/FF5F02?text=Game+2" alt="محصول ۲"></div>
+        <div class="product-info">
+          <h3>اکانت بازی شماره ۲</h3>
+          <div class="product-rating"><i class="fas fa-star" style="color: #FF5F02;"></i> ۴.۸</div>
+          <p class="product-price">۹۵۰,۰۰۰ تومان</p>
+          <div class="product-actions">
+            <a href="product.html" class="btn-detail">مشاهده</a>
+            <button class="btn-add-cart"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-badge">جدید</div>
+        <div class="product-img"><img src="https://via.placeholder.com/300x300/0f3460/FF5F02?text=Game+3" alt="محصول ۳"></div>
+        <div class="product-info">
+          <h3>اکانت بازی شماره ۳</h3>
+          <div class="product-rating"><i class="fas fa-star" style="color: #FF5F02;"></i> ۵.۰</div>
+          <p class="product-price">۱,۵۰۰,۰۰۰ تومان</p>
+          <div class="product-actions">
+            <a href="product.html" class="btn-detail">مشاهده</a>
+            <button class="btn-add-cart"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-badge">تخفیف</div>
+        <div class="product-img"><img src="https://via.placeholder.com/300x300/1a1a2e/FF5F02?text=Game+4" alt="محصول ۴"></div>
+        <div class="product-info">
+          <h3>اکانت بازی شماره ۴</h3>
+          <div class="product-rating"><i class="fas fa-star" style="color: #FF5F02;"></i> ۴.۷</div>
+          <p class="product-price"><span class="old-price">۱,۸۰۰,۰۰۰</span> ۱,۴۰۰,۰۰۰ تومان</p>
+          <div class="product-actions">
+            <a href="product.html" class="btn-detail">مشاهده</a>
+            <button class="btn-add-cart"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== جدیدترین اکانت‌ها ========== -->
+<section class="products-section bg-light" id="newest">
+  <div class="container">
+    <h2 class="section-title">جدیدترین اکانت‌ها <i class="fas fa-clock" style="color: #FF5F02;"></i></h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <div class="product-img"><img src="https://via.placeholder.com/300x300/1a1a2e/FF5F02?text=New+1" alt="جدید ۱"></div>
+        <div class="product-info">
+          <h3>اکانت جدید ۱</h3>
+          <p class="product-price">۹۹۰,۰۰۰ تومان</p>
+          <div class="product-actions">
+            <a href="product.html" class="btn-detail">مشاهده</a>
+            <button class="btn-add-cart"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img"><img src="https://via.placeholder.com/300x300/16213e/FF5F02?text=New+2" alt="جدید ۲"></div>
+        <div class="product-info">
+          <h3>اکانت جدید ۲</h3>
+          <p class="product-price">۷۵۰,۰۰۰ تومان</p>
+          <div class="product-actions">
+            <a href="product.html" class="btn-detail">مشاهده</a>
+            <button class="btn-add-cart"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img"><img src="https://via.placeholder.com/300x300/0f3460/FF5F02?text=New+3" alt="جدید ۳"></div>
+        <div class="product-info">
+          <h3>اکانت جدید ۳</h3>
+          <p class="product-price">۱,۳۰۰,۰۰۰ تومان</p>
+          <div class="product-actions">
+            <a href="product.html" class="btn-detail">مشاهده</a>
+            <button class="btn-add-cart"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== پرفروش‌ترین ========== -->
+<section class="products-section" id="bestsellers">
+  <div class="container">
+    <h2 class="section-title">پرفروش‌ترین‌ها <i class="fas fa-fire" style="color: #FF5F02;"></i></h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <div class="product-img"><img src="https://via.placeholder.com/300x300/1a1a2e/FF5F02?text=Best+1" alt="پرفروش ۱"></div>
+        <div class="product-info">
+          <h3>اکانت محبوب ۱</h3>
+          <p class="product-price">۲,۲۰۰,۰۰۰ تومان</p>
+          <div class="product-actions">
+            <a href="product.html" class="btn-detail">مشاهده</a>
+            <button class="btn-add-cart"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img"><img src="https://via.placeholder.com/300x300/16213e/FF5F02?text=Best+2" alt="پرفروش ۲"></div>
+        <div class="product-info">
+          <h3>اکانت محبوب ۲</h3>
+          <p class="product-price">۱,۸۵۰,۰۰۰ تومان</p>
+          <div class="product-actions">
+            <a href="product.html" class="btn-detail">مشاهده</a>
+            <button class="btn-add-cart"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img"><img src="https://via.placeholder.com/300x300/0f3460/FF5F02?text=Best+3" alt="پرفروش ۳"></div>
+        <div class="product-info">
+          <h3>اکانت محبوب ۳</h3>
+          <p class="product-price">۹۹۰,۰۰۰ تومان</p>
+          <div class="product-actions">
+            <a href="product.html" class="btn-detail">مشاهده</a>
+            <button class="btn-add-cart"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== دسته‌بندی بازی‌ها ========== -->
+<section class="categories-section" id="categories">
+  <div class="container">
+    <h2 class="section-title">دسته‌بندی بازی‌ها</h2>
+    <div class="category-grid">
+      <div class="category-item"><i class="fas fa-chess-king"></i><span>استراتژی</span></div>
+      <div class="category-item"><i class="fas fa-gun"></i><span>تیراندازی</span></div>
+      <div class="category-item"><i class="fas fa-futbol"></i><span>ورزشی</span></div>
+      <div class="category-item"><i class="fas fa-car"></i><span>مسابقه‌ای</span></div>
+      <div class="category-item"><i class="fas fa-dragon"></i><span>فانتزی</span></div>
+      <div class="category-item"><i class="fas fa-skull"></i><span>ترسناک</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== مزایا و اعتمادسازی ========== -->
+<section class="features-section" id="features">
+  <div class="container">
+    <h2 class="section-title">چرا KouroshGame؟</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <i class="fas fa-shield-alt"></i>
+        <h3>ضمانت بازگشت وجه</h3>
+        <p>در صورت هرگونه مشکل، وجه شما بازگردانده می‌شود.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-headset"></i>
+        <h3>پشتیبانی ۲۴ ساعته</h3>
+        <p>تیم پشتیبانی ما همیشه در دسترس است.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-rocket"></i>
+        <h3>تحویل فوری</h3>
+        <p>اکانت شما بلافاصله پس از خرید ارسال می‌شود.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-check-circle"></i>
+        <h3>اکانت‌های تضمینی</h3>
+        <p>همه اکانت‌ها با ضمانت اصالت ارائه می‌شوند.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== آمار فروش ========== -->
+<section class="stats-section">
+  <div class="container stats-grid">
+    <div class="stat-item">
+      <span class="stat-number" data-target="1250">۰</span>
+      <span class="stat-label">اکانت فروخته شده</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number" data-target="980">۰</span>
+      <span class="stat-label">کاربران فعال</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number" data-target="37">۰</span>
+      <span class="stat-label">بازی پشتیبانی</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number" data-target="100">۰</span>
+      <span class="stat-label">رضایت کاربران</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========== نظرات کاربران ========== -->
+<section class="testimonials-section" id="testimonials">
+  <div class="container">
+    <h2 class="section-title">نظرات کاربران</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <i class="fas fa-user-circle"></i>
+        <p>"کیفیت اکانت‌ها عالی بود، خیلی سریع تحویل گرفتم."</p>
+        <span>رضا محمدی</span>
+        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      </div>
+      <div class="testimonial-card">
+        <i class="fas fa-user-circle"></i>
+        <p>"پشتیبانی عالی و پاسخگو، حتماً دوباره خرید می‌کنم."</p>
+        <span>سارا احمدی</span>
+        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      </div>
+      <div class="testimonial-card">
+        <i class="fas fa-user-circle"></i>
+        <p>"قیمت‌ها نسبت به رقبا بسیار مناسب و منطقی است."</p>
+        <span>علی کریمی</span>
+        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== سوالات متداول ========== -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <h2 class="section-title">سوالات متداول</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question"><span>چگونه اکانت را دریافت کنم؟</span><i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer"><p>پس از خرید، اطلاعات اکانت به ایمیل شما ارسال می‌شود و در پنل کاربری قابل مشاهده است.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question"><span>آیا اکانت‌ها اورجینال هستند؟</span><i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer"><p>بله، تمام اکانت‌ها به صورت قانونی و با ضمانت اصالت ارائه می‌شوند.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question"><span>روش‌های پرداخت چیست؟</span><i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer"><p>پرداخت از طریق درگاه بانکی، کارت به کارت و کیف پول داخلی امکان‌پذیر است.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== فوتر کامل ========== -->
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-col">
+      <h3>KouroshGame.ir</h3>
+      <p>فروش اکانت بازی با کیفیت و پشتیبانی حرفه‌ای</p>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-telegram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>دسترسی سریع</h4>
+      <ul>
+        <li><a href="store.html">فروشگاه</a></li>
+        <li><a href="#features">مزایا</a></li>
+        <li><a href="#testimonials">نظرات</a></li>
+        <li><a href="#faq">سوالات</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>حساب کاربری</h4>
+      <ul>
+        <li><a href="login.html">ورود</a></li>
+        <li><a href="register.html">ثبت نام</a></li>
+        <li><a href="dashboard.html">پنل کاربری</a></li>
+        <li><a href="admin.html">مدیریت</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>تماس با ما</h4>
+      <p><i class="fas fa-envelope"></i> support@KouroshGame.ir</p>
+      <p><i class="fas fa-phone"></i> ۰۲۱-۱۲۳۴۵۶۷۸</p>
+      <p><i class="fas fa-map-marker-alt"></i> تهران، ایران</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; ۲۰۲۶ KouroshGame.ir | تمامی حقوق محفوظ است.</p>
+  </div>
+</footer>
+
+<!-- ========== اسکریپت اصلی ========== -->
+<script src="app.js"></script>
 </body>
 </html>
