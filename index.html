@@ -1,1 +1,620 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kourosh Game.ir | فروش اکانت بازی</title>
+  <!-- Font Awesome 6 (رایگان) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- وزیر فونت (Vazir) با وزن‌های معمولی و بولد -->
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" type="text/css" />
+  <style>
+    /* ریست و پایه */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    body {
+      font-family: 'Vazir', 'Tahoma', sans-serif;
+      background-color: #ffffff; /* سفید خالص پس‌زمینه */
+      color: #1e1e1e;
+      line-height: 1.6;
+      padding: 0 20px;
+    }
+
+    /* رنگ اصلی نارنجی FF5F02 */
+    :root {
+      --primary: #FF5F02;
+      --primary-dark: #d94e00;
+      --white: #ffffff;
+      --light-gray: #f8f8f8;
+      --shadow: 0 8px 24px rgba(255, 95, 2, 0.12);
+    }
+
+    /* کانتینر */
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    /* ===== هدر ===== */
+    header {
+      padding: 20px 0;
+      border-bottom: 2px solid var(--primary);
+      margin-bottom: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.9rem;
+      font-weight: 900; /* بولد */
+      color: #1e1e1e;
+    }
+
+    .logo i {
+      color: var(--primary);
+      font-size: 2.2rem;
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    .header-nav {
+      display: flex;
+      gap: 28px;
+      font-weight: 700; /* بولد */
+      flex-wrap: wrap;
+    }
+
+    .header-nav a {
+      text-decoration: none;
+      color: #1e1e1e;
+      font-size: 1.05rem;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .header-nav a i {
+      color: var(--primary);
+    }
+
+    .header-nav a:hover {
+      color: var(--primary);
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .header-actions .btn {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 40px;
+      font-weight: 700;
+      font-family: 'Vazir', sans-serif;
+      cursor: pointer;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.95rem;
+    }
+
+    .header-actions .btn i {
+      color: #fff;
+    }
+
+    .header-actions .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .header-actions .btn-outline i {
+      color: var(--primary);
+    }
+
+    .header-actions .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .header-actions .btn-outline:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+    .header-actions .btn-outline:hover i {
+      color: #fff;
+    }
+
+    /* ===== بخش Hero ===== */
+    .hero {
+      background: var(--white);
+      padding: 40px 0 50px;
+      border-radius: 30px;
+      margin-bottom: 50px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .hero-text {
+      flex: 1 1 380px;
+    }
+
+    .hero-text h1 {
+      font-size: 2.8rem;
+      font-weight: 900; /* بولد */
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+
+    .hero-text h1 i {
+      color: var(--primary);
+      margin-left: 10px;
+    }
+
+    .hero-text .highlight {
+      color: var(--primary);
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      margin-bottom: 28px;
+      color: #3a3a3a;
+    }
+
+    .hero-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 14px 36px;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      font-family: 'Vazir', sans-serif;
+      cursor: pointer;
+      transition: 0.25s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 6px 18px rgba(255, 95, 2, 0.3);
+    }
+
+    .btn-primary i {
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: scale(1.02);
+      box-shadow: 0 8px 28px rgba(255, 95, 2, 0.4);
+    }
+
+    .btn-secondary {
+      background: #f0f0f0;
+      color: #1e1e1e;
+      border: none;
+      padding: 14px 36px;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      font-family: 'Vazir', sans-serif;
+      cursor: pointer;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-secondary i {
+      color: var(--primary);
+    }
+
+    .btn-secondary:hover {
+      background: #e0e0e0;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .hero-stats div {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .hero-stats i {
+      color: var(--primary);
+      font-size: 1.8rem;
+    }
+
+    .hero-image {
+      flex: 1 1 300px;
+      background: var(--light-gray);
+      border-radius: 30px;
+      padding: 30px 20px;
+      text-align: center;
+      border: 2px dashed var(--primary);
+      color: var(--primary);
+      font-weight: 700;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hero-image i {
+      font-size: 5rem;
+      color: var(--primary);
+    }
+
+    /* ===== بخش محصولات / اکانت‌ها ===== */
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 900;
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-title i {
+      color: var(--primary);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 28px;
+      margin-bottom: 50px;
+    }
+
+    .product-card {
+      background: var(--white);
+      border-radius: 28px;
+      padding: 24px 18px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+      border: 1px solid #eee;
+      transition: 0.3s;
+      text-align: center;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow);
+      border-color: var(--primary);
+    }
+
+    .product-card .icon-wrap {
+      font-size: 3.4rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .product-card h3 {
+      font-weight: 900;
+      font-size: 1.3rem;
+      margin-bottom: 6px;
+    }
+
+    .product-card .price {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin: 10px 0;
+    }
+
+    .product-card .price i {
+      font-size: 1.2rem;
+      margin-left: 4px;
+    }
+
+    .product-card .desc {
+      color: #555;
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+    }
+
+    .product-card .btn-buy {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 60px;
+      font-weight: 700;
+      font-family: 'Vazir', sans-serif;
+      cursor: pointer;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .product-card .btn-buy i {
+      color: #fff;
+    }
+
+    .product-card .btn-buy:hover {
+      background: var(--primary-dark);
+      transform: scale(0.96);
+    }
+
+    /* ===== بخش ویژگی‌ها ===== */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin: 50px 0;
+    }
+
+    .feature-item {
+      background: var(--white);
+      padding: 24px 16px;
+      border-radius: 28px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      border: 1px solid #f1f1f1;
+      transition: 0.2s;
+    }
+
+    .feature-item:hover {
+      border-color: var(--primary);
+    }
+
+    .feature-item i {
+      font-size: 2.8rem;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+
+    .feature-item h4 {
+      font-weight: 900;
+      font-size: 1.2rem;
+    }
+
+    /* ===== فوتر ===== */
+    footer {
+      margin-top: 60px;
+      padding: 30px 0 20px;
+      border-top: 2px solid var(--primary);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    footer .copy {
+      font-weight: 700;
+    }
+
+    footer .copy i {
+      color: var(--primary);
+      margin: 0 4px;
+    }
+
+    footer .social a {
+      color: #1e1e1e;
+      font-size: 1.7rem;
+      margin-right: 18px;
+      transition: 0.2s;
+    }
+
+    footer .social a:hover {
+      color: var(--primary);
+    }
+
+    /* ===== ریسپانسیو ===== */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 16px;
+        align-items: stretch;
+      }
+      .header-nav {
+        justify-content: center;
+      }
+      .header-actions {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .hero-text h1 {
+        font-size: 2.2rem;
+      }
+      .hero-stats {
+        gap: 20px;
+      }
+      .hero-image {
+        min-height: 150px;
+      }
+      .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 0 10px;
+      }
+      .hero-text h1 {
+        font-size: 1.8rem;
+      }
+      .btn-primary, .btn-secondary {
+        padding: 12px 24px;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- هدر -->
+    <header>
+      <div class="logo">
+        <i class="fas fa-gamepad"></i>
+        Kourosh <span>Game</span>.ir
+      </div>
+      <nav class="header-nav">
+        <a href="#"><i class="fas fa-store"></i> فروشگاه</a>
+        <a href="#"><i class="fas fa-trophy"></i> اکانت‌ها</a>
+        <a href="#"><i class="fas fa-gem"></i> ویژه</a>
+        <a href="#"><i class="fas fa-headset"></i> پشتیبانی</a>
+      </nav>
+      <div class="header-actions">
+        <button class="btn"><i class="fas fa-cart-shopping"></i> سبد خرید</button>
+        <button class="btn btn-outline"><i class="fas fa-user"></i> ورود</button>
+      </div>
+    </header>
+
+    <!-- هیرو -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>
+            <i class="fas fa-crown"></i> 
+            اکانت بازی <span class="highlight">حرفه‌ای</span>
+          </h1>
+          <p>
+            بهترین و امن‌ترین اکانت‌های بازی با ضمانت بازگشت وجه. 
+            <i class="fas fa-shield-alt" style="color:#FF5F02; margin-right:6px;"></i>
+          </p>
+          <div class="hero-btns">
+            <button class="btn-primary"><i class="fas fa-rocket"></i> مشاهده اکانت‌ها</button>
+            <button class="btn-secondary"><i class="fas fa-circle-info"></i> اطلاعات بیشتر</button>
+          </div>
+          <div class="hero-stats">
+            <div><i class="fas fa-users"></i> +۱۲٬۰۰۰ کاربر</div>
+            <div><i class="fas fa-check-circle"></i> تضمین ۱۰۰٪</div>
+            <div><i class="fas fa-star"></i> ۴.۹/۵ امتیاز</div>
+          </div>
+        </div>
+        <div class="hero-image">
+          <i class="fas fa-gamepad"></i>
+          <span>Kourosh Game.ir</span>
+          <small style="color:#1e1e1e; font-weight:400;">اکانت‌های اورجینال</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- عنوان محصولات -->
+    <div class="section-title">
+      <i class="fas fa-fire"></i> اکانت‌های محبوب
+    </div>
+
+    <!-- گرید محصولات -->
+    <div class="products-grid">
+
+      <div class="product-card">
+        <div class="icon-wrap"><i class="fas fa-futbol"></i></div>
+        <h3>اکانت FIFA 24</h3>
+        <div class="price"><i class="fas fa-toman"></i> ۲,۴۵۰,۰۰۰</div>
+        <div class="desc">نسخه اولتریمیت + کوین</div>
+        <button class="btn-buy"><i class="fas fa-bag-shopping"></i> خرید</button>
+      </div>
+
+      <div class="product-card">
+        <div class="icon-wrap"><i class="fas fa-gun"></i></div>
+        <h3>اکانت Call of Duty</h3>
+        <div class="price"><i class="fas fa-toman"></i> ۱,۸۹۰,۰۰۰</div>
+        <div class="desc">سطح بالا + اسکین‌های نادر</div>
+        <button class="btn-buy"><i class="fas fa-bag-shopping"></i> خرید</button>
+      </div>
+
+      <div class="product-card">
+        <div class="icon-wrap"><i class="fas fa-flag"></i></div>
+        <h3>اکانت PUBG Mobile</h3>
+        <div class="price"><i class="fas fa-toman"></i> ۹۹۰,۰۰۰</div>
+        <div class="desc">رنک Ace + آیتم‌های ویژه</div>
+        <button class="btn-buy"><i class="fas fa-bag-shopping"></i> خرید</button>
+      </div>
+
+      <div class="product-card">
+        <div class="icon-wrap"><i class="fas fa-robot"></i></div>
+        <h3>اکانت GTA V</h3>
+        <div class="price"><i class="fas fa-toman"></i> ۳,۲۰۰,۰۰۰</div>
+        <div class="desc">پول نقد + ماشین‌های لوکس</div>
+        <button class="btn-buy"><i class="fas fa-bag-shopping"></i> خرید</button>
+      </div>
+
+    </div>
+
+    <!-- ویژگی‌ها -->
+    <div class="features">
+      <div class="feature-item">
+        <i class="fas fa-shield"></i>
+        <h4>ضمانت اصالت</h4>
+        <p style="font-size:0.9rem; color:#555;">همه اکانت‌ها اورجینال</p>
+      </div>
+      <div class="feature-item">
+        <i class="fas fa-rotate-left"></i>
+        <h4>بازگشت وجه</h4>
+        <p style="font-size:0.9rem; color:#555;">تا ۴۸ ساعت</p>
+      </div>
+      <div class="feature-item">
+        <i class="fas fa-headset"></i>
+        <h4>پشتیبانی ۲۴/۷</h4>
+        <p style="font-size:0.9rem; color:#555;">پاسخگویی سریع</p>
+      </div>
+      <div class="feature-item">
+        <i class="fas fa-bolt"></i>
+        <h4>تحویل فوری</h4>
+        <p style="font-size:0.9rem; color:#555;">کمتر از ۵ دقیقه</p>
+      </div>
+    </div>
+
+    <!-- فوتر -->
+    <footer>
+      <div class="copy">
+        <i class="fas fa-copyright"></i> ۲۰۲۶ Kourosh Game.ir 
+        <i class="fas fa-gamepad" style="margin-right:10px;"></i>
+      </div>
+      <div class="social">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-telegram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </footer>
+
+  </div>
+  <!-- پایان کانتینر -->
+</body>
+  </html>
