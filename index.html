@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kourosh Game.ir | فروش اکانت بازی</title>
+  <title>Kourosh Game.ir | حرفه‌ای‌ترین اکانت‌های بازی</title>
   <!-- Font Awesome 6 (رایگان) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- وزیر فونت (Vazir) با وزن‌های معمولی و بولد -->
+  <!-- وزیر فونت (Vazir) با وزن بولد -->
   <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" type="text/css" />
   <style>
-    /* ریست و پایه */
+    /* ========== ریست کامل و پایه ========== */
     * {
       margin: 0;
       padding: 0;
@@ -18,327 +18,473 @@
 
     body {
       font-family: 'Vazir', 'Tahoma', sans-serif;
-      background-color: #ffffff; /* سفید خالص پس‌زمینه */
-      color: #1e1e1e;
-      line-height: 1.6;
+      background-color: #fafafa;
+      color: #1a1a1a;
+      line-height: 1.7;
+      padding: 0 30px;
+      font-weight: 700; /* بولد کردن کل سایت */
+    }
+
+    :root {
+      --primary: #FF5F02;
+      --primary-light: #ff7a2f;
+      --primary-dark: #d94e00;
+      --white: #ffffff;
+      --shadow-heavy: 0 20px 60px rgba(255, 95, 2, 0.15);
+      --shadow-light: 0 8px 30px rgba(0, 0, 0, 0.06);
+      --glass-bg: rgba(255, 255, 255, 0.6);
+      --glass-border: rgba(255, 255, 255, 0.8);
+    }
+
+    .container {
+      max-width: 1320px;
+      margin: 0 auto;
       padding: 0 20px;
     }
 
-    /* رنگ اصلی نارنجی FF5F02 */
-    :root {
-      --primary: #FF5F02;
-      --primary-dark: #d94e00;
-      --white: #ffffff;
-      --light-gray: #f8f8f8;
-      --shadow: 0 8px 24px rgba(255, 95, 2, 0.12);
-    }
-
-    /* کانتینر */
-    .container {
-      max-width: 1300px;
-      margin: 0 auto;
-      padding: 0 15px;
-    }
-
-    /* ===== هدر ===== */
+    /* ========== هدر با افکت شیشه‌ای ========== */
     header {
-      padding: 20px 0;
-      border-bottom: 2px solid var(--primary);
-      margin-bottom: 30px;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
+      padding: 16px 32px;
+      margin: 24px 0 40px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 80px;
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--shadow-light);
     }
 
     .logo {
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-size: 1.9rem;
-      font-weight: 900; /* بولد */
-      color: #1e1e1e;
+      gap: 10px;
+      font-size: 2rem;
+      font-weight: 900;
+      color: #111;
     }
 
     .logo i {
       color: var(--primary);
-      font-size: 2.2rem;
+      font-size: 2.4rem;
+      filter: drop-shadow(0 4px 8px rgba(255, 95, 2, 0.3));
     }
 
     .logo span {
       color: var(--primary);
     }
 
-    .header-nav {
+    .nav-links {
       display: flex;
       gap: 28px;
-      font-weight: 700; /* بولد */
       flex-wrap: wrap;
     }
 
-    .header-nav a {
+    .nav-links a {
       text-decoration: none;
-      color: #1e1e1e;
+      color: #222;
+      font-weight: 700;
       font-size: 1.05rem;
-      transition: color 0.2s;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
+      transition: 0.25s;
+      padding: 6px 12px;
+      border-radius: 40px;
     }
 
-    .header-nav a i {
+    .nav-links a i {
       color: var(--primary);
     }
 
-    .header-nav a:hover {
-      color: var(--primary);
+    .nav-links a:hover {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(255, 95, 2, 0.25);
+    }
+
+    .nav-links a:hover i {
+      color: #fff;
     }
 
     .header-actions {
       display: flex;
-      gap: 16px;
-      align-items: center;
+      gap: 12px;
     }
 
-    .header-actions .btn {
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      padding: 8px 18px;
-      border-radius: 40px;
+    .btn-glass {
+      background: var(--glass-bg);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 95, 2, 0.25);
+      padding: 10px 22px;
+      border-radius: 60px;
       font-weight: 700;
       font-family: 'Vazir', sans-serif;
       cursor: pointer;
-      transition: 0.2s;
+      transition: 0.25s;
       display: flex;
       align-items: center;
-      gap: 6px;
-      font-size: 0.95rem;
+      gap: 8px;
+      color: #1a1a1a;
     }
 
-    .header-actions .btn i {
-      color: #fff;
-    }
-
-    .header-actions .btn-outline {
-      background: transparent;
-      border: 2px solid var(--primary);
+    .btn-glass i {
       color: var(--primary);
     }
 
-    .header-actions .btn-outline i {
-      color: var(--primary);
-    }
-
-    .header-actions .btn:hover {
-      background: var(--primary-dark);
-      transform: translateY(-2px);
-    }
-
-    .header-actions .btn-outline:hover {
+    .btn-glass:hover {
       background: var(--primary);
       color: #fff;
+      border-color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(255, 95, 2, 0.3);
     }
-    .header-actions .btn-outline:hover i {
+
+    .btn-glass:hover i {
       color: #fff;
     }
 
-    /* ===== بخش Hero ===== */
+    .btn-primary-solid {
+      background: var(--primary);
+      border: none;
+      padding: 10px 26px;
+      border-radius: 60px;
+      font-weight: 700;
+      font-family: 'Vazir', sans-serif;
+      color: #fff;
+      cursor: pointer;
+      transition: 0.25s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 6px 18px rgba(255, 95, 2, 0.35);
+    }
+
+    .btn-primary-solid i {
+      color: #fff;
+    }
+
+    .btn-primary-solid:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 14px 34px rgba(255, 95, 2, 0.45);
+    }
+
+    /* ========== بخش قهرمان (Hero) با گرادیان ========== */
     .hero {
-      background: var(--white);
-      padding: 40px 0 50px;
-      border-radius: 30px;
-      margin-bottom: 50px;
-      box-shadow: var(--shadow);
+      background: linear-gradient(145deg, #ffffff 0%, #fff5ed 100%);
+      border-radius: 60px;
+      padding: 60px 50px;
+      margin-bottom: 70px;
+      box-shadow: var(--shadow-heavy);
+      border: 1px solid rgba(255, 95, 2, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(255, 95, 2, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
     }
 
     .hero-content {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      justify-content: space-between;
-      gap: 30px;
+      gap: 40px;
+      position: relative;
+      z-index: 2;
     }
 
     .hero-text {
-      flex: 1 1 380px;
+      flex: 1 1 420px;
+    }
+
+    .hero-text .badge {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      padding: 4px 20px;
+      border-radius: 60px;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      margin-bottom: 18px;
+      box-shadow: 0 6px 16px rgba(255, 95, 2, 0.25);
     }
 
     .hero-text h1 {
-      font-size: 2.8rem;
-      font-weight: 900; /* بولد */
-      line-height: 1.2;
+      font-size: 3.4rem;
+      font-weight: 900;
+      line-height: 1.15;
       margin-bottom: 18px;
     }
 
-    .hero-text h1 i {
+    .hero-text h1 .highlight {
       color: var(--primary);
-      margin-left: 10px;
+      position: relative;
     }
 
-    .hero-text .highlight {
-      color: var(--primary);
+    .hero-text h1 .highlight::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background: rgba(255, 95, 2, 0.2);
+      border-radius: 10px;
+      z-index: -1;
     }
 
     .hero-text p {
       font-size: 1.2rem;
-      margin-bottom: 28px;
-      color: #3a3a3a;
+      color: #3d3d3d;
+      margin-bottom: 30px;
+      max-width: 500px;
     }
 
     .hero-btns {
       display: flex;
       flex-wrap: wrap;
       gap: 16px;
+      margin-bottom: 32px;
     }
 
-    .btn-primary {
+    .btn-hero-primary {
       background: var(--primary);
       color: #fff;
       border: none;
-      padding: 14px 36px;
-      border-radius: 60px;
+      padding: 16px 40px;
+      border-radius: 80px;
       font-weight: 700;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-family: 'Vazir', sans-serif;
       cursor: pointer;
-      transition: 0.25s;
+      transition: 0.3s;
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      box-shadow: 0 6px 18px rgba(255, 95, 2, 0.3);
+      gap: 12px;
+      box-shadow: 0 10px 30px rgba(255, 95, 2, 0.35);
     }
 
-    .btn-primary i {
+    .btn-hero-primary i {
       color: #fff;
     }
 
-    .btn-primary:hover {
+    .btn-hero-primary:hover {
       background: var(--primary-dark);
-      transform: scale(1.02);
-      box-shadow: 0 8px 28px rgba(255, 95, 2, 0.4);
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 18px 44px rgba(255, 95, 2, 0.5);
     }
 
-    .btn-secondary {
-      background: #f0f0f0;
-      color: #1e1e1e;
-      border: none;
-      padding: 14px 36px;
-      border-radius: 60px;
+    .btn-hero-secondary {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      border: 2px solid var(--primary);
+      color: #1a1a1a;
+      padding: 16px 40px;
+      border-radius: 80px;
       font-weight: 700;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-family: 'Vazir', sans-serif;
       cursor: pointer;
-      transition: 0.2s;
+      transition: 0.3s;
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
 
-    .btn-secondary i {
+    .btn-hero-secondary i {
       color: var(--primary);
     }
 
-    .btn-secondary:hover {
-      background: #e0e0e0;
+    .btn-hero-secondary:hover {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(255, 95, 2, 0.25);
+    }
+
+    .btn-hero-secondary:hover i {
+      color: #fff;
     }
 
     .hero-stats {
       display: flex;
-      gap: 40px;
-      margin-top: 30px;
+      gap: 44px;
       flex-wrap: wrap;
     }
 
     .hero-stats div {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 12px;
       font-weight: 700;
       font-size: 1.1rem;
     }
 
     .hero-stats i {
       color: var(--primary);
-      font-size: 1.8rem;
+      font-size: 2rem;
     }
 
     .hero-image {
       flex: 1 1 300px;
-      background: var(--light-gray);
-      border-radius: 30px;
-      padding: 30px 20px;
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(6px);
+      border-radius: 50px;
+      padding: 40px 20px;
       text-align: center;
-      border: 2px dashed var(--primary);
-      color: var(--primary);
-      font-weight: 700;
-      min-height: 200px;
+      border: 2px solid rgba(255, 95, 2, 0.2);
+      min-height: 240px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap: 10px;
+      transition: 0.3s;
+      box-shadow: var(--shadow-light);
+    }
+
+    .hero-image:hover {
+      border-color: var(--primary);
+      transform: scale(1.01);
     }
 
     .hero-image i {
-      font-size: 5rem;
+      font-size: 6rem;
       color: var(--primary);
+      filter: drop-shadow(0 8px 24px rgba(255, 95, 2, 0.2));
     }
 
-    /* ===== بخش محصولات / اکانت‌ها ===== */
-    .section-title {
-      font-size: 2.2rem;
+    .hero-image h3 {
+      margin-top: 12px;
       font-weight: 900;
-      margin-bottom: 30px;
+      font-size: 1.6rem;
+    }
+
+    .hero-image small {
+      color: #555;
+      font-weight: 400;
+    }
+
+    /* ========== بخش محصولات با کارت‌های مدرن ========== */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+
+    .section-title {
+      font-size: 2.4rem;
+      font-weight: 900;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
     }
 
     .section-title i {
       color: var(--primary);
     }
 
+    .section-link {
+      color: var(--primary);
+      font-weight: 700;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.2s;
+    }
+
+    .section-link:hover {
+      color: var(--primary-dark);
+      transform: translateX(-4px);
+    }
+
     .products-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 28px;
-      margin-bottom: 50px;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 32px;
+      margin-bottom: 60px;
     }
 
     .product-card {
-      background: var(--white);
-      border-radius: 28px;
-      padding: 24px 18px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.04);
-      border: 1px solid #eee;
-      transition: 0.3s;
+      background: #ffffff;
+      border-radius: 40px;
+      padding: 28px 22px;
+      box-shadow: var(--shadow-light);
+      border: 1px solid #f0f0f0;
+      transition: 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-light));
+      opacity: 0;
+      transition: 0.4s;
+    }
+
+    .product-card:hover::before {
+      opacity: 1;
     }
 
     .product-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow);
+      transform: translateY(-12px) scale(1.01);
+      box-shadow: 0 28px 60px rgba(255, 95, 2, 0.15);
       border-color: var(--primary);
     }
 
     .product-card .icon-wrap {
-      font-size: 3.4rem;
+      font-size: 3.8rem;
       color: var(--primary);
-      margin-bottom: 10px;
+      margin-bottom: 12px;
+      background: rgba(255, 95, 2, 0.06);
+      width: 90px;
+      height: 90px;
+      line-height: 90px;
+      border-radius: 30px;
+      margin-left: auto;
+      margin-right: auto;
+      transition: 0.3s;
+    }
+
+    .product-card:hover .icon-wrap {
+      background: rgba(255, 95, 2, 0.12);
+      transform: rotate(-4deg) scale(1.05);
     }
 
     .product-card h3 {
       font-weight: 900;
-      font-size: 1.3rem;
-      margin-bottom: 6px;
+      font-size: 1.4rem;
+      margin-bottom: 4px;
     }
 
     .product-card .price {
-      font-weight: 700;
-      font-size: 1.5rem;
+      font-weight: 900;
+      font-size: 1.7rem;
       color: var(--primary);
-      margin: 10px 0;
+      margin: 12px 0 8px;
     }
 
     .product-card .price i {
@@ -349,22 +495,24 @@
     .product-card .desc {
       color: #555;
       font-size: 0.95rem;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
+      font-weight: 500;
     }
 
     .product-card .btn-buy {
       background: var(--primary);
       color: #fff;
       border: none;
-      padding: 10px 24px;
+      padding: 12px 32px;
       border-radius: 60px;
       font-weight: 700;
       font-family: 'Vazir', sans-serif;
       cursor: pointer;
-      transition: 0.2s;
+      transition: 0.25s;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+      box-shadow: 0 6px 20px rgba(255, 95, 2, 0.2);
     }
 
     .product-card .btn-buy i {
@@ -373,35 +521,60 @@
 
     .product-card .btn-buy:hover {
       background: var(--primary-dark);
-      transform: scale(0.96);
+      transform: scale(0.95);
+      box-shadow: 0 10px 30px rgba(255, 95, 2, 0.35);
     }
 
-    /* ===== بخش ویژگی‌ها ===== */
+    .product-card .badge-special {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: var(--primary);
+      color: #fff;
+      padding: 4px 14px;
+      border-radius: 60px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    /* ========== ویژگی‌ها با آیکون بزرگ ========== */
     .features {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 30px;
-      margin: 50px 0;
+      gap: 28px;
+      margin: 50px 0 60px;
     }
 
     .feature-item {
-      background: var(--white);
-      padding: 24px 16px;
-      border-radius: 28px;
+      background: #ffffff;
+      padding: 30px 20px;
+      border-radius: 40px;
       text-align: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-      border: 1px solid #f1f1f1;
-      transition: 0.2s;
+      box-shadow: var(--shadow-light);
+      border: 1px solid #f3f3f3;
+      transition: 0.3s;
     }
 
     .feature-item:hover {
       border-color: var(--primary);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(255, 95, 2, 0.08);
     }
 
     .feature-item i {
-      font-size: 2.8rem;
+      font-size: 3.2rem;
       color: var(--primary);
-      margin-bottom: 12px;
+      margin-bottom: 14px;
+      background: rgba(255, 95, 2, 0.06);
+      padding: 18px;
+      border-radius: 30px;
+      transition: 0.3s;
+    }
+
+    .feature-item:hover i {
+      background: var(--primary);
+      color: #fff;
+      transform: scale(1.05);
     }
 
     .feature-item h4 {
@@ -409,11 +582,17 @@
       font-size: 1.2rem;
     }
 
-    /* ===== فوتر ===== */
+    .feature-item p {
+      font-weight: 400;
+      color: #5a5a5a;
+      font-size: 0.95rem;
+    }
+
+    /* ========== فوتر با استایل خاص ========== */
     footer {
-      margin-top: 60px;
-      padding: 30px 0 20px;
-      border-top: 2px solid var(--primary);
+      margin-top: 40px;
+      padding: 30px 0 24px;
+      border-top: 3px solid var(--primary);
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
@@ -423,6 +602,7 @@
 
     footer .copy {
       font-weight: 700;
+      font-size: 1rem;
     }
 
     footer .copy i {
@@ -431,190 +611,227 @@
     }
 
     footer .social a {
-      color: #1e1e1e;
-      font-size: 1.7rem;
-      margin-right: 18px;
-      transition: 0.2s;
+      color: #2a2a2a;
+      font-size: 1.9rem;
+      margin-right: 22px;
+      transition: 0.25s;
+      display: inline-block;
     }
 
     footer .social a:hover {
       color: var(--primary);
+      transform: translateY(-4px) scale(1.1);
     }
 
-    /* ===== ریسپانسیو ===== */
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        gap: 16px;
-        align-items: stretch;
+    /* ========== ریسپانسیو ========== */
+    @media (max-width: 992px) {
+      .hero {
+        padding: 40px 30px;
       }
-      .header-nav {
+      .hero-text h1 {
+        font-size: 2.8rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 0 16px;
+      }
+      header {
+        border-radius: 40px;
+        padding: 14px 20px;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .nav-links {
         justify-content: center;
+        gap: 14px;
       }
       .header-actions {
-        justify-content: center;
         flex-wrap: wrap;
+        justify-content: center;
+      }
+      .hero {
+        padding: 30px 20px;
+        border-radius: 40px;
       }
       .hero-text h1 {
         font-size: 2.2rem;
       }
-      .hero-stats {
-        gap: 20px;
-      }
       .hero-image {
-        min-height: 150px;
+        min-height: 160px;
+      }
+      .hero-image i {
+        font-size: 4rem;
       }
       .products-grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 20px;
+      }
+      .section-title {
+        font-size: 1.8rem;
       }
     }
 
     @media (max-width: 480px) {
-      body {
-        padding: 0 10px;
-      }
       .hero-text h1 {
         font-size: 1.8rem;
       }
-      .btn-primary, .btn-secondary {
+      .btn-hero-primary, .btn-hero-secondary {
         padding: 12px 24px;
         font-size: 1rem;
+      }
+      .hero-stats {
+        gap: 20px;
+      }
+      .hero-stats div {
+        font-size: 0.95rem;
+      }
+      .product-card {
+        padding: 20px 16px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container">
 
-    <!-- هدر -->
-    <header>
-      <div class="logo">
+<div class="container">
+
+  <!-- ===== هدر مدرن ===== -->
+  <header>
+    <div class="logo">
+      <i class="fas fa-gamepad"></i>
+      Kourosh <span>Game</span>.ir
+    </div>
+    <nav class="nav-links">
+      <a href="#"><i class="fas fa-store"></i> فروشگاه</a>
+      <a href="#"><i class="fas fa-trophy"></i> اکانت‌ها</a>
+      <a href="#"><i class="fas fa-gem"></i> ویژه</a>
+      <a href="#"><i class="fas fa-headset"></i> پشتیبانی</a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn-glass"><i class="fas fa-cart-shopping"></i> سبد</button>
+      <button class="btn-primary-solid"><i class="fas fa-user"></i> ورود</button>
+    </div>
+  </header>
+
+  <!-- ===== هیرو ===== -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="badge"><i class="fas fa-bolt"></i> سریع‌ترین تحویل</div>
+        <h1>
+          اکانت بازی <br>
+          <span class="highlight">حرفه‌ای</span> با بهترین قیمت
+        </h1>
+        <p>
+          <i class="fas fa-check-circle" style="color:#FF5F02;"></i> ضمانت اصالت ۱۰۰٪ 
+          <i class="fas fa-check-circle" style="color:#FF5F02; margin-right:16px;"></i> پشتیبانی شبانه‌روزی
+        </p>
+        <div class="hero-btns">
+          <button class="btn-hero-primary"><i class="fas fa-rocket"></i> مشاهده اکانت‌ها</button>
+          <button class="btn-hero-secondary"><i class="fas fa-play-circle"></i> ویدئوی معرفی</button>
+        </div>
+        <div class="hero-stats">
+          <div><i class="fas fa-user-group"></i> ۱۲,۴۰۰+ کاربر</div>
+          <div><i class="fas fa-star"></i> ۴.۹/۵ امتیاز</div>
+          <div><i class="fas fa-clock"></i> تحویل فوری</div>
+        </div>
+      </div>
+      <div class="hero-image">
         <i class="fas fa-gamepad"></i>
-        Kourosh <span>Game</span>.ir
+        <h3>Kourosh Game</h3>
+        <small>اکانت‌های اورجینال با گارانتی</small>
       </div>
-      <nav class="header-nav">
-        <a href="#"><i class="fas fa-store"></i> فروشگاه</a>
-        <a href="#"><i class="fas fa-trophy"></i> اکانت‌ها</a>
-        <a href="#"><i class="fas fa-gem"></i> ویژه</a>
-        <a href="#"><i class="fas fa-headset"></i> پشتیبانی</a>
-      </nav>
-      <div class="header-actions">
-        <button class="btn"><i class="fas fa-cart-shopping"></i> سبد خرید</button>
-        <button class="btn btn-outline"><i class="fas fa-user"></i> ورود</button>
-      </div>
-    </header>
+    </div>
+  </section>
 
-    <!-- هیرو -->
-    <section class="hero">
-      <div class="hero-content">
-        <div class="hero-text">
-          <h1>
-            <i class="fas fa-crown"></i> 
-            اکانت بازی <span class="highlight">حرفه‌ای</span>
-          </h1>
-          <p>
-            بهترین و امن‌ترین اکانت‌های بازی با ضمانت بازگشت وجه. 
-            <i class="fas fa-shield-alt" style="color:#FF5F02; margin-right:6px;"></i>
-          </p>
-          <div class="hero-btns">
-            <button class="btn-primary"><i class="fas fa-rocket"></i> مشاهده اکانت‌ها</button>
-            <button class="btn-secondary"><i class="fas fa-circle-info"></i> اطلاعات بیشتر</button>
-          </div>
-          <div class="hero-stats">
-            <div><i class="fas fa-users"></i> +۱۲٬۰۰۰ کاربر</div>
-            <div><i class="fas fa-check-circle"></i> تضمین ۱۰۰٪</div>
-            <div><i class="fas fa-star"></i> ۴.۹/۵ امتیاز</div>
-          </div>
-        </div>
-        <div class="hero-image">
-          <i class="fas fa-gamepad"></i>
-          <span>Kourosh Game.ir</span>
-          <small style="color:#1e1e1e; font-weight:400;">اکانت‌های اورجینال</small>
-        </div>
-      </div>
-    </section>
-
-    <!-- عنوان محصولات -->
+  <!-- ===== عنوان محصولات ===== -->
+  <div class="section-header">
     <div class="section-title">
-      <i class="fas fa-fire"></i> اکانت‌های محبوب
+      <i class="fas fa-fire"></i> پرفروش‌ترین اکانت‌ها
+    </div>
+    <a href="#" class="section-link">مشاهده همه <i class="fas fa-arrow-left"></i></a>
+  </div>
+
+  <!-- ===== گرید محصولات ===== -->
+  <div class="products-grid">
+
+    <div class="product-card">
+      <span class="badge-special"><i class="fas fa-star"></i> ویژه</span>
+      <div class="icon-wrap"><i class="fas fa-futbol"></i></div>
+      <h3>FIFA 24 Ultimate</h3>
+      <div class="price"><i class="fas fa-toman"></i> ۲,۴۵۰,۰۰۰</div>
+      <div class="desc">همراه ۵۰۰۰ کوین + بازیکن ویژه</div>
+      <button class="btn-buy"><i class="fas fa-bag-shopping"></i> خرید</button>
     </div>
 
-    <!-- گرید محصولات -->
-    <div class="products-grid">
-
-      <div class="product-card">
-        <div class="icon-wrap"><i class="fas fa-futbol"></i></div>
-        <h3>اکانت FIFA 24</h3>
-        <div class="price"><i class="fas fa-toman"></i> ۲,۴۵۰,۰۰۰</div>
-        <div class="desc">نسخه اولتریمیت + کوین</div>
-        <button class="btn-buy"><i class="fas fa-bag-shopping"></i> خرید</button>
-      </div>
-
-      <div class="product-card">
-        <div class="icon-wrap"><i class="fas fa-gun"></i></div>
-        <h3>اکانت Call of Duty</h3>
-        <div class="price"><i class="fas fa-toman"></i> ۱,۸۹۰,۰۰۰</div>
-        <div class="desc">سطح بالا + اسکین‌های نادر</div>
-        <button class="btn-buy"><i class="fas fa-bag-shopping"></i> خرید</button>
-      </div>
-
-      <div class="product-card">
-        <div class="icon-wrap"><i class="fas fa-flag"></i></div>
-        <h3>اکانت PUBG Mobile</h3>
-        <div class="price"><i class="fas fa-toman"></i> ۹۹۰,۰۰۰</div>
-        <div class="desc">رنک Ace + آیتم‌های ویژه</div>
-        <button class="btn-buy"><i class="fas fa-bag-shopping"></i> خرید</button>
-      </div>
-
-      <div class="product-card">
-        <div class="icon-wrap"><i class="fas fa-robot"></i></div>
-        <h3>اکانت GTA V</h3>
-        <div class="price"><i class="fas fa-toman"></i> ۳,۲۰۰,۰۰۰</div>
-        <div class="desc">پول نقد + ماشین‌های لوکس</div>
-        <button class="btn-buy"><i class="fas fa-bag-shopping"></i> خرید</button>
-      </div>
-
+    <div class="product-card">
+      <div class="icon-wrap"><i class="fas fa-crosshairs"></i></div>
+      <h3>Call of Duty MW</h3>
+      <div class="price"><i class="fas fa-toman"></i> ۱,۸۹۰,۰۰۰</div>
+      <div class="desc">سطح ۲۵۰ + اسکین‌های نادر</div>
+      <button class="btn-buy"><i class="fas fa-bag-shopping"></i> خرید</button>
     </div>
 
-    <!-- ویژگی‌ها -->
-    <div class="features">
-      <div class="feature-item">
-        <i class="fas fa-shield"></i>
-        <h4>ضمانت اصالت</h4>
-        <p style="font-size:0.9rem; color:#555;">همه اکانت‌ها اورجینال</p>
-      </div>
-      <div class="feature-item">
-        <i class="fas fa-rotate-left"></i>
-        <h4>بازگشت وجه</h4>
-        <p style="font-size:0.9rem; color:#555;">تا ۴۸ ساعت</p>
-      </div>
-      <div class="feature-item">
-        <i class="fas fa-headset"></i>
-        <h4>پشتیبانی ۲۴/۷</h4>
-        <p style="font-size:0.9rem; color:#555;">پاسخگویی سریع</p>
-      </div>
-      <div class="feature-item">
-        <i class="fas fa-bolt"></i>
-        <h4>تحویل فوری</h4>
-        <p style="font-size:0.9rem; color:#555;">کمتر از ۵ دقیقه</p>
-      </div>
+    <div class="product-card">
+      <div class="icon-wrap"><i class="fas fa-flag"></i></div>
+      <h3>PUBG Mobile Ace</h3>
+      <div class="price"><i class="fas fa-toman"></i> ۹۹۰,۰۰۰</div>
+      <div class="desc">رنک Ace + آیتم‌های کریسمس</div>
+      <button class="btn-buy"><i class="fas fa-bag-shopping"></i> خرید</button>
     </div>
 
-    <!-- فوتر -->
-    <footer>
-      <div class="copy">
-        <i class="fas fa-copyright"></i> ۲۰۲۶ Kourosh Game.ir 
-        <i class="fas fa-gamepad" style="margin-right:10px;"></i>
-      </div>
-      <div class="social">
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-telegram"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-youtube"></i></a>
-      </div>
-    </footer>
+    <div class="product-card">
+      <div class="icon-wrap"><i class="fas fa-car"></i></div>
+      <h3>GTA V Premium</h3>
+      <div class="price"><i class="fas fa-toman"></i> ۳,۲۰۰,۰۰۰</div>
+      <div class="desc">۵۰ میلیون پول + ۱۰ ماشین لوکس</div>
+      <button class="btn-buy"><i class="fas fa-bag-shopping"></i> خرید</button>
+    </div>
 
   </div>
-  <!-- پایان کانتینر -->
+
+  <!-- ===== ویژگی‌ها ===== -->
+  <div class="features">
+    <div class="feature-item">
+      <i class="fas fa-shield-halved"></i>
+      <h4>ضمانت اصالت</h4>
+      <p>همه اکانت‌ها تایید شده</p>
+    </div>
+    <div class="feature-item">
+      <i class="fas fa-rotate-left"></i>
+      <h4>بازگشت وجه</h4>
+      <p>تا ۴۸ ساعت ضمانت</p>
+    </div>
+    <div class="feature-item">
+      <i class="fas fa-headset"></i>
+      <h4>پشتیبانی ۲۴/۷</h4>
+      <p>پاسخگویی زیر ۲ دقیقه</p>
+    </div>
+    <div class="feature-item">
+      <i class="fas fa-bolt"></i>
+      <h4>تحویل آنی</h4>
+      <p>کمتر از ۳ دقیقه</p>
+    </div>
+  </div>
+
+  <!-- ===== فوتر ===== -->
+  <footer>
+    <div class="copy">
+      <i class="fas fa-copyright"></i> ۲۰۲۶ Kourosh Game.ir 
+      <i class="fas fa-gamepad" style="margin-right:12px; color:var(--primary);"></i>
+    </div>
+    <div class="social">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-telegram"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+  </footer>
+
+</div>
+<!-- انتهای container -->
+
 </body>
-  </html>
+          </html>
