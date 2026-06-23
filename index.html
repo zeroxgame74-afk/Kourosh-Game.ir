@@ -14,7 +14,7 @@
       font-family: 'Vazirmatn', 'Segoe UI', Tahoma, sans-serif;
       background: #faf9f8;
       color: #1e1e1e;
-      line-height: 1.7;
+      line-height: 1.8;
     }
     .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
     .text-orange { color: #FF5F02; }
@@ -462,7 +462,7 @@
     }
     .btn-clear-cart:hover { background: #e0d8d0; }
 
-    /* ===== PAYMENT MODAL (پرداخت) ===== */
+    /* ===== PAYMENT MODAL ===== */
     .payment-modal-overlay {
       display: none;
       position: fixed;
@@ -488,31 +488,11 @@
       animation: slideUp 0.3s ease;
       text-align: center;
     }
-    .payment-modal .payment-icon {
-      font-size: 4.5rem;
-      color: #FF5F02;
-      margin-bottom: 10px;
-    }
-    .payment-modal h2 {
-      font-size: 1.8rem;
-      font-weight: 800;
-      margin-bottom: 10px;
-    }
-    .payment-modal p {
-      color: #555;
-      margin-bottom: 20px;
-    }
-    .payment-modal .total-amount {
-      font-size: 2.2rem;
-      font-weight: 900;
-      color: #FF5F02;
-      margin: 10px 0 24px;
-    }
-    .payment-modal .pay-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
+    .payment-modal .payment-icon { font-size: 4.5rem; color: #FF5F02; margin-bottom: 10px; }
+    .payment-modal h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 10px; }
+    .payment-modal p { color: #555; margin-bottom: 20px; }
+    .payment-modal .total-amount { font-size: 2.2rem; font-weight: 900; color: #FF5F02; margin: 10px 0 24px; }
+    .payment-modal .pay-actions { display: flex; gap: 12px; flex-wrap: wrap; }
     .payment-modal .pay-actions button {
       flex: 1;
       padding: 14px;
@@ -529,29 +509,66 @@
       gap: 8px;
       min-width: 120px;
     }
-    .btn-pay-confirm {
-      background: #FF5F02;
-      color: #fff;
-    }
+    .btn-pay-confirm { background: #FF5F02; color: #fff; }
     .btn-pay-confirm:hover { background: #d94f00; transform: scale(1.02); }
-    .btn-pay-cancel {
-      background: #f0ece8;
-      color: #444;
-    }
+    .btn-pay-cancel { background: #f0ece8; color: #444; }
     .btn-pay-cancel:hover { background: #e0d8d0; }
-    .payment-success {
-      display: none;
-      padding: 20px 0;
-    }
-    .payment-success i {
-      font-size: 5rem;
-      color: #2ecc71;
-      margin-bottom: 12px;
-    }
+    .payment-success { display: none; padding: 20px 0; }
+    .payment-success i { font-size: 5rem; color: #2ecc71; margin-bottom: 12px; }
     .payment-success h3 { font-size: 1.6rem; color: #2ecc71; }
 
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes slideUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    /* ===== PAGE CONTENT (قوانین، درباره ما، تماس) ===== */
+    .page-content {
+      display: none;
+      padding: 50px 0 70px;
+      background: #fff;
+      border-bottom: 1px solid #eee;
+    }
+    .page-content.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+    .page-content .page-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+    .page-content .page-header i {
+      font-size: 2.8rem;
+      color: #FF5F02;
+    }
+    .page-content .page-header h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #1e1e1e;
+    }
+    .page-content .page-body {
+      max-width: 820px;
+      color: #333;
+      line-height: 2;
+    }
+    .page-content .page-body p { margin-bottom: 14px; }
+    .page-content .page-body ul { padding-right: 24px; margin-bottom: 16px; }
+    .page-content .page-body ul li { margin-bottom: 8px; }
+    .page-content .page-body .highlight-box {
+      background: #fcf8f4;
+      border-right: 4px solid #FF5F02;
+      padding: 20px 24px;
+      border-radius: 12px;
+      margin: 16px 0;
+    }
+    .page-content .page-body .contact-number {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #FF5F02;
+      direction: ltr;
+      display: inline-block;
+      background: #f5f0eb;
+      padding: 8px 24px;
+      border-radius: 60px;
+      margin: 10px 0;
+    }
 
     /* ===== FOOTER ===== */
     footer {
@@ -580,7 +597,12 @@
     .footer-col ul { list-style: none; }
     .footer-col ul li { margin: 8px 0; }
     .footer-col ul li i { color: #FF5F02; width: 24px; }
-    .footer-col ul li a { color: #d0cdc8; text-decoration: none; transition: 0.2s; }
+    .footer-col ul li a {
+      color: #d0cdc8;
+      text-decoration: none;
+      transition: 0.2s;
+      cursor: pointer;
+    }
     .footer-col ul li a:hover { color: #FF5F02; }
     .social-icons {
       display: flex;
@@ -610,6 +632,10 @@
       color: #8a8a8a;
     }
     .copy i { color: #FF5F02; }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
     @media (max-width: 700px) {
       .hero-text h2 { font-size: 2.4rem; }
       .hero-image i { font-size: 8rem; }
@@ -620,6 +646,7 @@
       .product-grid { grid-template-columns: 1fr; }
       .cart-modal { padding: 20px; }
       .payment-modal { padding: 24px; }
+      .page-content .page-header h2 { font-size: 1.6rem; }
     }
   </style>
 </head>
@@ -681,6 +708,66 @@
   </div>
 </section>
 
+<!-- ===== PAGE: قوانین ===== -->
+<div class="page-content" id="pageRules">
+  <div class="container">
+    <div class="page-header">
+      <i class="fas fa-gavel"></i>
+      <h2>قوانین خرید از فروشگاه کوروش گیم</h2>
+    </div>
+    <div class="page-body">
+      <p style="font-size:1.1rem; font-weight:600; color:#FF5F02;">سلام مشتری عزیز! قبل از خرید، لطفاً این چند تا قانون ساده رو بخون تا خرید خوب و بی‌دردسری داشته باشی:</p>
+      <ul>
+        <li><strong>۱. همه اکانت‌ها اورجینالن:</strong> اصالت تمام اکانت‌ها ۱۰۰٪ تضمینیه. خیالت راحت باشه.</li>
+        <li><strong>۲. قیمت‌ها همونیه که می‌بینی:</strong> قیمت‌ها روی سایت درج شده و قطعی هستن.</li>
+        <li><strong>۳. پشتیبانی همیشه هست:</strong> تیم پشتیبانی ۲۴ ساعته، ۷ روز هفته آماده پاسخگویی به سوالات و مشکلاتته.</li>
+        <li><strong>۴. تحویل اکانت:</strong> بعد از خرید، اطلاعات اکانت در سریع‌ترین زمان ممکن به دستت می‌رسه.</li>
+        <li><strong>۵. استفاده درست:</strong> اکانت خریداری شده فقط برای استفاده شخصی خودته و نباید به کس دیگه‌ای بدی یا بفروشیش.</li>
+        <li><strong>۶. مشکلات فنی:</strong> اگر به هر دلیلی مشکل فنی پیش اومد، بلافاصله با پشتیبانی تماس بگیر تا راهنماییت کنن.</li>
+        <li><strong>۷. حق تغییرات:</strong> فروشگاه این حق رو داره که در صورت نیاز، قوانین رو به‌روز کنه. تغییرات جدید از طریق سایت اعلام میشه.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PAGE: درباره ما ===== -->
+<div class="page-content" id="pageAbout">
+  <div class="container">
+    <div class="page-header">
+      <i class="fas fa-users"></i>
+      <h2>درباره ما</h2>
+    </div>
+    <div class="page-body">
+      <p>سلام! ما تیم کوروش گیم هستیم. داستانمون از یه اتاق کوچیک و دو تا عاشق بازی شروع شد. دیدیم تو ایران واسه خرید اکانت اورجینال، کلی راه دور و پرپیچ و خم هست، پس گفتمون چرا خودمون یه مسیر مستقیم و امن نسازیم؟</p>
+      <p>از همون روز، با یه هدف ساده شروع کردیم: تبدیل شدن به معتبرترین پل ارتباطی بین شما و دنیای بازی. نه واسطه‌های الکی، نه قیمت‌های نجومی، فقط یه فروشگاه که پشتش دو تا آدم باغیرت و یه عالمه عشق به بازیه.</p>
+      <div class="highlight-box">
+        <p>امروز، تیممون بزرگتر شده، ولی هنوز همون روحیه اول رو داریم: خرید آسون، اکانت اصل، پشتیبانی ۲۴/۷. و صادقانه بگیم، بزرگترین سرمایه‌مون، اعتماد شماست. اینکه شما رو داریم، برای ما از هر دی ال سی و آپدیتی باارزش‌تره.</p>
+      </div>
+      <p>پس خوش اومدید به خونه دوم گیمرهای ایران. اینجا کوروش گیمه؛ جایی که بازی، جدی گرفته میشه.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PAGE: تماس با ما ===== -->
+<div class="page-content" id="pageContact">
+  <div class="container">
+    <div class="page-header">
+      <i class="fas fa-phone-alt"></i>
+      <h2>تماس با ما</h2>
+    </div>
+    <div class="page-body">
+      <p>ما، گروه رسمی و حرفه‌ای کوروش گیم، اینجاییم تا توی هر مرحله از خرید، کنارتون باشیم. سوال داری؟ مشکل پیش اومده؟ یا فقط میخوای یه مشاوره خوب بگیری؟</p>
+      <div style="margin: 20px 0;">
+        <span class="contact-number"><i class="fas fa-phone" style="color:#FF5F02; margin-left:12px;"></i>+98 996 259 4436</span>
+      </div>
+      <p>پشت این شماره، یه تیم متعهد و آماده به خدمته که ۲۴ ساعته، ۷ روز هفته پاسخگوی شماست. از پشتیبانی فنی تا راهنمای خرید، همه چیز با یک تماس حل میشه.</p>
+      <div class="highlight-box">
+        <p><strong>یادتون باشه:</strong> اینجا کوروش گیمه؛ جایی که پشتیبانی، فقط یه کلمه نیست، یه تعهد جدیه.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ===== MODAL سبد خرید ===== -->
 <div class="cart-modal-overlay" id="cartModal">
   <div class="cart-modal">
@@ -738,10 +825,10 @@
     <div class="footer-col">
       <h4><i class="fas fa-link"></i> لینک‌ها</h4>
       <ul>
-        <li><i class="fas fa-chevron-left"></i> <a href="#">درباره ما</a></li>
-        <li><i class="fas fa-chevron-left"></i> <a href="#">قوانین</a></li>
+        <li><i class="fas fa-chevron-left"></i> <a class="footer-link" data-page="rules">قوانین</a></li>
+        <li><i class="fas fa-chevron-left"></i> <a class="footer-link" data-page="about">درباره ما</a></li>
+        <li><i class="fas fa-chevron-left"></i> <a class="footer-link" data-page="contact">تماس با ما</a></li>
         <li><i class="fas fa-chevron-left"></i> <a href="#">پشتیبانی</a></li>
-        <li><i class="fas fa-chevron-left"></i> <a href="#">تماس با ما</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -770,10 +857,9 @@
     { id: 7, name: 'Spider-Man 2', tag: 'پلی‌استیشن ۵', price: 2800000, desc: 'اکانت نسخه دیجیتال با تمام محتوای اضافی.', img: 'https://cdn1.epicgames.com/offer/7d2e1e4e3f1e4e2e9c1e4e2e9c1e4e2e/EGS_SpiderMan2_PS5_1200x1600.jpg', badge: 'جدید', platform: 'ps' }
   ];
 
-  // ===== مدیریت سبد خرید =====
+  // ===== سبد خرید =====
   let cart = [];
 
-  // المنت‌ها
   const productGrid = document.getElementById('productGrid');
   const cartModal = document.getElementById('cartModal');
   const openCartBtn = document.getElementById('openCartBtn');
@@ -791,51 +877,79 @@
   const paymentContent = document.getElementById('paymentContent');
   const paymentSuccess = document.getElementById('paymentSuccess');
 
-  // فیلتر و جستجو
   let currentFilter = 'all';
   let searchQuery = '';
 
-  // ===== تب‌های منو =====
-  const navLinks = document.querySelectorAll('.nav-menu a[data-tab]');
-  const sectionTitle = document.getElementById('sectionTitle');
+  // ===== نمایش صفحات (قوانین، درباره، تماس) =====
+  const pageRules = document.getElementById('pageRules');
+  const pageAbout = document.getElementById('pageAbout');
+  const pageContact = document.getElementById('pageContact');
   const heroSection = document.getElementById('heroSection');
   const filterSection = document.getElementById('filterSection');
+  const productsSection = document.getElementById('productsSection');
+  const sectionTitle = document.getElementById('sectionTitle');
 
-  const tabTitles = {
-    home: '🏠 صفحه اصلی',
-    store: '🛒 همه اکانت‌ها',
-    special: '⭐ ویژه‌ها'
-  };
+  function showPage(pageId) {
+    // مخفی کردن همه صفحات
+    [pageRules, pageAbout, pageContact].forEach(p => p.classList.remove('active'));
+    // مخفی کردن هیرو، فیلتر و محصولات
+    heroSection.style.display = 'none';
+    filterSection.style.display = 'none';
+    productsSection.style.display = 'none';
 
+    // نمایش صفحه مورد نظر
+    if (pageId === 'rules') {
+      pageRules.classList.add('active');
+    } else if (pageId === 'about') {
+      pageAbout.classList.add('active');
+    } else if (pageId === 'contact') {
+      pageContact.classList.add('active');
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function showHome() {
+    [pageRules, pageAbout, pageContact].forEach(p => p.classList.remove('active'));
+    heroSection.style.display = 'flex';
+    filterSection.style.display = 'block';
+    productsSection.style.display = 'block';
+    sectionTitle.innerHTML = '<i class="fas fa-cubes"></i> جدیدترین اکانت‌ها';
+    currentFilter = 'all';
+    document.querySelector('#filterTabs .active')?.classList.remove('active');
+    document.querySelector('#filterTabs [data-filter="all"]')?.classList.add('active');
+    renderProducts();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ===== لینک‌های فوتر =====
+  document.querySelectorAll('.footer-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const page = this.dataset.page;
+      showPage(page);
+    });
+  });
+
+  // ===== تب‌های منو =====
+  const navLinks = document.querySelectorAll('.nav-menu a[data-tab]');
   navLinks.forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault();
       const tab = this.dataset.tab;
-      // active class
       navLinks.forEach(l => l.classList.remove('active-tab'));
       this.classList.add('active-tab');
 
       if (tab === 'home') {
-        heroSection.style.display = 'flex';
-        filterSection.style.display = 'block';
-        sectionTitle.innerHTML = '<i class="fas fa-cubes"></i> جدیدترین اکانت‌ها';
-        currentFilter = 'all';
-        document.querySelector('#filterTabs .active')?.classList.remove('active');
-        document.querySelector('#filterTabs [data-filter="all"]')?.classList.add('active');
-        renderProducts();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        showHome();
       } else if (tab === 'store') {
-        heroSection.style.display = 'flex';
-        filterSection.style.display = 'block';
+        showHome();
         sectionTitle.innerHTML = '<i class="fas fa-store"></i> همه اکانت‌ها';
-        currentFilter = 'all';
-        document.querySelector('#filterTabs .active')?.classList.remove('active');
-        document.querySelector('#filterTabs [data-filter="all"]')?.classList.add('active');
-        renderProducts();
         document.getElementById('productsSection').scrollIntoView({ behavior: 'smooth' });
       } else if (tab === 'special') {
+        [pageRules, pageAbout, pageContact].forEach(p => p.classList.remove('active'));
         heroSection.style.display = 'none';
         filterSection.style.display = 'none';
+        productsSection.style.display = 'block';
         sectionTitle.innerHTML = '<i class="fas fa-crown"></i> اکانت‌های ویژه';
         currentFilter = 'special';
         renderProducts();
@@ -867,15 +981,11 @@
   // ===== رندر محصولات =====
   function renderProducts() {
     let filtered = [...products];
-
-    // فیلتر
     if (currentFilter === 'special') {
       filtered = filtered.filter(p => p.badge && (p.badge === 'ویژه' || p.badge === 'طلایی' || p.badge === 'جدید'));
     } else if (currentFilter !== 'all') {
       filtered = filtered.filter(p => p.platform === currentFilter);
     }
-
-    // جستجو
     if (searchQuery) {
       filtered = filtered.filter(p =>
         p.name.toLowerCase().includes(searchQuery) ||
@@ -883,12 +993,10 @@
         p.desc.toLowerCase().includes(searchQuery)
       );
     }
-
     if (filtered.length === 0) {
       productGrid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:60px 0; color:#888;"><i class="fas fa-search" style="font-size:3rem; display:block; margin-bottom:16px;"></i> محصولی یافت نشد</div>`;
       return;
     }
-
     productGrid.innerHTML = filtered.map(p => {
       const badgeHtml = p.badge ? `<span class="product-badge"><i class="fas fa-star"></i> ${p.badge}</span>` : '';
       return `
@@ -908,7 +1016,6 @@
       `;
     }).join('');
 
-    // رویداد دکمه‌های افزودن
     document.querySelectorAll('.btn-buy[data-id]').forEach(btn => {
       btn.addEventListener('click', function(e) {
         const id = parseInt(this.dataset.id);
@@ -918,14 +1025,11 @@
     });
   }
 
-  // ===== سبد خرید =====
+  // ===== توابع سبد =====
   function addToCart(product) {
     const existing = cart.find(item => item.id === product.id);
-    if (existing) {
-      existing.qty += 1;
-    } else {
-      cart.push({ ...product, qty: 1 });
-    }
+    if (existing) existing.qty += 1;
+    else cart.push({ ...product, qty: 1 });
     updateCartUI();
     openCartBtn.style.transform = 'scale(1.1)';
     setTimeout(() => openCartBtn.style.transform = '', 200);
@@ -940,34 +1044,23 @@
     const item = cart.find(i => i.id === id);
     if (!item) return;
     item.qty += delta;
-    if (item.qty <= 0) {
-      cart = cart.filter(i => i.id !== id);
-    }
+    if (item.qty <= 0) cart = cart.filter(i => i.id !== id);
     updateCartUI();
   }
 
-  function clearCart() {
-    cart = [];
-    updateCartUI();
-  }
-
-  function getTotal() {
-    return cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
-  }
+  function clearCart() { cart = []; updateCartUI(); }
+  function getTotal() { return cart.reduce((sum, i) => sum + (i.price * i.qty), 0); }
 
   function updateCartUI() {
     const totalItems = cart.reduce((sum, i) => sum + i.qty, 0);
     cartCount.textContent = totalItems;
-
     if (cart.length === 0) {
       cartItems.innerHTML = `<div class="cart-empty"><i class="fas fa-shopping-basket"></i> سبد خرید خالی است</div>`;
       cartTotalPrice.textContent = '۰ تومان';
       return;
     }
-
     let html = '';
     cart.forEach(item => {
-      const itemTotal = item.price * item.qty;
       html += `
         <div class="cart-item">
           <img class="cart-item-img" src="${item.img}" alt="${item.name}" onerror="this.src='https://placehold.co/60x60/FF5F02/FFF?text=${encodeURIComponent(item.name.substring(0,2))}'">
@@ -989,9 +1082,7 @@
     cartTotalPrice.textContent = getTotal().toLocaleString() + ' تومان';
 
     document.querySelectorAll('.cart-item-remove').forEach(btn => {
-      btn.addEventListener('click', function() {
-        removeFromCart(parseInt(this.dataset.id));
-      });
+      btn.addEventListener('click', function() { removeFromCart(parseInt(this.dataset.id)); });
     });
     document.querySelectorAll('.cart-qty-btn').forEach(btn => {
       btn.addEventListener('click', function() {
@@ -1001,54 +1092,30 @@
   }
 
   // ===== مودال سبد =====
-  function openCartModal() {
-    cartModal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeCartModal() {
-    cartModal.classList.remove('active');
-    document.body.style.overflow = '';
-  }
+  function openCartModal() { cartModal.classList.add('active'); document.body.style.overflow = 'hidden'; }
+  function closeCartModal() { cartModal.classList.remove('active'); document.body.style.overflow = ''; }
   openCartBtn.addEventListener('click', openCartModal);
   closeCartBtn.addEventListener('click', closeCartModal);
-  cartModal.addEventListener('click', function(e) {
-    if (e.target === this) closeCartModal();
-  });
-  clearCartBtn.addEventListener('click', function() {
-    if (cart.length === 0) return;
-    if (confirm('آیا مطمئن هستید؟')) clearCart();
-  });
+  cartModal.addEventListener('click', function(e) { if (e.target === this) closeCartModal(); });
+  clearCartBtn.addEventListener('click', function() { if (cart.length && confirm('آیا مطمئن هستید؟')) clearCart(); });
 
   // ===== پرداخت =====
   checkoutBtn.addEventListener('click', function() {
-    if (cart.length === 0) {
-      alert('سبد خرید خالی است!');
-      return;
-    }
+    if (cart.length === 0) { alert('سبد خرید خالی است!'); return; }
     closeCartModal();
-    const total = getTotal();
-    paymentTotal.textContent = total.toLocaleString() + ' تومان';
+    paymentTotal.textContent = getTotal().toLocaleString() + ' تومان';
     paymentContent.style.display = 'block';
     paymentSuccess.style.display = 'none';
     paymentModal.classList.add('active');
   });
-
-  payCancelBtn.addEventListener('click', function() {
-    paymentModal.classList.remove('active');
-  });
-  paymentModal.addEventListener('click', function(e) {
-    if (e.target === this) paymentModal.classList.remove('active');
-  });
-
+  payCancelBtn.addEventListener('click', function() { paymentModal.classList.remove('active'); });
+  paymentModal.addEventListener('click', function(e) { if (e.target === this) paymentModal.classList.remove('active'); });
   payConfirmBtn.addEventListener('click', function() {
-    // شبیه‌سازی پرداخت موفق
     paymentContent.style.display = 'none';
     paymentSuccess.style.display = 'block';
-    // خالی کردن سبد بعد از پرداخت
     cart = [];
     updateCartUI();
   });
-
   paySuccessCloseBtn.addEventListener('click', function() {
     paymentModal.classList.remove('active');
     paymentContent.style.display = 'block';
