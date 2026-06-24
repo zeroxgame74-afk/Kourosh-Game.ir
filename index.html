@@ -810,7 +810,6 @@
     .payment-success .success-msg a { color: #FF5F02; font-weight: 700; text-decoration: none; }
     .payment-success .success-msg a:hover { text-decoration: underline; }
 
-    /* ===== صفحات قوانین، درباره ما، تماس با دکمه برگشت ===== */
     .page-content {
       display: none;
       padding: 40px 0 60px;
@@ -1029,13 +1028,10 @@
   </div>
 </div>
 
-<!-- ===== PAGE: قوانین (با دکمه برگشت) ===== -->
+<!-- ===== PAGES ===== -->
 <div class="page-content" id="pageRules">
   <div class="container">
-    <div class="page-header">
-      <i class="fas fa-gavel"></i>
-      <h2>قوانین خرید از فروشگاه کوروش گیم</h2>
-    </div>
+    <div class="page-header"><i class="fas fa-gavel"></i><h2>قوانین خرید از فروشگاه کوروش گیم</h2></div>
     <div class="page-body">
       <p style="font-size:1.1rem; font-weight:600; color:#FF5F02;">سلام مشتری عزیز! قبل از خرید، لطفاً این چند تا قانون ساده رو بخون تا خرید خوب و بی‌دردسری داشته باشی:</p>
       <ul>
@@ -1052,13 +1048,9 @@
   </div>
 </div>
 
-<!-- ===== PAGE: درباره ما ===== -->
 <div class="page-content" id="pageAbout">
   <div class="container">
-    <div class="page-header">
-      <i class="fas fa-users"></i>
-      <h2>درباره ما</h2>
-    </div>
+    <div class="page-header"><i class="fas fa-users"></i><h2>درباره ما</h2></div>
     <div class="page-body">
       <p>سلام! ما تیم کوروش گیم هستیم. داستانمون از یه اتاق کوچیک و دو تا عاشق بازی شروع شد. دیدیم تو ایران واسه خرید اکانت اورجینال، کلی راه دور و پرپیچ و خم هست، پس گفتمون چرا خودمون یه مسیر مستقیم و امن نسازیم؟</p>
       <p>از همون روز، با یه هدف ساده شروع کردیم: تبدیل شدن به معتبرترین پل ارتباطی بین شما و دنیای بازی. نه واسطه‌های الکی، نه قیمت‌های نجومی، فقط یه فروشگاه که پشتش دو تا آدم باغیرت و یه عالمه عشق به بازیه.</p>
@@ -1069,13 +1061,9 @@
   </div>
 </div>
 
-<!-- ===== PAGE: تماس با ما ===== -->
 <div class="page-content" id="pageContact">
   <div class="container">
-    <div class="page-header">
-      <i class="fas fa-phone-alt"></i>
-      <h2>تماس با ما</h2>
-    </div>
+    <div class="page-header"><i class="fas fa-phone-alt"></i><h2>تماس با ما</h2></div>
     <div class="page-body">
       <p>ما، گروه رسمی و حرفه‌ای کوروش گیم، اینجاییم تا توی هر مرحله از خرید، کنارتون باشیم. سوال داری؟ مشکل پیش اومده؟ یا فقط میخوای یه مشاوره خوب بگیری؟</p>
       <div style="margin: 20px 0;"><span class="contact-number"><i class="fas fa-phone" style="color:#FF5F02; margin-left:12px;"></i>+98 996 259 4436</span></div>
@@ -1102,7 +1090,7 @@
   </div>
 </div>
 
-<!-- ===== PAYMENT MODAL ===== -->
+<!-- ===== PAYMENT MODAL با شماره کارت و نام جدید ===== -->
 <div class="payment-modal-overlay" id="paymentModal">
   <div class="payment-modal">
     <div id="paymentContent">
@@ -1123,14 +1111,14 @@
           <i class="fas fa-credit-card"></i>
           <span class="label">شماره کارت:</span>
           <span class="value" id="cardNumberDisplay">
-            6219 8619 1234 5678
+            6219 8619 5450 4246
             <i class="fas fa-copy copy-icon" onclick="copyCardNumber()" title="کپی شماره کارت"></i>
           </span>
         </div>
         <div class="info-row">
           <i class="fas fa-user"></i>
           <span class="label">به نام:</span>
-          <span class="value">کوروش گیم</span>
+          <span class="value">امیرمحمد وطن‌دوست</span>
         </div>
       </div>
 
@@ -1255,9 +1243,9 @@
   const productsSection = document.getElementById('productsSection');
   const sectionTitle = document.getElementById('sectionTitle');
 
-  // ===== کپی شماره کارت =====
+  // ===== کپی شماره کارت جدید =====
   function copyCardNumber() {
-    const cardNumber = '6219861912345678';
+    const cardNumber = '6219861954504246';
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(cardNumber).then(() => {
         showToast('✅ شماره کارت کپی شد!');
@@ -1687,7 +1675,6 @@
     if (e.key === 'Enter') applyDiscountBtn.click();
   });
 
-  // ===== دکمه انصراف فقط مودال رو می‌بنده (سبد رو خالی نمی‌کنه) =====
   payCancelBtn.addEventListener('click', function() { 
     paymentModal.classList.remove('active');
   });
@@ -1699,7 +1686,6 @@
   payConfirmBtn.addEventListener('click', function() {
     paymentContent.style.display = 'none';
     paymentSuccess.style.display = 'block';
-    // سبد رو خالی می‌کنیم چون پرداخت انجام شده
     cart = [];
     discountApplied = false;
     updateCartUI();
