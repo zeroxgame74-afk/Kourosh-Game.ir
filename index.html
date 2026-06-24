@@ -462,7 +462,6 @@
       color: #444;
       line-height: 2;
       margin-bottom: 20px;
-      white-space: pre-line;
     }
     .detail-specs {
       background: #fcf8f4;
@@ -492,70 +491,6 @@
       min-width: 120px;
       padding: 16px 24px;
       font-size: 1rem;
-    }
-
-    .gallery-section {
-      margin-top: 30px;
-      border-top: 2px solid #f0ebe6;
-      padding-top: 20px;
-    }
-    .gallery-toggle {
-      width: 100%;
-      background: #fcf8f4;
-      border: 2px solid #FF5F02;
-      border-radius: 16px;
-      padding: 16px 24px;
-      font-family: 'Vazirmatn', sans-serif;
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #1e1e1e;
-      cursor: pointer;
-      transition: 0.3s;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-    .gallery-toggle:hover { background: #fff3e8; }
-    .gallery-toggle i { color: #FF5F02; font-size: 1.4rem; }
-    .gallery-toggle .arrow-icon { transition: 0.3s; }
-    .gallery-toggle .arrow-icon.open { transform: rotate(180deg); }
-    .gallery-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease, padding 0.3s ease;
-      padding: 0 4px;
-    }
-    .gallery-content.open {
-      max-height: 1200px;
-      padding: 16px 4px 8px;
-    }
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-    }
-    .gallery-item {
-      border-radius: 16px;
-      overflow: hidden;
-      background: #f5f0eb;
-      border: 1px solid #f0ebe6;
-      transition: 0.3s;
-    }
-    .gallery-item:hover { transform: scale(1.02); border-color: #FF5F02; }
-    .gallery-item img {
-      width: 100%;
-      height: 300px;
-      object-fit: cover;
-      display: block;
-    }
-    .gallery-item .gallery-caption {
-      padding: 8px 12px;
-      font-size: 0.85rem;
-      color: #555;
-      text-align: center;
-      background: #fff;
-      font-weight: 500;
     }
 
     .related-products {
@@ -1040,12 +975,6 @@
       .btn-detail { flex: 1; }
       .payment-modal .pay-actions button { min-width: 80px; font-size: 0.85rem; padding: 10px; }
       .page-content .page-header { flex-direction: column; align-items: flex-start; }
-      .gallery-grid { grid-template-columns: 1fr 1fr; }
-      .gallery-item img { height: 200px; }
-    }
-    @media (max-width: 480px) {
-      .gallery-grid { grid-template-columns: 1fr; }
-      .gallery-item img { height: 300px; }
     }
   </style>
 </head>
@@ -1114,15 +1043,6 @@
       <div class="detail-image" id="detailImage"></div>
       <div class="detail-info" id="detailInfo"></div>
     </div>
-    <div class="gallery-section" id="gallerySection">
-      <button class="gallery-toggle" id="galleryToggle">
-        <span><i class="fas fa-images" style="color:#FF5F02;margin-left:10px;"></i> گالری تصاویر</span>
-        <i class="fas fa-chevron-down arrow-icon" id="galleryArrow"></i>
-      </button>
-      <div class="gallery-content" id="galleryContent">
-        <div class="gallery-grid" id="galleryGrid"></div>
-      </div>
-    </div>
     <div class="related-products" id="relatedProducts">
       <h3><i class="fas fa-layer-group"></i> محصولات مشابه</h3>
       <div class="related-grid" id="relatedGrid"></div>
@@ -1150,6 +1070,7 @@
   </div>
 </div>
 
+<!-- ===== درباره ما با اسامی ===== -->
 <div class="page-content" id="pageAbout">
   <div class="container">
     <div class="page-header"><i class="fas fa-users"></i><h2>درباره ما</h2></div>
@@ -1158,6 +1079,7 @@
       <p>از همون روز، با یه هدف ساده شروع کردیم: تبدیل شدن به معتبرترین پل ارتباطی بین شما و دنیای بازی. نه واسطه‌های الکی، نه قیمت‌های نجومی، فقط یه فروشگاه که پشتش دو تا آدم باغیرت و یه عالمه عشق به بازیه.</p>
       <div class="highlight-box"><p>امروز، تیممون بزرگتر شده، ولی هنوز همون روحیه اول رو داریم: خرید آسون، اکانت اصل، پشتیبانی ۲۴/۷. و صادقانه بگیم، بزرگترین سرمایه‌مون، اعتماد شماست. اینکه شما رو داریم، برای ما از هر دی ال سی و آپدیتی باارزش‌تره.</p></div>
       <p>پس خوش اومدید به خونه دوم گیمرهای ایران. اینجا کوروش گیمه؛ جایی که بازی، جدی گرفته میشه.</p>
+      
       <div style="margin-top: 30px; padding-top: 20px; border-top: 2px solid #f0ebe6;">
         <h4 style="color: #FF5F02; margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
           <i class="fas fa-id-card"></i> تیم کوروش گیم
@@ -1173,11 +1095,13 @@
           <span class="name">امیرمحمد وطن‌دوست</span>
         </div>
       </div>
+      
       <button class="page-back-home" onclick="showHome()"><i class="fas fa-arrow-right"></i> بازگشت به خانه</button>
     </div>
   </div>
 </div>
 
+<!-- ===== تماس با ما با شماره جدید ===== -->
 <div class="page-content" id="pageContact">
   <div class="container">
     <div class="page-header"><i class="fas fa-phone-alt"></i><h2>تماس با ما</h2></div>
@@ -1262,7 +1186,7 @@
       </div>
 
       <div class="pay-actions">
-        <button class="btn-pay-confirm" id="payConfirmBtn"><i class="fas fa-check-circle"></i> متوجه شدم</button>
+        <button class="btn-pay-confirm" id="payConfirmBtn"><i class="fas fa-check-circle"></i> پرداخت نهایی</button>
         <button class="btn-pay-cancel" id="payCancelBtn"><i class="fas fa-times"></i> انصراف</button>
       </div>
     </div>
@@ -1281,7 +1205,7 @@
   </div>
 </div>
 
-<!-- ===== FOOTER ===== -->
+<!-- ===== FOOTER با شماره جدید ===== -->
 <footer>
   <div class="container footer-grid">
     <div class="footer-col">
@@ -1319,76 +1243,20 @@
 
 <script>
   // ===== دیتای محصولات =====
-  let products = [];
+  const products = [
+    { id: 1, name: 'کلش اف کلنز', tag: 'Supercell', price: 850000, shortDesc: 'اکانت تالار ۱۴ با قهرمان‌های سطح بالا و سنگ‌های تیره فراوان.', fullDesc: 'این اکانت فوق‌العاده مخصوص کسانی طراحی شده که به دنبال یک اکانت حرفه‌ای و آماده برای وارهای سنگین هستند. با این اکانت می‌تونید در بالاترین سطح رقابت کنید و از بازی لذت ببرید.\n\nویژگی‌های این اکانت:\n- تالار ۱۴ کامل با تمام ساختمان‌های بیشینه\n- تمام قهرمان‌ها در سطح ۷۵ به بالا\n- بیش از ۵۰۰,۰۰۰ سنگ تیره\n- بیش از ۱۰۰۰ سنگ جادویی\n- ۵۰ پتک وار\n- رنک افسانه‌ای در لیگ وار\n- ۲۰۰۰ جایگاه در تالار جنگ', img: 'https://play-lh.googleusercontent.com/C5eFC2oVigE2pQ6E_dT89VZfI9tOxKvXL5Pm1UTZ7sp40XfYj6abKqH4Cl3KGkE_Lg', badge: 'ویژه', platform: 'clashofclans', icon: 'fa-chess-king', specs: ['تالار ۱۴', 'قهرمان‌های سطح ۷۵+', '۵۰۰k+ سنگ تیره', 'رنک افسانه‌ای'] },
+    { id: 2, name: 'کلش رویال', tag: 'Supercell', price: 650000, shortDesc: 'اکانت با تمام کارت‌ها در سطح ۱۴، پادشاه ۱۴ و ۲۰۰۰۰۰ ستاره.', fullDesc: 'یک اکانت رقابتی و آماده برای صعود به بالاترین رنک‌های کلش رویال. این اکانت با جمع‌آوری تمام کارت‌ها و ارتقای آنها به سطح ۱۴، یک انتخاب عالی برای بازیکنان حرفه‌ای و کسانی که به دنبال تنوع در دک‌ها هستند.\n\nویژگی‌های این اکانت:\n- تمام کارت‌ها در سطح ۱۴ (بیشینه)\n- پادشاه سطح ۱۴\n- بیش از ۲۰۰,۰۰۰ ستاره\n- ۵۰ کارت افسانه‌ای\n- رنک Ultimate Champion\n- تمام emotes ویژه\n- ۱۰۰۰ جایگاه در تورنمنت‌ها', img: 'https://play-lh.googleusercontent.com/BCVhv6aYH5CR5w0s4CJ7t8jLhJjZqVg8tCgYrn8tCgYrn8tCgYrn8tCgYrn8', badge: 'طلایی', platform: 'clashroyale', icon: 'fa-chess-queen', specs: ['کارت‌های سطح ۱۴', 'پادشاه ۱۴', '۲۰۰k+ ستاره', 'رنک Ultimate Champion'] },
+    { id: 3, name: 'کال اف دیوتی موبایل', tag: 'Activision', price: 720000, shortDesc: 'اکانت با تمام اسکین‌های افسانه‌ای و سریال‌های برتر.', fullDesc: 'اگر به دنبال یک اکانت با بهترین اسکین‌ها و سلاح‌های افسانه‌ای در کال اف دیوتی موبایل هستید، این اکانت دقیقاً همان چیزی است که نیاز دارید. با این اکانت می‌توانید در بالاترین سطح رقابت کنید.\n\nویژگی‌های این اکانت:\n- ۱۵ اسکین افسانه‌ای برای سلاح‌ها\n- شخصیت‌های نادر و ویژه\n- سریال ۲۰۲۶ کامل\n- تمام battle pass های قبلی\n- رنک Legendary\n- بیش از ۱۰۰۰ پوستر و آواتار\n- ۵۰٪ تخفیف برای خریدهای بعدی', img: 'https://play-lh.googleusercontent.com/7hqvdpGhJhYlVjWfJvLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLh', badge: 'اورجینال', platform: 'callofduty', icon: 'fa-crosshairs', specs: ['۱۵ اسکین افسانه‌ای', 'شخصیت‌های نادر', 'سریال ۲۰۲۶', 'رنک Legendary'] },
+    { id: 4, name: 'کلش اف کلنز', tag: 'Supercell', price: 1200000, shortDesc: 'اکانت تالار ۱۵ با قهرمان‌های بیشینه و کل سنگ‌های تیره.', fullDesc: 'این اکانت یک شات از بهترین اکانت‌های کلش اف کلنز است. با تالار ۱۵ کامل و تمام قهرمان‌های بیشینه، این اکانت برای کسانی که به دنبال قدرتمندترین اکانت ممکن هستند طراحی شده است.\n\nویژگی‌های این اکانت:\n- تالار ۱۵ کامل با تمام ساختمان‌های بیشینه\n- تمام قهرمان‌ها در سطح ۹۰ به بالا\n- بیش از ۱,۰۰۰,۰۰۰ سنگ تیره\n- تمام سنگ‌های جادویی\n- ۱۰۰ پتک وار\n- رنک افسانه‌ای برتر\n- ۵۰۰۰ جایگاه در تالار جنگ', img: 'https://play-lh.googleusercontent.com/C5eFC2oVigE2pQ6E_dT89VZfI9tOxKvXL5Pm1UTZ7sp40XfYj6abKqH4Cl3KGkE_Lg', badge: 'طلایی', platform: 'clashofclans', icon: 'fa-chess-king', specs: ['تالار ۱۵', 'قهرمان‌های سطح ۹۰+', '۱M+ سنگ تیره', 'رنک افسانه‌ای برتر'] },
+    { id: 5, name: 'کلش رویال', tag: 'Supercell', price: 450000, shortDesc: 'اکانت مناسب برای شروع با کارت‌های سطح متوسط و ۵۰۰۰ ستاره.', fullDesc: 'یک اکانت عالی برای کسانی که تازه می‌خواهند وارد دنیای رقابتی کلش رویال شوند یا یک اکانت دوم برای تمرین می‌خواهند. این اکانت با کارت‌های سطح متوسط و ستاره‌های مناسب، یک شروع ایده‌آل است.\n\nویژگی‌های این اکانت:\n- کارت‌های سطح ۱۲ تا ۱۳\n- پادشاه سطح ۱۳\n- بیش از ۵,۰۰۰ ستاره\n- تمام کارت‌های مشترک و نادر\n- رنک Master\n- ۲۰۰ جایگاه در تورنمنت‌ها\n- مناسب برای شروع رقابت', img: 'https://play-lh.googleusercontent.com/BCVhv6aYH5CR5w0s4CJ7t8jLhJjZqVg8tCgYrn8tCgYrn8tCgYrn8tCgYrn8', badge: null, platform: 'clashroyale', icon: 'fa-chess-queen', specs: ['کارت‌های سطح ۱۲-۱۳', 'پادشاه ۱۳', '۵k+ ستاره', 'رنک Master'] },
+    { id: 6, name: 'کال اف دیوتی موبایل', tag: 'Activision', price: 980000, shortDesc: 'اکانت با سلاح‌های افسانه‌ای، شخصیت‌های نادر و سریال ۲۰۲۶.', fullDesc: 'این اکانت یک مجموعه کامل از بهترین محتوای کال اف دیوتی موبایل است. با سلاح‌های افسانه‌ای، شخصیت‌های نادر و سریال ۲۰۲۶، شما یک قدم جلوتر از رقبا هستید.\n\nویژگی‌های این اکانت:\n- ۲۰ اسکین افسانه‌ای برای سلاح‌ها\n- شخصیت‌های بسیار نادر\n- سریال ۲۰۲۶ کامل + تمام محتوای اضافه\n- تمام battle pass های جدید\n- رنک Legendary\n- بیش از ۲۰۰۰ پوستر و آواتار\n- ۱۰۰٪ تضمین اصالت', img: 'https://play-lh.googleusercontent.com/7hqvdpGhJhYlVjWfJvLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLh', badge: 'حراج', platform: 'callofduty', icon: 'fa-crosshairs', specs: ['۲۰ اسکین افسانه‌ای', 'شخصیت‌های نادر', 'سریال ۲۰۲۶', 'رنک Legendary'] }
+  ];
 
-  // ===== تابع افزودن محصول =====
-  function addProduct(productData) {
-    const newProduct = {
-      id: products.length + 1,
-      name: productData.name || 'محصول بدون نام',
-      tag: productData.tag || 'نامشخص',
-      price: parseInt(String(productData.price).replace(/,/g, '')) || 0,
-      shortDesc: productData.shortDesc || '',
-      fullDesc: productData.fullDesc || productData.shortDesc || '',
-      img: productData.img || 'https://placehold.co/600x400/FF5F02/FFF?text=' + encodeURIComponent(productData.name || 'محصول'),
-      badge: productData.badge || null,
-      platform: productData.platform || 'custom',
-      icon: productData.icon || 'fa-gamepad',
-      specs: productData.specs || [],
-      gallery: productData.gallery || []
-    };
-    products.push(newProduct);
-    renderProducts();
-    return newProduct;
-  }
-
-  // ===== افزودن محصول نمونه =====
-  addProduct({
-    name: 'اکانت کلش | به نام | عـقرب',
-    tag: 'سوپرسل',
-    price: 200000,
-    shortDesc: 'یک اکانت خوب و با تانهال مناسب | تاون ۷، تجربه ۳۷ | شاه ۱۰ (فول)',
-    fullDesc: `سلام رفقا! یه اکانت تمیز و آماده دارم که به خاطر وقت نداشتن می‌فروشمش.
-
-ویژگی‌هاش:
-· تاون ۷، تجربه ۳۷
-· شاه ۱۰ (فول)
-· اسپل‌ها و نیروها اکثراً آپگرید هستن (ویزارد ۴، غول ۴، بالون ۵ و...)
-· منابع و جواهر هم خوبه (۶۰۰ تا جواهر داره)
-· لوت (طرح) هم جنگ و فارم عالیه.
-
-یک اکانت تمیز و بدون دردسر برای شروع کلش.
-
-قیمت خیلی مناسب: ۲۰۰,۰۰۰ تومان`,
-    img: 'https://up.20script.ir/file/fbf4-Negar-1782339300453.jpg',
-    badge: null,
-    platform: 'clashofclans',
-    icon: 'fa-chess-king',
-    specs: [
-      'سطح تالار شهر: ۷ (TH7)',
-      'سطح تجربه: ۳۷',
-      'منابع موجود: طلا ۳۰۱,۳۱۹ | اکسیر ۶۱۱,۱۵۵ | اکسیر تاریک ۲۲,۵۰۰',
-      'جواهر: ۶۰۵',
-      'قهرمان (شاه پیاده‌نظام): سطح ۱۰',
-      'نیروهای سبک: پیاده‌نظام (۴)، کماندار (۴)، غول (۴)، بمب‌افکن (۴)، کباب‌پز (۵)، ویزارد (۴)، اژدها (۲)، هیلر (۲)',
-      'نیروهای تاریک: ماینر (۲)، گوبلین (۲)، گرگ (۲)، والکری (۲)، ویزارد تاریک (۲)',
-      'طلسم‌ها: لایتنینگ (۵)، شفا (۴)، یخ (۲)، سم (۲)، پرش (۲)، زهر (۱)، زلزله (۱)'
-    ],
-    gallery: [
-      { img: 'https://up.20script.ir/file/fbf4-Negar-1782339300453.jpg', caption: 'صفحه اصلی اکانت' },
-      { img: 'https://up.20script.ir/file/b50e-Negar-1782339359914.jpg', caption: 'صفحه مشخصات اکانت' },
-      { img: 'https://up.20script.ir/file/08f1-Negar-1782339399478.jpg', caption: 'اکانت در حالت شب' },
-      { img: 'https://up.20script.ir/file/4945-Negar-1782339459066.jpg', caption: 'عکس شخصیت‌های بازی کلش' }
-    ]
-  });
-
-  // ===== متغیرهای اصلی =====
   let cart = [];
   let currentFilter = 'all';
   let searchQuery = '';
   let discountApplied = false;
 
-  // ===== المنت‌ها =====
   const productGrid = document.getElementById('productGrid');
   const cartModal = document.getElementById('cartModal');
   const openCartBtn = document.getElementById('openCartBtn');
@@ -1416,10 +1284,6 @@
   const detailImage = document.getElementById('detailImage');
   const detailInfo = document.getElementById('detailInfo');
   const relatedGrid = document.getElementById('relatedGrid');
-  const galleryGrid = document.getElementById('galleryGrid');
-  const galleryToggle = document.getElementById('galleryToggle');
-  const galleryContent = document.getElementById('galleryContent');
-  const galleryArrow = document.getElementById('galleryArrow');
   const heroSection = document.getElementById('heroSection');
   const filterSection = document.getElementById('filterSection');
   const productsSection = document.getElementById('productsSection');
@@ -1651,7 +1515,7 @@
     if (!e.target.closest('.search-box')) searchSuggestions.classList.remove('active');
   });
 
-  // ===== نمایش جزییات محصول =====
+  // ===== نمایش جزییات =====
   function showProductDetail(product) {
     [pageRules, pageAbout, pageContact].forEach(p => p.classList.remove('active'));
     heroSection.style.display = 'none';
@@ -1661,7 +1525,7 @@
 
     detailImage.innerHTML = `<img src="${product.img}" alt="${product.name}" onerror="this.parentElement.innerHTML='<i class=\\'fas ${product.icon || 'fa-gamepad'}\\' style=\\'font-size:5rem;color:#FF5F02;opacity:0.3;display:flex;align-items:center;justify-content:center;height:100%;\\'></i>'">`;
 
-    const specsHtml = product.specs && product.specs.length ? `<div class="detail-specs"><h4><i class="fas fa-list-ul"></i> مشخصات اکانت:</h4><ul>${product.specs.map(s => `<li><i class="fas fa-check-circle"></i> ${s}</li>`).join('')}</ul></div>` : '';
+    const specsHtml = product.specs ? `<div class="detail-specs"><h4><i class="fas fa-list-ul"></i> مشخصات اکانت:</h4><ul>${product.specs.map(s => `<li><i class="fas fa-check-circle"></i> ${s}</li>`).join('')}</ul></div>` : '';
 
     detailInfo.innerHTML = `
       <h1><i class="fas ${product.icon || 'fa-gamepad'}"></i> ${product.name}</h1>
@@ -1676,20 +1540,6 @@
       </div>
     `;
 
-    if (product.gallery && product.gallery.length > 0) {
-      document.getElementById('gallerySection').style.display = 'block';
-      galleryGrid.innerHTML = product.gallery.map(item => `
-        <div class="gallery-item">
-          <img src="${item.img}" alt="${item.caption || 'گالری'}" onerror="this.style.display='none'">
-          <div class="gallery-caption">${item.caption || ''}</div>
-        </div>
-      `).join('');
-      galleryContent.classList.remove('open');
-      galleryArrow.classList.remove('open');
-    } else {
-      document.getElementById('gallerySection').style.display = 'none';
-    }
-
     const related = products.filter(p => p.id !== product.id && p.platform === product.platform);
     relatedGrid.innerHTML = related.length ? related.map(p => `
       <div class="related-item" onclick="showProductDetail(products.find(pr => pr.id === ${p.id}))">
@@ -1701,12 +1551,6 @@
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-
-  // ===== گالری کشویی =====
-  galleryToggle.addEventListener('click', function() {
-    galleryContent.classList.toggle('open');
-    galleryArrow.classList.toggle('open');
-  });
 
   function addToCartFromDetail(id) {
     const product = products.find(p => p.id === id);
@@ -1720,17 +1564,14 @@
     let filtered = [...products];
     if (currentFilter === 'special') {
       filtered = filtered.filter(p => p.badge && (p.badge === 'ویژه' || p.badge === 'طلایی' || p.badge === 'جدید'));
-    } else if (currentFilter !== 'all' && currentFilter !== 'special') {
+    } else if (currentFilter !== 'all') {
       filtered = filtered.filter(p => p.platform === currentFilter);
     }
     if (searchQuery) {
       filtered = filtered.filter(p => multiWordSearch(searchQuery, p.name + ' ' + p.tag + ' ' + p.shortDesc + ' ' + (p.fullDesc || '')));
     }
     if (filtered.length === 0) {
-      productGrid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:60px 0; color:#888;">
-        <i class="fas fa-box-open" style="font-size:3rem; display:block; margin-bottom:16px; color:#FF5F02;"></i>
-        هنوز محصولی وجود ندارد.
-      </div>`;
+      productGrid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:60px 0; color:#888;"><i class="fas fa-search" style="font-size:3rem; display:block; margin-bottom:16px;"></i> محصولی یافت نشد</div>`;
       return;
     }
     productGrid.innerHTML = filtered.map(p => {
@@ -1833,6 +1674,7 @@
     });
   }
 
+  // ===== مودال سبد =====
   function openCartModal() { cartModal.classList.add('active'); document.body.style.overflow = 'hidden'; }
   function closeCartModal() { cartModal.classList.remove('active'); document.body.style.overflow = ''; }
   openCartBtn.addEventListener('click', openCartModal);
@@ -1840,6 +1682,7 @@
   cartModal.addEventListener('click', function(e) { if (e.target === this) closeCartModal(); });
   clearCartBtn.addEventListener('click', function() { if (cart.length && confirm('آیا مطمئن هستید؟')) clearCart(); });
 
+  // ===== پرداخت =====
   checkoutBtn.addEventListener('click', function() {
     if (cart.length === 0) { alert('سبد خرید خالی است!'); return; }
     closeCartModal();
@@ -1900,9 +1743,8 @@
     paymentSuccess.style.display = 'none';
   });
 
-  // ===== مقداردهی اولیه =====
   renderProducts();
   updateCartUI();
 </script>
 </body>
-        </html>
+</html>
