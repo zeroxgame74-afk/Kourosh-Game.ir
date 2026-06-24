@@ -134,7 +134,6 @@
     }
     .hero-btn i { font-size: 1.4rem; }
     .hero-btn:hover { background: #d94f00; transform: translateY(-3px); box-shadow: 0 12px 30px rgba(255, 95, 2, 0.4); }
-    .hero-image { flex: 0 0 0; display: none; }
 
     /* ===== FILTER ===== */
     .filter-section {
@@ -181,6 +180,7 @@
       border-radius: 60px;
       padding: 2px 6px 2px 14px;
       border: 1px solid #e8e2dc;
+      position: relative;
     }
     .search-box input {
       border: none;
@@ -208,6 +208,47 @@
     }
     .search-box button i { font-size: 0.9rem; }
     .search-box button:hover { background: #d94f00; }
+
+    /* ===== جستجوی پیشنهادی ===== */
+    .search-suggestions {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      left: 0;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+      margin-top: 6px;
+      padding: 8px 0;
+      z-index: 100;
+      max-height: 250px;
+      overflow-y: auto;
+      border: 1px solid #f0ebe6;
+    }
+    .search-suggestions.active { display: block; }
+    .search-suggestions .suggestion-item {
+      padding: 8px 20px;
+      cursor: pointer;
+      transition: 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+    }
+    .search-suggestions .suggestion-item:hover {
+      background: #f5f0eb;
+      color: #FF5F02;
+    }
+    .search-suggestions .suggestion-item i {
+      color: #FF5F02;
+      font-size: 1rem;
+      width: 20px;
+    }
+    .search-suggestions .suggestion-item .highlight {
+      color: #FF5F02;
+      font-weight: 700;
+    }
 
     /* ===== PRODUCTS ===== */
     .products { padding: 40px 0 60px; }
@@ -250,6 +291,7 @@
       position: relative;
       overflow: hidden;
       border-bottom: 2px solid #f0ebe6;
+      cursor: pointer;
     }
     .product-image img {
       width: 100%;
@@ -310,13 +352,19 @@
       font-size: 1.9rem;
       font-weight: 900;
       color: #FF5F02;
-      margin: 6px 0 16px;
+      margin: 6px 0 12px;
       display: flex;
       align-items: center;
       gap: 6px;
     }
     .product-body .price i { font-size: 1.4rem; color: #1e1e1e; }
     .product-body .price small { font-size: 0.9rem; font-weight: 400; color: #777; margin-right: 4px; }
+    .product-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: auto;
+      padding-bottom: 6px;
+    }
     .btn-buy {
       background: #1e1e1e;
       color: #fff;
@@ -324,7 +372,7 @@
       padding: 12px 18px;
       border-radius: 60px;
       font-weight: 700;
-      width: 100%;
+      flex: 2;
       cursor: pointer;
       transition: 0.2s;
       font-family: 'Vazirmatn', sans-serif;
@@ -333,12 +381,194 @@
       justify-content: center;
       gap: 10px;
       font-size: 1rem;
-      margin-top: auto;
     }
     .btn-buy i { font-size: 1.1rem; }
     .btn-buy:hover { background: #FF5F02; color: #fff; }
-    .btn-buy.outline { background: transparent; border: 2px solid #FF5F02; color: #FF5F02; }
-    .btn-buy.outline:hover { background: #FF5F02; color: #fff; }
+    .btn-detail {
+      background: #f0ece8;
+      color: #444;
+      border: none;
+      padding: 12px 14px;
+      border-radius: 60px;
+      font-weight: 700;
+      flex: 1;
+      cursor: pointer;
+      transition: 0.2s;
+      font-family: 'Vazirmatn', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 0.9rem;
+    }
+    .btn-detail i { font-size: 1rem; }
+    .btn-detail:hover { background: #FF5F02; color: #fff; }
+
+    /* ===== PAGE PRODUCT DETAIL ===== */
+    .product-detail-page {
+      display: none;
+      padding: 40px 0 60px;
+      background: #fff;
+    }
+    .product-detail-page.active { display: block; animation: fadeIn 0.3s ease; }
+    .detail-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: none;
+      border: none;
+      color: #FF5F02;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      font-family: 'Vazirmatn', sans-serif;
+      margin-bottom: 24px;
+      padding: 8px 16px;
+      border-radius: 40px;
+      transition: 0.2s;
+    }
+    .detail-back:hover { background: #f5f0eb; }
+    .detail-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+    .detail-image {
+      flex: 1 1 400px;
+      border-radius: 28px;
+      overflow: hidden;
+      background: #f5f0eb;
+      max-height: 450px;
+    }
+    .detail-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .detail-info {
+      flex: 1 1 400px;
+    }
+    .detail-info h1 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .detail-info h1 i { color: #FF5F02; }
+    .detail-info .detail-tag {
+      display: inline-block;
+      background: #f0ece8;
+      padding: 4px 20px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #4a4a4a;
+      margin-bottom: 16px;
+    }
+    .detail-info .detail-price {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: #FF5F02;
+      margin: 12px 0 20px;
+    }
+    .detail-info .detail-price i { color: #1e1e1e; font-size: 2rem; }
+    .detail-info .detail-price small { font-size: 1rem; font-weight: 400; color: #777; }
+    .detail-info .detail-desc {
+      font-size: 1.05rem;
+      color: #444;
+      line-height: 2;
+      margin-bottom: 20px;
+    }
+    .detail-specs {
+      background: #fcf8f4;
+      border-radius: 16px;
+      padding: 20px 24px;
+      margin: 16px 0 24px;
+      border-right: 4px solid #FF5F02;
+    }
+    .detail-specs h4 {
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: #1e1e1e;
+    }
+    .detail-specs ul {
+      list-style: none;
+      padding: 0;
+    }
+    .detail-specs ul li {
+      padding: 4px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .detail-specs ul li i {
+      color: #FF5F02;
+      width: 20px;
+    }
+    .detail-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .detail-actions .btn-buy {
+      flex: 2;
+      min-width: 180px;
+      padding: 16px 30px;
+      font-size: 1.1rem;
+    }
+    .detail-actions .btn-detail {
+      flex: 1;
+      min-width: 120px;
+      padding: 16px 24px;
+      font-size: 1rem;
+    }
+
+    /* ===== RELATED PRODUCTS ===== */
+    .related-products {
+      margin-top: 50px;
+      padding-top: 30px;
+      border-top: 2px solid #f0ebe6;
+    }
+    .related-products h3 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .related-products h3 i { color: #FF5F02; }
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .related-item {
+      background: #fff;
+      border-radius: 20px;
+      padding: 16px;
+      border: 1px solid #f0ebe6;
+      cursor: pointer;
+      transition: 0.2s;
+      text-align: center;
+    }
+    .related-item:hover {
+      transform: translateY(-5px);
+      border-color: #FF5F02;
+      box-shadow: 0 8px 24px rgba(255,95,2,0.1);
+    }
+    .related-item img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 12px;
+      background: #f5f0eb;
+    }
+    .related-item h4 { font-size: 1rem; margin-top: 8px; }
+    .related-item .r-price { color: #FF5F02; font-weight: 700; }
 
     /* ===== MODAL ===== */
     .cart-modal-overlay {
@@ -648,6 +878,11 @@
       .cart-modal { padding: 20px; }
       .payment-modal { padding: 24px; }
       .page-content .page-header h2 { font-size: 1.6rem; }
+      .detail-grid { flex-direction: column; }
+      .detail-image { max-height: 300px; }
+      .detail-info h1 { font-size: 2rem; }
+      .product-actions { flex-direction: column; }
+      .btn-detail { flex: 1; }
     }
   </style>
 </head>
@@ -692,9 +927,10 @@
       <button data-filter="clashroyale"><i class="fas fa-chess-queen"></i> کلش رویال</button>
       <button data-filter="callofduty"><i class="fas fa-crosshairs"></i> کال اف دیوتی</button>
     </div>
-    <div class="search-box">
-      <input type="text" id="searchInput" placeholder="جستجوی اکانت...">
+    <div class="search-box" style="position:relative;">
+      <input type="text" id="searchInput" placeholder="جستجوی اکانت..." autocomplete="off">
       <button id="searchBtn"><i class="fas fa-search"></i> جستجو</button>
+      <div class="search-suggestions" id="searchSuggestions"></div>
     </div>
   </div>
 </section>
@@ -706,6 +942,21 @@
     <div class="product-grid" id="productGrid"></div>
   </div>
 </section>
+
+<!-- ===== PRODUCT DETAIL PAGE ===== -->
+<div class="product-detail-page" id="productDetailPage">
+  <div class="container">
+    <button class="detail-back" id="detailBackBtn"><i class="fas fa-arrow-right"></i> بازگشت به فروشگاه</button>
+    <div class="detail-grid" id="detailGrid">
+      <div class="detail-image" id="detailImage"></div>
+      <div class="detail-info" id="detailInfo"></div>
+    </div>
+    <div class="related-products" id="relatedProducts">
+      <h3><i class="fas fa-layer-group"></i> محصولات مشابه</h3>
+      <div class="related-grid" id="relatedGrid"></div>
+    </div>
+  </div>
+</div>
 
 <!-- ===== PAGE: قوانین ===== -->
 <div class="page-content" id="pageRules">
@@ -845,79 +1096,148 @@
 </footer>
 
 <script>
-  // ===== دیتای محصولات =====
+  // ===== دیتای محصولات با توضیحات کامل =====
   const products = [
     { 
       id: 1, 
       name: 'کلش اف کلنز', 
       tag: 'Supercell', 
       price: 850000, 
-      desc: 'اکانت تالار ۱۴ با قهرمان‌های سطح بالا و سنگ‌های تیره فراوان. آماده برای وار!', 
+      shortDesc: 'اکانت تالار ۱۴ با قهرمان‌های سطح بالا و سنگ‌های تیره فراوان.', 
+      fullDesc: `این اکانت فوق‌العاده مخصوص کسانی طراحی شده که به دنبال یک اکانت حرفه‌ای و آماده برای وارهای سنگین هستند. با این اکانت می‌تونید در بالاترین سطح رقابت کنید و از بازی لذت ببرید.
+
+ویژگی‌های این اکانت:
+- تالار ۱۴ کامل با تمام ساختمان‌های بیشینه
+- تمام قهرمان‌ها در سطح ۷۵ به بالا
+- بیش از ۵۰۰,۰۰۰ سنگ تیره
+- بیش از ۱۰۰۰ سنگ جادویی
+- ۵۰ پتک وار
+- رنک افسانه‌ای در لیگ وار
+- ۲۰۰۰ جایگاه در تالار جنگ`,
       img: 'https://play-lh.googleusercontent.com/C5eFC2oVigE2pQ6E_dT89VZfI9tOxKvXL5Pm1UTZ7sp40XfYj6abKqH4Cl3KGkE_Lg', 
       badge: 'ویژه', 
       platform: 'clashofclans',
-      icon: 'fa-chess-king'
+      icon: 'fa-chess-king',
+      specs: ['تالار ۱۴', 'قهرمان‌های سطح ۷۵+', '۵۰۰k+ سنگ تیره', 'رنک افسانه‌ای']
     },
     { 
       id: 2, 
       name: 'کلش رویال', 
       tag: 'Supercell', 
       price: 650000, 
-      desc: 'اکانت با تمام کارت‌ها در سطح ۱۴، پادشاه ۱۴ و ۲۰۰۰۰۰ ستاره. رقابتی آماده!', 
+      shortDesc: 'اکانت با تمام کارت‌ها در سطح ۱۴، پادشاه ۱۴ و ۲۰۰۰۰۰ ستاره.', 
+      fullDesc: `یک اکانت رقابتی و آماده برای صعود به بالاترین رنک‌های کلش رویال. این اکانت با جمع‌آوری تمام کارت‌ها و ارتقای آنها به سطح ۱۴، یک انتخاب عالی برای بازیکنان حرفه‌ای و کسانی که به دنبال تنوع در دک‌ها هستند.
+
+ویژگی‌های این اکانت:
+- تمام کارت‌ها در سطح ۱۴ (بیشینه)
+- پادشاه سطح ۱۴
+- بیش از ۲۰۰,۰۰۰ ستاره
+- ۵۰ کارت افسانه‌ای
+- رنک Ultimate Champion
+- تمام emotes ویژه
+- ۱۰۰۰ جایگاه در تورنمنت‌ها`,
       img: 'https://play-lh.googleusercontent.com/BCVhv6aYH5CR5w0s4CJ7t8jLhJjZqVg8tCgYrn8tCgYrn8tCgYrn8tCgYrn8', 
       badge: 'طلایی', 
       platform: 'clashroyale',
-      icon: 'fa-chess-queen'
+      icon: 'fa-chess-queen',
+      specs: ['کارت‌های سطح ۱۴', 'پادشاه ۱۴', '۲۰۰k+ ستاره', 'رنک Ultimate Champion']
     },
     { 
       id: 3, 
       name: 'کال اف دیوتی موبایل', 
       tag: 'Activision', 
       price: 720000, 
-      desc: 'اکانت با تمام اسکین‌های افسانه‌ای و سریال‌های برتر. آماده برای رنک!', 
+      shortDesc: 'اکانت با تمام اسکین‌های افسانه‌ای و سریال‌های برتر.', 
+      fullDesc: `اگر به دنبال یک اکانت با بهترین اسکین‌ها و سلاح‌های افسانه‌ای در کال اف دیوتی موبایل هستید، این اکانت دقیقاً همان چیزی است که نیاز دارید. با این اکانت می‌توانید در بالاترین سطح رقابت کنید.
+
+ویژگی‌های این اکانت:
+- ۱۵ اسکین افسانه‌ای برای سلاح‌ها
+- شخصیت‌های نادر و ویژه
+- سریال ۲۰۲۶ کامل
+- تمام battle pass های قبلی
+- رنک Legendary
+- بیش از ۱۰۰۰ پوستر و آواتار
+- ۵۰٪ تخفیف برای خریدهای بعدی`,
       img: 'https://play-lh.googleusercontent.com/7hqvdpGhJhYlVjWfJvLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLh', 
       badge: 'اورجینال', 
       platform: 'callofduty',
-      icon: 'fa-crosshairs'
+      icon: 'fa-crosshairs',
+      specs: ['۱۵ اسکین افسانه‌ای', 'شخصیت‌های نادر', 'سریال ۲۰۲۶', 'رنک Legendary']
     },
     { 
       id: 4, 
       name: 'کلش اف کلنز', 
       tag: 'Supercell', 
       price: 1200000, 
-      desc: 'اکانت تالار ۱۵ با قهرمان‌های بیشینه و کل سنگ‌های تیره. بهترین انتخاب!', 
+      shortDesc: 'اکانت تالار ۱۵ با قهرمان‌های بیشینه و کل سنگ‌های تیره.', 
+      fullDesc: `این اکانت یک شات از بهترین اکانت‌های کلش اف کلنز است. با تالار ۱۵ کامل و تمام قهرمان‌های بیشینه، این اکانت برای کسانی که به دنبال قدرتمندترین اکانت ممکن هستند طراحی شده است.
+
+ویژگی‌های این اکانت:
+- تالار ۱۵ کامل با تمام ساختمان‌های بیشینه
+- تمام قهرمان‌ها در سطح ۹۰ به بالا
+- بیش از ۱,۰۰۰,۰۰۰ سنگ تیره
+- تمام سنگ‌های جادویی
+- ۱۰۰ پتک وار
+- رنک افسانه‌ای برتر
+- ۵۰۰۰ جایگاه در تالار جنگ`,
       img: 'https://play-lh.googleusercontent.com/C5eFC2oVigE2pQ6E_dT89VZfI9tOxKvXL5Pm1UTZ7sp40XfYj6abKqH4Cl3KGkE_Lg', 
       badge: 'طلایی', 
       platform: 'clashofclans',
-      icon: 'fa-chess-king'
+      icon: 'fa-chess-king',
+      specs: ['تالار ۱۵', 'قهرمان‌های سطح ۹۰+', '۱M+ سنگ تیره', 'رنک افسانه‌ای برتر']
     },
     { 
       id: 5, 
       name: 'کلش رویال', 
       tag: 'Supercell', 
       price: 450000, 
-      desc: 'اکانت مناسب برای شروع با کارت‌های سطح متوسط و ۵۰۰۰ ستاره.', 
+      shortDesc: 'اکانت مناسب برای شروع با کارت‌های سطح متوسط و ۵۰۰۰ ستاره.', 
+      fullDesc: `یک اکانت عالی برای کسانی که تازه می‌خواهند وارد دنیای رقابتی کلش رویال شوند یا یک اکانت دوم برای تمرین می‌خواهند. این اکانت با کارت‌های سطح متوسط و ستاره‌های مناسب، یک شروع ایده‌آل است.
+
+ویژگی‌های این اکانت:
+- کارت‌های سطح ۱۲ تا ۱۳
+- پادشاه سطح ۱۳
+- بیش از ۵,۰۰۰ ستاره
+- تمام کارت‌های مشترک و نادر
+- رنک Master
+- ۲۰۰ جایگاه در تورنمنت‌ها
+- مناسب برای شروع رقابت`,
       img: 'https://play-lh.googleusercontent.com/BCVhv6aYH5CR5w0s4CJ7t8jLhJjZqVg8tCgYrn8tCgYrn8tCgYrn8tCgYrn8', 
       badge: null, 
       platform: 'clashroyale',
-      icon: 'fa-chess-queen'
+      icon: 'fa-chess-queen',
+      specs: ['کارت‌های سطح ۱۲-۱۳', 'پادشاه ۱۳', '۵k+ ستاره', 'رنک Master']
     },
     { 
       id: 6, 
       name: 'کال اف دیوتی موبایل', 
       tag: 'Activision', 
       price: 980000, 
-      desc: 'اکانت با سلاح‌های افسانه‌ای، شخصیت‌های نادر و سریال ۲۰۲۶.', 
+      shortDesc: 'اکانت با سلاح‌های افسانه‌ای، شخصیت‌های نادر و سریال ۲۰۲۶.', 
+      fullDesc: `این اکانت یک مجموعه کامل از بهترین محتوای کال اف دیوتی موبایل است. با سلاح‌های افسانه‌ای، شخصیت‌های نادر و سریال ۲۰۲۶، شما یک قدم جلوتر از رقبا هستید.
+
+ویژگی‌های این اکانت:
+- ۲۰ اسکین افسانه‌ای برای سلاح‌ها
+- شخصیت‌های بسیار نادر
+- سریال ۲۰۲۶ کامل + تمام محتوای اضافه
+- تمام battle pass های جدید
+- رنک Legendary
+- بیش از ۲۰۰۰ پوستر و آواتار
+- ۱۰۰٪ تضمین اصالت`,
       img: 'https://play-lh.googleusercontent.com/7hqvdpGhJhYlVjWfJvLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLh', 
       badge: 'حراج', 
       platform: 'callofduty',
-      icon: 'fa-crosshairs'
+      icon: 'fa-crosshairs',
+      specs: ['۲۰ اسکین افسانه‌ای', 'شخصیت‌های نادر', 'سریال ۲۰۲۶', 'رنک Legendary']
     }
   ];
 
   // ===== سبد خرید =====
   let cart = [];
+  let currentFilter = 'all';
+  let searchQuery = '';
 
+  // ===== المنت‌ها =====
   const productGrid = document.getElementById('productGrid');
   const cartModal = document.getElementById('cartModal');
   const openCartBtn = document.getElementById('openCartBtn');
@@ -934,21 +1254,78 @@
   const paySuccessCloseBtn = document.getElementById('paySuccessCloseBtn');
   const paymentContent = document.getElementById('paymentContent');
   const paymentSuccess = document.getElementById('paymentSuccess');
+  const searchInput = document.getElementById('searchInput');
+  const searchBtn = document.getElementById('searchBtn');
+  const searchSuggestions = document.getElementById('searchSuggestions');
 
-  let currentFilter = 'all';
-  let searchQuery = '';
-
-  // ===== نمایش صفحات =====
-  const pageRules = document.getElementById('pageRules');
-  const pageAbout = document.getElementById('pageAbout');
-  const pageContact = document.getElementById('pageContact');
+  // ===== صفحه جزییات محصول =====
+  const productDetailPage = document.getElementById('productDetailPage');
+  const detailBackBtn = document.getElementById('detailBackBtn');
+  const detailImage = document.getElementById('detailImage');
+  const detailInfo = document.getElementById('detailInfo');
+  const relatedGrid = document.getElementById('relatedGrid');
   const heroSection = document.getElementById('heroSection');
   const filterSection = document.getElementById('filterSection');
   const productsSection = document.getElementById('productsSection');
   const sectionTitle = document.getElementById('sectionTitle');
 
+  // ===== توابع جستجوی فازی (Levenshtein) =====
+  function getLevenshteinDistance(a, b) {
+    const matrix = [];
+    for (let i = 0; i <= b.length; i++) {
+      matrix[i] = [i];
+    }
+    for (let j = 0; j <= a.length; j++) {
+      matrix[0][j] = j;
+    }
+    for (let i = 1; i <= b.length; i++) {
+      for (let j = 1; j <= a.length; j++) {
+        if (b[i-1] === a[j-1]) {
+          matrix[i][j] = matrix[i-1][j-1];
+        } else {
+          matrix[i][j] = Math.min(
+            matrix[i-1][j-1] + 1,
+            matrix[i][j-1] + 1,
+            matrix[i-1][j] + 1
+          );
+        }
+      }
+    }
+    return matrix[b.length][a.length];
+  }
+
+  function fuzzySearch(query, text) {
+    if (!query || query.length === 0) return true;
+    const q = query.trim().toLowerCase().replace(/\s+/g, '');
+    const t = text.trim().toLowerCase().replace(/\s+/g, '');
+    if (t.includes(q)) return true;
+    const maxDist = Math.max(1, Math.floor(q.length * 0.4));
+    const distance = getLevenshteinDistance(q, t);
+    return distance <= maxDist;
+  }
+
+  function multiWordSearch(query, text) {
+    if (!query || query.length === 0) return true;
+    const words = query.trim().toLowerCase().split(/\s+/);
+    const cleanText = text.trim().toLowerCase().replace(/\s+/g, ' ');
+    for (const word of words) {
+      if (word.length > 0) {
+        if (!fuzzySearch(word, cleanText)) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  // ===== توابع نمایش صفحات =====
+  const pageRules = document.getElementById('pageRules');
+  const pageAbout = document.getElementById('pageAbout');
+  const pageContact = document.getElementById('pageContact');
+
   function showPage(pageId) {
     [pageRules, pageAbout, pageContact].forEach(p => p.classList.remove('active'));
+    productDetailPage.classList.remove('active');
     heroSection.style.display = 'none';
     filterSection.style.display = 'none';
     productsSection.style.display = 'none';
@@ -960,6 +1337,7 @@
 
   function showHome() {
     [pageRules, pageAbout, pageContact].forEach(p => p.classList.remove('active'));
+    productDetailPage.classList.remove('active');
     heroSection.style.display = 'block';
     filterSection.style.display = 'block';
     productsSection.style.display = 'block';
@@ -993,6 +1371,7 @@
         document.getElementById('productsSection').scrollIntoView({ behavior: 'smooth' });
       } else if (tab === 'special') {
         [pageRules, pageAbout, pageContact].forEach(p => p.classList.remove('active'));
+        productDetailPage.classList.remove('active');
         heroSection.style.display = 'none';
         filterSection.style.display = 'none';
         productsSection.style.display = 'block';
@@ -1014,62 +1393,190 @@
     });
   });
 
-  // ===== جستجو =====
-  const searchInput = document.getElementById('searchInput');
-  const searchBtn = document.getElementById('searchBtn');
+  // ===== جستجو با پیشنهادات =====
+  function getSuggestions(query) {
+    if (!query || query.length < 1) return [];
+    const q = query.trim().toLowerCase();
+    const results = [];
+    for (const p of products) {
+      const text = (p.name + ' ' + p.tag + ' ' + p.shortDesc).toLowerCase();
+      if (text.includes(q) || fuzzySearch(q, text)) {
+        results.push(p);
+      }
+      if (results.length >= 10) break;
+    }
+    return results;
+  }
+
+  function renderSuggestions(query) {
+    const suggestions = getSuggestions(query);
+    if (suggestions.length === 0 || query.length < 1) {
+      searchSuggestions.classList.remove('active');
+      return;
+    }
+    let html = '';
+    for (const p of suggestions) {
+      const highlightName = p.name.replace(new RegExp(query, 'gi'), match => `<span class="highlight">${match}</span>`);
+      html += `
+        <div class="suggestion-item" data-id="${p.id}">
+          <i class="fas ${p.icon || 'fa-gamepad'}"></i>
+          <span>${highlightName}</span>
+          <span style="color:#888;font-size:0.8rem;margin-right:auto;">${p.price.toLocaleString()} تومان</span>
+        </div>
+      `;
+    }
+    searchSuggestions.innerHTML = html;
+    searchSuggestions.classList.add('active');
+
+    document.querySelectorAll('.suggestion-item').forEach(item => {
+      item.addEventListener('click', function() {
+        const id = parseInt(this.dataset.id);
+        const product = products.find(p => p.id === id);
+        if (product) showProductDetail(product);
+        searchSuggestions.classList.remove('active');
+        searchInput.value = product.name;
+      });
+    });
+  }
+
   function doSearch() {
     searchQuery = searchInput.value.trim().toLowerCase();
+    searchSuggestions.classList.remove('active');
     renderProducts();
   }
+
+  searchInput.addEventListener('input', function() {
+    const query = this.value;
+    renderSuggestions(query);
+    if (query.length >= 2) {
+      searchQuery = query.trim().toLowerCase();
+      renderProducts();
+    } else if (query.length === 0) {
+      searchQuery = '';
+      renderProducts();
+    }
+  });
+
+  searchInput.addEventListener('keyup', (e) => {
+    if (e.key === 'Enter') {
+      searchSuggestions.classList.remove('active');
+      doSearch();
+    }
+  });
+
   searchBtn.addEventListener('click', doSearch);
-  searchInput.addEventListener('keyup', (e) => { if (e.key === 'Enter') doSearch(); });
+
+  // بستن پیشنهادات با کلیک بیرون
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.search-box')) {
+      searchSuggestions.classList.remove('active');
+    }
+  });
+
+  // ===== نمایش جزییات محصول =====
+  function showProductDetail(product) {
+    // مخفی کردن همه چیز
+    [pageRules, pageAbout, pageContact].forEach(p => p.classList.remove('active'));
+    heroSection.style.display = 'none';
+    filterSection.style.display = 'none';
+    productsSection.style.display = 'none';
+    productDetailPage.classList.add('active');
+
+    // تصویر
+    detailImage.innerHTML = `<img src="${product.img}" alt="${product.name}" onerror="this.parentElement.innerHTML='<i class=\\'fas ${product.icon || 'fa-gamepad'}\\' style=\\'font-size:5rem;color:#FF5F02;opacity:0.3;display:flex;align-items:center;justify-content:center;height:100%;\\'></i>'">`;
+
+    // اطلاعات
+    const specsHtml = product.specs ? `
+      <div class="detail-specs">
+        <h4><i class="fas fa-list-ul"></i> مشخصات اکانت:</h4>
+        <ul>
+          ${product.specs.map(s => `<li><i class="fas fa-check-circle"></i> ${s}</li>`).join('')}
+        </ul>
+      </div>
+    ` : '';
+
+    detailInfo.innerHTML = `
+      <h1><i class="fas ${product.icon || 'fa-gamepad'}"></i> ${product.name}</h1>
+      <span class="detail-tag"><i class="fas fa-tag"></i> ${product.tag}</span>
+      ${product.badge ? `<span class="detail-tag" style="background:#FF5F02;color:#fff;margin-right:8px;"><i class="fas fa-star"></i> ${product.badge}</span>` : ''}
+      <div class="detail-price"><i class="fas fa-toman"></i> ${product.price.toLocaleString()} <small>تومان</small></div>
+      <div class="detail-desc">${product.fullDesc || product.shortDesc}</div>
+      ${specsHtml}
+      <div class="detail-actions">
+        <button class="btn-buy" onclick="addToCartFromDetail(${product.id})"><i class="fas fa-shopping-bag"></i> افزودن به سبد</button>
+        <button class="btn-detail" onclick="showHome()"><i class="fas fa-arrow-right"></i> بازگشت</button>
+      </div>
+    `;
+
+    // محصولات مشابه
+    const related = products.filter(p => p.id !== product.id && p.platform === product.platform);
+    if (related.length === 0) {
+      relatedGrid.innerHTML = '<p style="color:#888;">محصول مشابهی یافت نشد.</p>';
+    } else {
+      relatedGrid.innerHTML = related.map(p => `
+        <div class="related-item" onclick="showProductDetail(products.find(pr => pr.id === ${p.id}))">
+          <img src="${p.img}" alt="${p.name}" onerror="this.style.display='none'">
+          <h4>${p.name}</h4>
+          <div class="r-price">${p.price.toLocaleString()} تومان</div>
+        </div>
+      `).join('');
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function addToCartFromDetail(id) {
+    const product = products.find(p => p.id === id);
+    if (product) addToCart(product);
+  }
+
+  detailBackBtn.addEventListener('click', showHome);
 
   // ===== رندر محصولات =====
   function renderProducts() {
     let filtered = [...products];
+
+    // فیلتر
     if (currentFilter === 'special') {
       filtered = filtered.filter(p => p.badge && (p.badge === 'ویژه' || p.badge === 'طلایی' || p.badge === 'جدید'));
     } else if (currentFilter !== 'all') {
       filtered = filtered.filter(p => p.platform === currentFilter);
     }
+
+    // جستجو
     if (searchQuery) {
       filtered = filtered.filter(p =>
-        p.name.includes(searchQuery) ||
-        p.tag.includes(searchQuery) ||
-        p.desc.includes(searchQuery)
+        multiWordSearch(searchQuery, p.name + ' ' + p.tag + ' ' + p.shortDesc + ' ' + (p.fullDesc || ''))
       );
     }
+
     if (filtered.length === 0) {
       productGrid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:60px 0; color:#888;"><i class="fas fa-search" style="font-size:3rem; display:block; margin-bottom:16px;"></i> محصولی یافت نشد</div>`;
       return;
     }
+
     productGrid.innerHTML = filtered.map(p => {
       const badgeHtml = p.badge ? `<span class="product-badge"><i class="fas fa-star"></i> ${p.badge}</span>` : '';
       const icon = p.icon || 'fa-gamepad';
       return `
         <div class="product-card">
-          <div class="product-image">
+          <div class="product-image" onclick="showProductDetail(products.find(pr => pr.id === ${p.id}))">
             <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.parentElement.innerHTML='<i class=\\'fas ${icon}\\' style=\\'font-size:5rem;color:#FF5F02;opacity:0.3;\\'></i>'">
             ${badgeHtml}
           </div>
           <div class="product-body">
             <h3><i class="fas ${icon}"></i> ${p.name}</h3>
             <span class="game-tag"><i class="fas fa-tag"></i> ${p.tag}</span>
-            <p class="description">${p.desc}</p>
+            <p class="description">${p.shortDesc}</p>
             <div class="price"><i class="fas fa-toman"></i> ${p.price.toLocaleString()} <small>تومان</small></div>
-            <button class="btn-buy" data-id="${p.id}"><i class="fas fa-shopping-bag"></i> افزودن به سبد</button>
+            <div class="product-actions">
+              <button class="btn-buy" onclick="event.stopPropagation(); addToCart(products.find(pr => pr.id === ${p.id}))"><i class="fas fa-shopping-bag"></i> خرید</button>
+              <button class="btn-detail" onclick="event.stopPropagation(); showProductDetail(products.find(pr => pr.id === ${p.id}))"><i class="fas fa-info-circle"></i></button>
+            </div>
           </div>
         </div>
       `;
     }).join('');
-
-    document.querySelectorAll('.btn-buy[data-id]').forEach(btn => {
-      btn.addEventListener('click', function(e) {
-        const id = parseInt(this.dataset.id);
-        const product = products.find(p => p.id === id);
-        if (product) addToCart(product);
-      });
-    });
   }
 
   // ===== توابع سبد =====
@@ -1177,4 +1684,4 @@
   updateCartUI();
 </script>
 </body>
-</html>
+        </html>
