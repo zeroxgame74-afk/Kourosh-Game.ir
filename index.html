@@ -47,7 +47,7 @@
     .nav-menu {
       display: flex;
       align-items: center;
-      gap: 28px;
+      gap: 18px;
       flex-wrap: wrap;
     }
     .nav-menu a {
@@ -95,7 +95,7 @@
 
     /* ===== HERO ===== */
     .hero {
-      padding: 60px 0 40px;
+      padding: 40px 0 20px;
       background: linear-gradient(145deg, #fffcf9 0%, #fff3e8 100%);
       border-bottom: 1px solid #f0e8e0;
     }
@@ -134,14 +134,12 @@
     }
     .hero-btn i { font-size: 1.4rem; }
     .hero-btn:hover { background: #d94f00; transform: translateY(-3px); box-shadow: 0 12px 30px rgba(255, 95, 2, 0.4); }
-    .hero-image { flex: 1 1 280px; text-align: center; }
-    .hero-image i { font-size: 14rem; color: #FF5F02; opacity: 0.15; transition: 0.3s; }
-    .hero-image i:hover { opacity: 0.3; transform: scale(1.02); }
+    .hero-image { flex: 0 0 0; display: none; }
 
     /* ===== FILTER ===== */
     .filter-section {
       background: #fff;
-      padding: 22px 0;
+      padding: 16px 0;
       border-bottom: 1px solid #eee;
     }
     .filter-flex {
@@ -149,29 +147,29 @@
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 16px 20px;
+      gap: 12px 20px;
     }
     .filter-tabs {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 8px;
     }
     .filter-tabs button {
       background: #f2f0ed;
       border: none;
-      padding: 8px 24px;
+      padding: 6px 18px;
       border-radius: 40px;
       font-weight: 600;
       color: #2a2a2a;
       cursor: pointer;
       transition: 0.2s;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-family: 'Vazirmatn', sans-serif;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
-    .filter-tabs button i { color: #FF5F02; font-size: 1rem; }
+    .filter-tabs button i { color: #FF5F02; font-size: 0.95rem; }
     .filter-tabs button.active { background: #FF5F02; color: #fff; }
     .filter-tabs button.active i { color: #fff; }
     .filter-tabs button:hover { background: #FF5F02; color: #fff; }
@@ -181,46 +179,47 @@
       align-items: center;
       background: #f5f3f0;
       border-radius: 60px;
-      padding: 4px 8px 4px 18px;
+      padding: 2px 6px 2px 14px;
       border: 1px solid #e8e2dc;
     }
     .search-box input {
       border: none;
       background: transparent;
-      padding: 10px 6px;
-      width: 180px;
+      padding: 8px 6px;
+      width: 160px;
       font-family: 'Vazirmatn', sans-serif;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       outline: none;
     }
     .search-box button {
       background: #FF5F02;
       border: none;
       border-radius: 40px;
-      padding: 8px 18px;
+      padding: 6px 14px;
       color: #fff;
       font-weight: 700;
       cursor: pointer;
       font-family: 'Vazirmatn', sans-serif;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 4px;
       transition: 0.2s;
+      font-size: 0.85rem;
     }
-    .search-box button i { font-size: 1rem; }
+    .search-box button i { font-size: 0.9rem; }
     .search-box button:hover { background: #d94f00; }
 
     /* ===== PRODUCTS ===== */
-    .products { padding: 50px 0 60px; }
+    .products { padding: 40px 0 60px; }
     .section-title {
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: 800;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
     }
-    .section-title i { color: #FF5F02; font-size: 2.4rem; }
+    .section-title i { color: #FF5F02; font-size: 2.2rem; }
     .product-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -276,7 +275,16 @@
     }
     .product-badge i { font-size: 0.8rem; }
     .product-body { padding: 18px 20px 0 20px; flex: 1; display: flex; flex-direction: column; }
-    .product-body h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 4px; line-height: 1.3; }
+    .product-body h3 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+      line-height: 1.3;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .product-body h3 i { color: #FF5F02; font-size: 1.3rem; }
     .product-body .game-tag {
       display: inline-block;
       background: #f0ece8;
@@ -332,7 +340,7 @@
     .btn-buy.outline { background: transparent; border: 2px solid #FF5F02; color: #FF5F02; }
     .btn-buy.outline:hover { background: #FF5F02; color: #fff; }
 
-    /* ===== MODAL سبد خرید ===== */
+    /* ===== MODAL ===== */
     .cart-modal-overlay {
       display: none;
       position: fixed;
@@ -451,18 +459,12 @@
       justify-content: center;
       gap: 8px;
     }
-    .btn-checkout {
-      background: #FF5F02;
-      color: #fff;
-    }
+    .btn-checkout { background: #FF5F02; color: #fff; }
     .btn-checkout:hover { background: #d94f00; transform: scale(1.02); }
-    .btn-clear-cart {
-      background: #f0ece8;
-      color: #444;
-    }
+    .btn-clear-cart { background: #f0ece8; color: #444; }
     .btn-clear-cart:hover { background: #e0d8d0; }
 
-    /* ===== PAYMENT MODAL ===== */
+    /* ===== PAYMENT ===== */
     .payment-modal-overlay {
       display: none;
       position: fixed;
@@ -520,7 +522,7 @@
     /* ===== PAGE CONTENT ===== */
     .page-content {
       display: none;
-      padding: 50px 0 70px;
+      padding: 40px 0 60px;
       background: #fff;
       border-bottom: 1px solid #eee;
     }
@@ -532,14 +534,14 @@
       display: flex;
       align-items: center;
       gap: 16px;
-      margin-bottom: 30px;
+      margin-bottom: 24px;
     }
     .page-content .page-header i {
       font-size: 2.8rem;
       color: #FF5F02;
     }
     .page-content .page-header h2 {
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: 800;
       color: #1e1e1e;
     }
@@ -638,11 +640,10 @@
 
     @media (max-width: 700px) {
       .hero-text h2 { font-size: 2.4rem; }
-      .hero-image i { font-size: 8rem; }
       .filter-flex { flex-direction: column; align-items: stretch; }
       .search-box { width: 100%; }
       .search-box input { width: 100%; }
-      .nav-menu { gap: 16px; }
+      .nav-menu { gap: 12px; }
       .product-grid { grid-template-columns: 1fr; }
       .cart-modal { padding: 20px; }
       .payment-modal { padding: 24px; }
@@ -657,11 +658,11 @@
   <div class="container header-flex">
     <div class="logo">
       <h1><i class="fas fa-gamepad"></i>Kourosh <span class="text-orange">Game</span>.ir</h1>
-      <span class="sub"><i class="fas fa-mobile-alt"></i> فروش اکانت بازی‌های موبایل</span>
+      <span class="sub"><i class="fas fa-crown"></i> مرجع خفن‌ترین اکانت‌های بازی در ایران!</span>
     </div>
     <div class="nav-menu" id="navMenu">
       <a class="active-tab" data-tab="home"><i class="fas fa-home"></i> خانه</a>
-      <a data-tab="store"><i class="fas fa-store"></i> فروشگاه</a>
+      <a data-tab="store"><i class="fas fa-store"></i> اکانت</a>
       <a data-tab="special"><i class="fas fa-trophy"></i> ویژه</a>
       <button class="cart-btn" id="openCartBtn">
         <i class="fas fa-shopping-cart"></i> سبد خرید
@@ -675,11 +676,10 @@
 <section class="hero" id="heroSection">
   <div class="container hero-grid">
     <div class="hero-text">
-      <h2><i class="fas fa-bolt"></i> اکانت‌های اورجینال <span class="highlight">برای بازی‌های موبایل</span></h2>
+      <h2><i class="fas fa-bolt"></i> به کوروش گیم <span class="highlight">خوش آمدید!</span></h2>
       <p><i class="fas fa-check-circle"></i> تضمین اصالت &nbsp;|&nbsp; <i class="fas fa-shield-alt"></i> پشتیبانی ۲۴/۷</p>
       <button class="hero-btn" onclick="document.querySelector('[data-tab=\"store\"]').click();"><i class="fas fa-rocket"></i> مشاهده اکانت‌ها</button>
     </div>
-    <div class="hero-image"><i class="fas fa-mobile-alt"></i></div>
   </div>
 </section>
 
@@ -688,9 +688,9 @@
   <div class="container filter-flex">
     <div class="filter-tabs" id="filterTabs">
       <button class="active" data-filter="all"><i class="fas fa-fire"></i> همه</button>
-      <button data-filter="clashofclans"><i class="fas fa-chess-king" style="color:#FF5F02;"></i> کلش اف کلنز</button>
-      <button data-filter="clashroyale"><i class="fas fa-chess-queen" style="color:#FF5F02;"></i> کلش رویال</button>
-      <button data-filter="callofduty"><i class="fas fa-crosshairs" style="color:#FF5F02;"></i> کال اف دیوتی</button>
+      <button data-filter="clashofclans"><i class="fas fa-chess-king"></i> کلش اف کلنز</button>
+      <button data-filter="clashroyale"><i class="fas fa-chess-queen"></i> کلش رویال</button>
+      <button data-filter="callofduty"><i class="fas fa-crosshairs"></i> کال اف دیوتی</button>
     </div>
     <div class="search-box">
       <input type="text" id="searchInput" placeholder="جستجوی اکانت...">
@@ -813,7 +813,7 @@
   <div class="container footer-grid">
     <div class="footer-col">
       <h4><i class="fas fa-gamepad"></i> Kourosh Game</h4>
-      <p>معتبرترین فروشگاه اکانت بازی‌های موبایل با ضمانت اصالت و پشتیبانی ۲۴/۷.</p>
+      <p>مرجع خفن‌ترین اکانت‌های بازی در ایران با ضمانت اصالت و پشتیبانی ۲۴/۷.</p>
       <div class="social-icons">
         <a href="#"><i class="fab fa-instagram"></i></a>
         <a href="#"><i class="fab fa-telegram"></i></a>
@@ -845,7 +845,7 @@
 </footer>
 
 <script>
-  // ===== دیتای محصولات (بازی‌های موبایل) =====
+  // ===== دیتای محصولات =====
   const products = [
     { 
       id: 1, 
@@ -960,7 +960,7 @@
 
   function showHome() {
     [pageRules, pageAbout, pageContact].forEach(p => p.classList.remove('active'));
-    heroSection.style.display = 'flex';
+    heroSection.style.display = 'block';
     filterSection.style.display = 'block';
     productsSection.style.display = 'block';
     sectionTitle.innerHTML = '<i class="fas fa-cubes"></i> جدیدترین اکانت‌ها';
@@ -1053,7 +1053,7 @@
             ${badgeHtml}
           </div>
           <div class="product-body">
-            <h3><i class="fas ${icon}" style="color:#FF5F02;margin-left:8px;"></i> ${p.name}</h3>
+            <h3><i class="fas ${icon}"></i> ${p.name}</h3>
             <span class="game-tag"><i class="fas fa-tag"></i> ${p.tag}</span>
             <p class="description">${p.desc}</p>
             <div class="price"><i class="fas fa-toman"></i> ${p.price.toLocaleString()} <small>تومان</small></div>
@@ -1177,4 +1177,4 @@
   updateCartUI();
 </script>
 </body>
-                                                                                               </html>
+</html>
