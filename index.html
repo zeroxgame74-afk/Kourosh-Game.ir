@@ -4,9 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Kourosh Game.ir | فروش اکانت بازی موبایل</title>
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- فونت وزیر -->
   <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -20,7 +18,6 @@
     .text-orange { color: #FF5F02; }
     .bg-orange { background-color: #FF5F02; }
 
-    /* ===== HEADER ===== */
     header {
       background: #fff;
       box-shadow: 0 4px 20px rgba(0,0,0,0.04);
@@ -93,7 +90,6 @@
       font-size: 0.9rem;
     }
 
-    /* ===== HERO ===== */
     .hero {
       padding: 40px 0 20px;
       background: linear-gradient(145deg, #fffcf9 0%, #fff3e8 100%);
@@ -135,7 +131,6 @@
     .hero-btn i { font-size: 1.4rem; }
     .hero-btn:hover { background: #d94f00; transform: translateY(-3px); box-shadow: 0 12px 30px rgba(255, 95, 2, 0.4); }
 
-    /* ===== FILTER ===== */
     .filter-section {
       background: #fff;
       padding: 16px 0;
@@ -209,7 +204,6 @@
     .search-box button i { font-size: 0.9rem; }
     .search-box button:hover { background: #d94f00; }
 
-    /* ===== جستجوی پیشنهادی ===== */
     .search-suggestions {
       display: none;
       position: absolute;
@@ -236,21 +230,10 @@
       gap: 10px;
       font-size: 0.95rem;
     }
-    .search-suggestions .suggestion-item:hover {
-      background: #f5f0eb;
-      color: #FF5F02;
-    }
-    .search-suggestions .suggestion-item i {
-      color: #FF5F02;
-      font-size: 1rem;
-      width: 20px;
-    }
-    .search-suggestions .suggestion-item .highlight {
-      color: #FF5F02;
-      font-weight: 700;
-    }
+    .search-suggestions .suggestion-item:hover { background: #f5f0eb; color: #FF5F02; }
+    .search-suggestions .suggestion-item i { color: #FF5F02; font-size: 1rem; width: 20px; }
+    .search-suggestions .suggestion-item .highlight { color: #FF5F02; font-weight: 700; }
 
-    /* ===== PRODUCTS ===== */
     .products { padding: 40px 0 60px; }
     .section-title {
       font-size: 2rem;
@@ -404,7 +387,6 @@
     .btn-detail i { font-size: 1rem; }
     .btn-detail:hover { background: #FF5F02; color: #fff; }
 
-    /* ===== PAGE PRODUCT DETAIL ===== */
     .product-detail-page {
       display: none;
       padding: 40px 0 60px;
@@ -488,25 +470,10 @@
       margin: 16px 0 24px;
       border-right: 4px solid #FF5F02;
     }
-    .detail-specs h4 {
-      font-weight: 800;
-      margin-bottom: 10px;
-      color: #1e1e1e;
-    }
-    .detail-specs ul {
-      list-style: none;
-      padding: 0;
-    }
-    .detail-specs ul li {
-      padding: 4px 0;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .detail-specs ul li i {
-      color: #FF5F02;
-      width: 20px;
-    }
+    .detail-specs h4 { font-weight: 800; margin-bottom: 10px; color: #1e1e1e; }
+    .detail-specs ul { list-style: none; padding: 0; }
+    .detail-specs ul li { padding: 4px 0; display: flex; align-items: center; gap: 10px; }
+    .detail-specs ul li i { color: #FF5F02; width: 20px; }
     .detail-actions {
       display: flex;
       gap: 14px;
@@ -526,7 +493,6 @@
       font-size: 1rem;
     }
 
-    /* ===== RELATED PRODUCTS ===== */
     .related-products {
       margin-top: 50px;
       padding-top: 30px;
@@ -570,7 +536,6 @@
     .related-item h4 { font-size: 1rem; margin-top: 8px; }
     .related-item .r-price { color: #FF5F02; font-weight: 700; }
 
-    /* ===== MODAL ===== */
     .cart-modal-overlay {
       display: none;
       position: fixed;
@@ -694,7 +659,7 @@
     .btn-clear-cart { background: #f0ece8; color: #444; }
     .btn-clear-cart:hover { background: #e0d8d0; }
 
-    /* ===== PAYMENT MODAL جدید ===== */
+    /* ===== مودال پرداخت جدید با ریسپانسیو ===== */
     .payment-modal-overlay {
       display: none;
       position: fixed;
@@ -713,122 +678,143 @@
     .payment-modal {
       background: #fff;
       max-width: 520px;
-      width: 92%;
-      border-radius: 32px;
-      padding: 32px 30px;
+      width: 94%;
+      border-radius: 28px;
+      padding: 28px 22px;
       box-shadow: 0 40px 80px rgba(0,0,0,0.3);
       animation: slideUp 0.3s ease;
       text-align: center;
+      max-height: 95vh;
+      overflow-y: auto;
     }
-    .payment-modal .payment-icon { font-size: 4rem; color: #FF5F02; margin-bottom: 10px; }
+    .payment-modal .payment-icon { font-size: 3.5rem; color: #FF5F02; margin-bottom: 8px; }
     .payment-modal h2 {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       font-weight: 800;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
     .payment-modal .sub-title {
       color: #777;
-      font-size: 0.95rem;
-      margin-bottom: 20px;
+      font-size: 0.9rem;
+      margin-bottom: 16px;
     }
     .payment-modal .total-amount {
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: 900;
       color: #FF5F02;
-      margin: 10px 0 20px;
-      padding: 12px;
+      margin: 8px 0 16px;
+      padding: 10px;
       background: #fcf8f4;
-      border-radius: 16px;
+      border-radius: 14px;
     }
     .payment-modal .pay-info {
       background: #f5f0eb;
-      border-radius: 16px;
-      padding: 18px 20px;
-      margin: 16px 0;
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin: 12px 0;
       text-align: right;
     }
     .payment-modal .pay-info .info-row {
       display: flex;
       align-items: center;
-      gap: 12px;
-      padding: 6px 0;
-      font-size: 1rem;
+      gap: 10px;
+      padding: 5px 0;
+      font-size: 0.95rem;
+      flex-wrap: wrap;
     }
     .payment-modal .pay-info .info-row i {
       color: #FF5F02;
-      width: 24px;
-      font-size: 1.2rem;
+      width: 22px;
+      font-size: 1.1rem;
       text-align: center;
+      flex-shrink: 0;
     }
     .payment-modal .pay-info .info-row .label {
       color: #555;
       font-weight: 500;
+      font-size: 0.9rem;
     }
     .payment-modal .pay-info .info-row .value {
       font-weight: 700;
       color: #1e1e1e;
       direction: ltr;
+      word-break: break-all;
     }
     .payment-modal .pay-info .info-row .value.phone {
       color: #FF5F02;
-      font-size: 1.1rem;
+      font-size: 1rem;
+    }
+    .payment-modal .pay-info .info-row .value .copy-icon {
+      cursor: pointer;
+      color: #FF5F02;
+      margin-right: 6px;
+      font-size: 0.9rem;
+      transition: 0.2s;
+    }
+    .payment-modal .pay-info .info-row .value .copy-icon:hover {
+      transform: scale(1.2);
+    }
+    .payment-modal .pay-info .info-row .value a {
+      color: #FF5F02;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .payment-modal .pay-info .info-row .value a:hover {
+      text-decoration: underline;
     }
     .payment-modal .discount-box {
       display: flex;
-      gap: 10px;
-      margin: 16px 0 20px;
+      gap: 8px;
+      margin: 12px 0 16px;
+      flex-wrap: wrap;
     }
     .payment-modal .discount-box input {
       flex: 1;
-      padding: 12px 16px;
+      padding: 10px 14px;
       border: 2px solid #e8e2dc;
       border-radius: 60px;
       font-family: 'Vazirmatn', sans-serif;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       outline: none;
       transition: 0.2s;
+      min-width: 120px;
     }
-    .payment-modal .discount-box input:focus {
-      border-color: #FF5F02;
-    }
+    .payment-modal .discount-box input:focus { border-color: #FF5F02; }
     .payment-modal .discount-box button {
       background: #FF5F02;
       color: #fff;
       border: none;
-      padding: 12px 24px;
+      padding: 10px 18px;
       border-radius: 60px;
       font-weight: 700;
       cursor: pointer;
       font-family: 'Vazirmatn', sans-serif;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       transition: 0.2s;
       white-space: nowrap;
     }
-    .payment-modal .discount-box button:hover {
-      background: #d94f00;
-      transform: scale(1.02);
-    }
+    .payment-modal .discount-box button:hover { background: #d94f00; transform: scale(1.02); }
     .payment-modal .pay-actions {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
-      margin-top: 8px;
+      margin-top: 6px;
     }
     .payment-modal .pay-actions button {
       flex: 1;
-      padding: 14px;
+      padding: 12px;
       border-radius: 60px;
       font-weight: 700;
       border: none;
       cursor: pointer;
       font-family: 'Vazirmatn', sans-serif;
-      font-size: 1rem;
+      font-size: 0.95rem;
       transition: 0.2s;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      min-width: 120px;
+      min-width: 100px;
     }
     .btn-pay-confirm { background: #FF5F02; color: #fff; }
     .btn-pay-confirm:hover { background: #d94f00; transform: scale(1.02); }
@@ -836,53 +822,47 @@
     .btn-pay-cancel:hover { background: #e0d8d0; }
     .payment-success {
       display: none;
-      padding: 20px 0;
+      padding: 16px 0;
     }
     .payment-success i {
-      font-size: 5rem;
+      font-size: 4.5rem;
       color: #2ecc71;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
     .payment-success h3 {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       color: #2ecc71;
     }
     .payment-success .success-msg {
       color: #555;
-      margin-top: 8px;
+      margin-top: 6px;
+      font-size: 0.95rem;
+    }
+    .payment-success .success-msg a {
+      color: #FF5F02;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .payment-success .success-msg a:hover {
+      text-decoration: underline;
     }
 
-    /* ===== PAGE CONTENT ===== */
     .page-content {
       display: none;
       padding: 40px 0 60px;
       background: #fff;
       border-bottom: 1px solid #eee;
     }
-    .page-content.active {
-      display: block;
-      animation: fadeIn 0.3s ease;
-    }
+    .page-content.active { display: block; animation: fadeIn 0.3s ease; }
     .page-content .page-header {
       display: flex;
       align-items: center;
       gap: 16px;
       margin-bottom: 24px;
     }
-    .page-content .page-header i {
-      font-size: 2.8rem;
-      color: #FF5F02;
-    }
-    .page-content .page-header h2 {
-      font-size: 2rem;
-      font-weight: 800;
-      color: #1e1e1e;
-    }
-    .page-content .page-body {
-      max-width: 820px;
-      color: #333;
-      line-height: 2;
-    }
+    .page-content .page-header i { font-size: 2.8rem; color: #FF5F02; }
+    .page-content .page-header h2 { font-size: 2rem; font-weight: 800; color: #1e1e1e; }
+    .page-content .page-body { max-width: 820px; color: #333; line-height: 2; }
     .page-content .page-body p { margin-bottom: 14px; }
     .page-content .page-body ul { padding-right: 24px; margin-bottom: 16px; }
     .page-content .page-body ul li { margin-bottom: 8px; }
@@ -905,7 +885,6 @@
       margin: 10px 0;
     }
 
-    /* ===== FOOTER ===== */
     footer {
       background: #1a1a1a;
       color: #d0cdc8;
@@ -979,14 +958,19 @@
       .nav-menu { gap: 16px; }
       .product-grid { grid-template-columns: 1fr; }
       .cart-modal { padding: 20px; }
-      .payment-modal { padding: 24px; }
+      .payment-modal { padding: 20px 16px; }
+      .payment-modal .pay-info .info-row { font-size: 0.85rem; gap: 6px; }
+      .payment-modal .pay-info .info-row .value.phone { font-size: 0.9rem; }
+      .payment-modal .discount-box { flex-direction: column; }
+      .payment-modal .discount-box input { width: 100%; }
+      .payment-modal .discount-box button { width: 100%; }
       .page-content .page-header h2 { font-size: 1.6rem; }
       .detail-grid { flex-direction: column; }
       .detail-image { max-height: 300px; }
       .detail-info h1 { font-size: 2rem; }
       .product-actions { flex-direction: column; }
       .btn-detail { flex: 1; }
-      .payment-modal .discount-box { flex-direction: column; }
+      .payment-modal .pay-actions button { min-width: 80px; font-size: 0.85rem; padding: 10px; }
     }
   </style>
 </head>
@@ -1047,7 +1031,7 @@
   </div>
 </section>
 
-<!-- ===== PRODUCT DETAIL PAGE ===== -->
+<!-- ===== PRODUCT DETAIL ===== -->
 <div class="product-detail-page" id="productDetailPage">
   <div class="container">
     <button class="detail-back" id="detailBackBtn"><i class="fas fa-arrow-right"></i> بازگشت به فروشگاه</button>
@@ -1062,13 +1046,10 @@
   </div>
 </div>
 
-<!-- ===== PAGE: قوانین ===== -->
+<!-- ===== PAGES ===== -->
 <div class="page-content" id="pageRules">
   <div class="container">
-    <div class="page-header">
-      <i class="fas fa-gavel"></i>
-      <h2>قوانین خرید از فروشگاه کوروش گیم</h2>
-    </div>
+    <div class="page-header"><i class="fas fa-gavel"></i><h2>قوانین خرید از فروشگاه کوروش گیم</h2></div>
     <div class="page-body">
       <p style="font-size:1.1rem; font-weight:600; color:#FF5F02;">سلام مشتری عزیز! قبل از خرید، لطفاً این چند تا قانون ساده رو بخون تا خرید خوب و بی‌دردسری داشته باشی:</p>
       <ul>
@@ -1084,45 +1065,31 @@
   </div>
 </div>
 
-<!-- ===== PAGE: درباره ما ===== -->
 <div class="page-content" id="pageAbout">
   <div class="container">
-    <div class="page-header">
-      <i class="fas fa-users"></i>
-      <h2>درباره ما</h2>
-    </div>
+    <div class="page-header"><i class="fas fa-users"></i><h2>درباره ما</h2></div>
     <div class="page-body">
       <p>سلام! ما تیم کوروش گیم هستیم. داستانمون از یه اتاق کوچیک و دو تا عاشق بازی شروع شد. دیدیم تو ایران واسه خرید اکانت اورجینال، کلی راه دور و پرپیچ و خم هست، پس گفتمون چرا خودمون یه مسیر مستقیم و امن نسازیم؟</p>
       <p>از همون روز، با یه هدف ساده شروع کردیم: تبدیل شدن به معتبرترین پل ارتباطی بین شما و دنیای بازی. نه واسطه‌های الکی، نه قیمت‌های نجومی، فقط یه فروشگاه که پشتش دو تا آدم باغیرت و یه عالمه عشق به بازیه.</p>
-      <div class="highlight-box">
-        <p>امروز، تیممون بزرگتر شده، ولی هنوز همون روحیه اول رو داریم: خرید آسون، اکانت اصل، پشتیبانی ۲۴/۷. و صادقانه بگیم، بزرگترین سرمایه‌مون، اعتماد شماست. اینکه شما رو داریم، برای ما از هر دی ال سی و آپدیتی باارزش‌تره.</p>
-      </div>
+      <div class="highlight-box"><p>امروز، تیممون بزرگتر شده، ولی هنوز همون روحیه اول رو داریم: خرید آسون، اکانت اصل، پشتیبانی ۲۴/۷. و صادقانه بگیم، بزرگترین سرمایه‌مون، اعتماد شماست. اینکه شما رو داریم، برای ما از هر دی ال سی و آپدیتی باارزش‌تره.</p></div>
       <p>پس خوش اومدید به خونه دوم گیمرهای ایران. اینجا کوروش گیمه؛ جایی که بازی، جدی گرفته میشه.</p>
     </div>
   </div>
 </div>
 
-<!-- ===== PAGE: تماس با ما ===== -->
 <div class="page-content" id="pageContact">
   <div class="container">
-    <div class="page-header">
-      <i class="fas fa-phone-alt"></i>
-      <h2>تماس با ما</h2>
-    </div>
+    <div class="page-header"><i class="fas fa-phone-alt"></i><h2>تماس با ما</h2></div>
     <div class="page-body">
       <p>ما، گروه رسمی و حرفه‌ای کوروش گیم، اینجاییم تا توی هر مرحله از خرید، کنارتون باشیم. سوال داری؟ مشکل پیش اومده؟ یا فقط میخوای یه مشاوره خوب بگیری؟</p>
-      <div style="margin: 20px 0;">
-        <span class="contact-number"><i class="fas fa-phone" style="color:#FF5F02; margin-left:12px;"></i>+98 996 259 4436</span>
-      </div>
+      <div style="margin: 20px 0;"><span class="contact-number"><i class="fas fa-phone" style="color:#FF5F02; margin-left:12px;"></i>+98 996 259 4436</span></div>
       <p>پشت این شماره، یه تیم متعهد و آماده به خدمته که ۲۴ ساعته، ۷ روز هفته پاسخگوی شماست. از پشتیبانی فنی تا راهنمای خرید، همه چیز با یک تماس حل میشه.</p>
-      <div class="highlight-box">
-        <p><strong>یادتون باشه:</strong> اینجا کوروش گیمه؛ جایی که پشتیبانی، فقط یه کلمه نیست، یه تعهد جدیه.</p>
-      </div>
+      <div class="highlight-box"><p><strong>یادتون باشه:</strong> اینجا کوروش گیمه؛ جایی که پشتیبانی، فقط یه کلمه نیست، یه تعهد جدیه.</p></div>
     </div>
   </div>
 </div>
 
-<!-- ===== MODAL سبد خرید ===== -->
+<!-- ===== CART MODAL ===== -->
 <div class="cart-modal-overlay" id="cartModal">
   <div class="cart-modal">
     <div class="cart-modal-header">
@@ -1130,10 +1097,7 @@
       <button class="cart-close" id="closeCartBtn"><i class="fas fa-times"></i></button>
     </div>
     <div class="cart-items" id="cartItems"></div>
-    <div class="cart-total">
-      <span>مجموع</span>
-      <span id="cartTotalPrice">۰ تومان</span>
-    </div>
+    <div class="cart-total"><span>مجموع</span><span id="cartTotalPrice">۰ تومان</span></div>
     <div class="cart-actions">
       <button class="btn-checkout" id="checkoutBtn"><i class="fas fa-credit-card"></i> پرداخت</button>
       <button class="btn-clear-cart" id="clearCartBtn"><i class="fas fa-trash-alt"></i> خالی کن</button>
@@ -1141,7 +1105,7 @@
   </div>
 </div>
 
-<!-- ===== MODAL پرداخت جدید ===== -->
+<!-- ===== PAYMENT MODAL (جدید با تمام قابلیت‌ها) ===== -->
 <div class="payment-modal-overlay" id="paymentModal">
   <div class="payment-modal">
     <div id="paymentContent">
@@ -1154,14 +1118,19 @@
         <div class="info-row">
           <i class="fas fa-phone-alt"></i>
           <span class="label">شماره تماس پشتیبانی:</span>
-          <span class="value phone">+98 996 259 4436</span>
+          <span class="value phone">
+            <a href="tel:+989962594436">+98 996 259 4436</a>
+          </span>
         </div>
         <div class="info-row">
           <i class="fas fa-credit-card"></i>
           <span class="label">شماره کارت:</span>
-          <span class="value">6219 8619 1234 5678</span>
+          <span class="value" id="cardNumberDisplay">
+            6219 8619 1234 5678
+            <i class="fas fa-copy copy-icon" onclick="copyCardNumber()" title="کپی شماره کارت"></i>
+          </span>
         </div>
-        <div class="info-row" id="cardNumberRow">
+        <div class="info-row">
           <i class="fas fa-user"></i>
           <span class="label">به نام:</span>
           <span class="value">کوروش گیم</span>
@@ -1169,9 +1138,20 @@
       </div>
 
       <div class="discount-box">
-        <i class="fas fa-ticket-alt" style="color:#FF5F02;font-size:1.3rem;display:flex;align-items:center;"></i>
+        <i class="fas fa-ticket-alt" style="color:#FF5F02;font-size:1.2rem;display:flex;align-items:center;"></i>
         <input type="text" id="discountInput" placeholder="کد تخفیف را وارد کنید...">
         <button id="applyDiscountBtn"><i class="fas fa-check"></i> اعمال</button>
+      </div>
+
+      <div style="background:#fcf8f4;border-radius:12px;padding:12px 16px;margin:12px 0;border-right:3px solid #FF5F02;text-align:right;">
+        <p style="font-size:0.9rem;color:#555;margin:0;">
+          <i class="fas fa-info-circle" style="color:#FF5F02;margin-left:6px;"></i>
+          <strong>نکته:</strong> پس از پرداخت، لطفاً فیش واریزی را به 
+          <a href="https://rubika.ir/mohamad_hossein_ev18" target="_blank" style="color:#FF5F02;font-weight:700;text-decoration:none;">
+            <i class="fas fa-paper-plane"></i> پیوی روبیکا
+          </a> 
+          ارسال کنید تا اکانت برای شما فعال شود.
+        </p>
       </div>
 
       <div class="pay-actions">
@@ -1182,8 +1162,14 @@
     <div class="payment-success" id="paymentSuccess">
       <i class="fas fa-check-circle"></i>
       <h3>پرداخت با موفقیت انجام شد!</h3>
-      <p class="success-msg">اکانت‌ها به ایمیل شما ارسال شدند.</p>
-      <button class="btn-pay-confirm" style="margin-top:20px; width:100%;" id="paySuccessCloseBtn"><i class="fas fa-thumbs-up"></i> عالی!</button>
+      <p class="success-msg">
+        لطفاً فیش واریزی را به 
+        <a href="https://rubika.ir/mohamad_hossein_ev18" target="_blank">
+          <i class="fas fa-paper-plane"></i> پیوی روبیکا
+        </a> 
+        ارسال کنید تا اکانت برای شما فعال شود.
+      </p>
+      <button class="btn-pay-confirm" style="margin-top:16px; width:100%;" id="paySuccessCloseBtn"><i class="fas fa-thumbs-up"></i> متوجه شدم</button>
     </div>
   </div>
 </div>
@@ -1227,147 +1213,19 @@
 <script>
   // ===== دیتای محصولات =====
   const products = [
-    { 
-      id: 1, 
-      name: 'کلش اف کلنز', 
-      tag: 'Supercell', 
-      price: 850000, 
-      shortDesc: 'اکانت تالار ۱۴ با قهرمان‌های سطح بالا و سنگ‌های تیره فراوان.', 
-      fullDesc: `این اکانت فوق‌العاده مخصوص کسانی طراحی شده که به دنبال یک اکانت حرفه‌ای و آماده برای وارهای سنگین هستند. با این اکانت می‌تونید در بالاترین سطح رقابت کنید و از بازی لذت ببرید.
-
-ویژگی‌های این اکانت:
-- تالار ۱۴ کامل با تمام ساختمان‌های بیشینه
-- تمام قهرمان‌ها در سطح ۷۵ به بالا
-- بیش از ۵۰۰,۰۰۰ سنگ تیره
-- بیش از ۱۰۰۰ سنگ جادویی
-- ۵۰ پتک وار
-- رنک افسانه‌ای در لیگ وار
-- ۲۰۰۰ جایگاه در تالار جنگ`,
-      img: 'https://play-lh.googleusercontent.com/C5eFC2oVigE2pQ6E_dT89VZfI9tOxKvXL5Pm1UTZ7sp40XfYj6abKqH4Cl3KGkE_Lg', 
-      badge: 'ویژه', 
-      platform: 'clashofclans',
-      icon: 'fa-chess-king',
-      specs: ['تالار ۱۴', 'قهرمان‌های سطح ۷۵+', '۵۰۰k+ سنگ تیره', 'رنک افسانه‌ای']
-    },
-    { 
-      id: 2, 
-      name: 'کلش رویال', 
-      tag: 'Supercell', 
-      price: 650000, 
-      shortDesc: 'اکانت با تمام کارت‌ها در سطح ۱۴، پادشاه ۱۴ و ۲۰۰۰۰۰ ستاره.', 
-      fullDesc: `یک اکانت رقابتی و آماده برای صعود به بالاترین رنک‌های کلش رویال. این اکانت با جمع‌آوری تمام کارت‌ها و ارتقای آنها به سطح ۱۴، یک انتخاب عالی برای بازیکنان حرفه‌ای و کسانی که به دنبال تنوع در دک‌ها هستند.
-
-ویژگی‌های این اکانت:
-- تمام کارت‌ها در سطح ۱۴ (بیشینه)
-- پادشاه سطح ۱۴
-- بیش از ۲۰۰,۰۰۰ ستاره
-- ۵۰ کارت افسانه‌ای
-- رنک Ultimate Champion
-- تمام emotes ویژه
-- ۱۰۰۰ جایگاه در تورنمنت‌ها`,
-      img: 'https://play-lh.googleusercontent.com/BCVhv6aYH5CR5w0s4CJ7t8jLhJjZqVg8tCgYrn8tCgYrn8tCgYrn8tCgYrn8', 
-      badge: 'طلایی', 
-      platform: 'clashroyale',
-      icon: 'fa-chess-queen',
-      specs: ['کارت‌های سطح ۱۴', 'پادشاه ۱۴', '۲۰۰k+ ستاره', 'رنک Ultimate Champion']
-    },
-    { 
-      id: 3, 
-      name: 'کال اف دیوتی موبایل', 
-      tag: 'Activision', 
-      price: 720000, 
-      shortDesc: 'اکانت با تمام اسکین‌های افسانه‌ای و سریال‌های برتر.', 
-      fullDesc: `اگر به دنبال یک اکانت با بهترین اسکین‌ها و سلاح‌های افسانه‌ای در کال اف دیوتی موبایل هستید، این اکانت دقیقاً همان چیزی است که نیاز دارید. با این اکانت می‌توانید در بالاترین سطح رقابت کنید.
-
-ویژگی‌های این اکانت:
-- ۱۵ اسکین افسانه‌ای برای سلاح‌ها
-- شخصیت‌های نادر و ویژه
-- سریال ۲۰۲۶ کامل
-- تمام battle pass های قبلی
-- رنک Legendary
-- بیش از ۱۰۰۰ پوستر و آواتار
-- ۵۰٪ تخفیف برای خریدهای بعدی`,
-      img: 'https://play-lh.googleusercontent.com/7hqvdpGhJhYlVjWfJvLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLh', 
-      badge: 'اورجینال', 
-      platform: 'callofduty',
-      icon: 'fa-crosshairs',
-      specs: ['۱۵ اسکین افسانه‌ای', 'شخصیت‌های نادر', 'سریال ۲۰۲۶', 'رنک Legendary']
-    },
-    { 
-      id: 4, 
-      name: 'کلش اف کلنز', 
-      tag: 'Supercell', 
-      price: 1200000, 
-      shortDesc: 'اکانت تالار ۱۵ با قهرمان‌های بیشینه و کل سنگ‌های تیره.', 
-      fullDesc: `این اکانت یک شات از بهترین اکانت‌های کلش اف کلنز است. با تالار ۱۵ کامل و تمام قهرمان‌های بیشینه، این اکانت برای کسانی که به دنبال قدرتمندترین اکانت ممکن هستند طراحی شده است.
-
-ویژگی‌های این اکانت:
-- تالار ۱۵ کامل با تمام ساختمان‌های بیشینه
-- تمام قهرمان‌ها در سطح ۹۰ به بالا
-- بیش از ۱,۰۰۰,۰۰۰ سنگ تیره
-- تمام سنگ‌های جادویی
-- ۱۰۰ پتک وار
-- رنک افسانه‌ای برتر
-- ۵۰۰۰ جایگاه در تالار جنگ`,
-      img: 'https://play-lh.googleusercontent.com/C5eFC2oVigE2pQ6E_dT89VZfI9tOxKvXL5Pm1UTZ7sp40XfYj6abKqH4Cl3KGkE_Lg', 
-      badge: 'طلایی', 
-      platform: 'clashofclans',
-      icon: 'fa-chess-king',
-      specs: ['تالار ۱۵', 'قهرمان‌های سطح ۹۰+', '۱M+ سنگ تیره', 'رنک افسانه‌ای برتر']
-    },
-    { 
-      id: 5, 
-      name: 'کلش رویال', 
-      tag: 'Supercell', 
-      price: 450000, 
-      shortDesc: 'اکانت مناسب برای شروع با کارت‌های سطح متوسط و ۵۰۰۰ ستاره.', 
-      fullDesc: `یک اکانت عالی برای کسانی که تازه می‌خواهند وارد دنیای رقابتی کلش رویال شوند یا یک اکانت دوم برای تمرین می‌خواهند. این اکانت با کارت‌های سطح متوسط و ستاره‌های مناسب، یک شروع ایده‌آل است.
-
-ویژگی‌های این اکانت:
-- کارت‌های سطح ۱۲ تا ۱۳
-- پادشاه سطح ۱۳
-- بیش از ۵,۰۰۰ ستاره
-- تمام کارت‌های مشترک و نادر
-- رنک Master
-- ۲۰۰ جایگاه در تورنمنت‌ها
-- مناسب برای شروع رقابت`,
-      img: 'https://play-lh.googleusercontent.com/BCVhv6aYH5CR5w0s4CJ7t8jLhJjZqVg8tCgYrn8tCgYrn8tCgYrn8tCgYrn8', 
-      badge: null, 
-      platform: 'clashroyale',
-      icon: 'fa-chess-queen',
-      specs: ['کارت‌های سطح ۱۲-۱۳', 'پادشاه ۱۳', '۵k+ ستاره', 'رنک Master']
-    },
-    { 
-      id: 6, 
-      name: 'کال اف دیوتی موبایل', 
-      tag: 'Activision', 
-      price: 980000, 
-      shortDesc: 'اکانت با سلاح‌های افسانه‌ای، شخصیت‌های نادر و سریال ۲۰۲۶.', 
-      fullDesc: `این اکانت یک مجموعه کامل از بهترین محتوای کال اف دیوتی موبایل است. با سلاح‌های افسانه‌ای، شخصیت‌های نادر و سریال ۲۰۲۶، شما یک قدم جلوتر از رقبا هستید.
-
-ویژگی‌های این اکانت:
-- ۲۰ اسکین افسانه‌ای برای سلاح‌ها
-- شخصیت‌های بسیار نادر
-- سریال ۲۰۲۶ کامل + تمام محتوای اضافه
-- تمام battle pass های جدید
-- رنک Legendary
-- بیش از ۲۰۰۰ پوستر و آواتار
-- ۱۰۰٪ تضمین اصالت`,
-      img: 'https://play-lh.googleusercontent.com/7hqvdpGhJhYlVjWfJvLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLh', 
-      badge: 'حراج', 
-      platform: 'callofduty',
-      icon: 'fa-crosshairs',
-      specs: ['۲۰ اسکین افسانه‌ای', 'شخصیت‌های نادر', 'سریال ۲۰۲۶', 'رنک Legendary']
-    }
+    { id: 1, name: 'کلش اف کلنز', tag: 'Supercell', price: 850000, shortDesc: 'اکانت تالار ۱۴ با قهرمان‌های سطح بالا و سنگ‌های تیره فراوان.', fullDesc: 'این اکانت فوق‌العاده مخصوص کسانی طراحی شده که به دنبال یک اکانت حرفه‌ای و آماده برای وارهای سنگین هستند. با این اکانت می‌تونید در بالاترین سطح رقابت کنید و از بازی لذت ببرید.\n\nویژگی‌های این اکانت:\n- تالار ۱۴ کامل با تمام ساختمان‌های بیشینه\n- تمام قهرمان‌ها در سطح ۷۵ به بالا\n- بیش از ۵۰۰,۰۰۰ سنگ تیره\n- بیش از ۱۰۰۰ سنگ جادویی\n- ۵۰ پتک وار\n- رنک افسانه‌ای در لیگ وار\n- ۲۰۰۰ جایگاه در تالار جنگ', img: 'https://play-lh.googleusercontent.com/C5eFC2oVigE2pQ6E_dT89VZfI9tOxKvXL5Pm1UTZ7sp40XfYj6abKqH4Cl3KGkE_Lg', badge: 'ویژه', platform: 'clashofclans', icon: 'fa-chess-king', specs: ['تالار ۱۴', 'قهرمان‌های سطح ۷۵+', '۵۰۰k+ سنگ تیره', 'رنک افسانه‌ای'] },
+    { id: 2, name: 'کلش رویال', tag: 'Supercell', price: 650000, shortDesc: 'اکانت با تمام کارت‌ها در سطح ۱۴، پادشاه ۱۴ و ۲۰۰۰۰۰ ستاره.', fullDesc: 'یک اکانت رقابتی و آماده برای صعود به بالاترین رنک‌های کلش رویال. این اکانت با جمع‌آوری تمام کارت‌ها و ارتقای آنها به سطح ۱۴، یک انتخاب عالی برای بازیکنان حرفه‌ای و کسانی که به دنبال تنوع در دک‌ها هستند.\n\nویژگی‌های این اکانت:\n- تمام کارت‌ها در سطح ۱۴ (بیشینه)\n- پادشاه سطح ۱۴\n- بیش از ۲۰۰,۰۰۰ ستاره\n- ۵۰ کارت افسانه‌ای\n- رنک Ultimate Champion\n- تمام emotes ویژه\n- ۱۰۰۰ جایگاه در تورنمنت‌ها', img: 'https://play-lh.googleusercontent.com/BCVhv6aYH5CR5w0s4CJ7t8jLhJjZqVg8tCgYrn8tCgYrn8tCgYrn8tCgYrn8', badge: 'طلایی', platform: 'clashroyale', icon: 'fa-chess-queen', specs: ['کارت‌های سطح ۱۴', 'پادشاه ۱۴', '۲۰۰k+ ستاره', 'رنک Ultimate Champion'] },
+    { id: 3, name: 'کال اف دیوتی موبایل', tag: 'Activision', price: 720000, shortDesc: 'اکانت با تمام اسکین‌های افسانه‌ای و سریال‌های برتر.', fullDesc: 'اگر به دنبال یک اکانت با بهترین اسکین‌ها و سلاح‌های افسانه‌ای در کال اف دیوتی موبایل هستید، این اکانت دقیقاً همان چیزی است که نیاز دارید. با این اکانت می‌توانید در بالاترین سطح رقابت کنید.\n\nویژگی‌های این اکانت:\n- ۱۵ اسکین افسانه‌ای برای سلاح‌ها\n- شخصیت‌های نادر و ویژه\n- سریال ۲۰۲۶ کامل\n- تمام battle pass های قبلی\n- رنک Legendary\n- بیش از ۱۰۰۰ پوستر و آواتار\n- ۵۰٪ تخفیف برای خریدهای بعدی', img: 'https://play-lh.googleusercontent.com/7hqvdpGhJhYlVjWfJvLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLh', badge: 'اورجینال', platform: 'callofduty', icon: 'fa-crosshairs', specs: ['۱۵ اسکین افسانه‌ای', 'شخصیت‌های نادر', 'سریال ۲۰۲۶', 'رنک Legendary'] },
+    { id: 4, name: 'کلش اف کلنز', tag: 'Supercell', price: 1200000, shortDesc: 'اکانت تالار ۱۵ با قهرمان‌های بیشینه و کل سنگ‌های تیره.', fullDesc: 'این اکانت یک شات از بهترین اکانت‌های کلش اف کلنز است. با تالار ۱۵ کامل و تمام قهرمان‌های بیشینه، این اکانت برای کسانی که به دنبال قدرتمندترین اکانت ممکن هستند طراحی شده است.\n\nویژگی‌های این اکانت:\n- تالار ۱۵ کامل با تمام ساختمان‌های بیشینه\n- تمام قهرمان‌ها در سطح ۹۰ به بالا\n- بیش از ۱,۰۰۰,۰۰۰ سنگ تیره\n- تمام سنگ‌های جادویی\n- ۱۰۰ پتک وار\n- رنک افسانه‌ای برتر\n- ۵۰۰۰ جایگاه در تالار جنگ', img: 'https://play-lh.googleusercontent.com/C5eFC2oVigE2pQ6E_dT89VZfI9tOxKvXL5Pm1UTZ7sp40XfYj6abKqH4Cl3KGkE_Lg', badge: 'طلایی', platform: 'clashofclans', icon: 'fa-chess-king', specs: ['تالار ۱۵', 'قهرمان‌های سطح ۹۰+', '۱M+ سنگ تیره', 'رنک افسانه‌ای برتر'] },
+    { id: 5, name: 'کلش رویال', tag: 'Supercell', price: 450000, shortDesc: 'اکانت مناسب برای شروع با کارت‌های سطح متوسط و ۵۰۰۰ ستاره.', fullDesc: 'یک اکانت عالی برای کسانی که تازه می‌خواهند وارد دنیای رقابتی کلش رویال شوند یا یک اکانت دوم برای تمرین می‌خواهند. این اکانت با کارت‌های سطح متوسط و ستاره‌های مناسب، یک شروع ایده‌آل است.\n\nویژگی‌های این اکانت:\n- کارت‌های سطح ۱۲ تا ۱۳\n- پادشاه سطح ۱۳\n- بیش از ۵,۰۰۰ ستاره\n- تمام کارت‌های مشترک و نادر\n- رنک Master\n- ۲۰۰ جایگاه در تورنمنت‌ها\n- مناسب برای شروع رقابت', img: 'https://play-lh.googleusercontent.com/BCVhv6aYH5CR5w0s4CJ7t8jLhJjZqVg8tCgYrn8tCgYrn8tCgYrn8tCgYrn8', badge: null, platform: 'clashroyale', icon: 'fa-chess-queen', specs: ['کارت‌های سطح ۱۲-۱۳', 'پادشاه ۱۳', '۵k+ ستاره', 'رنک Master'] },
+    { id: 6, name: 'کال اف دیوتی موبایل', tag: 'Activision', price: 980000, shortDesc: 'اکانت با سلاح‌های افسانه‌ای، شخصیت‌های نادر و سریال ۲۰۲۶.', fullDesc: 'این اکانت یک مجموعه کامل از بهترین محتوای کال اف دیوتی موبایل است. با سلاح‌های افسانه‌ای، شخصیت‌های نادر و سریال ۲۰۲۶، شما یک قدم جلوتر از رقبا هستید.\n\nویژگی‌های این اکانت:\n- ۲۰ اسکین افسانه‌ای برای سلاح‌ها\n- شخصیت‌های بسیار نادر\n- سریال ۲۰۲۶ کامل + تمام محتوای اضافه\n- تمام battle pass های جدید\n- رنک Legendary\n- بیش از ۲۰۰۰ پوستر و آواتار\n- ۱۰۰٪ تضمین اصالت', img: 'https://play-lh.googleusercontent.com/7hqvdpGhJhYlVjWfJvLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLh', badge: 'حراج', platform: 'callofduty', icon: 'fa-crosshairs', specs: ['۲۰ اسکین افسانه‌ای', 'شخصیت‌های نادر', 'سریال ۲۰۲۶', 'رنک Legendary'] }
   ];
 
-  // ===== سبد خرید =====
   let cart = [];
   let currentFilter = 'all';
   let searchQuery = '';
   let discountApplied = false;
 
-  // ===== المنت‌ها =====
   const productGrid = document.getElementById('productGrid');
   const cartModal = document.getElementById('cartModal');
   const openCartBtn = document.getElementById('openCartBtn');
@@ -1390,7 +1248,6 @@
   const discountInput = document.getElementById('discountInput');
   const applyDiscountBtn = document.getElementById('applyDiscountBtn');
 
-  // ===== صفحه جزییات =====
   const productDetailPage = document.getElementById('productDetailPage');
   const detailBackBtn = document.getElementById('detailBackBtn');
   const detailImage = document.getElementById('detailImage');
@@ -1401,7 +1258,49 @@
   const productsSection = document.getElementById('productsSection');
   const sectionTitle = document.getElementById('sectionTitle');
 
-  // ===== توابع جستجوی فازی =====
+  // ===== کپی شماره کارت =====
+  function copyCardNumber() {
+    const cardNumber = '6219861912345678';
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(cardNumber).then(() => {
+        showToast('✅ شماره کارت کپی شد!');
+      }).catch(() => {
+        fallbackCopy(cardNumber);
+      });
+    } else {
+      fallbackCopy(cardNumber);
+    }
+  }
+
+  function fallbackCopy(text) {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.select();
+    try {
+      document.execCommand('copy');
+      showToast('✅ شماره کارت کپی شد!');
+    } catch (err) {
+      showToast('❌ کپی نشد، لطفاً دستی کپی کنید.');
+    }
+    document.body.removeChild(textarea);
+  }
+
+  function showToast(msg) {
+    const toast = document.createElement('div');
+    toast.textContent = msg;
+    toast.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1e1e1e;color:#fff;padding:12px 24px;border-radius:60px;font-family:Vazirmatn,sans-serif;font-size:0.95rem;z-index:99999;box-shadow:0 8px 30px rgba(0,0,0,0.3);animation:fadeIn 0.3s ease;';
+    document.body.appendChild(toast);
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      toast.style.transition = '0.3s';
+      setTimeout(() => toast.remove(), 300);
+    }, 2500);
+  }
+
+  // ===== توابع جستجو =====
   function getLevenshteinDistance(a, b) {
     const matrix = [];
     for (let i = 0; i <= b.length; i++) {
@@ -1415,11 +1314,7 @@
         if (b[i-1] === a[j-1]) {
           matrix[i][j] = matrix[i-1][j-1];
         } else {
-          matrix[i][j] = Math.min(
-            matrix[i-1][j-1] + 1,
-            matrix[i][j-1] + 1,
-            matrix[i-1][j] + 1
-          );
+          matrix[i][j] = Math.min(matrix[i-1][j-1] + 1, matrix[i][j-1] + 1, matrix[i-1][j] + 1);
         }
       }
     }
@@ -1432,8 +1327,7 @@
     const t = text.trim().toLowerCase().replace(/\s+/g, '');
     if (t.includes(q)) return true;
     const maxDist = Math.max(1, Math.floor(q.length * 0.4));
-    const distance = getLevenshteinDistance(q, t);
-    return distance <= maxDist;
+    return getLevenshteinDistance(q, t) <= maxDist;
   }
 
   function multiWordSearch(query, text) {
@@ -1441,16 +1335,12 @@
     const words = query.trim().toLowerCase().split(/\s+/);
     const cleanText = text.trim().toLowerCase().replace(/\s+/g, ' ');
     for (const word of words) {
-      if (word.length > 0) {
-        if (!fuzzySearch(word, cleanText)) {
-          return false;
-        }
-      }
+      if (word.length > 0 && !fuzzySearch(word, cleanText)) return false;
     }
     return true;
   }
 
-  // ===== توابع نمایش صفحات =====
+  // ===== نمایش صفحات =====
   const pageRules = document.getElementById('pageRules');
   const pageAbout = document.getElementById('pageAbout');
   const pageContact = document.getElementById('pageContact');
@@ -1488,7 +1378,7 @@
     });
   });
 
-  // ===== تب‌های منو =====
+  // ===== منو =====
   const navLinks = document.querySelectorAll('.nav-menu a[data-tab]');
   navLinks.forEach(link => {
     link.addEventListener('click', function(e) {
@@ -1549,17 +1439,10 @@
     let html = '';
     for (const p of suggestions) {
       const highlightName = p.name.replace(new RegExp(query, 'gi'), match => `<span class="highlight">${match}</span>`);
-      html += `
-        <div class="suggestion-item" data-id="${p.id}">
-          <i class="fas ${p.icon || 'fa-gamepad'}"></i>
-          <span>${highlightName}</span>
-          <span style="color:#888;font-size:0.8rem;margin-right:auto;">${p.price.toLocaleString()} تومان</span>
-        </div>
-      `;
+      html += `<div class="suggestion-item" data-id="${p.id}"><i class="fas ${p.icon || 'fa-gamepad'}"></i><span>${highlightName}</span><span style="color:#888;font-size:0.8rem;margin-right:auto;">${p.price.toLocaleString()} تومان</span></div>`;
     }
     searchSuggestions.innerHTML = html;
     searchSuggestions.classList.add('active');
-
     document.querySelectorAll('.suggestion-item').forEach(item => {
       item.addEventListener('click', function() {
         const id = parseInt(this.dataset.id);
@@ -1597,11 +1480,8 @@
   });
 
   searchBtn.addEventListener('click', doSearch);
-
   document.addEventListener('click', function(e) {
-    if (!e.target.closest('.search-box')) {
-      searchSuggestions.classList.remove('active');
-    }
+    if (!e.target.closest('.search-box')) searchSuggestions.classList.remove('active');
   });
 
   // ===== نمایش جزییات =====
@@ -1614,14 +1494,7 @@
 
     detailImage.innerHTML = `<img src="${product.img}" alt="${product.name}" onerror="this.parentElement.innerHTML='<i class=\\'fas ${product.icon || 'fa-gamepad'}\\' style=\\'font-size:5rem;color:#FF5F02;opacity:0.3;display:flex;align-items:center;justify-content:center;height:100%;\\'></i>'">`;
 
-    const specsHtml = product.specs ? `
-      <div class="detail-specs">
-        <h4><i class="fas fa-list-ul"></i> مشخصات اکانت:</h4>
-        <ul>
-          ${product.specs.map(s => `<li><i class="fas fa-check-circle"></i> ${s}</li>`).join('')}
-        </ul>
-      </div>
-    ` : '';
+    const specsHtml = product.specs ? `<div class="detail-specs"><h4><i class="fas fa-list-ul"></i> مشخصات اکانت:</h4><ul>${product.specs.map(s => `<li><i class="fas fa-check-circle"></i> ${s}</li>`).join('')}</ul></div>` : '';
 
     detailInfo.innerHTML = `
       <h1><i class="fas ${product.icon || 'fa-gamepad'}"></i> ${product.name}</h1>
@@ -1637,17 +1510,13 @@
     `;
 
     const related = products.filter(p => p.id !== product.id && p.platform === product.platform);
-    if (related.length === 0) {
-      relatedGrid.innerHTML = '<p style="color:#888;">محصول مشابهی یافت نشد.</p>';
-    } else {
-      relatedGrid.innerHTML = related.map(p => `
-        <div class="related-item" onclick="showProductDetail(products.find(pr => pr.id === ${p.id}))">
-          <img src="${p.img}" alt="${p.name}" onerror="this.style.display='none'">
-          <h4>${p.name}</h4>
-          <div class="r-price">${p.price.toLocaleString()} تومان</div>
-        </div>
-      `).join('');
-    }
+    relatedGrid.innerHTML = related.length ? related.map(p => `
+      <div class="related-item" onclick="showProductDetail(products.find(pr => pr.id === ${p.id}))">
+        <img src="${p.img}" alt="${p.name}" onerror="this.style.display='none'">
+        <h4>${p.name}</h4>
+        <div class="r-price">${p.price.toLocaleString()} تومان</div>
+      </div>
+    `).join('') : '<p style="color:#888;">محصول مشابهی یافت نشد.</p>';
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
@@ -1662,24 +1531,18 @@
   // ===== رندر محصولات =====
   function renderProducts() {
     let filtered = [...products];
-
     if (currentFilter === 'special') {
       filtered = filtered.filter(p => p.badge && (p.badge === 'ویژه' || p.badge === 'طلایی' || p.badge === 'جدید'));
     } else if (currentFilter !== 'all') {
       filtered = filtered.filter(p => p.platform === currentFilter);
     }
-
     if (searchQuery) {
-      filtered = filtered.filter(p =>
-        multiWordSearch(searchQuery, p.name + ' ' + p.tag + ' ' + p.shortDesc + ' ' + (p.fullDesc || ''))
-      );
+      filtered = filtered.filter(p => multiWordSearch(searchQuery, p.name + ' ' + p.tag + ' ' + p.shortDesc + ' ' + (p.fullDesc || '')));
     }
-
     if (filtered.length === 0) {
       productGrid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:60px 0; color:#888;"><i class="fas fa-search" style="font-size:3rem; display:block; margin-bottom:16px;"></i> محصولی یافت نشد</div>`;
       return;
     }
-
     productGrid.innerHTML = filtered.map(p => {
       const badgeHtml = p.badge ? `<span class="product-badge"><i class="fas fa-star"></i> ${p.badge}</span>` : '';
       const icon = p.icon || 'fa-gamepad';
@@ -1708,7 +1571,7 @@
     }).join('');
   }
 
-  // ===== توابع سبد =====
+  // ===== سبد خرید =====
   function addToCart(product) {
     const existing = cart.find(item => item.id === product.id);
     if (existing) existing.qty += 1;
@@ -1735,9 +1598,7 @@
 
   function getTotal() {
     let total = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
-    if (discountApplied) {
-      total = Math.floor(total * 0.9);
-    }
+    if (discountApplied) total = Math.floor(total * 0.9);
     return total;
   }
 
@@ -1754,9 +1615,7 @@
       const icon = item.icon || 'fa-gamepad';
       html += `
         <div class="cart-item">
-          <div style="width:60px;height:60px;border-radius:16px;background:#f0ece8;display:flex;align-items:center;justify-content:center;font-size:2rem;color:#FF5F02;flex-shrink:0;">
-            <i class="fas ${icon}"></i>
-          </div>
+          <div style="width:60px;height:60px;border-radius:16px;background:#f0ece8;display:flex;align-items:center;justify-content:center;font-size:2rem;color:#FF5F02;flex-shrink:0;"><i class="fas ${icon}"></i></div>
           <div class="cart-item-info">
             <h4>${item.name}</h4>
             <div>
@@ -1806,7 +1665,6 @@
     paymentModal.classList.add('active');
   });
 
-  // کد تخفیف
   applyDiscountBtn.addEventListener('click', function() {
     const code = discountInput.value.trim().toUpperCase();
     if (code === 'KOUROSH10' || code === 'GAME10') {
@@ -1849,9 +1707,8 @@
     paymentSuccess.style.display = 'none';
   });
 
-  // ===== مقداردهی اولیه =====
   renderProducts();
   updateCartUI();
 </script>
 </body>
-  </html>
+</html>
