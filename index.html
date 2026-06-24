@@ -659,7 +659,6 @@
     .btn-clear-cart { background: #f0ece8; color: #444; }
     .btn-clear-cart:hover { background: #e0d8d0; }
 
-    /* ===== مودال پرداخت جدید با ریسپانسیو ===== */
     .payment-modal-overlay {
       display: none;
       position: fixed;
@@ -688,16 +687,8 @@
       overflow-y: auto;
     }
     .payment-modal .payment-icon { font-size: 3.5rem; color: #FF5F02; margin-bottom: 8px; }
-    .payment-modal h2 {
-      font-size: 1.6rem;
-      font-weight: 800;
-      margin-bottom: 4px;
-    }
-    .payment-modal .sub-title {
-      color: #777;
-      font-size: 0.9rem;
-      margin-bottom: 16px;
-    }
+    .payment-modal h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: 4px; }
+    .payment-modal .sub-title { color: #777; font-size: 0.9rem; margin-bottom: 16px; }
     .payment-modal .total-amount {
       font-size: 2rem;
       font-weight: 900;
@@ -729,21 +720,14 @@
       text-align: center;
       flex-shrink: 0;
     }
-    .payment-modal .pay-info .info-row .label {
-      color: #555;
-      font-weight: 500;
-      font-size: 0.9rem;
-    }
+    .payment-modal .pay-info .info-row .label { color: #555; font-weight: 500; font-size: 0.9rem; }
     .payment-modal .pay-info .info-row .value {
       font-weight: 700;
       color: #1e1e1e;
       direction: ltr;
       word-break: break-all;
     }
-    .payment-modal .pay-info .info-row .value.phone {
-      color: #FF5F02;
-      font-size: 1rem;
-    }
+    .payment-modal .pay-info .info-row .value.phone { color: #FF5F02; font-size: 1rem; }
     .payment-modal .pay-info .info-row .value .copy-icon {
       cursor: pointer;
       color: #FF5F02;
@@ -751,17 +735,13 @@
       font-size: 0.9rem;
       transition: 0.2s;
     }
-    .payment-modal .pay-info .info-row .value .copy-icon:hover {
-      transform: scale(1.2);
-    }
+    .payment-modal .pay-info .info-row .value .copy-icon:hover { transform: scale(1.2); }
     .payment-modal .pay-info .info-row .value a {
       color: #FF5F02;
       text-decoration: none;
       font-weight: 700;
     }
-    .payment-modal .pay-info .info-row .value a:hover {
-      text-decoration: underline;
-    }
+    .payment-modal .pay-info .info-row .value a:hover { text-decoration: underline; }
     .payment-modal .discount-box {
       display: flex;
       gap: 8px;
@@ -824,29 +804,13 @@
       display: none;
       padding: 16px 0;
     }
-    .payment-success i {
-      font-size: 4.5rem;
-      color: #2ecc71;
-      margin-bottom: 10px;
-    }
-    .payment-success h3 {
-      font-size: 1.5rem;
-      color: #2ecc71;
-    }
-    .payment-success .success-msg {
-      color: #555;
-      margin-top: 6px;
-      font-size: 0.95rem;
-    }
-    .payment-success .success-msg a {
-      color: #FF5F02;
-      font-weight: 700;
-      text-decoration: none;
-    }
-    .payment-success .success-msg a:hover {
-      text-decoration: underline;
-    }
+    .payment-success i { font-size: 4.5rem; color: #2ecc71; margin-bottom: 10px; }
+    .payment-success h3 { font-size: 1.5rem; color: #2ecc71; }
+    .payment-success .success-msg { color: #555; margin-top: 6px; font-size: 0.95rem; }
+    .payment-success .success-msg a { color: #FF5F02; font-weight: 700; text-decoration: none; }
+    .payment-success .success-msg a:hover { text-decoration: underline; }
 
+    /* ===== صفحات قوانین، درباره ما، تماس با دکمه برگشت ===== */
     .page-content {
       display: none;
       padding: 40px 0 60px;
@@ -859,6 +823,7 @@
       align-items: center;
       gap: 16px;
       margin-bottom: 24px;
+      flex-wrap: wrap;
     }
     .page-content .page-header i { font-size: 2.8rem; color: #FF5F02; }
     .page-content .page-header h2 { font-size: 2rem; font-weight: 800; color: #1e1e1e; }
@@ -884,6 +849,23 @@
       border-radius: 60px;
       margin: 10px 0;
     }
+    .page-back-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #FF5F02;
+      color: #fff;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      font-family: 'Vazirmatn', sans-serif;
+      transition: 0.2s;
+      margin-top: 24px;
+    }
+    .page-back-home:hover { background: #d94f00; transform: scale(1.02); }
 
     footer {
       background: #1a1a1a;
@@ -971,6 +953,7 @@
       .product-actions { flex-direction: column; }
       .btn-detail { flex: 1; }
       .payment-modal .pay-actions button { min-width: 80px; font-size: 0.85rem; padding: 10px; }
+      .page-content .page-header { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
@@ -1046,10 +1029,13 @@
   </div>
 </div>
 
-<!-- ===== PAGES ===== -->
+<!-- ===== PAGE: قوانین (با دکمه برگشت) ===== -->
 <div class="page-content" id="pageRules">
   <div class="container">
-    <div class="page-header"><i class="fas fa-gavel"></i><h2>قوانین خرید از فروشگاه کوروش گیم</h2></div>
+    <div class="page-header">
+      <i class="fas fa-gavel"></i>
+      <h2>قوانین خرید از فروشگاه کوروش گیم</h2>
+    </div>
     <div class="page-body">
       <p style="font-size:1.1rem; font-weight:600; color:#FF5F02;">سلام مشتری عزیز! قبل از خرید، لطفاً این چند تا قانون ساده رو بخون تا خرید خوب و بی‌دردسری داشته باشی:</p>
       <ul>
@@ -1061,30 +1047,41 @@
         <li><strong>۶. مشکلات فنی:</strong> اگر به هر دلیلی مشکل فنی پیش اومد، بلافاصله با پشتیبانی تماس بگیر تا راهنماییت کنن.</li>
         <li><strong>۷. حق تغییرات:</strong> فروشگاه این حق رو داره که در صورت نیاز، قوانین رو به‌روز کنه. تغییرات جدید از طریق سایت اعلام میشه.</li>
       </ul>
+      <button class="page-back-home" onclick="showHome()"><i class="fas fa-arrow-right"></i> بازگشت به خانه</button>
     </div>
   </div>
 </div>
 
+<!-- ===== PAGE: درباره ما ===== -->
 <div class="page-content" id="pageAbout">
   <div class="container">
-    <div class="page-header"><i class="fas fa-users"></i><h2>درباره ما</h2></div>
+    <div class="page-header">
+      <i class="fas fa-users"></i>
+      <h2>درباره ما</h2>
+    </div>
     <div class="page-body">
       <p>سلام! ما تیم کوروش گیم هستیم. داستانمون از یه اتاق کوچیک و دو تا عاشق بازی شروع شد. دیدیم تو ایران واسه خرید اکانت اورجینال، کلی راه دور و پرپیچ و خم هست، پس گفتمون چرا خودمون یه مسیر مستقیم و امن نسازیم؟</p>
       <p>از همون روز، با یه هدف ساده شروع کردیم: تبدیل شدن به معتبرترین پل ارتباطی بین شما و دنیای بازی. نه واسطه‌های الکی، نه قیمت‌های نجومی، فقط یه فروشگاه که پشتش دو تا آدم باغیرت و یه عالمه عشق به بازیه.</p>
       <div class="highlight-box"><p>امروز، تیممون بزرگتر شده، ولی هنوز همون روحیه اول رو داریم: خرید آسون، اکانت اصل، پشتیبانی ۲۴/۷. و صادقانه بگیم، بزرگترین سرمایه‌مون، اعتماد شماست. اینکه شما رو داریم، برای ما از هر دی ال سی و آپدیتی باارزش‌تره.</p></div>
       <p>پس خوش اومدید به خونه دوم گیمرهای ایران. اینجا کوروش گیمه؛ جایی که بازی، جدی گرفته میشه.</p>
+      <button class="page-back-home" onclick="showHome()"><i class="fas fa-arrow-right"></i> بازگشت به خانه</button>
     </div>
   </div>
 </div>
 
+<!-- ===== PAGE: تماس با ما ===== -->
 <div class="page-content" id="pageContact">
   <div class="container">
-    <div class="page-header"><i class="fas fa-phone-alt"></i><h2>تماس با ما</h2></div>
+    <div class="page-header">
+      <i class="fas fa-phone-alt"></i>
+      <h2>تماس با ما</h2>
+    </div>
     <div class="page-body">
       <p>ما، گروه رسمی و حرفه‌ای کوروش گیم، اینجاییم تا توی هر مرحله از خرید، کنارتون باشیم. سوال داری؟ مشکل پیش اومده؟ یا فقط میخوای یه مشاوره خوب بگیری؟</p>
       <div style="margin: 20px 0;"><span class="contact-number"><i class="fas fa-phone" style="color:#FF5F02; margin-left:12px;"></i>+98 996 259 4436</span></div>
       <p>پشت این شماره، یه تیم متعهد و آماده به خدمته که ۲۴ ساعته، ۷ روز هفته پاسخگوی شماست. از پشتیبانی فنی تا راهنمای خرید، همه چیز با یک تماس حل میشه.</p>
       <div class="highlight-box"><p><strong>یادتون باشه:</strong> اینجا کوروش گیمه؛ جایی که پشتیبانی، فقط یه کلمه نیست، یه تعهد جدیه.</p></div>
+      <button class="page-back-home" onclick="showHome()"><i class="fas fa-arrow-right"></i> بازگشت به خانه</button>
     </div>
   </div>
 </div>
@@ -1105,7 +1102,7 @@
   </div>
 </div>
 
-<!-- ===== PAYMENT MODAL (جدید با تمام قابلیت‌ها) ===== -->
+<!-- ===== PAYMENT MODAL ===== -->
 <div class="payment-modal-overlay" id="paymentModal">
   <div class="payment-modal">
     <div id="paymentContent">
@@ -1499,7 +1496,7 @@
     detailInfo.innerHTML = `
       <h1><i class="fas ${product.icon || 'fa-gamepad'}"></i> ${product.name}</h1>
       <span class="detail-tag"><i class="fas fa-tag"></i> ${product.tag}</span>
-      ${product.badge ? `<span class="detail-tag" style="background:#FF5F02;color:#fff;margin-right:8px;"><i class="fas fa-star"></i> ${product.badge}</span>` : ''}
+      ${product.badge ? `<span class="detail-tag" style="background:#FF5F02;color:#fff;margin-right:8px;"><i class="fas fa-crown"></i> ${product.badge}</span>` : ''}
       <div class="detail-price"><i class="fas fa-toman"></i> ${product.price.toLocaleString()} <small>تومان</small></div>
       <div class="detail-desc">${product.fullDesc || product.shortDesc}</div>
       ${specsHtml}
@@ -1544,7 +1541,7 @@
       return;
     }
     productGrid.innerHTML = filtered.map(p => {
-      const badgeHtml = p.badge ? `<span class="product-badge"><i class="fas fa-star"></i> ${p.badge}</span>` : '';
+      const badgeHtml = p.badge ? `<span class="product-badge"><i class="fas fa-crown"></i> ${p.badge}</span>` : '';
       const icon = p.icon || 'fa-gamepad';
       return `
         <div class="product-card">
@@ -1690,12 +1687,19 @@
     if (e.key === 'Enter') applyDiscountBtn.click();
   });
 
-  payCancelBtn.addEventListener('click', function() { paymentModal.classList.remove('active'); });
-  paymentModal.addEventListener('click', function(e) { if (e.target === this) paymentModal.classList.remove('active'); });
+  // ===== دکمه انصراف فقط مودال رو می‌بنده (سبد رو خالی نمی‌کنه) =====
+  payCancelBtn.addEventListener('click', function() { 
+    paymentModal.classList.remove('active');
+  });
+  
+  paymentModal.addEventListener('click', function(e) { 
+    if (e.target === this) paymentModal.classList.remove('active');
+  });
 
   payConfirmBtn.addEventListener('click', function() {
     paymentContent.style.display = 'none';
     paymentSuccess.style.display = 'block';
+    // سبد رو خالی می‌کنیم چون پرداخت انجام شده
     cart = [];
     discountApplied = false;
     updateCartUI();
