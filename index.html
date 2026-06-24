@@ -494,7 +494,6 @@
       font-size: 1rem;
     }
 
-    /* ===== گالری کشویی ===== */
     .gallery-section {
       margin-top: 30px;
       border-top: 2px solid #f0ebe6;
@@ -517,20 +516,10 @@
       justify-content: space-between;
       gap: 12px;
     }
-    .gallery-toggle:hover {
-      background: #fff3e8;
-    }
-    .gallery-toggle i {
-      color: #FF5F02;
-      font-size: 1.4rem;
-      transition: 0.3s;
-    }
-    .gallery-toggle .arrow-icon {
-      transition: 0.3s;
-    }
-    .gallery-toggle .arrow-icon.open {
-      transform: rotate(180deg);
-    }
+    .gallery-toggle:hover { background: #fff3e8; }
+    .gallery-toggle i { color: #FF5F02; font-size: 1.4rem; }
+    .gallery-toggle .arrow-icon { transition: 0.3s; }
+    .gallery-toggle .arrow-icon.open { transform: rotate(180deg); }
     .gallery-content {
       max-height: 0;
       overflow: hidden;
@@ -553,10 +542,7 @@
       border: 1px solid #f0ebe6;
       transition: 0.3s;
     }
-    .gallery-item:hover {
-      transform: scale(1.02);
-      border-color: #FF5F02;
-    }
+    .gallery-item:hover { transform: scale(1.02); border-color: #FF5F02; }
     .gallery-item img {
       width: 100%;
       height: 300px;
@@ -1356,7 +1342,7 @@
     return newProduct;
   }
 
-  // ===== افزودن محصول با مشخصات داده شده =====
+  // ===== افزودن محصول نمونه =====
   addProduct({
     name: 'اکانت کلش | به نام | عـقرب',
     tag: 'سوپرسل',
@@ -1665,7 +1651,7 @@
     if (!e.target.closest('.search-box')) searchSuggestions.classList.remove('active');
   });
 
-  // ===== نمایش جزییات محصول با گالری کشویی =====
+  // ===== نمایش جزییات محصول =====
   function showProductDetail(product) {
     [pageRules, pageAbout, pageContact].forEach(p => p.classList.remove('active'));
     heroSection.style.display = 'none';
@@ -1673,13 +1659,10 @@
     productsSection.style.display = 'none';
     productDetailPage.classList.add('active');
 
-    // عکس اصلی
     detailImage.innerHTML = `<img src="${product.img}" alt="${product.name}" onerror="this.parentElement.innerHTML='<i class=\\'fas ${product.icon || 'fa-gamepad'}\\' style=\\'font-size:5rem;color:#FF5F02;opacity:0.3;display:flex;align-items:center;justify-content:center;height:100%;\\'></i>'">`;
 
-    // مشخصات
     const specsHtml = product.specs && product.specs.length ? `<div class="detail-specs"><h4><i class="fas fa-list-ul"></i> مشخصات اکانت:</h4><ul>${product.specs.map(s => `<li><i class="fas fa-check-circle"></i> ${s}</li>`).join('')}</ul></div>` : '';
 
-    // اطلاعات اصلی
     detailInfo.innerHTML = `
       <h1><i class="fas ${product.icon || 'fa-gamepad'}"></i> ${product.name}</h1>
       <span class="detail-tag"><i class="fas fa-tag"></i> ${product.tag}</span>
@@ -1693,7 +1676,6 @@
       </div>
     `;
 
-    // ===== گالری کشویی =====
     if (product.gallery && product.gallery.length > 0) {
       document.getElementById('gallerySection').style.display = 'block';
       galleryGrid.innerHTML = product.gallery.map(item => `
@@ -1702,14 +1684,12 @@
           <div class="gallery-caption">${item.caption || ''}</div>
         </div>
       `).join('');
-      // بستن گالری به حالت اولیه
       galleryContent.classList.remove('open');
       galleryArrow.classList.remove('open');
     } else {
       document.getElementById('gallerySection').style.display = 'none';
     }
 
-    // ===== محصولات مشابه =====
     const related = products.filter(p => p.id !== product.id && p.platform === product.platform);
     relatedGrid.innerHTML = related.length ? related.map(p => `
       <div class="related-item" onclick="showProductDetail(products.find(pr => pr.id === ${p.id}))">
@@ -1722,7 +1702,7 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // ===== گالری کشویی (باز و بسته شدن) =====
+  // ===== گالری کشویی =====
   galleryToggle.addEventListener('click', function() {
     galleryContent.classList.toggle('open');
     galleryArrow.classList.toggle('open');
@@ -1925,4 +1905,4 @@
   updateCartUI();
 </script>
 </body>
-  </html>
+        </html>
