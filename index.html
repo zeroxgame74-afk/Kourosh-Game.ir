@@ -266,7 +266,7 @@
     }
     .product-image {
       width: 100%;
-      height: 200px;
+      aspect-ratio: 2 / 1;
       background: #f5f0eb;
       display: flex;
       align-items: center;
@@ -420,12 +420,12 @@
       border-radius: 28px;
       overflow: hidden;
       background: #f5f0eb;
-      max-height: 550px;
       position: relative;
     }
     .detail-image img {
       width: 100%;
       height: 100%;
+      aspect-ratio: 2 / 1;
       object-fit: cover;
     }
     /* گالری تصاویر در صفحه جزییات */
@@ -437,9 +437,9 @@
       justify-content: center;
     }
     .detail-gallery .gallery-thumb {
-      width: 90px;
-      height: 90px;
-      border-radius: 16px;
+      width: 120px;
+      height: 60px;
+      border-radius: 12px;
       overflow: hidden;
       cursor: pointer;
       border: 2px solid transparent;
@@ -998,13 +998,13 @@
       .payment-modal .discount-box button { width: 100%; }
       .page-content .page-header h2 { font-size: 1.6rem; }
       .detail-grid { flex-direction: column; }
-      .detail-image { max-height: 400px; }
+      .detail-image { max-height: 300px; }
       .detail-info h1 { font-size: 2rem; }
       .product-actions { flex-direction: column; }
       .btn-detail { flex: 1; }
       .payment-modal .pay-actions button { min-width: 80px; font-size: 0.85rem; padding: 10px; }
       .page-content .page-header { flex-direction: column; align-items: flex-start; }
-      .detail-gallery .gallery-thumb { width: 70px; height: 70px; }
+      .detail-gallery .gallery-thumb { width: 80px; height: 40px; }
     }
   </style>
 </head>
@@ -1270,13 +1270,13 @@
 </footer>
 
 <script>
-  // ===== محصول جدید (اکانت عقرب) با گالری ۴ عکس =====
+  // ===== محصول جدید با نسبت 2:1 =====
   const newProduct = {
     id: 1,
-    name: 'اکانت کلش | عقرب',
+    name: 'اکانت کلش اف کلنز | به نام عقرب',
     tag: 'سوپرسل',
     price: 200000,
-    shortDesc: 'تاون ۷، تجربه ۳۷، شاه ۱۰ فول | شروع عالی',
+    shortDesc: 'یک اکانت خوب و کار راه اندازه',
     fullDesc: 'سلام رفقا! یه اکانت تمیز و آماده دارم که به خاطر وقت نداشتن می‌فروشمش.\n\nویژگی‌هاش:\n· تاون ۷، تجربه ۳۷\n· شاه ۱۰ (فول)\n· اسپل‌ها و نیروها اکثراً آپگرید هستن (ویزارد ۴، غول ۴، بالون ۵ و...)\n· منابع و جواهر هم خوبه (۶۰۰ تا جواهر داره)\n· لوت (طرح) هم جنگ و فارم عالیه.\n\nیک اکانت تمیز و بدون دردسر برای شروع کلش.\nقیمت خیلی مناسب: ۲۰۰,۰۰۰ تومان',
     img: 'https://up.20script.ir/file/fbf4-Negar-1782339300453.jpg',
     badge: null,
@@ -1300,7 +1300,6 @@
     ]
   };
 
-  // بقیه محصولات (حذف شدند و فقط همین یکی مونده)
   const products = [newProduct];
 
   let cart = [];
@@ -1340,7 +1339,6 @@
   const productsSection = document.getElementById('productsSection');
   const sectionTitle = document.getElementById('sectionTitle');
 
-  // ===== کپی شماره کارت =====
   function copyCardNumber() {
     const cardNumber = '6219861954504246';
     if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -1382,7 +1380,6 @@
     }, 2500);
   }
 
-  // ===== توابع جستجو =====
   function getLevenshteinDistance(a, b) {
     const matrix = [];
     for (let i = 0; i <= b.length; i++) {
@@ -1422,7 +1419,6 @@
     return true;
   }
 
-  // ===== نمایش صفحات =====
   const pageRules = document.getElementById('pageRules');
   const pageAbout = document.getElementById('pageAbout');
   const pageContact = document.getElementById('pageContact');
@@ -1460,7 +1456,6 @@
     });
   });
 
-  // ===== منو =====
   const navLinks = document.querySelectorAll('.nav-menu a[data-tab]');
   navLinks.forEach(link => {
     link.addEventListener('click', function(e) {
@@ -1487,7 +1482,6 @@
     });
   });
 
-  // ===== فیلترها =====
   document.querySelectorAll('#filterTabs button').forEach(btn => {
     btn.addEventListener('click', function() {
       document.querySelectorAll('#filterTabs button').forEach(b => b.classList.remove('active'));
@@ -1497,7 +1491,6 @@
     });
   });
 
-  // ===== جستجو =====
   function getSuggestions(query) {
     if (!query || query.length < 1) return [];
     const q = query.trim().toLowerCase();
@@ -1566,7 +1559,6 @@
     if (!e.target.closest('.search-box')) searchSuggestions.classList.remove('active');
   });
 
-  // ===== نمایش جزییات با گالری =====
   function showProductDetail(product) {
     [pageRules, pageAbout, pageContact].forEach(p => p.classList.remove('active'));
     heroSection.style.display = 'none';
@@ -1574,7 +1566,6 @@
     productsSection.style.display = 'none';
     productDetailPage.classList.add('active');
 
-    // عکس اصلی
     let galleryHtml = '';
     let mainImage = product.img;
     if (product.gallery && product.gallery.length > 0) {
@@ -1610,13 +1601,10 @@
       </div>
     `;
 
-    // محصولات مشابه (فعلاً هیچی)
     relatedGrid.innerHTML = '<p style="color:#888;">محصول مشابهی یافت نشد.</p>';
-
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // تغییر عکس اصلی در جزییات
   window.changeDetailImage = function(src, el) {
     const mainImg = document.getElementById('detailMainImg');
     if (mainImg) mainImg.src = src;
@@ -1631,7 +1619,6 @@
 
   detailBackBtn.addEventListener('click', showHome);
 
-  // ===== رندر محصولات =====
   function renderProducts() {
     let filtered = [...products];
     if (currentFilter === 'special') {
@@ -1674,7 +1661,6 @@
     }).join('');
   }
 
-  // ===== سبد خرید =====
   function addToCart(product) {
     const existing = cart.find(item => item.id === product.id);
     if (existing) existing.qty += 1;
@@ -1746,7 +1732,6 @@
     });
   }
 
-  // ===== مودال سبد =====
   function openCartModal() { cartModal.classList.add('active'); document.body.style.overflow = 'hidden'; }
   function closeCartModal() { cartModal.classList.remove('active'); document.body.style.overflow = ''; }
   openCartBtn.addEventListener('click', openCartModal);
@@ -1754,7 +1739,6 @@
   cartModal.addEventListener('click', function(e) { if (e.target === this) closeCartModal(); });
   clearCartBtn.addEventListener('click', function() { if (cart.length && confirm('آیا مطمئن هستید؟')) clearCart(); });
 
-  // ===== پرداخت =====
   checkoutBtn.addEventListener('click', function() {
     if (cart.length === 0) { alert('سبد خرید خالی است!'); return; }
     closeCartModal();
@@ -1819,4 +1803,4 @@
   updateCartUI();
 </script>
 </body>
-  </html>
+        </html>
