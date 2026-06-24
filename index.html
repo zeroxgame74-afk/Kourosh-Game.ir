@@ -391,7 +391,7 @@
       padding: 12px 14px;
       border-radius: 60px;
       font-weight: 700;
-      flex: 1;
+      flex: 1.5;
       cursor: pointer;
       transition: 0.2s;
       font-family: 'Vazirmatn', sans-serif;
@@ -1466,7 +1466,6 @@
 
   searchBtn.addEventListener('click', doSearch);
 
-  // بستن پیشنهادات با کلیک بیرون
   document.addEventListener('click', function(e) {
     if (!e.target.closest('.search-box')) {
       searchSuggestions.classList.remove('active');
@@ -1475,17 +1474,14 @@
 
   // ===== نمایش جزییات محصول =====
   function showProductDetail(product) {
-    // مخفی کردن همه چیز
     [pageRules, pageAbout, pageContact].forEach(p => p.classList.remove('active'));
     heroSection.style.display = 'none';
     filterSection.style.display = 'none';
     productsSection.style.display = 'none';
     productDetailPage.classList.add('active');
 
-    // تصویر
     detailImage.innerHTML = `<img src="${product.img}" alt="${product.name}" onerror="this.parentElement.innerHTML='<i class=\\'fas ${product.icon || 'fa-gamepad'}\\' style=\\'font-size:5rem;color:#FF5F02;opacity:0.3;display:flex;align-items:center;justify-content:center;height:100%;\\'></i>'">`;
 
-    // اطلاعات
     const specsHtml = product.specs ? `
       <div class="detail-specs">
         <h4><i class="fas fa-list-ul"></i> مشخصات اکانت:</h4>
@@ -1508,7 +1504,6 @@
       </div>
     `;
 
-    // محصولات مشابه
     const related = products.filter(p => p.id !== product.id && p.platform === product.platform);
     if (related.length === 0) {
       relatedGrid.innerHTML = '<p style="color:#888;">محصول مشابهی یافت نشد.</p>';
@@ -1536,14 +1531,12 @@
   function renderProducts() {
     let filtered = [...products];
 
-    // فیلتر
     if (currentFilter === 'special') {
       filtered = filtered.filter(p => p.badge && (p.badge === 'ویژه' || p.badge === 'طلایی' || p.badge === 'جدید'));
     } else if (currentFilter !== 'all') {
       filtered = filtered.filter(p => p.platform === currentFilter);
     }
 
-    // جستجو
     if (searchQuery) {
       filtered = filtered.filter(p =>
         multiWordSearch(searchQuery, p.name + ' ' + p.tag + ' ' + p.shortDesc + ' ' + (p.fullDesc || ''))
@@ -1570,8 +1563,12 @@
             <p class="description">${p.shortDesc}</p>
             <div class="price"><i class="fas fa-toman"></i> ${p.price.toLocaleString()} <small>تومان</small></div>
             <div class="product-actions">
-              <button class="btn-buy" onclick="event.stopPropagation(); addToCart(products.find(pr => pr.id === ${p.id}))"><i class="fas fa-shopping-bag"></i> خرید</button>
-              <button class="btn-detail" onclick="event.stopPropagation(); showProductDetail(products.find(pr => pr.id === ${p.id}))"><i class="fas fa-info-circle"></i></button>
+              <button class="btn-buy" onclick="event.stopPropagation(); addToCart(products.find(pr => pr.id === ${p.id}))">
+                <i class="fas fa-shopping-bag"></i> خرید
+              </button>
+              <button class="btn-detail" onclick="event.stopPropagation(); showProductDetail(products.find(pr => pr.id === ${p.id}))">
+                <i class="fas fa-info-circle"></i> توضیحات بیشتر
+              </button>
             </div>
           </div>
         </div>
@@ -1684,4 +1681,4 @@
   updateCartUI();
 </script>
 </body>
-        </html>
+          </html>
