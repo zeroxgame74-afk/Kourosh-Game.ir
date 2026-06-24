@@ -888,121 +888,6 @@
     }
     .page-back-home:hover { background: #d94f00; transform: scale(1.02); }
 
-    /* ===== فرم مدیریت محصولات ===== */
-    .admin-form {
-      background: #fff;
-      border-radius: 28px;
-      padding: 30px 28px;
-      margin: 30px 0;
-      border: 2px solid #FF5F02;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.05);
-    }
-    .admin-form h3 {
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: #FF5F02;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .admin-form h3 i { font-size: 1.8rem; }
-    .admin-form .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px 24px;
-    }
-    .admin-form .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-    .admin-form .form-group.full {
-      grid-column: 1 / -1;
-    }
-    .admin-form .form-group label {
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: #444;
-    }
-    .admin-form .form-group label i {
-      color: #FF5F02;
-      margin-left: 6px;
-    }
-    .admin-form .form-group input,
-    .admin-form .form-group select,
-    .admin-form .form-group textarea {
-      padding: 10px 14px;
-      border: 2px solid #e8e2dc;
-      border-radius: 12px;
-      font-family: 'Vazirmatn', sans-serif;
-      font-size: 0.95rem;
-      outline: none;
-      transition: 0.2s;
-      background: #faf9f8;
-    }
-    .admin-form .form-group input:focus,
-    .admin-form .form-group select:focus,
-    .admin-form .form-group textarea:focus {
-      border-color: #FF5F02;
-      background: #fff;
-    }
-    .admin-form .form-group textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
-    .admin-form .form-group select {
-      appearance: none;
-      cursor: pointer;
-    }
-    .admin-form .btn-submit {
-      grid-column: 1 / -1;
-      background: #FF5F02;
-      color: #fff;
-      border: none;
-      padding: 14px 30px;
-      border-radius: 60px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      cursor: pointer;
-      font-family: 'Vazirmatn', sans-serif;
-      transition: 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 8px;
-    }
-    .admin-form .btn-submit:hover {
-      background: #d94f00;
-      transform: scale(1.02);
-    }
-    .admin-form .btn-reset {
-      grid-column: 1 / -1;
-      background: #f0ece8;
-      color: #444;
-      border: none;
-      padding: 12px 24px;
-      border-radius: 60px;
-      font-weight: 600;
-      cursor: pointer;
-      font-family: 'Vazirmatn', sans-serif;
-      transition: 0.2s;
-    }
-    .admin-form .btn-reset:hover {
-      background: #e0d8d0;
-    }
-    .admin-form .form-actions {
-      grid-column: 1 / -1;
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    .admin-form .form-actions button {
-      flex: 1;
-      min-width: 120px;
-    }
-
     footer {
       background: #1a1a1a;
       color: #d0cdc8;
@@ -1090,8 +975,6 @@
       .btn-detail { flex: 1; }
       .payment-modal .pay-actions button { min-width: 80px; font-size: 0.85rem; padding: 10px; }
       .page-content .page-header { flex-direction: column; align-items: flex-start; }
-      .admin-form .form-grid { grid-template-columns: 1fr; }
-      .admin-form .form-actions { flex-direction: column; }
     }
   </style>
 </head>
@@ -1143,64 +1026,6 @@
     </div>
   </div>
 </section>
-
-<!-- ===== ADMIN FORM ===== -->
-<div class="container">
-  <div class="admin-form" id="adminForm">
-    <h3><i class="fas fa-plus-circle"></i> افزودن محصول جدید</h3>
-    <form id="productForm">
-      <div class="form-grid">
-        <div class="form-group">
-          <label><i class="fas fa-gamepad"></i> نام بازی</label>
-          <input type="text" id="fName" placeholder="مثلاً کلش اف کلنز" required>
-        </div>
-        <div class="form-group">
-          <label><i class="fas fa-tag"></i> تگ / پلتفرم</label>
-          <input type="text" id="fTag" placeholder="مثلاً Supercell" required>
-        </div>
-        <div class="form-group">
-          <label><i class="fas fa-toman"></i> قیمت (تومان)</label>
-          <input type="number" id="fPrice" placeholder="مثلاً 850000" required>
-        </div>
-        <div class="form-group">
-          <label><i class="fas fa-crown"></i> وضعیت</label>
-          <select id="fBadge">
-            <option value="">معمولی</option>
-            <option value="ویژه">ویژه</option>
-            <option value="طلایی">طلایی</option>
-            <option value="اورجینال">اورجینال</option>
-            <option value="حراج">حراج</option>
-            <option value="جدید">جدید</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label><i class="fas fa-icons"></i> آیکون (کد Font Awesome)</label>
-          <input type="text" id="fIcon" placeholder="مثلاً fa-chess-king" value="fa-gamepad">
-        </div>
-        <div class="form-group">
-          <label><i class="fas fa-image"></i> لینک عکس</label>
-          <input type="url" id="fImg" placeholder="آدرس تصویر">
-        </div>
-        <div class="form-group full">
-          <label><i class="fas fa-align-left"></i> توضیح کوتاه</label>
-          <input type="text" id="fShortDesc" placeholder="یک خط توضیح مختصر" required>
-        </div>
-        <div class="form-group full">
-          <label><i class="fas fa-align-justify"></i> توضیح کامل</label>
-          <textarea id="fFullDesc" placeholder="توضیحات کامل محصول..."></textarea>
-        </div>
-        <div class="form-group full">
-          <label><i class="fas fa-list-ul"></i> مشخصات (هر خط یک مورد)</label>
-          <textarea id="fSpecs" placeholder="تالار ۱۴&#10;قهرمان‌های سطح ۷۵+&#10;۵۰۰k+ سنگ تیره"></textarea>
-        </div>
-        <div class="form-actions">
-          <button type="submit" class="btn-submit"><i class="fas fa-plus-circle"></i> افزودن محصول</button>
-          <button type="reset" class="btn-reset"><i class="fas fa-undo"></i> پاک کردن فرم</button>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
 
 <!-- ===== PRODUCTS ===== -->
 <section class="products" id="productsSection">
@@ -1413,16 +1238,14 @@
 </footer>
 
 <script>
-  // ===== دیتای محصولات (خالی - کاربر با فرم پر میکنه) =====
+  // ===== دیتای محصولات (کاملاً خالی - کاربر با فرم مدیریت اضافه میکنه) =====
   let products = [];
 
-  // ===== سبد خرید =====
   let cart = [];
   let currentFilter = 'all';
   let searchQuery = '';
   let discountApplied = false;
 
-  // ===== المنت‌ها =====
   const productGrid = document.getElementById('productGrid');
   const cartModal = document.getElementById('cartModal');
   const openCartBtn = document.getElementById('openCartBtn');
@@ -1455,19 +1278,6 @@
   const productsSection = document.getElementById('productsSection');
   const sectionTitle = document.getElementById('sectionTitle');
 
-  // ===== فرم =====
-  const productForm = document.getElementById('productForm');
-  const fName = document.getElementById('fName');
-  const fTag = document.getElementById('fTag');
-  const fPrice = document.getElementById('fPrice');
-  const fBadge = document.getElementById('fBadge');
-  const fIcon = document.getElementById('fIcon');
-  const fImg = document.getElementById('fImg');
-  const fShortDesc = document.getElementById('fShortDesc');
-  const fFullDesc = document.getElementById('fFullDesc');
-  const fSpecs = document.getElementById('fSpecs');
-
-  // ===== کپی شماره کارت =====
   function copyCardNumber() {
     const cardNumber = '6219861954504246';
     if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -1509,7 +1319,6 @@
     }, 2500);
   }
 
-  // ===== توابع جستجو =====
   function getLevenshteinDistance(a, b) {
     const matrix = [];
     for (let i = 0; i <= b.length; i++) {
@@ -1549,7 +1358,6 @@
     return true;
   }
 
-  // ===== نمایش صفحات =====
   const pageRules = document.getElementById('pageRules');
   const pageAbout = document.getElementById('pageAbout');
   const pageContact = document.getElementById('pageContact');
@@ -1587,7 +1395,6 @@
     });
   });
 
-  // ===== منو =====
   const navLinks = document.querySelectorAll('.nav-menu a[data-tab]');
   navLinks.forEach(link => {
     link.addEventListener('click', function(e) {
@@ -1614,7 +1421,6 @@
     });
   });
 
-  // ===== فیلترها =====
   document.querySelectorAll('#filterTabs button').forEach(btn => {
     btn.addEventListener('click', function() {
       document.querySelectorAll('#filterTabs button').forEach(b => b.classList.remove('active'));
@@ -1624,7 +1430,6 @@
     });
   });
 
-  // ===== جستجو =====
   function getSuggestions(query) {
     if (!query || query.length < 1) return [];
     const q = query.trim().toLowerCase();
@@ -1693,7 +1498,6 @@
     if (!e.target.closest('.search-box')) searchSuggestions.classList.remove('active');
   });
 
-  // ===== نمایش جزییات =====
   function showProductDetail(product) {
     [pageRules, pageAbout, pageContact].forEach(p => p.classList.remove('active'));
     heroSection.style.display = 'none';
@@ -1737,33 +1541,25 @@
 
   detailBackBtn.addEventListener('click', showHome);
 
-  // ===== فرم افزودن محصول =====
-  productForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
+  // ===== تابع افزودن محصول (برای استفاده در کنسول یا دکمه مخفی) =====
+  function addProduct(productData) {
     const newProduct = {
       id: products.length + 1,
-      name: fName.value.trim(),
-      tag: fTag.value.trim(),
-      price: parseInt(fPrice.value),
-      shortDesc: fShortDesc.value.trim(),
-      fullDesc: fFullDesc.value.trim() || fShortDesc.value.trim(),
-      img: fImg.value.trim() || 'https://placehold.co/600x400/FF5F02/FFF?text=' + encodeURIComponent(fName.value.trim()),
-      badge: fBadge.value || null,
-      platform: 'custom',
-      icon: fIcon.value.trim() || 'fa-gamepad',
-      specs: fSpecs.value.trim() ? fSpecs.value.trim().split('\n').filter(s => s.trim()) : []
+      name: productData.name || 'محصول بدون نام',
+      tag: productData.tag || 'نامشخص',
+      price: parseInt(productData.price) || 0,
+      shortDesc: productData.shortDesc || '',
+      fullDesc: productData.fullDesc || productData.shortDesc || '',
+      img: productData.img || 'https://placehold.co/600x400/FF5F02/FFF?text=' + encodeURIComponent(productData.name || 'محصول'),
+      badge: productData.badge || null,
+      platform: productData.platform || 'custom',
+      icon: productData.icon || 'fa-gamepad',
+      specs: productData.specs || []
     };
-
     products.push(newProduct);
     renderProducts();
-    productForm.reset();
-    fIcon.value = 'fa-gamepad';
-    showToast('✅ محصول با موفقیت اضافه شد!');
-    
-    // اسکرول به بخش محصولات
-    document.getElementById('productsSection').scrollIntoView({ behavior: 'smooth' });
-  });
+    return newProduct;
+  }
 
   // ===== رندر محصولات =====
   function renderProducts() {
@@ -1778,9 +1574,9 @@
     }
     if (filtered.length === 0) {
       productGrid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:60px 0; color:#888;">
-        <i class="fas fa-plus-circle" style="font-size:3rem; display:block; margin-bottom:16px; color:#FF5F02;"></i>
+        <i class="fas fa-box-open" style="font-size:3rem; display:block; margin-bottom:16px; color:#FF5F02;"></i>
         هنوز محصولی اضافه نشده!<br>
-        <span style="font-size:0.9rem;">از فرم بالا برای افزودن محصول استفاده کنید.</span>
+        <span style="font-size:0.9rem;">برای افزودن محصول از بخش مدیریت استفاده کنید.</span>
       </div>`;
       return;
     }
@@ -1884,7 +1680,6 @@
     });
   }
 
-  // ===== مودال سبد =====
   function openCartModal() { cartModal.classList.add('active'); document.body.style.overflow = 'hidden'; }
   function closeCartModal() { cartModal.classList.remove('active'); document.body.style.overflow = ''; }
   openCartBtn.addEventListener('click', openCartModal);
@@ -1892,7 +1687,6 @@
   cartModal.addEventListener('click', function(e) { if (e.target === this) closeCartModal(); });
   clearCartBtn.addEventListener('click', function() { if (cart.length && confirm('آیا مطمئن هستید؟')) clearCart(); });
 
-  // ===== پرداخت =====
   checkoutBtn.addEventListener('click', function() {
     if (cart.length === 0) { alert('سبد خرید خالی است!'); return; }
     closeCartModal();
@@ -1956,6 +1750,9 @@
   // ===== مقداردهی اولیه =====
   renderProducts();
   updateCartUI();
+
+  // ===== قرار دادن تابع addProduct در دسترس (برای مدیریت مخفی) =====
+  window.addProduct = addProduct;
 </script>
 </body>
-  </html>
+</html>
