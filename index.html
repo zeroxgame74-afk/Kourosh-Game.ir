@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Kourosh Game.ir | فروش اکانت بازی</title>
+  <title>Kourosh Game.ir | فروش اکانت بازی موبایل</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- فونت وزیر -->
@@ -517,7 +517,7 @@
     .payment-success i { font-size: 5rem; color: #2ecc71; margin-bottom: 12px; }
     .payment-success h3 { font-size: 1.6rem; color: #2ecc71; }
 
-    /* ===== PAGE CONTENT (قوانین، درباره ما، تماس) ===== */
+    /* ===== PAGE CONTENT ===== */
     .page-content {
       display: none;
       padding: 50px 0 70px;
@@ -657,7 +657,7 @@
   <div class="container header-flex">
     <div class="logo">
       <h1><i class="fas fa-gamepad"></i>Kourosh <span class="text-orange">Game</span>.ir</h1>
-      <span class="sub"><i class="fas fa-crown"></i> معتبر‌ترین فروش اکانت بازی</span>
+      <span class="sub"><i class="fas fa-mobile-alt"></i> فروش اکانت بازی‌های موبایل</span>
     </div>
     <div class="nav-menu" id="navMenu">
       <a class="active-tab" data-tab="home"><i class="fas fa-home"></i> خانه</a>
@@ -675,11 +675,11 @@
 <section class="hero" id="heroSection">
   <div class="container hero-grid">
     <div class="hero-text">
-      <h2><i class="fas fa-bolt"></i> اکانت‌های اورجینال <span class="highlight">با بهترین قیمت</span></h2>
+      <h2><i class="fas fa-bolt"></i> اکانت‌های اورجینال <span class="highlight">برای بازی‌های موبایل</span></h2>
       <p><i class="fas fa-check-circle"></i> تضمین اصالت &nbsp;|&nbsp; <i class="fas fa-shield-alt"></i> پشتیبانی ۲۴/۷</p>
       <button class="hero-btn" onclick="document.querySelector('[data-tab=\"store\"]').click();"><i class="fas fa-rocket"></i> مشاهده اکانت‌ها</button>
     </div>
-    <div class="hero-image"><i class="fas fa-controller"></i></div>
+    <div class="hero-image"><i class="fas fa-mobile-alt"></i></div>
   </div>
 </section>
 
@@ -688,10 +688,9 @@
   <div class="container filter-flex">
     <div class="filter-tabs" id="filterTabs">
       <button class="active" data-filter="all"><i class="fas fa-fire"></i> همه</button>
-      <button data-filter="ps"><i class="fas fa-playstation"></i> پلی‌استیشن</button>
-      <button data-filter="xbox"><i class="fab fa-xbox"></i> ایکس‌باکس</button>
-      <button data-filter="pc"><i class="fas fa-desktop"></i> پی‌سی</button>
-      <button data-filter="special"><i class="fas fa-crown"></i> ویژه</button>
+      <button data-filter="clashofclans"><i class="fas fa-chess-king" style="color:#FF5F02;"></i> کلش اف کلنز</button>
+      <button data-filter="clashroyale"><i class="fas fa-chess-queen" style="color:#FF5F02;"></i> کلش رویال</button>
+      <button data-filter="callofduty"><i class="fas fa-crosshairs" style="color:#FF5F02;"></i> کال اف دیوتی</button>
     </div>
     <div class="search-box">
       <input type="text" id="searchInput" placeholder="جستجوی اکانت...">
@@ -814,7 +813,7 @@
   <div class="container footer-grid">
     <div class="footer-col">
       <h4><i class="fas fa-gamepad"></i> Kourosh Game</h4>
-      <p>بزرگترین مرجع خرید و فروش اکانت بازی با ضمانت اصالت و بهترین قیمت‌ها.</p>
+      <p>معتبرترین فروشگاه اکانت بازی‌های موبایل با ضمانت اصالت و پشتیبانی ۲۴/۷.</p>
       <div class="social-icons">
         <a href="#"><i class="fab fa-instagram"></i></a>
         <a href="#"><i class="fab fa-telegram"></i></a>
@@ -834,7 +833,7 @@
     <div class="footer-col">
       <h4><i class="fas fa-headset"></i> پشتیبانی</h4>
       <ul>
-        <li><i class="fas fa-phone-alt"></i> ۰۲۱-۱۲۳۴۵۶۷۸</li>
+        <li><i class="fas fa-phone-alt"></i> <strong dir="ltr">+98 996 259 4436</strong></li>
         <li><i class="fas fa-envelope"></i> support@kouroshgame.ir</li>
         <li><i class="fas fa-clock"></i> ۷ روز هفته، ۲۴ ساعته</li>
       </ul>
@@ -846,15 +845,74 @@
 </footer>
 
 <script>
-  // ===== دیتای محصولات =====
+  // ===== دیتای محصولات (بازی‌های موبایل) =====
   const products = [
-    { id: 1, name: 'God of War Ragnarok', tag: 'پلی‌استیشن ۵', price: 2450000, desc: 'اکانت اورجینال با تمام محتوای اضافه و دی‌ال‌سی‌ها.', img: 'https://cdn2.unrealengine.com/gowr-3840x2160-c3a86faeb09f.jpg?resize=1&w=1920', badge: 'ویژه', platform: 'ps' },
-    { id: 2, name: 'Halo Infinite', tag: 'ایکس‌باکس سری ایکس', price: 1980000, desc: 'اکانت کامل با تمام اسکین‌ها و بتل‌پس فصل ۵.', img: 'https://assets.xboxservices.com/assets/0a/0d/0a0d4e4c-8c4a-4b6e-8c4a-4b6e8c4a4b6e.jpg?n=Halo-Infinite_GLP-Page-Hero-1084_1920x1080.jpg', badge: 'اورجینال', platform: 'xbox' },
-    { id: 3, name: 'Counter-Strike 2', tag: 'پی‌سی (استیم)', price: 750000, desc: 'اکانت با رنک رقابتی بالا و اسکین‌های کمیاب.', img: 'https://cdn.akamai.steamstatic.com/steam/apps/730/header.jpg', badge: null, platform: 'pc' },
-    { id: 4, name: 'FIFA 24', tag: 'PS5 / PS4', price: 3200000, desc: 'اکانت با تیم آلتیمیت و ۵۰۰۰ پوینت اضافه.', img: 'https://cdn1.epicgames.com/offer/7d2e1e4e3f1e4e2e9c1e4e2e9c1e4e2e/EGS_FIFA24_EA_S2_1200x1600-7d2e1e4e3f1e4e2e9c1e4e2e9c1e4e2e', badge: 'طلایی', platform: 'ps' },
-    { id: 5, name: 'Fortnite', tag: 'کراس‌پلتفرم', price: 550000, desc: 'اکانت با بیش از ۲۰۰ اسکین نادر و ۱۰۰۰۰ وی‌باکس.', img: 'https://cdn1.epicgames.com/offer/fn/fortnite_hero_1920x1080_0.jpg', badge: null, platform: 'pc' },
-    { id: 6, name: 'Cyberpunk 2077', tag: 'پی‌سی / ایکس‌باکس', price: 1250000, desc: 'نسخه آلتیمیت با تمام آپدیت‌ها و دی‌ال‌سی Phantom Liberty.', img: 'https://cdn1.epicgames.com/offer/cyberpunk2077/cyberpunk_hero_1920x1080.jpg', badge: 'حراج', platform: 'xbox' },
-    { id: 7, name: 'Spider-Man 2', tag: 'پلی‌استیشن ۵', price: 2800000, desc: 'اکانت نسخه دیجیتال با تمام محتوای اضافی.', img: 'https://cdn1.epicgames.com/offer/7d2e1e4e3f1e4e2e9c1e4e2e9c1e4e2e/EGS_SpiderMan2_PS5_1200x1600.jpg', badge: 'جدید', platform: 'ps' }
+    { 
+      id: 1, 
+      name: 'کلش اف کلنز', 
+      tag: 'Supercell', 
+      price: 850000, 
+      desc: 'اکانت تالار ۱۴ با قهرمان‌های سطح بالا و سنگ‌های تیره فراوان. آماده برای وار!', 
+      img: 'https://play-lh.googleusercontent.com/C5eFC2oVigE2pQ6E_dT89VZfI9tOxKvXL5Pm1UTZ7sp40XfYj6abKqH4Cl3KGkE_Lg', 
+      badge: 'ویژه', 
+      platform: 'clashofclans',
+      icon: 'fa-chess-king'
+    },
+    { 
+      id: 2, 
+      name: 'کلش رویال', 
+      tag: 'Supercell', 
+      price: 650000, 
+      desc: 'اکانت با تمام کارت‌ها در سطح ۱۴، پادشاه ۱۴ و ۲۰۰۰۰۰ ستاره. رقابتی آماده!', 
+      img: 'https://play-lh.googleusercontent.com/BCVhv6aYH5CR5w0s4CJ7t8jLhJjZqVg8tCgYrn8tCgYrn8tCgYrn8tCgYrn8', 
+      badge: 'طلایی', 
+      platform: 'clashroyale',
+      icon: 'fa-chess-queen'
+    },
+    { 
+      id: 3, 
+      name: 'کال اف دیوتی موبایل', 
+      tag: 'Activision', 
+      price: 720000, 
+      desc: 'اکانت با تمام اسکین‌های افسانه‌ای و سریال‌های برتر. آماده برای رنک!', 
+      img: 'https://play-lh.googleusercontent.com/7hqvdpGhJhYlVjWfJvLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLh', 
+      badge: 'اورجینال', 
+      platform: 'callofduty',
+      icon: 'fa-crosshairs'
+    },
+    { 
+      id: 4, 
+      name: 'کلش اف کلنز', 
+      tag: 'Supercell', 
+      price: 1200000, 
+      desc: 'اکانت تالار ۱۵ با قهرمان‌های بیشینه و کل سنگ‌های تیره. بهترین انتخاب!', 
+      img: 'https://play-lh.googleusercontent.com/C5eFC2oVigE2pQ6E_dT89VZfI9tOxKvXL5Pm1UTZ7sp40XfYj6abKqH4Cl3KGkE_Lg', 
+      badge: 'طلایی', 
+      platform: 'clashofclans',
+      icon: 'fa-chess-king'
+    },
+    { 
+      id: 5, 
+      name: 'کلش رویال', 
+      tag: 'Supercell', 
+      price: 450000, 
+      desc: 'اکانت مناسب برای شروع با کارت‌های سطح متوسط و ۵۰۰۰ ستاره.', 
+      img: 'https://play-lh.googleusercontent.com/BCVhv6aYH5CR5w0s4CJ7t8jLhJjZqVg8tCgYrn8tCgYrn8tCgYrn8tCgYrn8', 
+      badge: null, 
+      platform: 'clashroyale',
+      icon: 'fa-chess-queen'
+    },
+    { 
+      id: 6, 
+      name: 'کال اف دیوتی موبایل', 
+      tag: 'Activision', 
+      price: 980000, 
+      desc: 'اکانت با سلاح‌های افسانه‌ای، شخصیت‌های نادر و سریال ۲۰۲۶.', 
+      img: 'https://play-lh.googleusercontent.com/7hqvdpGhJhYlVjWfJvLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLh', 
+      badge: 'حراج', 
+      platform: 'callofduty',
+      icon: 'fa-crosshairs'
+    }
   ];
 
   // ===== سبد خرید =====
@@ -880,7 +938,7 @@
   let currentFilter = 'all';
   let searchQuery = '';
 
-  // ===== نمایش صفحات (قوانین، درباره، تماس) =====
+  // ===== نمایش صفحات =====
   const pageRules = document.getElementById('pageRules');
   const pageAbout = document.getElementById('pageAbout');
   const pageContact = document.getElementById('pageContact');
@@ -890,21 +948,13 @@
   const sectionTitle = document.getElementById('sectionTitle');
 
   function showPage(pageId) {
-    // مخفی کردن همه صفحات
     [pageRules, pageAbout, pageContact].forEach(p => p.classList.remove('active'));
-    // مخفی کردن هیرو، فیلتر و محصولات
     heroSection.style.display = 'none';
     filterSection.style.display = 'none';
     productsSection.style.display = 'none';
-
-    // نمایش صفحه مورد نظر
-    if (pageId === 'rules') {
-      pageRules.classList.add('active');
-    } else if (pageId === 'about') {
-      pageAbout.classList.add('active');
-    } else if (pageId === 'contact') {
-      pageContact.classList.add('active');
-    }
+    if (pageId === 'rules') pageRules.classList.add('active');
+    else if (pageId === 'about') pageAbout.classList.add('active');
+    else if (pageId === 'contact') pageContact.classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
@@ -921,12 +971,10 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // ===== لینک‌های فوتر =====
   document.querySelectorAll('.footer-link').forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault();
-      const page = this.dataset.page;
-      showPage(page);
+      showPage(this.dataset.page);
     });
   });
 
@@ -938,10 +986,8 @@
       const tab = this.dataset.tab;
       navLinks.forEach(l => l.classList.remove('active-tab'));
       this.classList.add('active-tab');
-
-      if (tab === 'home') {
-        showHome();
-      } else if (tab === 'store') {
+      if (tab === 'home') showHome();
+      else if (tab === 'store') {
         showHome();
         sectionTitle.innerHTML = '<i class="fas fa-store"></i> همه اکانت‌ها';
         document.getElementById('productsSection').scrollIntoView({ behavior: 'smooth' });
@@ -988,9 +1034,9 @@
     }
     if (searchQuery) {
       filtered = filtered.filter(p =>
-        p.name.toLowerCase().includes(searchQuery) ||
-        p.tag.toLowerCase().includes(searchQuery) ||
-        p.desc.toLowerCase().includes(searchQuery)
+        p.name.includes(searchQuery) ||
+        p.tag.includes(searchQuery) ||
+        p.desc.includes(searchQuery)
       );
     }
     if (filtered.length === 0) {
@@ -999,14 +1045,15 @@
     }
     productGrid.innerHTML = filtered.map(p => {
       const badgeHtml = p.badge ? `<span class="product-badge"><i class="fas fa-star"></i> ${p.badge}</span>` : '';
+      const icon = p.icon || 'fa-gamepad';
       return `
         <div class="product-card">
           <div class="product-image">
-            <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.src='https://placehold.co/600x400/FF5F02/FFF?text=${encodeURIComponent(p.name)}'">
+            <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.parentElement.innerHTML='<i class=\\'fas ${icon}\\' style=\\'font-size:5rem;color:#FF5F02;opacity:0.3;\\'></i>'">
             ${badgeHtml}
           </div>
           <div class="product-body">
-            <h3>${p.name}</h3>
+            <h3><i class="fas ${icon}" style="color:#FF5F02;margin-left:8px;"></i> ${p.name}</h3>
             <span class="game-tag"><i class="fas fa-tag"></i> ${p.tag}</span>
             <p class="description">${p.desc}</p>
             <div class="price"><i class="fas fa-toman"></i> ${p.price.toLocaleString()} <small>تومان</small></div>
@@ -1061,9 +1108,12 @@
     }
     let html = '';
     cart.forEach(item => {
+      const icon = item.icon || 'fa-gamepad';
       html += `
         <div class="cart-item">
-          <img class="cart-item-img" src="${item.img}" alt="${item.name}" onerror="this.src='https://placehold.co/60x60/FF5F02/FFF?text=${encodeURIComponent(item.name.substring(0,2))}'">
+          <div style="width:60px;height:60px;border-radius:16px;background:#f0ece8;display:flex;align-items:center;justify-content:center;font-size:2rem;color:#FF5F02;flex-shrink:0;">
+            <i class="fas ${icon}"></i>
+          </div>
           <div class="cart-item-info">
             <h4>${item.name}</h4>
             <div>
@@ -1127,4 +1177,4 @@
   updateCartUI();
 </script>
 </body>
-  </html>
+                                                                                               </html>
