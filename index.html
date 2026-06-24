@@ -47,7 +47,7 @@
     .nav-menu {
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 28px;
       flex-wrap: wrap;
     }
     .nav-menu a {
@@ -694,7 +694,7 @@
     .btn-clear-cart { background: #f0ece8; color: #444; }
     .btn-clear-cart:hover { background: #e0d8d0; }
 
-    /* ===== PAYMENT ===== */
+    /* ===== PAYMENT MODAL جدید ===== */
     .payment-modal-overlay {
       display: none;
       position: fixed;
@@ -712,19 +712,108 @@
     .payment-modal-overlay.active { display: flex; }
     .payment-modal {
       background: #fff;
-      max-width: 480px;
+      max-width: 520px;
       width: 92%;
       border-radius: 32px;
-      padding: 32px 28px;
+      padding: 32px 30px;
       box-shadow: 0 40px 80px rgba(0,0,0,0.3);
       animation: slideUp 0.3s ease;
       text-align: center;
     }
-    .payment-modal .payment-icon { font-size: 4.5rem; color: #FF5F02; margin-bottom: 10px; }
-    .payment-modal h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 10px; }
-    .payment-modal p { color: #555; margin-bottom: 20px; }
-    .payment-modal .total-amount { font-size: 2.2rem; font-weight: 900; color: #FF5F02; margin: 10px 0 24px; }
-    .payment-modal .pay-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .payment-modal .payment-icon { font-size: 4rem; color: #FF5F02; margin-bottom: 10px; }
+    .payment-modal h2 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+    .payment-modal .sub-title {
+      color: #777;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+    .payment-modal .total-amount {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: #FF5F02;
+      margin: 10px 0 20px;
+      padding: 12px;
+      background: #fcf8f4;
+      border-radius: 16px;
+    }
+    .payment-modal .pay-info {
+      background: #f5f0eb;
+      border-radius: 16px;
+      padding: 18px 20px;
+      margin: 16px 0;
+      text-align: right;
+    }
+    .payment-modal .pay-info .info-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 6px 0;
+      font-size: 1rem;
+    }
+    .payment-modal .pay-info .info-row i {
+      color: #FF5F02;
+      width: 24px;
+      font-size: 1.2rem;
+      text-align: center;
+    }
+    .payment-modal .pay-info .info-row .label {
+      color: #555;
+      font-weight: 500;
+    }
+    .payment-modal .pay-info .info-row .value {
+      font-weight: 700;
+      color: #1e1e1e;
+      direction: ltr;
+    }
+    .payment-modal .pay-info .info-row .value.phone {
+      color: #FF5F02;
+      font-size: 1.1rem;
+    }
+    .payment-modal .discount-box {
+      display: flex;
+      gap: 10px;
+      margin: 16px 0 20px;
+    }
+    .payment-modal .discount-box input {
+      flex: 1;
+      padding: 12px 16px;
+      border: 2px solid #e8e2dc;
+      border-radius: 60px;
+      font-family: 'Vazirmatn', sans-serif;
+      font-size: 0.95rem;
+      outline: none;
+      transition: 0.2s;
+    }
+    .payment-modal .discount-box input:focus {
+      border-color: #FF5F02;
+    }
+    .payment-modal .discount-box button {
+      background: #FF5F02;
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 60px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Vazirmatn', sans-serif;
+      font-size: 0.95rem;
+      transition: 0.2s;
+      white-space: nowrap;
+    }
+    .payment-modal .discount-box button:hover {
+      background: #d94f00;
+      transform: scale(1.02);
+    }
+    .payment-modal .pay-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
     .payment-modal .pay-actions button {
       flex: 1;
       padding: 14px;
@@ -745,9 +834,23 @@
     .btn-pay-confirm:hover { background: #d94f00; transform: scale(1.02); }
     .btn-pay-cancel { background: #f0ece8; color: #444; }
     .btn-pay-cancel:hover { background: #e0d8d0; }
-    .payment-success { display: none; padding: 20px 0; }
-    .payment-success i { font-size: 5rem; color: #2ecc71; margin-bottom: 12px; }
-    .payment-success h3 { font-size: 1.6rem; color: #2ecc71; }
+    .payment-success {
+      display: none;
+      padding: 20px 0;
+    }
+    .payment-success i {
+      font-size: 5rem;
+      color: #2ecc71;
+      margin-bottom: 12px;
+    }
+    .payment-success h3 {
+      font-size: 1.6rem;
+      color: #2ecc71;
+    }
+    .payment-success .success-msg {
+      color: #555;
+      margin-top: 8px;
+    }
 
     /* ===== PAGE CONTENT ===== */
     .page-content {
@@ -873,7 +976,7 @@
       .filter-flex { flex-direction: column; align-items: stretch; }
       .search-box { width: 100%; }
       .search-box input { width: 100%; }
-      .nav-menu { gap: 12px; }
+      .nav-menu { gap: 16px; }
       .product-grid { grid-template-columns: 1fr; }
       .cart-modal { padding: 20px; }
       .payment-modal { padding: 24px; }
@@ -883,6 +986,7 @@
       .detail-info h1 { font-size: 2rem; }
       .product-actions { flex-direction: column; }
       .btn-detail { flex: 1; }
+      .payment-modal .discount-box { flex-direction: column; }
     }
   </style>
 </head>
@@ -1037,23 +1141,48 @@
   </div>
 </div>
 
-<!-- ===== MODAL پرداخت ===== -->
+<!-- ===== MODAL پرداخت جدید ===== -->
 <div class="payment-modal-overlay" id="paymentModal">
   <div class="payment-modal">
     <div id="paymentContent">
-      <div class="payment-icon"><i class="fas fa-wallet"></i></div>
-      <h2>تکمیل پرداخت</h2>
-      <p>لطفاً مبلغ زیر را پرداخت کنید تا اکانت‌ها به شما تحویل داده شوند.</p>
+      <div class="payment-icon"><i class="fas fa-hand-holding-usd"></i></div>
+      <h2>تکمیل خرید</h2>
+      <p class="sub-title">لطفاً برای پرداخت از طریق یکی از روش‌های زیر اقدام کنید</p>
       <div class="total-amount" id="paymentTotal">۰ تومان</div>
+      
+      <div class="pay-info">
+        <div class="info-row">
+          <i class="fas fa-phone-alt"></i>
+          <span class="label">شماره تماس پشتیبانی:</span>
+          <span class="value phone">+98 996 259 4436</span>
+        </div>
+        <div class="info-row">
+          <i class="fas fa-credit-card"></i>
+          <span class="label">شماره کارت:</span>
+          <span class="value">6219 8619 1234 5678</span>
+        </div>
+        <div class="info-row" id="cardNumberRow">
+          <i class="fas fa-user"></i>
+          <span class="label">به نام:</span>
+          <span class="value">کوروش گیم</span>
+        </div>
+      </div>
+
+      <div class="discount-box">
+        <i class="fas fa-ticket-alt" style="color:#FF5F02;font-size:1.3rem;display:flex;align-items:center;"></i>
+        <input type="text" id="discountInput" placeholder="کد تخفیف را وارد کنید...">
+        <button id="applyDiscountBtn"><i class="fas fa-check"></i> اعمال</button>
+      </div>
+
       <div class="pay-actions">
-        <button class="btn-pay-confirm" id="payConfirmBtn"><i class="fas fa-check"></i> پرداخت نهایی</button>
+        <button class="btn-pay-confirm" id="payConfirmBtn"><i class="fas fa-check-circle"></i> پرداخت نهایی</button>
         <button class="btn-pay-cancel" id="payCancelBtn"><i class="fas fa-times"></i> انصراف</button>
       </div>
     </div>
     <div class="payment-success" id="paymentSuccess">
       <i class="fas fa-check-circle"></i>
       <h3>پرداخت با موفقیت انجام شد!</h3>
-      <p style="color:#555; margin-top:8px;">اکانت‌ها به ایمیل شما ارسال شدند.</p>
+      <p class="success-msg">اکانت‌ها به ایمیل شما ارسال شدند.</p>
       <button class="btn-pay-confirm" style="margin-top:20px; width:100%;" id="paySuccessCloseBtn"><i class="fas fa-thumbs-up"></i> عالی!</button>
     </div>
   </div>
@@ -1096,7 +1225,7 @@
 </footer>
 
 <script>
-  // ===== دیتای محصولات با توضیحات کامل =====
+  // ===== دیتای محصولات =====
   const products = [
     { 
       id: 1, 
@@ -1236,6 +1365,7 @@
   let cart = [];
   let currentFilter = 'all';
   let searchQuery = '';
+  let discountApplied = false;
 
   // ===== المنت‌ها =====
   const productGrid = document.getElementById('productGrid');
@@ -1257,8 +1387,10 @@
   const searchInput = document.getElementById('searchInput');
   const searchBtn = document.getElementById('searchBtn');
   const searchSuggestions = document.getElementById('searchSuggestions');
+  const discountInput = document.getElementById('discountInput');
+  const applyDiscountBtn = document.getElementById('applyDiscountBtn');
 
-  // ===== صفحه جزییات محصول =====
+  // ===== صفحه جزییات =====
   const productDetailPage = document.getElementById('productDetailPage');
   const detailBackBtn = document.getElementById('detailBackBtn');
   const detailImage = document.getElementById('detailImage');
@@ -1269,7 +1401,7 @@
   const productsSection = document.getElementById('productsSection');
   const sectionTitle = document.getElementById('sectionTitle');
 
-  // ===== توابع جستجوی فازی (Levenshtein) =====
+  // ===== توابع جستجوی فازی =====
   function getLevenshteinDistance(a, b) {
     const matrix = [];
     for (let i = 0; i <= b.length; i++) {
@@ -1393,7 +1525,7 @@
     });
   });
 
-  // ===== جستجو با پیشنهادات =====
+  // ===== جستجو =====
   function getSuggestions(query) {
     if (!query || query.length < 1) return [];
     const q = query.trim().toLowerCase();
@@ -1472,7 +1604,7 @@
     }
   });
 
-  // ===== نمایش جزییات محصول =====
+  // ===== نمایش جزییات =====
   function showProductDetail(product) {
     [pageRules, pageAbout, pageContact].forEach(p => p.classList.remove('active'));
     heroSection.style.display = 'none';
@@ -1600,7 +1732,14 @@
   }
 
   function clearCart() { cart = []; updateCartUI(); }
-  function getTotal() { return cart.reduce((sum, i) => sum + (i.price * i.qty), 0); }
+
+  function getTotal() {
+    let total = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+    if (discountApplied) {
+      total = Math.floor(total * 0.9);
+    }
+    return total;
+  }
 
   function updateCartUI() {
     const totalItems = cart.reduce((sum, i) => sum + i.qty, 0);
@@ -1657,19 +1796,53 @@
   checkoutBtn.addEventListener('click', function() {
     if (cart.length === 0) { alert('سبد خرید خالی است!'); return; }
     closeCartModal();
-    paymentTotal.textContent = getTotal().toLocaleString() + ' تومان';
+    const total = getTotal();
+    paymentTotal.textContent = total.toLocaleString() + ' تومان';
     paymentContent.style.display = 'block';
     paymentSuccess.style.display = 'none';
+    discountApplied = false;
+    discountInput.value = '';
+    discountInput.style.borderColor = '#e8e2dc';
     paymentModal.classList.add('active');
   });
+
+  // کد تخفیف
+  applyDiscountBtn.addEventListener('click', function() {
+    const code = discountInput.value.trim().toUpperCase();
+    if (code === 'KOUROSH10' || code === 'GAME10') {
+      discountApplied = true;
+      discountInput.style.borderColor = '#2ecc71';
+      const total = getTotal();
+      paymentTotal.textContent = total.toLocaleString() + ' تومان';
+      alert('✅ کد تخفیف با موفقیت اعمال شد! ۱۰٪ تخفیف');
+    } else if (code === '') {
+      discountApplied = false;
+      discountInput.style.borderColor = '#e8e2dc';
+      const total = getTotal();
+      paymentTotal.textContent = total.toLocaleString() + ' تومان';
+    } else {
+      discountApplied = false;
+      discountInput.style.borderColor = '#e74c3c';
+      alert('❌ کد تخفیف نامعتبر است!');
+      setTimeout(() => { discountInput.style.borderColor = '#e8e2dc'; }, 1500);
+    }
+  });
+
+  discountInput.addEventListener('keyup', (e) => {
+    if (e.key === 'Enter') applyDiscountBtn.click();
+  });
+
   payCancelBtn.addEventListener('click', function() { paymentModal.classList.remove('active'); });
   paymentModal.addEventListener('click', function(e) { if (e.target === this) paymentModal.classList.remove('active'); });
+
   payConfirmBtn.addEventListener('click', function() {
     paymentContent.style.display = 'none';
     paymentSuccess.style.display = 'block';
     cart = [];
+    discountApplied = false;
     updateCartUI();
   });
+
   paySuccessCloseBtn.addEventListener('click', function() {
     paymentModal.classList.remove('active');
     paymentContent.style.display = 'block';
@@ -1681,4 +1854,4 @@
   updateCartUI();
 </script>
 </body>
-          </html>
+  </html>
