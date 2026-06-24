@@ -848,6 +848,28 @@
       border-radius: 60px;
       margin: 10px 0;
     }
+    .page-content .page-body .team-member {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 0;
+      font-size: 1rem;
+    }
+    .page-content .page-body .team-member i {
+      color: #FF5F02;
+      width: 24px;
+      font-size: 1.2rem;
+      text-align: center;
+    }
+    .page-content .page-body .team-member .role {
+      color: #555;
+      font-weight: 500;
+      margin-left: 4px;
+    }
+    .page-content .page-body .team-member .name {
+      font-weight: 700;
+      color: #1e1e1e;
+    }
     .page-back-home {
       display: inline-flex;
       align-items: center;
@@ -1048,6 +1070,7 @@
   </div>
 </div>
 
+<!-- ===== درباره ما با اسامی ===== -->
 <div class="page-content" id="pageAbout">
   <div class="container">
     <div class="page-header"><i class="fas fa-users"></i><h2>درباره ما</h2></div>
@@ -1056,17 +1079,40 @@
       <p>از همون روز، با یه هدف ساده شروع کردیم: تبدیل شدن به معتبرترین پل ارتباطی بین شما و دنیای بازی. نه واسطه‌های الکی، نه قیمت‌های نجومی، فقط یه فروشگاه که پشتش دو تا آدم باغیرت و یه عالمه عشق به بازیه.</p>
       <div class="highlight-box"><p>امروز، تیممون بزرگتر شده، ولی هنوز همون روحیه اول رو داریم: خرید آسون، اکانت اصل، پشتیبانی ۲۴/۷. و صادقانه بگیم، بزرگترین سرمایه‌مون، اعتماد شماست. اینکه شما رو داریم، برای ما از هر دی ال سی و آپدیتی باارزش‌تره.</p></div>
       <p>پس خوش اومدید به خونه دوم گیمرهای ایران. اینجا کوروش گیمه؛ جایی که بازی، جدی گرفته میشه.</p>
+      
+      <div style="margin-top: 30px; padding-top: 20px; border-top: 2px solid #f0ebe6;">
+        <h4 style="color: #FF5F02; margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+          <i class="fas fa-id-card"></i> تیم کوروش گیم
+        </h4>
+        <div class="team-member">
+          <i class="fas fa-code"></i>
+          <span class="role">سازنده سایت | طراح گرافیک:</span>
+          <span class="name">محمد حسین صنعتی</span>
+        </div>
+        <div class="team-member">
+          <i class="fas fa-user-tie"></i>
+          <span class="role">مدیریت مجموعه:</span>
+          <span class="name">امیرمحمد وطن‌دوست</span>
+        </div>
+      </div>
+      
       <button class="page-back-home" onclick="showHome()"><i class="fas fa-arrow-right"></i> بازگشت به خانه</button>
     </div>
   </div>
 </div>
 
+<!-- ===== تماس با ما با شماره جدید ===== -->
 <div class="page-content" id="pageContact">
   <div class="container">
     <div class="page-header"><i class="fas fa-phone-alt"></i><h2>تماس با ما</h2></div>
     <div class="page-body">
       <p>ما، گروه رسمی و حرفه‌ای کوروش گیم، اینجاییم تا توی هر مرحله از خرید، کنارتون باشیم. سوال داری؟ مشکل پیش اومده؟ یا فقط میخوای یه مشاوره خوب بگیری؟</p>
-      <div style="margin: 20px 0;"><span class="contact-number"><i class="fas fa-phone" style="color:#FF5F02; margin-left:12px;"></i>+98 996 259 4436</span></div>
+      <div style="margin: 20px 0;">
+        <span class="contact-number">
+          <i class="fas fa-phone" style="color:#FF5F02; margin-left:12px;"></i>
+          <a href="tel:+989157930518" style="color:#FF5F02; text-decoration:none;">0915 793 0518</a>
+        </span>
+      </div>
       <p>پشت این شماره، یه تیم متعهد و آماده به خدمته که ۲۴ ساعته، ۷ روز هفته پاسخگوی شماست. از پشتیبانی فنی تا راهنمای خرید، همه چیز با یک تماس حل میشه.</p>
       <div class="highlight-box"><p><strong>یادتون باشه:</strong> اینجا کوروش گیمه؛ جایی که پشتیبانی، فقط یه کلمه نیست، یه تعهد جدیه.</p></div>
       <button class="page-back-home" onclick="showHome()"><i class="fas fa-arrow-right"></i> بازگشت به خانه</button>
@@ -1090,7 +1136,7 @@
   </div>
 </div>
 
-<!-- ===== PAYMENT MODAL با شماره کارت و نام جدید ===== -->
+<!-- ===== PAYMENT MODAL ===== -->
 <div class="payment-modal-overlay" id="paymentModal">
   <div class="payment-modal">
     <div id="paymentContent">
@@ -1159,7 +1205,7 @@
   </div>
 </div>
 
-<!-- ===== FOOTER ===== -->
+<!-- ===== FOOTER با شماره جدید ===== -->
 <footer>
   <div class="container footer-grid">
     <div class="footer-col">
@@ -1184,7 +1230,7 @@
     <div class="footer-col">
       <h4><i class="fas fa-headset"></i> پشتیبانی</h4>
       <ul>
-        <li><i class="fas fa-phone-alt"></i> <strong dir="ltr">+98 996 259 4436</strong></li>
+        <li><i class="fas fa-phone-alt"></i> <strong dir="ltr"><a href="tel:+989157930518" style="color:#d0cdc8;text-decoration:none;">0915 793 0518</a></strong></li>
         <li><i class="fas fa-envelope"></i> support@kouroshgame.ir</li>
         <li><i class="fas fa-clock"></i> ۷ روز هفته، ۲۴ ساعته</li>
       </ul>
@@ -1243,7 +1289,7 @@
   const productsSection = document.getElementById('productsSection');
   const sectionTitle = document.getElementById('sectionTitle');
 
-  // ===== کپی شماره کارت جدید =====
+  // ===== کپی شماره کارت =====
   function copyCardNumber() {
     const cardNumber = '6219861954504246';
     if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -1701,4 +1747,4 @@
   updateCartUI();
 </script>
 </body>
-</html>
+  </html>
