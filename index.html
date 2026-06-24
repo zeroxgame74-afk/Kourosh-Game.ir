@@ -462,6 +462,7 @@
       color: #444;
       line-height: 2;
       margin-bottom: 20px;
+      white-space: pre-line;
     }
     .detail-specs {
       background: #fcf8f4;
@@ -491,6 +492,84 @@
       min-width: 120px;
       padding: 16px 24px;
       font-size: 1rem;
+    }
+
+    /* ===== گالری کشویی ===== */
+    .gallery-section {
+      margin-top: 30px;
+      border-top: 2px solid #f0ebe6;
+      padding-top: 20px;
+    }
+    .gallery-toggle {
+      width: 100%;
+      background: #fcf8f4;
+      border: 2px solid #FF5F02;
+      border-radius: 16px;
+      padding: 16px 24px;
+      font-family: 'Vazirmatn', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #1e1e1e;
+      cursor: pointer;
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .gallery-toggle:hover {
+      background: #fff3e8;
+    }
+    .gallery-toggle i {
+      color: #FF5F02;
+      font-size: 1.4rem;
+      transition: 0.3s;
+    }
+    .gallery-toggle .arrow-icon {
+      transition: 0.3s;
+    }
+    .gallery-toggle .arrow-icon.open {
+      transform: rotate(180deg);
+    }
+    .gallery-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+      padding: 0 4px;
+    }
+    .gallery-content.open {
+      max-height: 1200px;
+      padding: 16px 4px 8px;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .gallery-item {
+      border-radius: 16px;
+      overflow: hidden;
+      background: #f5f0eb;
+      border: 1px solid #f0ebe6;
+      transition: 0.3s;
+    }
+    .gallery-item:hover {
+      transform: scale(1.02);
+      border-color: #FF5F02;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+    }
+    .gallery-item .gallery-caption {
+      padding: 8px 12px;
+      font-size: 0.85rem;
+      color: #555;
+      text-align: center;
+      background: #fff;
+      font-weight: 500;
     }
 
     .related-products {
@@ -975,6 +1054,12 @@
       .btn-detail { flex: 1; }
       .payment-modal .pay-actions button { min-width: 80px; font-size: 0.85rem; padding: 10px; }
       .page-content .page-header { flex-direction: column; align-items: flex-start; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-item img { height: 200px; }
+    }
+    @media (max-width: 480px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-item img { height: 300px; }
     }
   </style>
 </head>
@@ -1042,6 +1127,15 @@
     <div class="detail-grid" id="detailGrid">
       <div class="detail-image" id="detailImage"></div>
       <div class="detail-info" id="detailInfo"></div>
+    </div>
+    <div class="gallery-section" id="gallerySection">
+      <button class="gallery-toggle" id="galleryToggle">
+        <span><i class="fas fa-images" style="color:#FF5F02;margin-left:10px;"></i> گالری تصاویر</span>
+        <i class="fas fa-chevron-down arrow-icon" id="galleryArrow"></i>
+      </button>
+      <div class="gallery-content" id="galleryContent">
+        <div class="gallery-grid" id="galleryGrid"></div>
+      </div>
     </div>
     <div class="related-products" id="relatedProducts">
       <h3><i class="fas fa-layer-group"></i> محصولات مشابه</h3>
@@ -1238,14 +1332,77 @@
 </footer>
 
 <script>
-  // ===== دیتای محصولات (کاملاً خالی) =====
+  // ===== دیتای محصولات =====
   let products = [];
 
+  // ===== تابع افزودن محصول =====
+  function addProduct(productData) {
+    const newProduct = {
+      id: products.length + 1,
+      name: productData.name || 'محصول بدون نام',
+      tag: productData.tag || 'نامشخص',
+      price: parseInt(String(productData.price).replace(/,/g, '')) || 0,
+      shortDesc: productData.shortDesc || '',
+      fullDesc: productData.fullDesc || productData.shortDesc || '',
+      img: productData.img || 'https://placehold.co/600x400/FF5F02/FFF?text=' + encodeURIComponent(productData.name || 'محصول'),
+      badge: productData.badge || null,
+      platform: productData.platform || 'custom',
+      icon: productData.icon || 'fa-gamepad',
+      specs: productData.specs || [],
+      gallery: productData.gallery || []
+    };
+    products.push(newProduct);
+    renderProducts();
+    return newProduct;
+  }
+
+  // ===== افزودن محصول با مشخصات داده شده =====
+  addProduct({
+    name: 'اکانت کلش | به نام | عـقرب',
+    tag: 'سوپرسل',
+    price: 200000,
+    shortDesc: 'یک اکانت خوب و با تانهال مناسب | تاون ۷، تجربه ۳۷ | شاه ۱۰ (فول)',
+    fullDesc: `سلام رفقا! یه اکانت تمیز و آماده دارم که به خاطر وقت نداشتن می‌فروشمش.
+
+ویژگی‌هاش:
+· تاون ۷، تجربه ۳۷
+· شاه ۱۰ (فول)
+· اسپل‌ها و نیروها اکثراً آپگرید هستن (ویزارد ۴، غول ۴، بالون ۵ و...)
+· منابع و جواهر هم خوبه (۶۰۰ تا جواهر داره)
+· لوت (طرح) هم جنگ و فارم عالیه.
+
+یک اکانت تمیز و بدون دردسر برای شروع کلش.
+
+قیمت خیلی مناسب: ۲۰۰,۰۰۰ تومان`,
+    img: 'https://up.20script.ir/file/fbf4-Negar-1782339300453.jpg',
+    badge: null,
+    platform: 'clashofclans',
+    icon: 'fa-chess-king',
+    specs: [
+      'سطح تالار شهر: ۷ (TH7)',
+      'سطح تجربه: ۳۷',
+      'منابع موجود: طلا ۳۰۱,۳۱۹ | اکسیر ۶۱۱,۱۵۵ | اکسیر تاریک ۲۲,۵۰۰',
+      'جواهر: ۶۰۵',
+      'قهرمان (شاه پیاده‌نظام): سطح ۱۰',
+      'نیروهای سبک: پیاده‌نظام (۴)، کماندار (۴)، غول (۴)، بمب‌افکن (۴)، کباب‌پز (۵)، ویزارد (۴)، اژدها (۲)، هیلر (۲)',
+      'نیروهای تاریک: ماینر (۲)، گوبلین (۲)، گرگ (۲)، والکری (۲)، ویزارد تاریک (۲)',
+      'طلسم‌ها: لایتنینگ (۵)، شفا (۴)، یخ (۲)، سم (۲)، پرش (۲)، زهر (۱)، زلزله (۱)'
+    ],
+    gallery: [
+      { img: 'https://up.20script.ir/file/fbf4-Negar-1782339300453.jpg', caption: 'صفحه اصلی اکانت' },
+      { img: 'https://up.20script.ir/file/b50e-Negar-1782339359914.jpg', caption: 'صفحه مشخصات اکانت' },
+      { img: 'https://up.20script.ir/file/08f1-Negar-1782339399478.jpg', caption: 'اکانت در حالت شب' },
+      { img: 'https://up.20script.ir/file/4945-Negar-1782339459066.jpg', caption: 'عکس شخصیت‌های بازی کلش' }
+    ]
+  });
+
+  // ===== متغیرهای اصلی =====
   let cart = [];
   let currentFilter = 'all';
   let searchQuery = '';
   let discountApplied = false;
 
+  // ===== المنت‌ها =====
   const productGrid = document.getElementById('productGrid');
   const cartModal = document.getElementById('cartModal');
   const openCartBtn = document.getElementById('openCartBtn');
@@ -1273,11 +1430,16 @@
   const detailImage = document.getElementById('detailImage');
   const detailInfo = document.getElementById('detailInfo');
   const relatedGrid = document.getElementById('relatedGrid');
+  const galleryGrid = document.getElementById('galleryGrid');
+  const galleryToggle = document.getElementById('galleryToggle');
+  const galleryContent = document.getElementById('galleryContent');
+  const galleryArrow = document.getElementById('galleryArrow');
   const heroSection = document.getElementById('heroSection');
   const filterSection = document.getElementById('filterSection');
   const productsSection = document.getElementById('productsSection');
   const sectionTitle = document.getElementById('sectionTitle');
 
+  // ===== کپی شماره کارت =====
   function copyCardNumber() {
     const cardNumber = '6219861954504246';
     if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -1319,6 +1481,7 @@
     }, 2500);
   }
 
+  // ===== توابع جستجو =====
   function getLevenshteinDistance(a, b) {
     const matrix = [];
     for (let i = 0; i <= b.length; i++) {
@@ -1358,6 +1521,7 @@
     return true;
   }
 
+  // ===== نمایش صفحات =====
   const pageRules = document.getElementById('pageRules');
   const pageAbout = document.getElementById('pageAbout');
   const pageContact = document.getElementById('pageContact');
@@ -1395,6 +1559,7 @@
     });
   });
 
+  // ===== منو =====
   const navLinks = document.querySelectorAll('.nav-menu a[data-tab]');
   navLinks.forEach(link => {
     link.addEventListener('click', function(e) {
@@ -1421,6 +1586,7 @@
     });
   });
 
+  // ===== فیلترها =====
   document.querySelectorAll('#filterTabs button').forEach(btn => {
     btn.addEventListener('click', function() {
       document.querySelectorAll('#filterTabs button').forEach(b => b.classList.remove('active'));
@@ -1430,6 +1596,7 @@
     });
   });
 
+  // ===== جستجو =====
   function getSuggestions(query) {
     if (!query || query.length < 1) return [];
     const q = query.trim().toLowerCase();
@@ -1498,6 +1665,7 @@
     if (!e.target.closest('.search-box')) searchSuggestions.classList.remove('active');
   });
 
+  // ===== نمایش جزییات محصول با گالری کشویی =====
   function showProductDetail(product) {
     [pageRules, pageAbout, pageContact].forEach(p => p.classList.remove('active'));
     heroSection.style.display = 'none';
@@ -1505,10 +1673,13 @@
     productsSection.style.display = 'none';
     productDetailPage.classList.add('active');
 
+    // عکس اصلی
     detailImage.innerHTML = `<img src="${product.img}" alt="${product.name}" onerror="this.parentElement.innerHTML='<i class=\\'fas ${product.icon || 'fa-gamepad'}\\' style=\\'font-size:5rem;color:#FF5F02;opacity:0.3;display:flex;align-items:center;justify-content:center;height:100%;\\'></i>'">`;
 
+    // مشخصات
     const specsHtml = product.specs && product.specs.length ? `<div class="detail-specs"><h4><i class="fas fa-list-ul"></i> مشخصات اکانت:</h4><ul>${product.specs.map(s => `<li><i class="fas fa-check-circle"></i> ${s}</li>`).join('')}</ul></div>` : '';
 
+    // اطلاعات اصلی
     detailInfo.innerHTML = `
       <h1><i class="fas ${product.icon || 'fa-gamepad'}"></i> ${product.name}</h1>
       <span class="detail-tag"><i class="fas fa-tag"></i> ${product.tag}</span>
@@ -1522,6 +1693,23 @@
       </div>
     `;
 
+    // ===== گالری کشویی =====
+    if (product.gallery && product.gallery.length > 0) {
+      document.getElementById('gallerySection').style.display = 'block';
+      galleryGrid.innerHTML = product.gallery.map(item => `
+        <div class="gallery-item">
+          <img src="${item.img}" alt="${item.caption || 'گالری'}" onerror="this.style.display='none'">
+          <div class="gallery-caption">${item.caption || ''}</div>
+        </div>
+      `).join('');
+      // بستن گالری به حالت اولیه
+      galleryContent.classList.remove('open');
+      galleryArrow.classList.remove('open');
+    } else {
+      document.getElementById('gallerySection').style.display = 'none';
+    }
+
+    // ===== محصولات مشابه =====
     const related = products.filter(p => p.id !== product.id && p.platform === product.platform);
     relatedGrid.innerHTML = related.length ? related.map(p => `
       <div class="related-item" onclick="showProductDetail(products.find(pr => pr.id === ${p.id}))">
@@ -1534,6 +1722,12 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  // ===== گالری کشویی (باز و بسته شدن) =====
+  galleryToggle.addEventListener('click', function() {
+    galleryContent.classList.toggle('open');
+    galleryArrow.classList.toggle('open');
+  });
+
   function addToCartFromDetail(id) {
     const product = products.find(p => p.id === id);
     if (product) addToCart(product);
@@ -1541,32 +1735,12 @@
 
   detailBackBtn.addEventListener('click', showHome);
 
-  // ===== تابع افزودن محصول (برای استفاده در کنسول) =====
-  function addProduct(productData) {
-    const newProduct = {
-      id: products.length + 1,
-      name: productData.name || 'محصول بدون نام',
-      tag: productData.tag || 'نامشخص',
-      price: parseInt(productData.price) || 0,
-      shortDesc: productData.shortDesc || '',
-      fullDesc: productData.fullDesc || productData.shortDesc || '',
-      img: productData.img || 'https://placehold.co/600x400/FF5F02/FFF?text=' + encodeURIComponent(productData.name || 'محصول'),
-      badge: productData.badge || null,
-      platform: productData.platform || 'custom',
-      icon: productData.icon || 'fa-gamepad',
-      specs: productData.specs || []
-    };
-    products.push(newProduct);
-    renderProducts();
-    return newProduct;
-  }
-
   // ===== رندر محصولات =====
   function renderProducts() {
     let filtered = [...products];
     if (currentFilter === 'special') {
       filtered = filtered.filter(p => p.badge && (p.badge === 'ویژه' || p.badge === 'طلایی' || p.badge === 'جدید'));
-    } else if (currentFilter !== 'all') {
+    } else if (currentFilter !== 'all' && currentFilter !== 'special') {
       filtered = filtered.filter(p => p.platform === currentFilter);
     }
     if (searchQuery) {
@@ -1749,9 +1923,6 @@
   // ===== مقداردهی اولیه =====
   renderProducts();
   updateCartUI();
-
-  // ===== قرار دادن تابع addProduct در دسترس (برای مدیریت مخفی) =====
-  window.addProduct = addProduct;
 </script>
 </body>
-  </html>
+        </html>
