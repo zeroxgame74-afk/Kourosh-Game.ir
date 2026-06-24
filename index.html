@@ -888,6 +888,121 @@
     }
     .page-back-home:hover { background: #d94f00; transform: scale(1.02); }
 
+    /* ===== فرم مدیریت محصولات ===== */
+    .admin-form {
+      background: #fff;
+      border-radius: 28px;
+      padding: 30px 28px;
+      margin: 30px 0;
+      border: 2px solid #FF5F02;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+    }
+    .admin-form h3 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #FF5F02;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .admin-form h3 i { font-size: 1.8rem; }
+    .admin-form .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px 24px;
+    }
+    .admin-form .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .admin-form .form-group.full {
+      grid-column: 1 / -1;
+    }
+    .admin-form .form-group label {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #444;
+    }
+    .admin-form .form-group label i {
+      color: #FF5F02;
+      margin-left: 6px;
+    }
+    .admin-form .form-group input,
+    .admin-form .form-group select,
+    .admin-form .form-group textarea {
+      padding: 10px 14px;
+      border: 2px solid #e8e2dc;
+      border-radius: 12px;
+      font-family: 'Vazirmatn', sans-serif;
+      font-size: 0.95rem;
+      outline: none;
+      transition: 0.2s;
+      background: #faf9f8;
+    }
+    .admin-form .form-group input:focus,
+    .admin-form .form-group select:focus,
+    .admin-form .form-group textarea:focus {
+      border-color: #FF5F02;
+      background: #fff;
+    }
+    .admin-form .form-group textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    .admin-form .form-group select {
+      appearance: none;
+      cursor: pointer;
+    }
+    .admin-form .btn-submit {
+      grid-column: 1 / -1;
+      background: #FF5F02;
+      color: #fff;
+      border: none;
+      padding: 14px 30px;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      font-family: 'Vazirmatn', sans-serif;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .admin-form .btn-submit:hover {
+      background: #d94f00;
+      transform: scale(1.02);
+    }
+    .admin-form .btn-reset {
+      grid-column: 1 / -1;
+      background: #f0ece8;
+      color: #444;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 60px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Vazirmatn', sans-serif;
+      transition: 0.2s;
+    }
+    .admin-form .btn-reset:hover {
+      background: #e0d8d0;
+    }
+    .admin-form .form-actions {
+      grid-column: 1 / -1;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .admin-form .form-actions button {
+      flex: 1;
+      min-width: 120px;
+    }
+
     footer {
       background: #1a1a1a;
       color: #d0cdc8;
@@ -975,6 +1090,8 @@
       .btn-detail { flex: 1; }
       .payment-modal .pay-actions button { min-width: 80px; font-size: 0.85rem; padding: 10px; }
       .page-content .page-header { flex-direction: column; align-items: flex-start; }
+      .admin-form .form-grid { grid-template-columns: 1fr; }
+      .admin-form .form-actions { flex-direction: column; }
     }
   </style>
 </head>
@@ -1027,6 +1144,64 @@
   </div>
 </section>
 
+<!-- ===== ADMIN FORM ===== -->
+<div class="container">
+  <div class="admin-form" id="adminForm">
+    <h3><i class="fas fa-plus-circle"></i> افزودن محصول جدید</h3>
+    <form id="productForm">
+      <div class="form-grid">
+        <div class="form-group">
+          <label><i class="fas fa-gamepad"></i> نام بازی</label>
+          <input type="text" id="fName" placeholder="مثلاً کلش اف کلنز" required>
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-tag"></i> تگ / پلتفرم</label>
+          <input type="text" id="fTag" placeholder="مثلاً Supercell" required>
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-toman"></i> قیمت (تومان)</label>
+          <input type="number" id="fPrice" placeholder="مثلاً 850000" required>
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-crown"></i> وضعیت</label>
+          <select id="fBadge">
+            <option value="">معمولی</option>
+            <option value="ویژه">ویژه</option>
+            <option value="طلایی">طلایی</option>
+            <option value="اورجینال">اورجینال</option>
+            <option value="حراج">حراج</option>
+            <option value="جدید">جدید</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-icons"></i> آیکون (کد Font Awesome)</label>
+          <input type="text" id="fIcon" placeholder="مثلاً fa-chess-king" value="fa-gamepad">
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-image"></i> لینک عکس</label>
+          <input type="url" id="fImg" placeholder="آدرس تصویر">
+        </div>
+        <div class="form-group full">
+          <label><i class="fas fa-align-left"></i> توضیح کوتاه</label>
+          <input type="text" id="fShortDesc" placeholder="یک خط توضیح مختصر" required>
+        </div>
+        <div class="form-group full">
+          <label><i class="fas fa-align-justify"></i> توضیح کامل</label>
+          <textarea id="fFullDesc" placeholder="توضیحات کامل محصول..."></textarea>
+        </div>
+        <div class="form-group full">
+          <label><i class="fas fa-list-ul"></i> مشخصات (هر خط یک مورد)</label>
+          <textarea id="fSpecs" placeholder="تالار ۱۴&#10;قهرمان‌های سطح ۷۵+&#10;۵۰۰k+ سنگ تیره"></textarea>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn-submit"><i class="fas fa-plus-circle"></i> افزودن محصول</button>
+          <button type="reset" class="btn-reset"><i class="fas fa-undo"></i> پاک کردن فرم</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
 <!-- ===== PRODUCTS ===== -->
 <section class="products" id="productsSection">
   <div class="container">
@@ -1070,7 +1245,6 @@
   </div>
 </div>
 
-<!-- ===== درباره ما با اسامی ===== -->
 <div class="page-content" id="pageAbout">
   <div class="container">
     <div class="page-header"><i class="fas fa-users"></i><h2>درباره ما</h2></div>
@@ -1079,7 +1253,6 @@
       <p>از همون روز، با یه هدف ساده شروع کردیم: تبدیل شدن به معتبرترین پل ارتباطی بین شما و دنیای بازی. نه واسطه‌های الکی، نه قیمت‌های نجومی، فقط یه فروشگاه که پشتش دو تا آدم باغیرت و یه عالمه عشق به بازیه.</p>
       <div class="highlight-box"><p>امروز، تیممون بزرگتر شده، ولی هنوز همون روحیه اول رو داریم: خرید آسون، اکانت اصل، پشتیبانی ۲۴/۷. و صادقانه بگیم، بزرگترین سرمایه‌مون، اعتماد شماست. اینکه شما رو داریم، برای ما از هر دی ال سی و آپدیتی باارزش‌تره.</p></div>
       <p>پس خوش اومدید به خونه دوم گیمرهای ایران. اینجا کوروش گیمه؛ جایی که بازی، جدی گرفته میشه.</p>
-      
       <div style="margin-top: 30px; padding-top: 20px; border-top: 2px solid #f0ebe6;">
         <h4 style="color: #FF5F02; margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
           <i class="fas fa-id-card"></i> تیم کوروش گیم
@@ -1095,13 +1268,11 @@
           <span class="name">امیرمحمد وطن‌دوست</span>
         </div>
       </div>
-      
       <button class="page-back-home" onclick="showHome()"><i class="fas fa-arrow-right"></i> بازگشت به خانه</button>
     </div>
   </div>
 </div>
 
-<!-- ===== تماس با ما با شماره جدید ===== -->
 <div class="page-content" id="pageContact">
   <div class="container">
     <div class="page-header"><i class="fas fa-phone-alt"></i><h2>تماس با ما</h2></div>
@@ -1136,7 +1307,7 @@
   </div>
 </div>
 
-<!-- ===== PAYMENT MODAL ===== -->
+<!-- ===== PAYMENT MODAL با دکمه متوجه شدم ===== -->
 <div class="payment-modal-overlay" id="paymentModal">
   <div class="payment-modal">
     <div id="paymentContent">
@@ -1186,7 +1357,7 @@
       </div>
 
       <div class="pay-actions">
-        <button class="btn-pay-confirm" id="payConfirmBtn"><i class="fas fa-check-circle"></i> پرداخت نهایی</button>
+        <button class="btn-pay-confirm" id="payConfirmBtn"><i class="fas fa-check-circle"></i> متوجه شدم</button>
         <button class="btn-pay-cancel" id="payCancelBtn"><i class="fas fa-times"></i> انصراف</button>
       </div>
     </div>
@@ -1205,7 +1376,7 @@
   </div>
 </div>
 
-<!-- ===== FOOTER با شماره جدید ===== -->
+<!-- ===== FOOTER ===== -->
 <footer>
   <div class="container footer-grid">
     <div class="footer-col">
@@ -1242,21 +1413,16 @@
 </footer>
 
 <script>
-  // ===== دیتای محصولات =====
-  const products = [
-    { id: 1, name: 'کلش اف کلنز', tag: 'Supercell', price: 850000, shortDesc: 'اکانت تالار ۱۴ با قهرمان‌های سطح بالا و سنگ‌های تیره فراوان.', fullDesc: 'این اکانت فوق‌العاده مخصوص کسانی طراحی شده که به دنبال یک اکانت حرفه‌ای و آماده برای وارهای سنگین هستند. با این اکانت می‌تونید در بالاترین سطح رقابت کنید و از بازی لذت ببرید.\n\nویژگی‌های این اکانت:\n- تالار ۱۴ کامل با تمام ساختمان‌های بیشینه\n- تمام قهرمان‌ها در سطح ۷۵ به بالا\n- بیش از ۵۰۰,۰۰۰ سنگ تیره\n- بیش از ۱۰۰۰ سنگ جادویی\n- ۵۰ پتک وار\n- رنک افسانه‌ای در لیگ وار\n- ۲۰۰۰ جایگاه در تالار جنگ', img: 'https://play-lh.googleusercontent.com/C5eFC2oVigE2pQ6E_dT89VZfI9tOxKvXL5Pm1UTZ7sp40XfYj6abKqH4Cl3KGkE_Lg', badge: 'ویژه', platform: 'clashofclans', icon: 'fa-chess-king', specs: ['تالار ۱۴', 'قهرمان‌های سطح ۷۵+', '۵۰۰k+ سنگ تیره', 'رنک افسانه‌ای'] },
-    { id: 2, name: 'کلش رویال', tag: 'Supercell', price: 650000, shortDesc: 'اکانت با تمام کارت‌ها در سطح ۱۴، پادشاه ۱۴ و ۲۰۰۰۰۰ ستاره.', fullDesc: 'یک اکانت رقابتی و آماده برای صعود به بالاترین رنک‌های کلش رویال. این اکانت با جمع‌آوری تمام کارت‌ها و ارتقای آنها به سطح ۱۴، یک انتخاب عالی برای بازیکنان حرفه‌ای و کسانی که به دنبال تنوع در دک‌ها هستند.\n\nویژگی‌های این اکانت:\n- تمام کارت‌ها در سطح ۱۴ (بیشینه)\n- پادشاه سطح ۱۴\n- بیش از ۲۰۰,۰۰۰ ستاره\n- ۵۰ کارت افسانه‌ای\n- رنک Ultimate Champion\n- تمام emotes ویژه\n- ۱۰۰۰ جایگاه در تورنمنت‌ها', img: 'https://play-lh.googleusercontent.com/BCVhv6aYH5CR5w0s4CJ7t8jLhJjZqVg8tCgYrn8tCgYrn8tCgYrn8tCgYrn8', badge: 'طلایی', platform: 'clashroyale', icon: 'fa-chess-queen', specs: ['کارت‌های سطح ۱۴', 'پادشاه ۱۴', '۲۰۰k+ ستاره', 'رنک Ultimate Champion'] },
-    { id: 3, name: 'کال اف دیوتی موبایل', tag: 'Activision', price: 720000, shortDesc: 'اکانت با تمام اسکین‌های افسانه‌ای و سریال‌های برتر.', fullDesc: 'اگر به دنبال یک اکانت با بهترین اسکین‌ها و سلاح‌های افسانه‌ای در کال اف دیوتی موبایل هستید، این اکانت دقیقاً همان چیزی است که نیاز دارید. با این اکانت می‌توانید در بالاترین سطح رقابت کنید.\n\nویژگی‌های این اکانت:\n- ۱۵ اسکین افسانه‌ای برای سلاح‌ها\n- شخصیت‌های نادر و ویژه\n- سریال ۲۰۲۶ کامل\n- تمام battle pass های قبلی\n- رنک Legendary\n- بیش از ۱۰۰۰ پوستر و آواتار\n- ۵۰٪ تخفیف برای خریدهای بعدی', img: 'https://play-lh.googleusercontent.com/7hqvdpGhJhYlVjWfJvLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLh', badge: 'اورجینال', platform: 'callofduty', icon: 'fa-crosshairs', specs: ['۱۵ اسکین افسانه‌ای', 'شخصیت‌های نادر', 'سریال ۲۰۲۶', 'رنک Legendary'] },
-    { id: 4, name: 'کلش اف کلنز', tag: 'Supercell', price: 1200000, shortDesc: 'اکانت تالار ۱۵ با قهرمان‌های بیشینه و کل سنگ‌های تیره.', fullDesc: 'این اکانت یک شات از بهترین اکانت‌های کلش اف کلنز است. با تالار ۱۵ کامل و تمام قهرمان‌های بیشینه، این اکانت برای کسانی که به دنبال قدرتمندترین اکانت ممکن هستند طراحی شده است.\n\nویژگی‌های این اکانت:\n- تالار ۱۵ کامل با تمام ساختمان‌های بیشینه\n- تمام قهرمان‌ها در سطح ۹۰ به بالا\n- بیش از ۱,۰۰۰,۰۰۰ سنگ تیره\n- تمام سنگ‌های جادویی\n- ۱۰۰ پتک وار\n- رنک افسانه‌ای برتر\n- ۵۰۰۰ جایگاه در تالار جنگ', img: 'https://play-lh.googleusercontent.com/C5eFC2oVigE2pQ6E_dT89VZfI9tOxKvXL5Pm1UTZ7sp40XfYj6abKqH4Cl3KGkE_Lg', badge: 'طلایی', platform: 'clashofclans', icon: 'fa-chess-king', specs: ['تالار ۱۵', 'قهرمان‌های سطح ۹۰+', '۱M+ سنگ تیره', 'رنک افسانه‌ای برتر'] },
-    { id: 5, name: 'کلش رویال', tag: 'Supercell', price: 450000, shortDesc: 'اکانت مناسب برای شروع با کارت‌های سطح متوسط و ۵۰۰۰ ستاره.', fullDesc: 'یک اکانت عالی برای کسانی که تازه می‌خواهند وارد دنیای رقابتی کلش رویال شوند یا یک اکانت دوم برای تمرین می‌خواهند. این اکانت با کارت‌های سطح متوسط و ستاره‌های مناسب، یک شروع ایده‌آل است.\n\nویژگی‌های این اکانت:\n- کارت‌های سطح ۱۲ تا ۱۳\n- پادشاه سطح ۱۳\n- بیش از ۵,۰۰۰ ستاره\n- تمام کارت‌های مشترک و نادر\n- رنک Master\n- ۲۰۰ جایگاه در تورنمنت‌ها\n- مناسب برای شروع رقابت', img: 'https://play-lh.googleusercontent.com/BCVhv6aYH5CR5w0s4CJ7t8jLhJjZqVg8tCgYrn8tCgYrn8tCgYrn8tCgYrn8', badge: null, platform: 'clashroyale', icon: 'fa-chess-queen', specs: ['کارت‌های سطح ۱۲-۱۳', 'پادشاه ۱۳', '۵k+ ستاره', 'رنک Master'] },
-    { id: 6, name: 'کال اف دیوتی موبایل', tag: 'Activision', price: 980000, shortDesc: 'اکانت با سلاح‌های افسانه‌ای، شخصیت‌های نادر و سریال ۲۰۲۶.', fullDesc: 'این اکانت یک مجموعه کامل از بهترین محتوای کال اف دیوتی موبایل است. با سلاح‌های افسانه‌ای، شخصیت‌های نادر و سریال ۲۰۲۶، شما یک قدم جلوتر از رقبا هستید.\n\nویژگی‌های این اکانت:\n- ۲۰ اسکین افسانه‌ای برای سلاح‌ها\n- شخصیت‌های بسیار نادر\n- سریال ۲۰۲۶ کامل + تمام محتوای اضافه\n- تمام battle pass های جدید\n- رنک Legendary\n- بیش از ۲۰۰۰ پوستر و آواتار\n- ۱۰۰٪ تضمین اصالت', img: 'https://play-lh.googleusercontent.com/7hqvdpGhJhYlVjWfJvLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLhLh', badge: 'حراج', platform: 'callofduty', icon: 'fa-crosshairs', specs: ['۲۰ اسکین افسانه‌ای', 'شخصیت‌های نادر', 'سریال ۲۰۲۶', 'رنک Legendary'] }
-  ];
+  // ===== دیتای محصولات (خالی - کاربر با فرم پر میکنه) =====
+  let products = [];
 
+  // ===== سبد خرید =====
   let cart = [];
   let currentFilter = 'all';
   let searchQuery = '';
   let discountApplied = false;
 
+  // ===== المنت‌ها =====
   const productGrid = document.getElementById('productGrid');
   const cartModal = document.getElementById('cartModal');
   const openCartBtn = document.getElementById('openCartBtn');
@@ -1288,6 +1454,18 @@
   const filterSection = document.getElementById('filterSection');
   const productsSection = document.getElementById('productsSection');
   const sectionTitle = document.getElementById('sectionTitle');
+
+  // ===== فرم =====
+  const productForm = document.getElementById('productForm');
+  const fName = document.getElementById('fName');
+  const fTag = document.getElementById('fTag');
+  const fPrice = document.getElementById('fPrice');
+  const fBadge = document.getElementById('fBadge');
+  const fIcon = document.getElementById('fIcon');
+  const fImg = document.getElementById('fImg');
+  const fShortDesc = document.getElementById('fShortDesc');
+  const fFullDesc = document.getElementById('fFullDesc');
+  const fSpecs = document.getElementById('fSpecs');
 
   // ===== کپی شماره کارت =====
   function copyCardNumber() {
@@ -1525,7 +1703,7 @@
 
     detailImage.innerHTML = `<img src="${product.img}" alt="${product.name}" onerror="this.parentElement.innerHTML='<i class=\\'fas ${product.icon || 'fa-gamepad'}\\' style=\\'font-size:5rem;color:#FF5F02;opacity:0.3;display:flex;align-items:center;justify-content:center;height:100%;\\'></i>'">`;
 
-    const specsHtml = product.specs ? `<div class="detail-specs"><h4><i class="fas fa-list-ul"></i> مشخصات اکانت:</h4><ul>${product.specs.map(s => `<li><i class="fas fa-check-circle"></i> ${s}</li>`).join('')}</ul></div>` : '';
+    const specsHtml = product.specs && product.specs.length ? `<div class="detail-specs"><h4><i class="fas fa-list-ul"></i> مشخصات اکانت:</h4><ul>${product.specs.map(s => `<li><i class="fas fa-check-circle"></i> ${s}</li>`).join('')}</ul></div>` : '';
 
     detailInfo.innerHTML = `
       <h1><i class="fas ${product.icon || 'fa-gamepad'}"></i> ${product.name}</h1>
@@ -1559,6 +1737,34 @@
 
   detailBackBtn.addEventListener('click', showHome);
 
+  // ===== فرم افزودن محصول =====
+  productForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const newProduct = {
+      id: products.length + 1,
+      name: fName.value.trim(),
+      tag: fTag.value.trim(),
+      price: parseInt(fPrice.value),
+      shortDesc: fShortDesc.value.trim(),
+      fullDesc: fFullDesc.value.trim() || fShortDesc.value.trim(),
+      img: fImg.value.trim() || 'https://placehold.co/600x400/FF5F02/FFF?text=' + encodeURIComponent(fName.value.trim()),
+      badge: fBadge.value || null,
+      platform: 'custom',
+      icon: fIcon.value.trim() || 'fa-gamepad',
+      specs: fSpecs.value.trim() ? fSpecs.value.trim().split('\n').filter(s => s.trim()) : []
+    };
+
+    products.push(newProduct);
+    renderProducts();
+    productForm.reset();
+    fIcon.value = 'fa-gamepad';
+    showToast('✅ محصول با موفقیت اضافه شد!');
+    
+    // اسکرول به بخش محصولات
+    document.getElementById('productsSection').scrollIntoView({ behavior: 'smooth' });
+  });
+
   // ===== رندر محصولات =====
   function renderProducts() {
     let filtered = [...products];
@@ -1571,7 +1777,11 @@
       filtered = filtered.filter(p => multiWordSearch(searchQuery, p.name + ' ' + p.tag + ' ' + p.shortDesc + ' ' + (p.fullDesc || '')));
     }
     if (filtered.length === 0) {
-      productGrid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:60px 0; color:#888;"><i class="fas fa-search" style="font-size:3rem; display:block; margin-bottom:16px;"></i> محصولی یافت نشد</div>`;
+      productGrid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:60px 0; color:#888;">
+        <i class="fas fa-plus-circle" style="font-size:3rem; display:block; margin-bottom:16px; color:#FF5F02;"></i>
+        هنوز محصولی اضافه نشده!<br>
+        <span style="font-size:0.9rem;">از فرم بالا برای افزودن محصول استفاده کنید.</span>
+      </div>`;
       return;
     }
     productGrid.innerHTML = filtered.map(p => {
@@ -1743,6 +1953,7 @@
     paymentSuccess.style.display = 'none';
   });
 
+  // ===== مقداردهی اولیه =====
   renderProducts();
   updateCartUI();
 </script>
