@@ -1237,6 +1237,131 @@
     }
     .copy i { color: #FF5F02; }
 
+    /* ===== مودال قیمت توافقی ===== */
+    .negotiation-modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(6px);
+      z-index: 10001;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.25s ease;
+    }
+    .negotiation-modal-overlay.active { display: flex; }
+    .negotiation-modal {
+      background: #fff;
+      max-width: 440px;
+      width: 92%;
+      border-radius: 28px;
+      padding: 32px 28px 28px;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.3);
+      animation: slideUp 0.3s ease;
+      text-align: center;
+      position: relative;
+    }
+    .negotiation-modal .negotiation-icon {
+      width: 80px;
+      height: 80px;
+      background: #FF5F02;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 2.8rem;
+      color: #fff;
+      box-shadow: 0 8px 30px rgba(255,95,2,0.25);
+    }
+    .negotiation-modal h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #1e1e1e;
+      margin-bottom: 8px;
+    }
+    .negotiation-modal .sub-text {
+      color: #777;
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+      line-height: 1.8;
+    }
+    .negotiation-modal .contact-number-box {
+      background: #f5f0eb;
+      border-radius: 16px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 12px 0 20px;
+      direction: ltr;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #FF5F02;
+    }
+    .negotiation-modal .contact-number-box i {
+      color: #FF5F02;
+      font-size: 1.4rem;
+    }
+    .negotiation-modal .contact-number-box a {
+      color: #FF5F02;
+      text-decoration: none;
+    }
+    .negotiation-modal .contact-number-box a:hover {
+      text-decoration: underline;
+    }
+    .negotiation-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .negotiation-actions .btn-call {
+      flex: 2;
+      background: #FF5F02;
+      color: #fff;
+      border: none;
+      padding: 14px 20px;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      font-family: 'Vazirmatn', sans-serif;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .negotiation-actions .btn-call:hover {
+      background: #d94f00;
+      transform: scale(1.02);
+    }
+    .negotiation-actions .btn-close-negotiation {
+      flex: 1;
+      background: #f0ece8;
+      color: #444;
+      border: none;
+      padding: 14px 16px;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      font-family: 'Vazirmatn', sans-serif;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .negotiation-actions .btn-close-negotiation:hover {
+      background: #e0d8d0;
+    }
+
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     @keyframes slideUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
@@ -1266,6 +1391,13 @@
       .page-content .page-header { flex-direction: column; align-items: flex-start; }
       .payment-success .success-msg { padding: 16px; }
       .toast-notification { font-size: 0.75rem; padding: 8px 18px; }
+      .negotiation-modal { padding: 24px 18px; }
+      .negotiation-modal .negotiation-icon { width: 64px; height: 64px; font-size: 2.2rem; }
+      .negotiation-modal h3 { font-size: 1.3rem; }
+      .negotiation-modal .contact-number-box { font-size: 1.1rem; padding: 12px 14px; }
+      .negotiation-actions { flex-direction: column; }
+      .negotiation-actions .btn-call { flex: 1; }
+      .negotiation-actions .btn-close-negotiation { flex: 1; }
     }
   </style>
 </head>
@@ -1700,6 +1832,7 @@
   const pageContact = document.getElementById('pageContact');
   const pageExchange = document.getElementById('pageExchange');
 
+  // ===== کپی شماره کارت =====
   function copyCardNumber() {
     const cardNumber = '6219861954504246';
     if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -1750,6 +1883,51 @@
     }, 1500);
   }
 
+  // ===== مودال قیمت توافقی =====
+  function showNegotiationModal(product) {
+    const existing = document.getElementById('negotiationModal');
+    if (existing) existing.remove();
+
+    const modalHTML = `
+      <div class="negotiation-modal-overlay" id="negotiationModal">
+        <div class="negotiation-modal">
+          <div class="negotiation-icon">
+            <i class="fas fa-handshake"></i>
+          </div>
+          <h3>قیمت این محصول توافقی است!</h3>
+          <p class="sub-text">
+            برای خرید این محصول لطفاً با پشتیبانی تماس بگیرید تا بهترین قیمت رو دریافت کنید.
+          </p>
+          <div class="contact-number-box">
+            <i class="fas fa-phone-alt"></i>
+            <a href="tel:+989157930518">0915 793 0518</a>
+          </div>
+          <div class="negotiation-actions">
+            <a href="tel:+989157930518" class="btn-call">
+              <i class="fas fa-phone"></i> تماس با پشتیبانی
+            </a>
+            <button class="btn-close-negotiation" onclick="closeNegotiationModal()">
+              <i class="fas fa-times"></i> بستن
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+    const modal = document.getElementById('negotiationModal');
+    setTimeout(() => modal.classList.add('active'), 10);
+  }
+
+  function closeNegotiationModal() {
+    const modal = document.getElementById('negotiationModal');
+    if (modal) {
+      modal.classList.remove('active');
+      setTimeout(() => modal.remove(), 300);
+    }
+  }
+
+  // ===== توابع جستجو =====
   function getLevenshteinDistance(a, b) {
     const matrix = [];
     for (let i = 0; i <= b.length; i++) {
@@ -1789,6 +1967,7 @@
     return true;
   }
 
+  // ===== نمایش صفحات =====
   function showPage(pageId) {
     [pageRules, pageAbout, pageContact, pageExchange].forEach(p => p.classList.remove('active'));
     productDetailPage.classList.remove('active');
@@ -1823,6 +2002,7 @@
     });
   });
 
+  // ===== منو =====
   const navLinks = document.querySelectorAll('.nav-menu a[data-tab]');
   navLinks.forEach(link => {
     link.addEventListener('click', function(e) {
@@ -1851,6 +2031,7 @@
     });
   });
 
+  // ===== فیلترها =====
   document.querySelectorAll('#filterTabs button').forEach(btn => {
     btn.addEventListener('click', function() {
       document.querySelectorAll('#filterTabs button').forEach(b => b.classList.remove('active'));
@@ -1860,6 +2041,7 @@
     });
   });
 
+  // ===== جستجو =====
   function getSuggestions(query) {
     if (!query || query.length < 1) return [];
     const q = query.trim().toLowerCase();
@@ -1883,7 +2065,8 @@
     let html = '';
     for (const p of suggestions) {
       const highlightName = p.name.replace(new RegExp(query, 'gi'), match => `<span class="highlight">${match}</span>`);
-      html += `<div class="suggestion-item" data-id="${p.id}"><i class="fas ${p.icon || 'fa-gamepad'}"></i><span>${highlightName}</span><span style="color:#888;font-size:0.8rem;margin-right:auto;">${p.price === 0 ? 'توافقی' : p.price.toLocaleString() + ' تومان'}</span></div>`;
+      const priceText = p.price === 0 ? 'توافقی' : p.price.toLocaleString() + ' تومان';
+      html += `<div class="suggestion-item" data-id="${p.id}"><i class="fas ${p.icon || 'fa-gamepad'}"></i><span>${highlightName}</span><span style="color:#888;font-size:0.8rem;margin-right:auto;">${priceText}</span></div>`;
     }
     searchSuggestions.innerHTML = html;
     searchSuggestions.classList.add('active');
@@ -1928,6 +2111,7 @@
     if (!e.target.closest('.search-box')) searchSuggestions.classList.remove('active');
   });
 
+  // ===== نمایش جزییات =====
   function showProductDetail(product) {
     [pageRules, pageAbout, pageContact, pageExchange].forEach(p => p.classList.remove('active'));
     heroSection.style.display = 'none';
@@ -2003,6 +2187,7 @@
 
   detailBackBtn.addEventListener('click', showHome);
 
+  // ===== رندر محصولات =====
   function renderProducts() {
     let filtered = [...products];
     if (currentFilter === 'special') {
@@ -2048,11 +2233,14 @@
     }).join('');
   }
 
+  // ===== سبد خرید با پشتیبانی از قیمت توافقی =====
   function addToCart(product) {
+    // اگر قیمت توافقی (0) بود، مودال اختصاصی نمایش بده
     if (product.price === 0) {
-      alert('قیمت این اکانت توافقی است. لطفاً برای خرید با پشتیبانی تماس بگیرید.\nشماره تماس: 0915 793 0518');
+      showNegotiationModal(product);
       return;
     }
+    
     const existing = cart.find(item => item.id === product.id);
     if (existing) existing.qty += 1;
     else cart.push({ ...product, qty: 1 });
@@ -2123,6 +2311,7 @@
     });
   }
 
+  // ===== مودال سبد =====
   function openCartModal() { cartModal.classList.add('active'); document.body.style.overflow = 'hidden'; }
   function closeCartModal() { cartModal.classList.remove('active'); document.body.style.overflow = ''; }
   openCartBtn.addEventListener('click', openCartModal);
@@ -2130,6 +2319,7 @@
   cartModal.addEventListener('click', function(e) { if (e.target === this) closeCartModal(); });
   clearCartBtn.addEventListener('click', function() { if (cart.length && confirm('آیا مطمئن هستید؟')) clearCart(); });
 
+  // ===== پرداخت =====
   checkoutBtn.addEventListener('click', function() {
     if (cart.length === 0) { alert('سبد خرید خالی است!'); return; }
     closeCartModal();
@@ -2211,14 +2401,17 @@
     updateCartUI();
   });
 
+  // ===== اجرا =====
   renderProducts();
   updateCartUI();
 
+  // ===== برای دسترسی از onclick =====
   window.products = products;
   window.showProductDetail = showProductDetail;
   window.showHome = showHome;
   window.addToCart = addToCart;
   window.copyCardNumber = copyCardNumber;
+  window.closeNegotiationModal = closeNegotiationModal;
 </script>
 </body>
   </html>
