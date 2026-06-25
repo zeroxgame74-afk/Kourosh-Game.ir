@@ -18,7 +18,6 @@
     .text-orange { color: #FF5F02; }
     .bg-orange { background-color: #FF5F02; }
 
-    /* ===== غیرفعال کردن دانلود عکس ===== */
     img {
       -webkit-user-select: none;
       -moz-user-select: none;
@@ -655,7 +654,7 @@
     .related-item h4 { font-size: 1rem; margin-top: 8px; }
     .related-item .r-price { color: #FF5F02; font-weight: 700; }
 
-    /* ===== مودال سبد خرید (با استایل هماهنگ) ===== */
+    /* ===== مودال سبد خرید ===== */
     .cart-modal-overlay {
       display: none;
       position: fixed;
@@ -825,7 +824,7 @@
     .btn-clear-cart { background: #f0ece8; color: #444; }
     .btn-clear-cart:hover { background: #e0d8d0; }
 
-    /* ===== پیام کوتاه اضافه شدن ===== */
+    /* ===== توست نوتیفیکیشن (پیام کوتاه) ===== */
     .toast-notification {
       position: fixed;
       bottom: 30px;
@@ -968,6 +967,40 @@
       white-space: nowrap;
     }
     .payment-modal .discount-box button:hover { background: #d94f00; transform: scale(1.02); }
+
+    /* پیام تخفیف جدید */
+    #discountMessage {
+      margin: 8px 0 12px;
+    }
+    .discount-success {
+      background: #d4edda;
+      border-right: 4px solid #28a745;
+      padding: 14px 18px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      animation: fadeIn 0.3s ease;
+      text-align: right;
+    }
+    .discount-success i { color: #28a745; font-size: 1.8rem; flex-shrink: 0; }
+    .discount-success .text { color: #155724; }
+    .discount-success .text .title { font-weight: 700; }
+    .discount-success .text .sub { font-size: 0.9rem; }
+
+    .discount-error {
+      background: #f8d7da;
+      border-right: 4px solid #dc3545;
+      padding: 12px 16px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      animation: fadeIn 0.3s ease;
+      text-align: right;
+    }
+    .discount-error i { color: #dc3545; font-size: 1.5rem; flex-shrink: 0; }
+    .discount-error .text { color: #721c24; font-weight: 500; }
 
     .btn-pay-confirm {
       background: #FF5F02;
@@ -1453,6 +1486,9 @@
         <button id="applyDiscountBtn"><i class="fas fa-check"></i> اعمال</button>
       </div>
 
+      <!-- پیام تخفیف جدید -->
+      <div id="discountMessage"></div>
+
       <div style="background:#fcf8f4;border-radius:12px;padding:12px 16px;margin:12px 0;border-right:3px solid #FF5F02;text-align:right;">
         <p style="font-size:0.9rem;color:#555;margin:0;">
           <i class="fas fa-info-circle" style="color:#FF5F02;margin-left:6px;"></i>
@@ -1492,7 +1528,7 @@
   </div>
 </div>
 
-<!-- ===== توست نوتیفیکیشن (پیام کوتاه) ===== -->
+<!-- ===== توست نوتیفیکیشن ===== -->
 <div class="toast-notification" id="toastNotification">
   <i class="fas fa-check-circle"></i>
   <span id="toastMessage">افزوده شد</span>
@@ -1598,6 +1634,7 @@
   const searchSuggestions = document.getElementById('searchSuggestions');
   const discountInput = document.getElementById('discountInput');
   const applyDiscountBtn = document.getElementById('applyDiscountBtn');
+  const discountMessage = document.getElementById('discountMessage');
   const toastNotification = document.getElementById('toastNotification');
   const toastMessage = document.getElementById('toastMessage');
 
@@ -2062,27 +2099,48 @@
     discountApplied = false;
     discountInput.value = '';
     discountInput.style.borderColor = '#e8e2dc';
+    discountMessage.innerHTML = '';
     paymentModal.classList.add('active');
   });
 
+  // ===== اعمال تخفیف با طراحی جدید =====
   applyDiscountBtn.addEventListener('click', function() {
     const code = discountInput.value.trim().toUpperCase();
+    
     if (code === 'KOUROSH10' || code === 'GAME10') {
       discountApplied = true;
-      discountInput.style.borderColor = '#2ecc71';
+      discountInput.style.borderColor = '#28a745';
       const total = getTotal();
       paymentTotal.textContent = total.toLocaleString() + ' تومان';
-      alert('✅ کد تخفیف با موفقیت اعمال شد! ۱۰٪ تخفیف');
+      
+      discountMessage.innerHTML = `
+        <div class="discount-success">
+          <i class="fas fa-check-circle"></i>
+          <div class="text">
+            <div class="title">✅ کد تخفیف اعمال شد!</div>
+            <div class="sub">۱۰٪ تخفیف | مبلغ جدید: ${total.toLocaleString()} تومان</div>
+          </div>
+        </div>
+      `;
     } else if (code === '') {
       discountApplied = false;
       discountInput.style.borderColor = '#e8e2dc';
       const total = getTotal();
       paymentTotal.textContent = total.toLocaleString() + ' تومان';
+      discountMessage.innerHTML = '';
     } else {
       discountApplied = false;
-      discountInput.style.borderColor = '#e74c3c';
-      alert('❌ کد تخفیف نامعتبر است!');
-      setTimeout(() => { discountInput.style.borderColor = '#e8e2dc'; }, 1500);
+      discountInput.style.borderColor = '#dc3545';
+      discountMessage.innerHTML = `
+        <div class="discount-error">
+          <i class="fas fa-times-circle"></i>
+          <div class="text">❌ کد تخفیف نامعتبر است!</div>
+        </div>
+      `;
+      setTimeout(() => { 
+        discountMessage.innerHTML = '';
+        discountInput.style.borderColor = '#e8e2dc';
+      }, 2500);
     }
   });
 
@@ -2109,6 +2167,7 @@
     paymentSuccess.style.display = 'none';
     cart = [];
     discountApplied = false;
+    discountMessage.innerHTML = '';
     updateCartUI();
   });
 
@@ -2123,4 +2182,4 @@
   window.copyCardNumber = copyCardNumber;
 </script>
 </body>
-  </html>
+</html>
