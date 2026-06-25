@@ -1097,6 +1097,7 @@
     }
     .btn-pay-close:hover { background: #d94f00; transform: scale(1.02); }
 
+    /* ===== صفحه معاوضه (موقت) ===== */
     .page-content {
       display: none;
       padding: 40px 0 60px;
@@ -1282,6 +1283,8 @@
       <a class="active-tab" data-tab="home"><i class="fas fa-home"></i> خانه</a>
       <a data-tab="store"><i class="fas fa-store"></i> اکانت</a>
       <a data-tab="special"><i class="fas fa-trophy"></i> ویژه</a>
+      <!-- تب جدید معاوضه -->
+      <a data-tab="exchange"><i class="fas fa-exchange-alt"></i> معاوضه</a>
       <button class="cart-btn" id="openCartBtn">
         <i class="fas fa-shopping-cart"></i> سبد خرید
         <span class="cart-badge" id="cartCount">0</span>
@@ -1427,6 +1430,32 @@
   </div>
 </div>
 
+<!-- ===== صفحه معاوضه (موقت) ===== -->
+<div class="page-content" id="pageExchange">
+  <div class="container">
+    <div class="page-header">
+      <i class="fas fa-exchange-alt"></i>
+      <h2>معاوضه اکانت</h2>
+    </div>
+    <div class="page-body">
+      <div style="text-align:center; padding:40px 0;">
+        <i class="fas fa-tools" style="font-size:4rem; color:#FF5F02; margin-bottom:20px; display:block;"></i>
+        <h3 style="font-size:1.8rem; color:#1e1e1e; margin-bottom:12px;">🔧 در حال ساخت...</h3>
+        <p style="color:#777; font-size:1.1rem; max-width:500px; margin:0 auto;">
+          صفحه معاوضه اکانت به زودی راه‌اندازی میشود. برای اطلاع از زمان دقیق، با ما در تماس باشید.
+        </p>
+        <div style="margin-top:24px;">
+          <span class="contact-number" style="font-size:1.2rem;">
+            <i class="fas fa-phone" style="color:#FF5F02; margin-left:10px;"></i>
+            <a href="tel:+989157930518" style="color:#FF5F02; text-decoration:none;">0915 793 0518</a>
+          </span>
+        </div>
+      </div>
+      <button class="page-back-home" onclick="showHome()"><i class="fas fa-arrow-right"></i> بازگشت به خانه</button>
+    </div>
+  </div>
+</div>
+
 <!-- ===== CART MODAL ===== -->
 <div class="cart-modal-overlay" id="cartModal">
   <div class="cart-modal">
@@ -1547,7 +1576,7 @@
         <li><i class="fas fa-chevron-left"></i> <a class="footer-link" data-page="rules">قوانین</a></li>
         <li><i class="fas fa-chevron-left"></i> <a class="footer-link" data-page="about">درباره ما</a></li>
         <li><i class="fas fa-chevron-left"></i> <a class="footer-link" data-page="contact">تماس با ما</a></li>
-        <li><i class="fas fa-chevron-left"></i> <a href="#">پشتیبانی</a></li>
+        <li><i class="fas fa-chevron-left"></i> <a class="footer-link" data-page="exchange">معاوضه</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -1646,6 +1675,12 @@
   const productsSection = document.getElementById('productsSection');
   const sectionTitle = document.getElementById('sectionTitle');
 
+  // ===== صفحات =====
+  const pageRules = document.getElementById('pageRules');
+  const pageAbout = document.getElementById('pageAbout');
+  const pageContact = document.getElementById('pageContact');
+  const pageExchange = document.getElementById('pageExchange');
+
   function copyCardNumber() {
     const cardNumber = '6219861954504246';
     if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -1735,12 +1770,8 @@
     return true;
   }
 
-  const pageRules = document.getElementById('pageRules');
-  const pageAbout = document.getElementById('pageAbout');
-  const pageContact = document.getElementById('pageContact');
-
   function showPage(pageId) {
-    [pageRules, pageAbout, pageContact].forEach(p => p.classList.remove('active'));
+    [pageRules, pageAbout, pageContact, pageExchange].forEach(p => p.classList.remove('active'));
     productDetailPage.classList.remove('active');
     heroSection.style.display = 'none';
     filterSection.style.display = 'none';
@@ -1748,11 +1779,12 @@
     if (pageId === 'rules') pageRules.classList.add('active');
     else if (pageId === 'about') pageAbout.classList.add('active');
     else if (pageId === 'contact') pageContact.classList.add('active');
+    else if (pageId === 'exchange') pageExchange.classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   function showHome() {
-    [pageRules, pageAbout, pageContact].forEach(p => p.classList.remove('active'));
+    [pageRules, pageAbout, pageContact, pageExchange].forEach(p => p.classList.remove('active'));
     productDetailPage.classList.remove('active');
     heroSection.style.display = 'block';
     filterSection.style.display = 'block';
@@ -1785,7 +1817,7 @@
         sectionTitle.innerHTML = '<i class="fas fa-store"></i> همه اکانت‌ها';
         document.getElementById('productsSection').scrollIntoView({ behavior: 'smooth' });
       } else if (tab === 'special') {
-        [pageRules, pageAbout, pageContact].forEach(p => p.classList.remove('active'));
+        [pageRules, pageAbout, pageContact, pageExchange].forEach(p => p.classList.remove('active'));
         productDetailPage.classList.remove('active');
         heroSection.style.display = 'none';
         filterSection.style.display = 'none';
@@ -1794,6 +1826,8 @@
         currentFilter = 'special';
         renderProducts();
         document.getElementById('productsSection').scrollIntoView({ behavior: 'smooth' });
+      } else if (tab === 'exchange') {
+        showPage('exchange');
       }
     });
   });
@@ -1876,7 +1910,7 @@
   });
 
   function showProductDetail(product) {
-    [pageRules, pageAbout, pageContact].forEach(p => p.classList.remove('active'));
+    [pageRules, pageAbout, pageContact, pageExchange].forEach(p => p.classList.remove('active'));
     heroSection.style.display = 'none';
     filterSection.style.display = 'none';
     productsSection.style.display = 'none';
@@ -2160,4 +2194,4 @@
   window.copyCardNumber = copyCardNumber;
 </script>
 </body>
-      </html>
+  </html>
