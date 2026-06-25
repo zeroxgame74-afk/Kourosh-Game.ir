@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" />
   <style>
-    /* ===== تمام استایل‌های قبلی ===== */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Vazirmatn', 'Segoe UI', Tahoma, sans-serif;
@@ -738,36 +737,13 @@
     .cart-item-info .qty-row {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       margin-top: 4px;
-    }
-    .cart-item-info .qty-row .qty-btn {
-      background: #f0ece8;
-      border: none;
-      border-radius: 6px;
-      width: 26px;
-      height: 26px;
-      font-size: 0.9rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: 0.2s;
-      color: #1e1e1e;
-    }
-    .cart-item-info .qty-row .qty-btn:hover { background: #FF5F02; color: #fff; }
-    .cart-item-info .qty-row .qty-num {
-      font-weight: 700;
-      min-width: 20px;
-      text-align: center;
-      font-size: 0.95rem;
     }
     .cart-item-info .qty-row .item-price {
       color: #FF5F02;
       font-weight: 700;
       font-size: 0.95rem;
-      margin-right: 10px;
     }
     .cart-item-remove {
       background: none;
@@ -1238,7 +1214,6 @@
     }
     .copy i { color: #FF5F02; }
 
-    /* ===== مودال قیمت توافقی ===== */
     .negotiation-modal-overlay {
       display: none;
       position: fixed;
@@ -1404,7 +1379,6 @@
 </head>
 <body>
 
-<!-- ===== HEADER ===== -->
 <header>
   <div class="container header-flex">
     <div class="logo">
@@ -1424,7 +1398,6 @@
   </div>
 </header>
 
-<!-- ===== HERO ===== -->
 <section class="hero" id="heroSection">
   <div class="container hero-grid">
     <div class="hero-text">
@@ -1435,7 +1408,6 @@
   </div>
 </section>
 
-<!-- ===== FILTER ===== -->
 <section class="filter-section" id="filterSection">
   <div class="container filter-flex">
     <div class="filter-tabs" id="filterTabs">
@@ -1453,7 +1425,6 @@
   </div>
 </section>
 
-<!-- ===== PRODUCTS ===== -->
 <section class="products" id="productsSection">
   <div class="container">
     <div class="section-title" id="sectionTitle"><i class="fas fa-cubes"></i> جدیدترین اکانت‌ها</div>
@@ -1461,7 +1432,6 @@
   </div>
 </section>
 
-<!-- ===== PRODUCT DETAIL ===== -->
 <div class="product-detail-page" id="productDetailPage">
   <div class="container">
     <button class="detail-back" id="detailBackBtn"><i class="fas fa-arrow-right"></i> بازگشت به فروشگاه</button>
@@ -1494,7 +1464,6 @@
   </div>
 </div>
 
-<!-- ===== PAGES ===== -->
 <div class="page-content" id="pageRules">
   <div class="container">
     <div class="page-header"><i class="fas fa-gavel"></i><h2>قوانین خرید از فروشگاه کوروش گیم</h2></div>
@@ -1584,7 +1553,6 @@
   </div>
 </div>
 
-<!-- ===== CART MODAL ===== -->
 <div class="cart-modal-overlay" id="cartModal">
   <div class="cart-modal">
     <div class="cart-modal-header">
@@ -1600,7 +1568,6 @@
   </div>
 </div>
 
-<!-- ===== PAYMENT MODAL ===== -->
 <div class="payment-modal-overlay" id="paymentModal">
   <div class="payment-modal">
     <div id="paymentContent">
@@ -1679,13 +1646,11 @@
   </div>
 </div>
 
-<!-- ===== توست ===== -->
 <div class="toast-notification" id="toastNotification">
   <i class="fas fa-check-circle"></i>
   <span id="toastMessage">افزوده شد</span>
 </div>
 
-<!-- ===== FOOTER ===== -->
 <footer>
   <div class="container footer-grid">
     <div class="footer-col">
@@ -1722,7 +1687,6 @@
 </footer>
 
 <script>
-  // ===== محصولات با عکس اصلی جدید برای پسرخوانده =====
   const products = [
     {
       id: 1,
@@ -1759,15 +1723,15 @@
       id: 2,
       name: 'اکانت پسرخوانده | تیزلایه',
       tag: 'پسرخوانده',
-      price: 0, // توافقی
+      price: 0,
       shortDesc: 'اکانت پسر خوانده خیلی خفن با قیمت توافقی',
       fullDesc: 'اکانت براش یه تومن خرج شده\nسه تا بلیط طلایی فعال شده و یک تبلیغ پر و بسته های پیشنهادی بعضی هاش رو گرفته\nاکانت روی شماره و گوگل سیو هست و بخاطر این تعهد کتبی و تصویری میدهم',
-      img: 'https://uploadkon.ir/uploads/392325_26pesar-khande124-korosh-game.jpg', // عکس اصلی جدید
+      img: 'https://uploadkon.ir/uploads/f6cc25_26Negar-1782422991437.jpg',
       badge: 'ویژه',
       platform: 'pesar_khandeh',
       icon: 'fa-star',
       gallery: [
-        { src: 'https://uploadkon.ir/uploads/392325_26pesar-khande124-korosh-game.jpg', alt: 'صفحه اصلی اکانت' },
+        { src: 'https://uploadkon.ir/uploads/f6cc25_26Negar-1782422991437.jpg', alt: 'صفحه اصلی اکانت' },
         { src: 'https://uploadkon.ir/uploads/0ac725_26Negar-1782400592249.jpg', alt: 'مشخصات اکانت' },
         { src: 'https://uploadkon.ir/uploads/bac325_26Negar-1782401406142.jpg', alt: 'اکانت در حالت شب' },
         { src: 'https://uploadkon.ir/uploads/b21325_26Negar-1782408406612.jpg', alt: 'شخصیت‌های بازی' }
@@ -1785,9 +1749,7 @@
   let currentFilter = 'all';
   let searchQuery = '';
   let discountApplied = false;
-  let currentProductId = null;
 
-  // ===== المان‌ها =====
   const productGrid = document.getElementById('productGrid');
   const cartModal = document.getElementById('cartModal');
   const openCartBtn = document.getElementById('openCartBtn');
@@ -1834,7 +1796,6 @@
   const pageContact = document.getElementById('pageContact');
   const pageExchange = document.getElementById('pageExchange');
 
-  // ===== کپی شماره کارت =====
   function copyCardNumber() {
     const cardNumber = '6219861954504246';
     if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -1885,7 +1846,6 @@
     }, 1500);
   }
 
-  // ===== مودال قیمت توافقی =====
   function showNegotiationModal(product) {
     const existing = document.getElementById('negotiationModal');
     if (existing) existing.remove();
@@ -1931,7 +1891,6 @@
     }
   }
 
-  // ===== توابع جستجو =====
   function getLevenshteinDistance(a, b) {
     const matrix = [];
     for (let i = 0; i <= b.length; i++) {
@@ -1971,7 +1930,6 @@
     return true;
   }
 
-  // ===== نمایش صفحات =====
   function showPage(pageId) {
     [pageRules, pageAbout, pageContact, pageExchange].forEach(p => p.classList.remove('active'));
     productDetailPage.classList.remove('active');
@@ -2006,7 +1964,6 @@
     });
   });
 
-  // ===== منو =====
   const navLinks = document.querySelectorAll('.nav-menu a[data-tab]');
   navLinks.forEach(link => {
     link.addEventListener('click', function(e) {
@@ -2035,7 +1992,6 @@
     });
   });
 
-  // ===== فیلترها =====
   document.querySelectorAll('#filterTabs button').forEach(btn => {
     btn.addEventListener('click', function() {
       document.querySelectorAll('#filterTabs button').forEach(b => b.classList.remove('active'));
@@ -2045,7 +2001,6 @@
     });
   });
 
-  // ===== جستجو =====
   function getSuggestions(query) {
     if (!query || query.length < 1) return [];
     const q = query.trim().toLowerCase();
@@ -2115,14 +2070,12 @@
     if (!e.target.closest('.search-box')) searchSuggestions.classList.remove('active');
   });
 
-  // ===== نمایش جزییات =====
   function showProductDetail(product) {
     [pageRules, pageAbout, pageContact, pageExchange].forEach(p => p.classList.remove('active'));
     heroSection.style.display = 'none';
     filterSection.style.display = 'none';
     productsSection.style.display = 'none';
     productDetailPage.classList.add('active');
-    currentProductId = product.id;
 
     detailMainImg.src = product.img;
     detailMainImg.alt = product.name;
@@ -2191,7 +2144,6 @@
 
   detailBackBtn.addEventListener('click', showHome);
 
-  // ===== رندر محصولات =====
   function renderProducts() {
     let filtered = [...products];
     if (currentFilter === 'special') {
@@ -2237,7 +2189,6 @@
     }).join('');
   }
 
-  // ===== سبد خرید با پشتیبانی از قیمت توافقی =====
   function addToCart(product) {
     if (product.price === 0) {
       showNegotiationModal(product);
@@ -2245,8 +2196,13 @@
     }
     
     const existing = cart.find(item => item.id === product.id);
-    if (existing) existing.qty += 1;
-    else cart.push({ ...product, qty: 1 });
+    if (existing) {
+      // اگر محصول تکراری باشه، فقط یه پیام میدیم که قبلاً اضافه شده
+      showToast('این محصول قبلاً به سبد خرید اضافه شده است.');
+      return;
+    } else {
+      cart.push({ ...product, qty: 1 });
+    }
     updateCartUI();
     openCartBtn.style.transform = 'scale(1.1)';
     setTimeout(() => openCartBtn.style.transform = '', 200);
@@ -2255,14 +2211,6 @@
 
   function removeFromCart(id) {
     cart = cart.filter(item => item.id !== id);
-    updateCartUI();
-  }
-
-  function changeQty(id, delta) {
-    const item = cart.find(i => i.id === id);
-    if (!item) return;
-    item.qty += delta;
-    if (item.qty <= 0) cart = cart.filter(i => i.id !== id);
     updateCartUI();
   }
 
@@ -2291,9 +2239,6 @@
           <div class="cart-item-info">
             <h4>${item.name}</h4>
             <div class="qty-row">
-              <button class="qty-btn" data-id="${item.id}" data-delta="-1">−</button>
-              <span class="qty-num">${item.qty}</span>
-              <button class="qty-btn" data-id="${item.id}" data-delta="1">+</button>
               <span class="item-price">${item.price.toLocaleString()} تومان</span>
             </div>
           </div>
@@ -2307,14 +2252,8 @@
     document.querySelectorAll('.cart-item-remove').forEach(btn => {
       btn.addEventListener('click', function() { removeFromCart(parseInt(this.dataset.id)); });
     });
-    document.querySelectorAll('.qty-btn').forEach(btn => {
-      btn.addEventListener('click', function() {
-        changeQty(parseInt(this.dataset.id), parseInt(this.dataset.delta));
-      });
-    });
   }
 
-  // ===== مودال سبد =====
   function openCartModal() { cartModal.classList.add('active'); document.body.style.overflow = 'hidden'; }
   function closeCartModal() { cartModal.classList.remove('active'); document.body.style.overflow = ''; }
   openCartBtn.addEventListener('click', openCartModal);
@@ -2322,7 +2261,6 @@
   cartModal.addEventListener('click', function(e) { if (e.target === this) closeCartModal(); });
   clearCartBtn.addEventListener('click', function() { if (cart.length && confirm('آیا مطمئن هستید؟')) clearCart(); });
 
-  // ===== پرداخت =====
   checkoutBtn.addEventListener('click', function() {
     if (cart.length === 0) { alert('سبد خرید خالی است!'); return; }
     closeCartModal();
@@ -2404,7 +2342,6 @@
     updateCartUI();
   });
 
-  // ===== اتصال توابع به window =====
   window.products = products;
   window.showProductDetail = showProductDetail;
   window.showHome = showHome;
@@ -2413,7 +2350,6 @@
   window.showNegotiationModal = showNegotiationModal;
   window.closeNegotiationModal = closeNegotiationModal;
 
-  // ===== اجرا =====
   renderProducts();
   updateCartUI();
 </script>
