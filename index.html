@@ -18,6 +18,26 @@
     .text-orange { color: #FF5F02; }
     .bg-orange { background-color: #FF5F02; }
 
+    /* ===== غیرفعال کردن دانلود عکس ===== */
+    img {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-user-drag: none;
+      -moz-user-drag: none;
+      -ms-user-drag: none;
+      user-drag: none;
+      pointer-events: none;
+    }
+    .product-image, .detail-image-main, .gallery-thumb, .detail-image-section {
+      pointer-events: auto;
+      cursor: pointer;
+    }
+    .product-image img, .detail-image-main img, .gallery-thumb img {
+      pointer-events: none;
+    }
+
     header {
       background: #fff;
       box-shadow: 0 4px 20px rgba(0,0,0,0.04);
@@ -387,7 +407,7 @@
     .btn-detail i { font-size: 1rem; }
     .btn-detail:hover { background: #FF5F02; color: #fff; }
 
-    /* ===== صفحه جزییات جدید ===== */
+    /* ===== صفحه جزییات ===== */
     .product-detail-page {
       display: none;
       padding: 40px 0 60px;
@@ -635,6 +655,7 @@
     .related-item h4 { font-size: 1rem; margin-top: 8px; }
     .related-item .r-price { color: #FF5F02; font-weight: 700; }
 
+    /* ===== مودال سبد خرید (با استایل هماهنگ) ===== */
     .cart-modal-overlay {
       display: none;
       position: fixed;
@@ -676,6 +697,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
+      color: #1e1e1e;
     }
     .cart-modal-header h2 i { color: #FF5F02; font-size: 2rem; }
     .cart-close {
@@ -688,6 +710,7 @@
       padding: 0 8px;
     }
     .cart-close:hover { color: #FF5F02; transform: rotate(90deg); }
+
     .cart-items { margin-bottom: 20px; }
     .cart-item {
       display: flex;
@@ -696,30 +719,37 @@
       padding: 14px 0;
       border-bottom: 1px solid #f5f0eb;
     }
-    .cart-item-img {
-      width: 60px;
-      height: 60px;
-      border-radius: 16px;
-      object-fit: cover;
+    .cart-item-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
       background: #f0ece8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      color: #FF5F02;
       flex-shrink: 0;
     }
     .cart-item-info { flex: 1; }
-    .cart-item-info h4 { font-size: 1.1rem; font-weight: 700; }
-    .cart-item-info .item-price { color: #FF5F02; font-weight: 700; }
-    .cart-item-info .qty-controls {
+    .cart-item-info h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #1e1e1e;
+    }
+    .cart-item-info .qty-row {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       margin-top: 4px;
     }
-    .cart-item-info .qty-controls .qty-btn {
+    .cart-item-info .qty-row .qty-btn {
       background: #f0ece8;
       border: none;
       border-radius: 6px;
-      width: 28px;
-      height: 28px;
-      font-size: 1rem;
+      width: 26px;
+      height: 26px;
+      font-size: 0.9rem;
       font-weight: 700;
       cursor: pointer;
       display: flex;
@@ -728,28 +758,37 @@
       transition: 0.2s;
       color: #1e1e1e;
     }
-    .cart-item-info .qty-controls .qty-btn:hover { background: #FF5F02; color: #fff; }
-    .cart-item-info .qty-controls .qty-num {
+    .cart-item-info .qty-row .qty-btn:hover { background: #FF5F02; color: #fff; }
+    .cart-item-info .qty-row .qty-num {
       font-weight: 700;
-      min-width: 24px;
+      min-width: 20px;
       text-align: center;
+      font-size: 0.95rem;
+    }
+    .cart-item-info .qty-row .item-price {
+      color: #FF5F02;
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-right: 10px;
     }
     .cart-item-remove {
       background: none;
       border: none;
       color: #d94f00;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       cursor: pointer;
       transition: 0.2s;
       padding: 4px 8px;
     }
     .cart-item-remove:hover { transform: scale(1.2); color: #b33f00; }
+
     .cart-empty {
       text-align: center;
       padding: 30px 0;
       color: #888;
     }
     .cart-empty i { font-size: 4rem; color: #ddd; margin-bottom: 12px; display: block; }
+
     .cart-total {
       display: flex;
       justify-content: space-between;
@@ -760,6 +799,7 @@
       margin-top: 8px;
     }
     .cart-total span:last-child { color: #FF5F02; }
+
     .cart-actions {
       display: flex;
       gap: 12px;
@@ -785,6 +825,34 @@
     .btn-clear-cart { background: #f0ece8; color: #444; }
     .btn-clear-cart:hover { background: #e0d8d0; }
 
+    /* ===== پیام کوتاه اضافه شدن ===== */
+    .toast-notification {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: #1e1e1e;
+      color: #fff;
+      padding: 10px 24px;
+      border-radius: 60px;
+      font-family: 'Vazirmatn', sans-serif;
+      font-size: 0.85rem;
+      z-index: 99999;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+      opacity: 0;
+      transition: all 0.4s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      pointer-events: none;
+    }
+    .toast-notification.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+    .toast-notification i { color: #2ecc71; font-size: 1rem; }
+
+    /* ===== مودال پرداخت ===== */
     .payment-modal-overlay {
       display: none;
       position: fixed;
@@ -1169,6 +1237,7 @@
       .btn-detail { flex: 1; }
       .page-content .page-header { flex-direction: column; align-items: flex-start; }
       .payment-success .success-msg { padding: 16px; }
+      .toast-notification { font-size: 0.75rem; padding: 8px 18px; }
     }
   </style>
 </head>
@@ -1229,19 +1298,17 @@
   </div>
 </section>
 
-<!-- ===== PRODUCT DETAIL (بازطراحی شده) ===== -->
+<!-- ===== PRODUCT DETAIL ===== -->
 <div class="product-detail-page" id="productDetailPage">
   <div class="container">
     <button class="detail-back" id="detailBackBtn"><i class="fas fa-arrow-right"></i> بازگشت به فروشگاه</button>
     <div class="detail-grid" id="detailGrid">
-      <!-- بخش عکس -->
       <div class="detail-image-section" id="detailImageSection">
         <div class="detail-image-main" id="detailImageMain">
-          <img src="" alt="" id="detailMainImg">
+          <img src="" alt="" id="detailMainImg" draggable="false">
         </div>
         <div class="detail-gallery" id="detailGallery"></div>
       </div>
-      <!-- بخش اطلاعات -->
       <div class="detail-info-section" id="detailInfoSection">
         <h1 id="detailTitle"><i class="fas fa-chess-king"></i> عنوان</h1>
         <div class="detail-tags" id="detailTags"></div>
@@ -1425,6 +1492,12 @@
   </div>
 </div>
 
+<!-- ===== توست نوتیفیکیشن (پیام کوتاه) ===== -->
+<div class="toast-notification" id="toastNotification">
+  <i class="fas fa-check-circle"></i>
+  <span id="toastMessage">افزوده شد</span>
+</div>
+
 <!-- ===== FOOTER ===== -->
 <footer>
   <div class="container footer-grid">
@@ -1476,9 +1549,9 @@
     icon: 'fa-chess-king',
     gallery: [
       { src: 'https://up.20script.ir/file/d908-Negar-1782378757426.jpg', alt: 'صفحه اصلی اکانت' },
-      { src: 'https://up.20script.ir/file/b50e-Negar-1782339359914.jpg', alt: 'مشخصات اکانت' },
-      { src: 'https://up.20script.ir/file/08f1-Negar-1782339399478.jpg', alt: 'اکانت در حالت شب' },
-      { src: 'https://up.20script.ir/file/4945-Negar-1782339459066.jpg', alt: 'شخصیت‌های بازی کلش' }
+      { src: 'https://uploadkon.ir/uploads/2cfa25_26Negar-1782382677663.jpg', alt: 'مشخصات اکانت' },
+      { src: 'https://uploadkon.ir/uploads/683025_26Negar-1782382844325.jpg', alt: 'اکانت در حالت شب' },
+      { src: 'https://uploadkon.ir/uploads/d1b825_26Negar-1782382859024.jpg', alt: 'شخصیت‌های بازی کلش' }
     ],
     specs: [
       'TH7 (Town Hall 7)',
@@ -1525,6 +1598,8 @@
   const searchSuggestions = document.getElementById('searchSuggestions');
   const discountInput = document.getElementById('discountInput');
   const applyDiscountBtn = document.getElementById('applyDiscountBtn');
+  const toastNotification = document.getElementById('toastNotification');
+  const toastMessage = document.getElementById('toastMessage');
 
   const productDetailPage = document.getElementById('productDetailPage');
   const detailBackBtn = document.getElementById('detailBackBtn');
@@ -1575,13 +1650,23 @@
   function showToast(msg) {
     const toast = document.createElement('div');
     toast.textContent = msg;
-    toast.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1e1e1e;color:#fff;padding:12px 24px;border-radius:60px;font-family:Vazirmatn,sans-serif;font-size:0.95rem;z-index:99999;box-shadow:0 8px 30px rgba(0,0,0,0.3);animation:fadeIn 0.3s ease;';
+    toast.style.cssText = 'position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#1e1e1e;color:#fff;padding:10px 22px;border-radius:60px;font-family:Vazirmatn,sans-serif;font-size:0.85rem;z-index:99999;box-shadow:0 8px 30px rgba(0,0,0,0.25);animation:fadeIn 0.3s ease;';
     document.body.appendChild(toast);
     setTimeout(() => {
       toast.style.opacity = '0';
       toast.style.transition = '0.3s';
       setTimeout(() => toast.remove(), 300);
-    }, 2500);
+    }, 2000);
+  }
+
+  // ===== پیام کوتاه اضافه شدن =====
+  function showAddToast(productName) {
+    toastMessage.textContent = '➕ ' + productName + ' اضافه شد';
+    toastNotification.classList.add('show');
+    clearTimeout(window.toastTimeout);
+    window.toastTimeout = setTimeout(() => {
+      toastNotification.classList.remove('show');
+    }, 1500);
   }
 
   // ===== توابع جستجو =====
@@ -1768,7 +1853,7 @@
     if (!e.target.closest('.search-box')) searchSuggestions.classList.remove('active');
   });
 
-  // ===== نمایش جزییات (بازطراحی شده) =====
+  // ===== نمایش جزییات =====
   function showProductDetail(product) {
     [pageRules, pageAbout, pageContact].forEach(p => p.classList.remove('active'));
     heroSection.style.display = 'none';
@@ -1777,40 +1862,33 @@
     productDetailPage.classList.add('active');
     currentProductId = product.id;
 
-    // عکس اصلی
     detailMainImg.src = product.img;
     detailMainImg.alt = product.name;
 
-    // گالری
     let galleryHtml = '';
     if (product.gallery && product.gallery.length > 0) {
       product.gallery.forEach((item, index) => {
         galleryHtml += `
           <div class="gallery-thumb ${index === 0 ? 'active' : ''}" onclick="changeDetailImage('${item.src}', this)">
-            <img src="${item.src}" alt="${item.alt}" loading="lazy">
+            <img src="${item.src}" alt="${item.alt}" loading="lazy" draggable="false">
           </div>
         `;
       });
     }
     detailGallery.innerHTML = galleryHtml;
 
-    // عنوان
     detailTitle.innerHTML = `<i class="fas ${product.icon || 'fa-gamepad'}"></i> ${product.name}`;
 
-    // تگ‌ها
     let tagsHtml = `<span class="detail-tag"><i class="fas fa-tag"></i> ${product.tag}</span>`;
     if (product.badge) {
       tagsHtml += `<span class="detail-tag orange"><i class="fas fa-crown"></i> ${product.badge}</span>`;
     }
     detailTags.innerHTML = tagsHtml;
 
-    // قیمت
     detailPrice.innerHTML = `<i class="fas fa-toman"></i> ${product.price.toLocaleString()} <small>تومان</small>`;
 
-    // توضیحات
     detailDesc.textContent = product.fullDesc || product.shortDesc;
 
-    // مشخصات
     if (product.specs && product.specs.length > 0) {
       let specsHtml = '';
       product.specs.forEach(s => {
@@ -1822,17 +1900,15 @@
       document.getElementById('detailSpecs').style.display = 'none';
     }
 
-    // دکمه افزودن به سبد
     detailAddToCart.onclick = function() {
       addToCart(product);
     };
 
-    // محصولات مشابه
     const related = products.filter(p => p.id !== product.id && p.platform === product.platform);
     if (related.length > 0) {
       relatedGrid.innerHTML = related.map(p => `
         <div class="related-item" onclick="showProductDetail(products.find(pr => pr.id === ${p.id}))">
-          <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.style.display='none'">
+          <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.style.display='none'" draggable="false">
           <h4>${p.name}</h4>
           <div class="r-price">${p.price.toLocaleString()} تومان</div>
         </div>
@@ -1844,7 +1920,6 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // تغییر عکس اصلی در جزییات
   window.changeDetailImage = function(src, el) {
     detailMainImg.src = src;
     document.querySelectorAll('.gallery-thumb').forEach(t => t.classList.remove('active'));
@@ -1874,7 +1949,7 @@
       return `
         <div class="product-card">
           <div class="product-image" onclick="showProductDetail(products.find(pr => pr.id === ${p.id}))">
-            <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.parentElement.innerHTML='<i class=\\'fas ${icon}\\' style=\\'font-size:5rem;color:#FF5F02;opacity:0.3;\\'></i>'">
+            <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.parentElement.innerHTML='<i class=\\'fas ${icon}\\' style=\\'font-size:5rem;color:#FF5F02;opacity:0.3;\\'></i>'" draggable="false">
             ${badgeHtml}
           </div>
           <div class="product-body">
@@ -1904,7 +1979,7 @@
     updateCartUI();
     openCartBtn.style.transform = 'scale(1.1)';
     setTimeout(() => openCartBtn.style.transform = '', 200);
-    showToast(`${product.name} به سبد خرید اضافه شد!`);
+    showAddToast(product.name);
   }
 
   function removeFromCart(id) {
@@ -1941,14 +2016,14 @@
       const icon = item.icon || 'fa-gamepad';
       html += `
         <div class="cart-item">
-          <div style="width:60px;height:60px;border-radius:16px;background:#f0ece8;display:flex;align-items:center;justify-content:center;font-size:2rem;color:#FF5F02;flex-shrink:0;"><i class="fas ${icon}"></i></div>
+          <div class="cart-item-icon"><i class="fas ${icon}"></i></div>
           <div class="cart-item-info">
             <h4>${item.name}</h4>
-            <div class="qty-controls">
+            <div class="qty-row">
               <button class="qty-btn" data-id="${item.id}" data-delta="-1">−</button>
               <span class="qty-num">${item.qty}</span>
               <button class="qty-btn" data-id="${item.id}" data-delta="1">+</button>
-              <span class="item-price" style="margin-right:12px;">${item.price.toLocaleString()} تومان</span>
+              <span class="item-price">${item.price.toLocaleString()} تومان</span>
             </div>
           </div>
           <button class="cart-item-remove" data-id="${item.id}"><i class="fas fa-trash-alt"></i></button>
@@ -2041,7 +2116,6 @@
   renderProducts();
   updateCartUI();
 
-  // ===== برای دسترسی از onclick =====
   window.products = products;
   window.showProductDetail = showProductDetail;
   window.showHome = showHome;
