@@ -636,6 +636,33 @@
     .cart-item-info { flex: 1; }
     .cart-item-info h4 { font-size: 1.1rem; font-weight: 700; }
     .cart-item-info .item-price { color: #FF5F02; font-weight: 700; }
+    .cart-item-info .qty-controls {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 4px;
+    }
+    .cart-item-info .qty-controls .qty-btn {
+      background: #f0ece8;
+      border: none;
+      border-radius: 6px;
+      width: 28px;
+      height: 28px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.2s;
+      color: #1e1e1e;
+    }
+    .cart-item-info .qty-controls .qty-btn:hover { background: #FF5F02; color: #fff; }
+    .cart-item-info .qty-controls .qty-num {
+      font-weight: 700;
+      min-width: 24px;
+      text-align: center;
+    }
     .cart-item-remove {
       background: none;
       border: none;
@@ -1343,7 +1370,7 @@
 </footer>
 
 <script>
-  // ===== محصول جدید با عکس جدید و مشخصات به‌روز =====
+  // ===== محصول جدید =====
   const newProduct = {
     id: 1,
     name: 'اکانت کلش اف کلنز | به نام عقرب',
@@ -1783,12 +1810,11 @@
           <div style="width:60px;height:60px;border-radius:16px;background:#f0ece8;display:flex;align-items:center;justify-content:center;font-size:2rem;color:#FF5F02;flex-shrink:0;"><i class="fas ${icon}"></i></div>
           <div class="cart-item-info">
             <h4>${item.name}</h4>
-            <div>
-              <span class="item-price">${item.price.toLocaleString()} تومان</span>
-              <span style="margin:0 8px;color:#888;">×</span>
-              <button class="cart-qty-btn" data-id="${item.id}" data-delta="-1" style="background:none;border:1px solid #ddd;border-radius:6px;padding:0 8px;cursor:pointer;">−</button>
-              <span style="margin:0 6px;font-weight:700;">${item.qty}</span>
-              <button class="cart-qty-btn" data-id="${item.id}" data-delta="1" style="background:none;border:1px solid #ddd;border-radius:6px;padding:0 8px;cursor:pointer;">+</button>
+            <div class="qty-controls">
+              <button class="qty-btn" data-id="${item.id}" data-delta="-1">−</button>
+              <span class="qty-num">${item.qty}</span>
+              <button class="qty-btn" data-id="${item.id}" data-delta="1">+</button>
+              <span class="item-price" style="margin-right:12px;">${item.price.toLocaleString()} تومان</span>
             </div>
           </div>
           <button class="cart-item-remove" data-id="${item.id}"><i class="fas fa-trash-alt"></i></button>
@@ -1801,7 +1827,7 @@
     document.querySelectorAll('.cart-item-remove').forEach(btn => {
       btn.addEventListener('click', function() { removeFromCart(parseInt(this.dataset.id)); });
     });
-    document.querySelectorAll('.cart-qty-btn').forEach(btn => {
+    document.querySelectorAll('.qty-btn').forEach(btn => {
       btn.addEventListener('click', function() {
         changeQty(parseInt(this.dataset.id), parseInt(this.dataset.delta));
       });
@@ -1879,4 +1905,4 @@
   updateCartUI();
 </script>
 </body>
-  </html>
+      </html>
