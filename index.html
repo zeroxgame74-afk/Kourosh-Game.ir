@@ -1379,6 +1379,7 @@
 </head>
 <body>
 
+<!-- ===== HEADER ===== -->
 <header>
   <div class="container header-flex">
     <div class="logo">
@@ -1398,6 +1399,7 @@
   </div>
 </header>
 
+<!-- ===== HERO ===== -->
 <section class="hero" id="heroSection">
   <div class="container hero-grid">
     <div class="hero-text">
@@ -1408,6 +1410,7 @@
   </div>
 </section>
 
+<!-- ===== FILTER ===== -->
 <section class="filter-section" id="filterSection">
   <div class="container filter-flex">
     <div class="filter-tabs" id="filterTabs">
@@ -1425,6 +1428,7 @@
   </div>
 </section>
 
+<!-- ===== PRODUCTS ===== -->
 <section class="products" id="productsSection">
   <div class="container">
     <div class="section-title" id="sectionTitle"><i class="fas fa-cubes"></i> جدیدترین اکانت‌ها</div>
@@ -1432,6 +1436,7 @@
   </div>
 </section>
 
+<!-- ===== PRODUCT DETAIL ===== -->
 <div class="product-detail-page" id="productDetailPage">
   <div class="container">
     <button class="detail-back" id="detailBackBtn"><i class="fas fa-arrow-right"></i> بازگشت به فروشگاه</button>
@@ -1464,6 +1469,7 @@
   </div>
 </div>
 
+<!-- ===== PAGES ===== -->
 <div class="page-content" id="pageRules">
   <div class="container">
     <div class="page-header"><i class="fas fa-gavel"></i><h2>قوانین خرید از فروشگاه کوروش گیم</h2></div>
@@ -1553,6 +1559,7 @@
   </div>
 </div>
 
+<!-- ===== CART MODAL ===== -->
 <div class="cart-modal-overlay" id="cartModal">
   <div class="cart-modal">
     <div class="cart-modal-header">
@@ -1568,6 +1575,7 @@
   </div>
 </div>
 
+<!-- ===== PAYMENT MODAL ===== -->
 <div class="payment-modal-overlay" id="paymentModal">
   <div class="payment-modal">
     <div id="paymentContent">
@@ -1646,11 +1654,13 @@
   </div>
 </div>
 
+<!-- ===== توست ===== -->
 <div class="toast-notification" id="toastNotification">
   <i class="fas fa-check-circle"></i>
   <span id="toastMessage">افزوده شد</span>
 </div>
 
+<!-- ===== FOOTER ===== -->
 <footer>
   <div class="container footer-grid">
     <div class="footer-col">
@@ -1687,20 +1697,21 @@
 </footer>
 
 <script>
+  // ===== محصولات با قیمت و عکس جدید =====
   const products = [
     {
       id: 1,
       name: 'اکانت کلش اف کلنز | به نام عقرب',
       tag: 'Supercell',
-      price: 200000,
+      price: 300000,
       shortDesc: 'یک اکانت تان ۷ تمیز و اقتصادی و خوب موجود کردیم!',
-      fullDesc: 'سلام رفقا! یه اکانت تمیز و آماده دارم که به خاطر وقت نداشتن می‌فروشمش.\n\nویژگی‌هاش:\n· تاون ۷، تجربه ۳۷\n· شاه ۱۰ (فول)\n· اسپل‌ها و نیروها اکثراً آپگرید هستن (ویزارد ۴، غول ۴، بالون ۵ و...)\n· منابع و جواهر هم خوبه (۶۰۰ تا جواهر داره)\n· لوت (طرح) هم جنگ و فارم عالیه.\n\nیک اکانت تمیز و بدون دردسر برای شروع کلش.\nقیمت خیلی مناسب: ۲۰۰,۰۰۰ تومان',
-      img: 'https://up.20script.ir/file/d908-Negar-1782378757426.jpg',
+      fullDesc: 'سلام رفقا! یه اکانت تمیز و آماده دارم که به خاطر وقت نداشتن می‌فروشمش.\n\nویژگی‌هاش:\n· تاون ۷، تجربه ۳۷\n· شاه ۱۰ (فول)\n· اسپل‌ها و نیروها اکثراً آپگرید هستن (ویزارد ۴، غول ۴، بالون ۵ و...)\n· منابع و جواهر هم خوبه (۶۰۰ تا جواهر داره)\n· لوت (طرح) هم جنگ و فارم عالیه.\n\nیک اکانت تمیز و بدون دردسر برای شروع کلش.\nقیمت خیلی مناسب: ۳۰۰,۰۰۰ تومان',
+      img: 'https://uploadkon.ir/uploads/621825_26clash-of-clans-.jpg',
       badge: null,
       platform: 'clashofclans',
       icon: 'fa-chess-king',
       gallery: [
-        { src: 'https://up.20script.ir/file/d908-Negar-1782378757426.jpg', alt: 'صفحه اصلی اکانت' },
+        { src: 'https://uploadkon.ir/uploads/621825_26clash-of-clans-.jpg', alt: 'صفحه اصلی اکانت' },
         { src: 'https://uploadkon.ir/uploads/2cfa25_26Negar-1782382677663.jpg', alt: 'مشخصات اکانت' },
         { src: 'https://uploadkon.ir/uploads/683025_26Negar-1782382844325.jpg', alt: 'اکانت در حالت شب' },
         { src: 'https://uploadkon.ir/uploads/d1b825_26Negar-1782382859024.jpg', alt: 'شخصیت‌های بازی کلش' }
@@ -1749,7 +1760,9 @@
   let currentFilter = 'all';
   let searchQuery = '';
   let discountApplied = false;
+  let currentProductId = null;
 
+  // ===== المان‌ها =====
   const productGrid = document.getElementById('productGrid');
   const cartModal = document.getElementById('cartModal');
   const openCartBtn = document.getElementById('openCartBtn');
@@ -1796,6 +1809,7 @@
   const pageContact = document.getElementById('pageContact');
   const pageExchange = document.getElementById('pageExchange');
 
+  // ===== کپی شماره کارت =====
   function copyCardNumber() {
     const cardNumber = '6219861954504246';
     if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -1846,6 +1860,7 @@
     }, 1500);
   }
 
+  // ===== مودال قیمت توافقی =====
   function showNegotiationModal(product) {
     const existing = document.getElementById('negotiationModal');
     if (existing) existing.remove();
@@ -1891,6 +1906,7 @@
     }
   }
 
+  // ===== توابع جستجو =====
   function getLevenshteinDistance(a, b) {
     const matrix = [];
     for (let i = 0; i <= b.length; i++) {
@@ -1930,6 +1946,7 @@
     return true;
   }
 
+  // ===== نمایش صفحات =====
   function showPage(pageId) {
     [pageRules, pageAbout, pageContact, pageExchange].forEach(p => p.classList.remove('active'));
     productDetailPage.classList.remove('active');
@@ -1964,6 +1981,7 @@
     });
   });
 
+  // ===== منو =====
   const navLinks = document.querySelectorAll('.nav-menu a[data-tab]');
   navLinks.forEach(link => {
     link.addEventListener('click', function(e) {
@@ -1992,6 +2010,7 @@
     });
   });
 
+  // ===== فیلترها =====
   document.querySelectorAll('#filterTabs button').forEach(btn => {
     btn.addEventListener('click', function() {
       document.querySelectorAll('#filterTabs button').forEach(b => b.classList.remove('active'));
@@ -2001,6 +2020,7 @@
     });
   });
 
+  // ===== جستجو =====
   function getSuggestions(query) {
     if (!query || query.length < 1) return [];
     const q = query.trim().toLowerCase();
@@ -2070,12 +2090,14 @@
     if (!e.target.closest('.search-box')) searchSuggestions.classList.remove('active');
   });
 
+  // ===== نمایش جزییات =====
   function showProductDetail(product) {
     [pageRules, pageAbout, pageContact, pageExchange].forEach(p => p.classList.remove('active'));
     heroSection.style.display = 'none';
     filterSection.style.display = 'none';
     productsSection.style.display = 'none';
     productDetailPage.classList.add('active');
+    currentProductId = product.id;
 
     detailMainImg.src = product.img;
     detailMainImg.alt = product.name;
@@ -2144,6 +2166,7 @@
 
   detailBackBtn.addEventListener('click', showHome);
 
+  // ===== رندر محصولات =====
   function renderProducts() {
     let filtered = [...products];
     if (currentFilter === 'special') {
@@ -2189,6 +2212,7 @@
     }).join('');
   }
 
+  // ===== سبد خرید با پشتیبانی از قیمت توافقی =====
   function addToCart(product) {
     if (product.price === 0) {
       showNegotiationModal(product);
@@ -2197,7 +2221,6 @@
     
     const existing = cart.find(item => item.id === product.id);
     if (existing) {
-      // اگر محصول تکراری باشه، فقط یه پیام میدیم که قبلاً اضافه شده
       showToast('این محصول قبلاً به سبد خرید اضافه شده است.');
       return;
     } else {
@@ -2254,6 +2277,7 @@
     });
   }
 
+  // ===== مودال سبد =====
   function openCartModal() { cartModal.classList.add('active'); document.body.style.overflow = 'hidden'; }
   function closeCartModal() { cartModal.classList.remove('active'); document.body.style.overflow = ''; }
   openCartBtn.addEventListener('click', openCartModal);
@@ -2261,6 +2285,7 @@
   cartModal.addEventListener('click', function(e) { if (e.target === this) closeCartModal(); });
   clearCartBtn.addEventListener('click', function() { if (cart.length && confirm('آیا مطمئن هستید؟')) clearCart(); });
 
+  // ===== پرداخت =====
   checkoutBtn.addEventListener('click', function() {
     if (cart.length === 0) { alert('سبد خرید خالی است!'); return; }
     closeCartModal();
@@ -2342,6 +2367,7 @@
     updateCartUI();
   });
 
+  // ===== اتصال توابع به window =====
   window.products = products;
   window.showProductDetail = showProductDetail;
   window.showHome = showHome;
@@ -2350,8 +2376,9 @@
   window.showNegotiationModal = showNegotiationModal;
   window.closeNegotiationModal = closeNegotiationModal;
 
+  // ===== اجرا =====
   renderProducts();
   updateCartUI();
 </script>
 </body>
-  </html>
+                                                                                           </html>
