@@ -187,6 +187,14 @@
     .filter-tabs button.active i { color: #fff; }
     .filter-tabs button:hover { background: #FF5F02; color: #fff; }
     .filter-tabs button:hover i { color: #fff; }
+    /* آیکون کاستوم برای دسته پسرخوانده */
+    .filter-tabs button img.filter-icon {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+      display: inline-block;
+      vertical-align: middle;
+    }
     .search-box {
       display: flex;
       align-items: center;
@@ -1097,7 +1105,6 @@
     }
     .btn-pay-close:hover { background: #d94f00; transform: scale(1.02); }
 
-    /* ===== صفحه معاوضه (موقت) ===== */
     .page-content {
       display: none;
       padding: 40px 0 60px;
@@ -1267,6 +1274,7 @@
       .page-content .page-header { flex-direction: column; align-items: flex-start; }
       .payment-success .success-msg { padding: 16px; }
       .toast-notification { font-size: 0.75rem; padding: 8px 18px; }
+      .filter-tabs button img.filter-icon { width: 18px; height: 18px; }
     }
   </style>
 </head>
@@ -1283,7 +1291,6 @@
       <a class="active-tab" data-tab="home"><i class="fas fa-home"></i> خانه</a>
       <a data-tab="store"><i class="fas fa-store"></i> اکانت</a>
       <a data-tab="special"><i class="fas fa-trophy"></i> ویژه</a>
-      <!-- تب جدید معاوضه -->
       <a data-tab="exchange"><i class="fas fa-exchange-alt"></i> معاوضه</a>
       <button class="cart-btn" id="openCartBtn">
         <i class="fas fa-shopping-cart"></i> سبد خرید
@@ -1312,6 +1319,11 @@
       <button data-filter="clashofclans"><i class="fas fa-chess-king"></i> کلش اف کلنز</button>
       <button data-filter="clashroyale"><i class="fas fa-chess-queen"></i> کلش رویال</button>
       <button data-filter="callofduty"><i class="fas fa-crosshairs"></i> کال اف دیوتی</button>
+      <!-- دسته جدید پسرخوانده با آیکون کاستوم -->
+      <button data-filter="pesar_khandeh">
+        <img src="https://uploadkon.ir/uploads/0ad225_26Negar-1782400749246.png" alt="پسرخوانده" class="filter-icon">
+        پسرخوانده
+      </button>
     </div>
     <div class="search-box" style="position:relative;">
       <input type="text" id="searchInput" placeholder="جستجوی اکانت..." autocomplete="off">
@@ -1430,19 +1442,15 @@
   </div>
 </div>
 
-<!-- ===== صفحه معاوضه (موقت) ===== -->
 <div class="page-content" id="pageExchange">
   <div class="container">
-    <div class="page-header">
-      <i class="fas fa-exchange-alt"></i>
-      <h2>معاوضه اکانت</h2>
-    </div>
+    <div class="page-header"><i class="fas fa-exchange-alt"></i><h2>معاوضه اکانت</h2></div>
     <div class="page-body">
       <div style="text-align:center; padding:40px 0;">
         <i class="fas fa-tools" style="font-size:4rem; color:#FF5F02; margin-bottom:20px; display:block;"></i>
         <h3 style="font-size:1.8rem; color:#1e1e1e; margin-bottom:12px;">🔧 در حال ساخت...</h3>
         <p style="color:#777; font-size:1.1rem; max-width:500px; margin:0 auto;">
-          صفحه معاوضه اکانت به زودی راه‌اندازی میشود. برای اطلاع از زمان دقیق، با ما در تماس باشید.
+          صفحه معاوضه اکانت به زودی راه‌اندازی میشود.
         </p>
         <div style="margin-top:24px;">
           <span class="contact-number" style="font-size:1.2rem;">
@@ -1675,7 +1683,6 @@
   const productsSection = document.getElementById('productsSection');
   const sectionTitle = document.getElementById('sectionTitle');
 
-  // ===== صفحات =====
   const pageRules = document.getElementById('pageRules');
   const pageAbout = document.getElementById('pageAbout');
   const pageContact = document.getElementById('pageContact');
@@ -1987,8 +1994,11 @@
     let filtered = [...products];
     if (currentFilter === 'special') {
       filtered = filtered.filter(p => p.badge && (p.badge === 'ویژه' || p.badge === 'طلایی' || p.badge === 'جدید'));
-    } else if (currentFilter !== 'all') {
+    } else if (currentFilter !== 'all' && currentFilter !== 'pesar_khandeh') {
       filtered = filtered.filter(p => p.platform === currentFilter);
+    } else if (currentFilter === 'pesar_khandeh') {
+      // فقط محصولاتی که دسته‌بندی پسرخوانده دارند
+      filtered = filtered.filter(p => p.platform === 'pesar_khandeh');
     }
     if (searchQuery) {
       filtered = filtered.filter(p => multiWordSearch(searchQuery, p.name + ' ' + p.tag + ' ' + p.shortDesc + ' ' + (p.fullDesc || '')));
@@ -2194,4 +2204,4 @@
   window.copyCardNumber = copyCardNumber;
 </script>
 </body>
-  </html>
+</html>
