@@ -803,7 +803,6 @@
     }
     .payment-modal .discount-box button:hover { background: #d94f00; transform: scale(1.02); }
 
-    /* دکمه متوجه شدم */
     .btn-pay-confirm {
       background: #FF5F02;
       color: #fff;
@@ -1344,6 +1343,7 @@
 </footer>
 
 <script>
+  // ===== محصول جدید با عکس جدید و نسبت 2:1 =====
   const newProduct = {
     id: 1,
     name: 'اکانت کلش اف کلنز | به نام عقرب',
@@ -1351,12 +1351,12 @@
     price: 200000,
     shortDesc: 'یک اکانت خوب و کار راه اندازه',
     fullDesc: 'سلام رفقا! یه اکانت تمیز و آماده دارم که به خاطر وقت نداشتن می‌فروشمش.\n\nویژگی‌هاش:\n· تاون ۷، تجربه ۳۷\n· شاه ۱۰ (فول)\n· اسپل‌ها و نیروها اکثراً آپگرید هستن (ویزارد ۴، غول ۴، بالون ۵ و...)\n· منابع و جواهر هم خوبه (۶۰۰ تا جواهر داره)\n· لوت (طرح) هم جنگ و فارم عالیه.\n\nیک اکانت تمیز و بدون دردسر برای شروع کلش.\nقیمت خیلی مناسب: ۲۰۰,۰۰۰ تومان',
-    img: 'https://up.20script.ir/file/fbf4-Negar-1782339300453.jpg',
+    img: 'https://up.20script.ir/file/27bf-Negar-1782378075462.jpg',
     badge: null,
     platform: 'clashofclans',
     icon: 'fa-chess-king',
     gallery: [
-      { src: 'https://up.20script.ir/file/fbf4-Negar-1782339300453.jpg', alt: 'صفحه اصلی اکانت' },
+      { src: 'https://up.20script.ir/file/27bf-Negar-1782378075462.jpg', alt: 'صفحه اصلی اکانت' },
       { src: 'https://up.20script.ir/file/b50e-Negar-1782339359914.jpg', alt: 'مشخصات اکانت' },
       { src: 'https://up.20script.ir/file/08f1-Negar-1782339399478.jpg', alt: 'اکانت در حالت شب' },
       { src: 'https://up.20script.ir/file/4945-Negar-1782339459066.jpg', alt: 'شخصیت‌های بازی کلش' }
@@ -1858,18 +1858,15 @@
     if (e.target === this) paymentModal.classList.remove('active');
   });
 
-  // ===== جدید: دکمه متوجه شدم =====
   payConfirmBtn.addEventListener('click', function() {
     paymentContent.style.display = 'none';
     paymentSuccess.style.display = 'block';
-    // سبد خرید خالی نمیشه چون کاربر باید واریز کنه
   });
 
   paySuccessCloseBtn.addEventListener('click', function() {
     paymentModal.classList.remove('active');
     paymentContent.style.display = 'block';
     paymentSuccess.style.display = 'none';
-    // سبد خرید رو خالی میکنیم چون کاربر فرآیند رو کامل کرده
     cart = [];
     discountApplied = false;
     updateCartUI();
@@ -1879,4 +1876,4 @@
   updateCartUI();
 </script>
 </body>
-        </html>
+                                                </html>
