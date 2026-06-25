@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" />
   <style>
+    /* ===== تمام استایل‌های قبلی ===== */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Vazirmatn', 'Segoe UI', Tahoma, sans-serif;
@@ -1721,7 +1722,7 @@
 </footer>
 
 <script>
-  // ===== محصولات =====
+  // ===== محصولات با عکس اصلی جدید برای پسرخوانده =====
   const products = [
     {
       id: 1,
@@ -1761,12 +1762,12 @@
       price: 0, // توافقی
       shortDesc: 'اکانت پسر خوانده خیلی خفن با قیمت توافقی',
       fullDesc: 'اکانت براش یه تومن خرج شده\nسه تا بلیط طلایی فعال شده و یک تبلیغ پر و بسته های پیشنهادی بعضی هاش رو گرفته\nاکانت روی شماره و گوگل سیو هست و بخاطر این تعهد کتبی و تصویری میدهم',
-      img: 'https://uploadkon.ir/uploads/711625_26Negar-1782400719607.jpg',
+      img: 'https://uploadkon.ir/uploads/392325_26pesar-khande124-korosh-game.jpg', // عکس اصلی جدید
       badge: 'ویژه',
       platform: 'pesar_khandeh',
       icon: 'fa-star',
       gallery: [
-        { src: 'https://uploadkon.ir/uploads/711625_26Negar-1782400719607.jpg', alt: 'صفحه اصلی اکانت' },
+        { src: 'https://uploadkon.ir/uploads/392325_26pesar-khande124-korosh-game.jpg', alt: 'صفحه اصلی اکانت' },
         { src: 'https://uploadkon.ir/uploads/0ac725_26Negar-1782400592249.jpg', alt: 'مشخصات اکانت' },
         { src: 'https://uploadkon.ir/uploads/bac325_26Negar-1782401406142.jpg', alt: 'اکانت در حالت شب' },
         { src: 'https://uploadkon.ir/uploads/b21325_26Negar-1782408406612.jpg', alt: 'شخصیت‌های بازی' }
@@ -1786,6 +1787,7 @@
   let discountApplied = false;
   let currentProductId = null;
 
+  // ===== المان‌ها =====
   const productGrid = document.getElementById('productGrid');
   const cartModal = document.getElementById('cartModal');
   const openCartBtn = document.getElementById('openCartBtn');
@@ -1906,7 +1908,7 @@
             <a href="tel:+989157930518" class="btn-call">
               <i class="fas fa-phone"></i> تماس با پشتیبانی
             </a>
-            <button class="btn-close-negotiation" onclick="closeNegotiationModal()">
+            <button class="btn-close-negotiation" onclick="window.closeNegotiationModal()">
               <i class="fas fa-times"></i> بستن
             </button>
           </div>
@@ -1916,7 +1918,9 @@
 
     document.body.insertAdjacentHTML('beforeend', modalHTML);
     const modal = document.getElementById('negotiationModal');
-    setTimeout(() => modal.classList.add('active'), 10);
+    setTimeout(() => {
+      modal.classList.add('active');
+    }, 10);
   }
 
   function closeNegotiationModal() {
@@ -2235,7 +2239,6 @@
 
   // ===== سبد خرید با پشتیبانی از قیمت توافقی =====
   function addToCart(product) {
-    // اگر قیمت توافقی (0) بود، مودال اختصاصی نمایش بده
     if (product.price === 0) {
       showNegotiationModal(product);
       return;
@@ -2401,18 +2404,18 @@
     updateCartUI();
   });
 
-  // ===== اجرا =====
-  renderProducts();
-  updateCartUI();
-
-  // ===== برای دسترسی از onclick =====
+  // ===== اتصال توابع به window =====
   window.products = products;
   window.showProductDetail = showProductDetail;
   window.showHome = showHome;
   window.addToCart = addToCart;
   window.copyCardNumber = copyCardNumber;
-  window.closeNegotiationModal = closeNegotiationModal;
   window.showNegotiationModal = showNegotiationModal;
+  window.closeNegotiationModal = closeNegotiationModal;
+
+  // ===== اجرا =====
+  renderProducts();
+  updateCartUI();
 </script>
 </body>
   </html>
