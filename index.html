@@ -1310,7 +1310,6 @@
       <button data-filter="clashofclans"><i class="fas fa-chess-king"></i> کلش اف کلنز</button>
       <button data-filter="clashroyale"><i class="fas fa-chess-queen"></i> کلش رویال</button>
       <button data-filter="callofduty"><i class="fas fa-crosshairs"></i> کال اف دیوتی</button>
-      <!-- دسته پسرخوانده با آیکون ستاره -->
       <button data-filter="pesar_khandeh"><i class="fas fa-star"></i> پسرخوانده</button>
     </div>
     <div class="search-box" style="position:relative;">
@@ -1590,39 +1589,64 @@
 </footer>
 
 <script>
-  const product = {
-    id: 1,
-    name: 'اکانت کلش اف کلنز | به نام عقرب',
-    tag: 'Supercell',
-    price: 200000,
-    shortDesc: 'یک اکانت تان ۷ تمیز و اقتصادی و خوب موجود کردیم!',
-    fullDesc: 'سلام رفقا! یه اکانت تمیز و آماده دارم که به خاطر وقت نداشتن می‌فروشمش.\n\nویژگی‌هاش:\n· تاون ۷، تجربه ۳۷\n· شاه ۱۰ (فول)\n· اسپل‌ها و نیروها اکثراً آپگرید هستن (ویزارد ۴، غول ۴، بالون ۵ و...)\n· منابع و جواهر هم خوبه (۶۰۰ تا جواهر داره)\n· لوت (طرح) هم جنگ و فارم عالیه.\n\nیک اکانت تمیز و بدون دردسر برای شروع کلش.\nقیمت خیلی مناسب: ۲۰۰,۰۰۰ تومان',
-    img: 'https://up.20script.ir/file/d908-Negar-1782378757426.jpg',
-    badge: null,
-    platform: 'clashofclans',
-    icon: 'fa-chess-king',
-    gallery: [
-      { src: 'https://up.20script.ir/file/d908-Negar-1782378757426.jpg', alt: 'صفحه اصلی اکانت' },
-      { src: 'https://uploadkon.ir/uploads/2cfa25_26Negar-1782382677663.jpg', alt: 'مشخصات اکانت' },
-      { src: 'https://uploadkon.ir/uploads/683025_26Negar-1782382844325.jpg', alt: 'اکانت در حالت شب' },
-      { src: 'https://uploadkon.ir/uploads/d1b825_26Negar-1782382859024.jpg', alt: 'شخصیت‌های بازی کلش' }
-    ],
-    specs: [
-      'TH7 (Town Hall 7)',
-      'Lv. 37 (Experience Level)',
-      'BK 10 (Barbarian King Level 10)',
-      '4 Builders',
-      '605 Gems',
-      'Barch 4 (Barbarian & Archer)',
-      'Giant 4 & WB 4 (Wall Breaker)',
-      'Loons 5 (Balloons)',
-      'Wiz 4 (Wizard)',
-      'Drag 2 (Dragon)',
-      'Lightning 5, Heal 4, Rage 2'
-    ]
-  };
-
-  const products = [product];
+  // ===== محصولات =====
+  const products = [
+    {
+      id: 1,
+      name: 'اکانت کلش اف کلنز | به نام عقرب',
+      tag: 'Supercell',
+      price: 200000,
+      shortDesc: 'یک اکانت تان ۷ تمیز و اقتصادی و خوب موجود کردیم!',
+      fullDesc: 'سلام رفقا! یه اکانت تمیز و آماده دارم که به خاطر وقت نداشتن می‌فروشمش.\n\nویژگی‌هاش:\n· تاون ۷، تجربه ۳۷\n· شاه ۱۰ (فول)\n· اسپل‌ها و نیروها اکثراً آپگرید هستن (ویزارد ۴، غول ۴، بالون ۵ و...)\n· منابع و جواهر هم خوبه (۶۰۰ تا جواهر داره)\n· لوت (طرح) هم جنگ و فارم عالیه.\n\nیک اکانت تمیز و بدون دردسر برای شروع کلش.\nقیمت خیلی مناسب: ۲۰۰,۰۰۰ تومان',
+      img: 'https://up.20script.ir/file/d908-Negar-1782378757426.jpg',
+      badge: null,
+      platform: 'clashofclans',
+      icon: 'fa-chess-king',
+      gallery: [
+        { src: 'https://up.20script.ir/file/d908-Negar-1782378757426.jpg', alt: 'صفحه اصلی اکانت' },
+        { src: 'https://uploadkon.ir/uploads/2cfa25_26Negar-1782382677663.jpg', alt: 'مشخصات اکانت' },
+        { src: 'https://uploadkon.ir/uploads/683025_26Negar-1782382844325.jpg', alt: 'اکانت در حالت شب' },
+        { src: 'https://uploadkon.ir/uploads/d1b825_26Negar-1782382859024.jpg', alt: 'شخصیت‌های بازی کلش' }
+      ],
+      specs: [
+        'TH7 (Town Hall 7)',
+        'Lv. 37 (Experience Level)',
+        'BK 10 (Barbarian King Level 10)',
+        '4 Builders',
+        '605 Gems',
+        'Barch 4 (Barbarian & Archer)',
+        'Giant 4 & WB 4 (Wall Breaker)',
+        'Loons 5 (Balloons)',
+        'Wiz 4 (Wizard)',
+        'Drag 2 (Dragon)',
+        'Lightning 5, Heal 4, Rage 2'
+      ]
+    },
+    {
+      id: 2,
+      name: 'اکانت پسرخوانده | تیزلایه',
+      tag: 'پسرخوانده',
+      price: 0, // توافقی
+      shortDesc: 'اکانت پسر خوانده خیلی خفن با قیمت توافقی',
+      fullDesc: 'اکانت براش یه تومن خرج شده\nسه تا بلیط طلایی فعال شده و یک تبلیغ پر و بسته های پیشنهادی بعضی هاش رو گرفته\nاکانت روی شماره و گوگل سیو هست و بخاطر این تعهد کتبی و تصویری میدهم',
+      img: 'https://uploadkon.ir/uploads/711625_26Negar-1782400719607.jpg',
+      badge: 'ویژه',
+      platform: 'pesar_khandeh',
+      icon: 'fa-star',
+      gallery: [
+        { src: 'https://uploadkon.ir/uploads/711625_26Negar-1782400719607.jpg', alt: 'صفحه اصلی اکانت' },
+        { src: 'https://uploadkon.ir/uploads/0ac725_26Negar-1782400592249.jpg', alt: 'مشخصات اکانت' },
+        { src: 'https://uploadkon.ir/uploads/bac325_26Negar-1782401406142.jpg', alt: 'اکانت در حالت شب' },
+        { src: 'https://uploadkon.ir/uploads/b21325_26Negar-1782408406612.jpg', alt: 'شخصیت‌های بازی' }
+      ],
+      specs: [
+        'کاپ: 3750 (تا 3850 رفته)',
+        'لول: 28',
+        'دارای 26 قهرمان و سنگ سردیس',
+        'اسکین ها: 1 انحصاری، 5 سه ستاره، 1 یک ستاره'
+      ]
+    }
+  ];
 
   let cart = [];
   let currentFilter = 'all';
@@ -1859,7 +1883,7 @@
     let html = '';
     for (const p of suggestions) {
       const highlightName = p.name.replace(new RegExp(query, 'gi'), match => `<span class="highlight">${match}</span>`);
-      html += `<div class="suggestion-item" data-id="${p.id}"><i class="fas ${p.icon || 'fa-gamepad'}"></i><span>${highlightName}</span><span style="color:#888;font-size:0.8rem;margin-right:auto;">${p.price.toLocaleString()} تومان</span></div>`;
+      html += `<div class="suggestion-item" data-id="${p.id}"><i class="fas ${p.icon || 'fa-gamepad'}"></i><span>${highlightName}</span><span style="color:#888;font-size:0.8rem;margin-right:auto;">${p.price === 0 ? 'توافقی' : p.price.toLocaleString() + ' تومان'}</span></div>`;
     }
     searchSuggestions.innerHTML = html;
     searchSuggestions.classList.add('active');
@@ -1935,7 +1959,8 @@
     }
     detailTags.innerHTML = tagsHtml;
 
-    detailPrice.innerHTML = `<i class="fas fa-toman"></i> ${product.price.toLocaleString()} <small>تومان</small>`;
+    const priceText = product.price === 0 ? 'توافقی' : product.price.toLocaleString() + ' تومان';
+    detailPrice.innerHTML = `<i class="fas fa-toman"></i> ${priceText}`;
 
     detailDesc.textContent = product.fullDesc || product.shortDesc;
 
@@ -1960,7 +1985,7 @@
         <div class="related-item" onclick="showProductDetail(products.find(pr => pr.id === ${p.id}))">
           <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.style.display='none'" draggable="false">
           <h4>${p.name}</h4>
-          <div class="r-price">${p.price.toLocaleString()} تومان</div>
+          <div class="r-price">${p.price === 0 ? 'توافقی' : p.price.toLocaleString() + ' تومان'}</div>
         </div>
       `).join('');
     } else {
@@ -1997,6 +2022,7 @@
     productGrid.innerHTML = filtered.map(p => {
       const badgeHtml = p.badge ? `<span class="product-badge"><i class="fas fa-crown"></i> ${p.badge}</span>` : '';
       const icon = p.icon || 'fa-gamepad';
+      const priceText = p.price === 0 ? 'توافقی' : p.price.toLocaleString() + ' تومان';
       return `
         <div class="product-card">
           <div class="product-image" onclick="showProductDetail(products.find(pr => pr.id === ${p.id}))">
@@ -2007,7 +2033,7 @@
             <h3><i class="fas ${icon}"></i> ${p.name}</h3>
             <span class="game-tag"><i class="fas fa-tag"></i> ${p.tag}</span>
             <p class="description">${p.shortDesc}</p>
-            <div class="price"><i class="fas fa-toman"></i> ${p.price.toLocaleString()} <small>تومان</small></div>
+            <div class="price"><i class="fas fa-toman"></i> ${priceText}</div>
             <div class="product-actions">
               <button class="btn-buy" onclick="event.stopPropagation(); addToCart(products.find(pr => pr.id === ${p.id}))">
                 <i class="fas fa-shopping-bag"></i> خرید
@@ -2023,6 +2049,10 @@
   }
 
   function addToCart(product) {
+    if (product.price === 0) {
+      alert('قیمت این اکانت توافقی است. لطفاً برای خرید با پشتیبانی تماس بگیرید.\nشماره تماس: 0915 793 0518');
+      return;
+    }
     const existing = cart.find(item => item.id === product.id);
     if (existing) existing.qty += 1;
     else cart.push({ ...product, qty: 1 });
@@ -2191,4 +2221,4 @@
   window.copyCardNumber = copyCardNumber;
 </script>
 </body>
-        </html>
+  </html>
