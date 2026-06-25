@@ -187,14 +187,6 @@
     .filter-tabs button.active i { color: #fff; }
     .filter-tabs button:hover { background: #FF5F02; color: #fff; }
     .filter-tabs button:hover i { color: #fff; }
-    /* آیکون کاستوم برای دسته پسرخوانده */
-    .filter-tabs button img.filter-icon {
-      width: 20px;
-      height: 20px;
-      object-fit: contain;
-      display: inline-block;
-      vertical-align: middle;
-    }
     .search-box {
       display: flex;
       align-items: center;
@@ -1274,7 +1266,6 @@
       .page-content .page-header { flex-direction: column; align-items: flex-start; }
       .payment-success .success-msg { padding: 16px; }
       .toast-notification { font-size: 0.75rem; padding: 8px 18px; }
-      .filter-tabs button img.filter-icon { width: 18px; height: 18px; }
     }
   </style>
 </head>
@@ -1319,11 +1310,8 @@
       <button data-filter="clashofclans"><i class="fas fa-chess-king"></i> کلش اف کلنز</button>
       <button data-filter="clashroyale"><i class="fas fa-chess-queen"></i> کلش رویال</button>
       <button data-filter="callofduty"><i class="fas fa-crosshairs"></i> کال اف دیوتی</button>
-      <!-- دسته جدید پسرخوانده با آیکون کاستوم -->
-      <button data-filter="pesar_khandeh">
-        <img src="https://uploadkon.ir/uploads/0ad225_26Negar-1782400749246.png" alt="پسرخوانده" class="filter-icon">
-        پسرخوانده
-      </button>
+      <!-- دسته پسرخوانده با آیکون ستاره -->
+      <button data-filter="pesar_khandeh"><i class="fas fa-star"></i> پسرخوانده</button>
     </div>
     <div class="search-box" style="position:relative;">
       <input type="text" id="searchInput" placeholder="جستجوی اکانت..." autocomplete="off">
@@ -1997,7 +1985,6 @@
     } else if (currentFilter !== 'all' && currentFilter !== 'pesar_khandeh') {
       filtered = filtered.filter(p => p.platform === currentFilter);
     } else if (currentFilter === 'pesar_khandeh') {
-      // فقط محصولاتی که دسته‌بندی پسرخوانده دارند
       filtered = filtered.filter(p => p.platform === 'pesar_khandeh');
     }
     if (searchQuery) {
@@ -2204,4 +2191,4 @@
   window.copyCardNumber = copyCardNumber;
 </script>
 </body>
-</html>
+        </html>
