@@ -406,7 +406,6 @@
     .btn-detail i { font-size: 1rem; }
     .btn-detail:hover { background: #FF5F02; color: #fff; }
 
-    /* ===== صفحه جزییات ===== */
     .product-detail-page {
       display: none;
       padding: 40px 0 60px;
@@ -654,7 +653,6 @@
     .related-item h4 { font-size: 1rem; margin-top: 8px; }
     .related-item .r-price { color: #FF5F02; font-weight: 700; }
 
-    /* ===== مودال سبد خرید ===== */
     .cart-modal-overlay {
       display: none;
       position: fixed;
@@ -824,7 +822,6 @@
     .btn-clear-cart { background: #f0ece8; color: #444; }
     .btn-clear-cart:hover { background: #e0d8d0; }
 
-    /* ===== توست نوتیفیکیشن (پیام کوتاه) ===== */
     .toast-notification {
       position: fixed;
       bottom: 30px;
@@ -851,7 +848,6 @@
     }
     .toast-notification i { color: #2ecc71; font-size: 1rem; }
 
-    /* ===== مودال پرداخت ===== */
     .payment-modal-overlay {
       display: none;
       position: fixed;
@@ -968,7 +964,6 @@
     }
     .payment-modal .discount-box button:hover { background: #d94f00; transform: scale(1.02); }
 
-    /* پیام تخفیف جدید */
     #discountMessage {
       margin: 8px 0 12px;
     }
@@ -1486,7 +1481,6 @@
         <button id="applyDiscountBtn"><i class="fas fa-check"></i> اعمال</button>
       </div>
 
-      <!-- پیام تخفیف جدید -->
       <div id="discountMessage"></div>
 
       <div style="background:#fcf8f4;border-radius:12px;padding:12px 16px;margin:12px 0;border-right:3px solid #FF5F02;text-align:right;">
@@ -1528,7 +1522,7 @@
   </div>
 </div>
 
-<!-- ===== توست نوتیفیکیشن ===== -->
+<!-- ===== توست ===== -->
 <div class="toast-notification" id="toastNotification">
   <i class="fas fa-check-circle"></i>
   <span id="toastMessage">افزوده شد</span>
@@ -1571,7 +1565,6 @@
 </footer>
 
 <script>
-  // ===== محصول =====
   const product = {
     id: 1,
     name: 'اکانت کلش اف کلنز | به نام عقرب',
@@ -1612,7 +1605,6 @@
   let discountApplied = false;
   let currentProductId = null;
 
-  // ===== المان‌ها =====
   const productGrid = document.getElementById('productGrid');
   const cartModal = document.getElementById('cartModal');
   const openCartBtn = document.getElementById('openCartBtn');
@@ -1654,7 +1646,6 @@
   const productsSection = document.getElementById('productsSection');
   const sectionTitle = document.getElementById('sectionTitle');
 
-  // ===== کپی شماره کارت =====
   function copyCardNumber() {
     const cardNumber = '6219861954504246';
     if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -1696,9 +1687,8 @@
     }, 2000);
   }
 
-  // ===== پیام کوتاه اضافه شدن =====
   function showAddToast(productName) {
-    toastMessage.textContent = '➕ ' + productName + ' اضافه شد';
+    toastMessage.textContent = productName + ' اضافه شد';
     toastNotification.classList.add('show');
     clearTimeout(window.toastTimeout);
     window.toastTimeout = setTimeout(() => {
@@ -1706,7 +1696,6 @@
     }, 1500);
   }
 
-  // ===== توابع جستجو =====
   function getLevenshteinDistance(a, b) {
     const matrix = [];
     for (let i = 0; i <= b.length; i++) {
@@ -1746,7 +1735,6 @@
     return true;
   }
 
-  // ===== نمایش صفحات =====
   const pageRules = document.getElementById('pageRules');
   const pageAbout = document.getElementById('pageAbout');
   const pageContact = document.getElementById('pageContact');
@@ -1784,7 +1772,6 @@
     });
   });
 
-  // ===== منو =====
   const navLinks = document.querySelectorAll('.nav-menu a[data-tab]');
   navLinks.forEach(link => {
     link.addEventListener('click', function(e) {
@@ -1811,7 +1798,6 @@
     });
   });
 
-  // ===== فیلترها =====
   document.querySelectorAll('#filterTabs button').forEach(btn => {
     btn.addEventListener('click', function() {
       document.querySelectorAll('#filterTabs button').forEach(b => b.classList.remove('active'));
@@ -1821,7 +1807,6 @@
     });
   });
 
-  // ===== جستجو =====
   function getSuggestions(query) {
     if (!query || query.length < 1) return [];
     const q = query.trim().toLowerCase();
@@ -1890,7 +1875,6 @@
     if (!e.target.closest('.search-box')) searchSuggestions.classList.remove('active');
   });
 
-  // ===== نمایش جزییات =====
   function showProductDetail(product) {
     [pageRules, pageAbout, pageContact].forEach(p => p.classList.remove('active'));
     heroSection.style.display = 'none';
@@ -1965,7 +1949,6 @@
 
   detailBackBtn.addEventListener('click', showHome);
 
-  // ===== رندر محصولات =====
   function renderProducts() {
     let filtered = [...products];
     if (currentFilter === 'special') {
@@ -2008,7 +1991,6 @@
     }).join('');
   }
 
-  // ===== سبد خرید =====
   function addToCart(product) {
     const existing = cart.find(item => item.id === product.id);
     if (existing) existing.qty += 1;
@@ -2080,7 +2062,6 @@
     });
   }
 
-  // ===== مودال سبد =====
   function openCartModal() { cartModal.classList.add('active'); document.body.style.overflow = 'hidden'; }
   function closeCartModal() { cartModal.classList.remove('active'); document.body.style.overflow = ''; }
   openCartBtn.addEventListener('click', openCartModal);
@@ -2088,7 +2069,6 @@
   cartModal.addEventListener('click', function(e) { if (e.target === this) closeCartModal(); });
   clearCartBtn.addEventListener('click', function() { if (cart.length && confirm('آیا مطمئن هستید؟')) clearCart(); });
 
-  // ===== پرداخت =====
   checkoutBtn.addEventListener('click', function() {
     if (cart.length === 0) { alert('سبد خرید خالی است!'); return; }
     closeCartModal();
@@ -2103,7 +2083,6 @@
     paymentModal.classList.add('active');
   });
 
-  // ===== اعمال تخفیف با طراحی جدید =====
   applyDiscountBtn.addEventListener('click', function() {
     const code = discountInput.value.trim().toUpperCase();
     
@@ -2171,7 +2150,6 @@
     updateCartUI();
   });
 
-  // ===== اجرا =====
   renderProducts();
   updateCartUI();
 
@@ -2182,4 +2160,4 @@
   window.copyCardNumber = copyCardNumber;
 </script>
 </body>
-</html>
+      </html>
