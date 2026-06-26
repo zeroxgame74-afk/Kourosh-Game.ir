@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" />
   <style>
+    /* ===== تمام استایل‌های قبلی ===== */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Vazirmatn', 'Segoe UI', Tahoma, sans-serif;
@@ -610,7 +611,6 @@
     }
     .detail-actions .btn-detail:hover { background: #FF5F02; color: #fff; }
 
-    /* ===== محصولات مشابه (طراحی جدید) ===== */
     .related-products {
       margin-top: 60px;
       padding-top: 40px;
@@ -1218,6 +1218,7 @@
     }
     .page-back-home:hover { background: #d94f00; transform: scale(1.02); }
 
+    /* ===== فوتر با آیکون‌های جدید ===== */
     footer {
       background: #1a1a1a;
       color: #d0cdc8;
@@ -1255,21 +1256,31 @@
       display: flex;
       gap: 16px;
       margin-top: 14px;
+      flex-wrap: wrap;
     }
     .social-icons a {
-      background: #2e2e2e;
-      color: #ddd;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      display: flex;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.4rem;
-      transition: 0.2s;
-      text-decoration: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      transition: 0.3s ease;
+      background: #2e2e2e;
+      padding: 6px;
     }
-    .social-icons a:hover { background: #FF5F02; color: #fff; transform: translateY(-4px); }
+    .social-icons a:hover {
+      background: #FF5F02;
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 8px 24px rgba(255,95,2,0.3);
+    }
+    .social-icons a img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      pointer-events: none;
+      -webkit-user-drag: none;
+    }
     .copy {
       text-align: center;
       border-top: 1px solid #333;
@@ -1442,6 +1453,7 @@
       .negotiation-actions .btn-close-negotiation { flex: 1; }
       .related-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
       .related-item .r-img-wrap { aspect-ratio: 2 / 1; }
+      .social-icons a { width: 40px; height: 40px; }
     }
     @media (max-width: 450px) {
       .related-grid { grid-template-columns: 1fr; }
@@ -1553,7 +1565,7 @@
         <li><strong>۴. تحویل اکانت:</strong> بعد از خرید، اطلاعات اکانت در سریع‌ترین زمان ممکن به دستت می‌رسه.</li>
         <li><strong>۵. استفاده درست:</strong> اکانت خریداری شده فقط برای استفاده شخصی خودته و نباید به کس دیگه‌ای بدی یا بفروشیش.</li>
         <li><strong>۶. مشکلات فنی:</strong> اگر به هر دلیلی مشکل فنی پیش اومد، بلافاصله با پشتیبانی تماس بگیر تا راهنماییت کنن.</li>
-        <li><strong>۷. حق تغییرات:</strong> فروشگاه این حق رو داره که در صورت نیاز، قوانین رو به‌روز کنه. تغییرات جدید از طریق سایت اعلام میشه.</li>
+        <!-- قانون ۷ حذف شد -->
       </ul>
       <button class="page-back-home" onclick="showHome()"><i class="fas fa-arrow-right"></i> بازگشت به خانه</button>
     </div>
@@ -1678,6 +1690,28 @@
         </div>
       </div>
 
+      <!-- پیام جدید تماس با پشتیبانی -->
+      <div style="background: #fff3e8; border-right: 4px solid #FF5F02; border-radius: 12px; padding: 16px 18px; margin: 12px 0; text-align: right;">
+        <p style="font-weight: 700; color: #1e1e1e; margin-bottom: 6px;">
+          <i class="fas fa-phone-alt" style="color:#FF5F02; margin-left:8px;"></i>
+          <span style="color:#FF5F02;">حتماً با پشتیبانی تماس بگیرید!</span>
+        </p>
+        <p style="font-size:0.95rem; color:#555; margin-bottom: 4px;">
+          برای هماهنگی و دریافت اطلاعات اکانت، با شماره زیر تماس بگیرید:
+        </p>
+        <p style="font-size:1.3rem; font-weight: 800; color: #FF5F02; direction: ltr;">
+          <a href="tel:+989962594436" style="color:#FF5F02; text-decoration:none;">+98 996 259 4436</a>
+        </p>
+        <p style="font-size:0.85rem; color:#777; margin-top: 4px;">
+          <i class="fas fa-clock" style="color:#FF5F02; margin-left:6px;"></i>
+          ساعت پاسخگویی: ۹ تا ۱۱ شب (شنبه تا جمعه)
+        </p>
+        <p style="font-size:0.85rem; color:#777; margin-top: 6px; border-top: 1px dashed #f0ebe6; padding-top: 8px;">
+          <i class="fas fa-send" style="color:#FF5F02; margin-left:6px;"></i>
+          همچنین می‌توانید در پیوی روبیکا به پشتیبانی پیام دهید تا رمز جیمل و خود اکانت برای شما ارسال شود.
+        </p>
+      </div>
+
       <div class="discount-box">
         <i class="fas fa-ticket-alt" style="color:#FF5F02;font-size:1.2rem;display:flex;align-items:center;"></i>
         <input type="text" id="discountInput" placeholder="کد تخفیف را وارد کنید...">
@@ -1731,17 +1765,19 @@
   <span id="toastMessage">افزوده شد</span>
 </div>
 
-<!-- ===== FOOTER ===== -->
+<!-- ===== FOOTER با آیکون‌های جدید ===== -->
 <footer>
   <div class="container footer-grid">
     <div class="footer-col">
       <h4><i class="fas fa-gamepad"></i> Kourosh Game</h4>
       <p>مرجع خفن‌ترین اکانت‌های بازی در ایران با ضمانت اصالت و پشتیبانی ۲۴/۷.</p>
       <div class="social-icons">
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-telegram"></i></a>
-        <a href="#"><i class="fab fa-youtube"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="https://rubika.ir/@Kourosh_Game_ir" target="_blank" title="روبیکا">
+          <img src="https://uploadkon.ir/uploads/acea26_26IMG-20260620-174834-450.png" alt="روبیکا" loading="lazy">
+        </a>
+        <a href="https://eitaa.com/Kourosh_Game_iran" target="_blank" title="ایتا">
+          <img src="https://uploadkon.ir/uploads/fb7426_26IMG-20260620-175231-492.png" alt="ایتا" loading="lazy">
+        </a>
       </div>
     </div>
     <div class="footer-col">
@@ -1768,7 +1804,7 @@
 </footer>
 
 <script>
-  // ===== محصولات (جدیدترین در بالای آرایه) =====
+  // ===== محصولات =====
   const products = [
     {
       id: 3,
@@ -1856,7 +1892,6 @@
   let discountApplied = false;
   let currentProductId = null;
 
-  // ===== المان‌ها =====
   const productGrid = document.getElementById('productGrid');
   const cartModal = document.getElementById('cartModal');
   const openCartBtn = document.getElementById('openCartBtn');
@@ -1903,7 +1938,6 @@
   const pageContact = document.getElementById('pageContact');
   const pageExchange = document.getElementById('pageExchange');
 
-  // ===== کپی شماره کارت =====
   function copyCardNumber() {
     const cardNumber = '6219861954504246';
     if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -1954,7 +1988,6 @@
     }, 1500);
   }
 
-  // ===== مودال قیمت توافقی =====
   function showNegotiationModal(product) {
     const existing = document.getElementById('negotiationModal');
     if (existing) existing.remove();
@@ -2000,7 +2033,6 @@
     }
   }
 
-  // ===== توابع جستجو =====
   function getLevenshteinDistance(a, b) {
     const matrix = [];
     for (let i = 0; i <= b.length; i++) {
@@ -2040,7 +2072,6 @@
     return true;
   }
 
-  // ===== نمایش صفحات =====
   function showPage(pageId) {
     [pageRules, pageAbout, pageContact, pageExchange].forEach(p => p.classList.remove('active'));
     productDetailPage.classList.remove('active');
@@ -2075,7 +2106,6 @@
     });
   });
 
-  // ===== منو =====
   const navLinks = document.querySelectorAll('.nav-menu a[data-tab]');
   navLinks.forEach(link => {
     link.addEventListener('click', function(e) {
@@ -2104,7 +2134,6 @@
     });
   });
 
-  // ===== فیلترها =====
   document.querySelectorAll('#filterTabs button').forEach(btn => {
     btn.addEventListener('click', function() {
       document.querySelectorAll('#filterTabs button').forEach(b => b.classList.remove('active'));
@@ -2114,7 +2143,6 @@
     });
   });
 
-  // ===== جستجو =====
   function getSuggestions(query) {
     if (!query || query.length < 1) return [];
     const q = query.trim().toLowerCase();
@@ -2184,7 +2212,6 @@
     if (!e.target.closest('.search-box')) searchSuggestions.classList.remove('active');
   });
 
-  // ===== نمایش جزییات =====
   function showProductDetail(product) {
     [pageRules, pageAbout, pageContact, pageExchange].forEach(p => p.classList.remove('active'));
     heroSection.style.display = 'none';
@@ -2236,7 +2263,6 @@
       addToCart(product);
     };
 
-    // ===== محصولات مشابه با طراحی جدید =====
     const related = products.filter(p => p.id !== product.id && p.platform === product.platform);
     if (related.length > 0) {
       relatedGrid.innerHTML = related.map(p => {
@@ -2270,7 +2296,6 @@
 
   detailBackBtn.addEventListener('click', showHome);
 
-  // ===== رندر محصولات =====
   function renderProducts() {
     let filtered = [...products];
     if (currentFilter === 'special') {
@@ -2316,7 +2341,6 @@
     }).join('');
   }
 
-  // ===== سبد خرید با پشتیبانی از قیمت توافقی =====
   function addToCart(product) {
     if (product.price === 0) {
       showNegotiationModal(product);
@@ -2381,7 +2405,6 @@
     });
   }
 
-  // ===== مودال سبد =====
   function openCartModal() { cartModal.classList.add('active'); document.body.style.overflow = 'hidden'; }
   function closeCartModal() { cartModal.classList.remove('active'); document.body.style.overflow = ''; }
   openCartBtn.addEventListener('click', openCartModal);
@@ -2389,7 +2412,6 @@
   cartModal.addEventListener('click', function(e) { if (e.target === this) closeCartModal(); });
   clearCartBtn.addEventListener('click', function() { if (cart.length && confirm('آیا مطمئن هستید؟')) clearCart(); });
 
-  // ===== پرداخت =====
   checkoutBtn.addEventListener('click', function() {
     if (cart.length === 0) { alert('سبد خرید خالی است!'); return; }
     closeCartModal();
@@ -2471,7 +2493,6 @@
     updateCartUI();
   });
 
-  // ===== اتصال توابع به window =====
   window.products = products;
   window.showProductDetail = showProductDetail;
   window.showHome = showHome;
@@ -2480,7 +2501,6 @@
   window.showNegotiationModal = showNegotiationModal;
   window.closeNegotiationModal = closeNegotiationModal;
 
-  // ===== اجرا =====
   renderProducts();
   updateCartUI();
 </script>
