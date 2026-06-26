@@ -1697,8 +1697,58 @@
 </footer>
 
 <script>
-  // ===== محصولات با عکس‌های جدید =====
+  // ===== محصولات (جدیدترین در بالای آرایه) =====
   const products = [
+    // ۱. جدیدترین محصول: اکانت پسرخوانده | امیر
+    {
+      id: 3,
+      name: 'اکانت پسرخوانده | امیر',
+      tag: 'پسرخوانده',
+      price: 400000,
+      shortDesc: 'اکانت پسرخوانده خفن با شرایط خاص',
+      fullDesc: 'یک اکانت خیلی خفن پسرخوانده من برای این اکانت خیلی خرج کردم و اکانت زیاد دارم و خسته شدم میخوام این اکانت رو بفروشم',
+      img: 'https://uploadkon.ir/uploads/e4a626_26Negar-1782470144741.jpg',
+      badge: null,
+      platform: 'pesar_khandeh',
+      icon: 'fa-star',
+      gallery: [
+        { src: 'https://uploadkon.ir/uploads/e4a626_26Negar-1782470144741.jpg', alt: 'صفحه اصلی اکانت' },
+        { src: 'https://uploadkon.ir/uploads/d6c026_26Negar-1782468678947.jpg', alt: 'مشخصات اکانت' },
+        { src: 'https://uploadkon.ir/uploads/334a26_26Negar-1782468643021.jpg', alt: 'اکانت در حالت شب' },
+        { src: 'https://uploadkon.ir/uploads/797426_26Negar-1782468622833.jpg', alt: 'شخصیت‌های بازی' }
+      ],
+      specs: [
+        'بلیط خورده لول 20',
+        'کاپ 2290 تا 2800 رفته',
+        'چند تا جایزه هم داره'
+      ]
+    },
+    // ۲. اکانت پسرخوانده | تیزلایه
+    {
+      id: 2,
+      name: 'اکانت پسرخوانده | تیزلایه',
+      tag: 'پسرخوانده',
+      price: 0,
+      shortDesc: 'اکانت پسر خوانده خیلی خفن با قیمت توافقی',
+      fullDesc: 'اکانت براش یه تومن خرج شده\nسه تا بلیط طلایی فعال شده و یک تبلیغ پر و بسته های پیشنهادی بعضی هاش رو گرفته\nاکانت روی شماره و گوگل سیو هست و بخاطر این تعهد کتبی و تصویری میدهم',
+      img: 'https://uploadkon.ir/uploads/20a726_26Negar-1782461251530.jpg',
+      badge: 'ویژه',
+      platform: 'pesar_khandeh',
+      icon: 'fa-star',
+      gallery: [
+        { src: 'https://uploadkon.ir/uploads/20a726_26Negar-1782461251530.jpg', alt: 'صفحه اصلی اکانت' },
+        { src: 'https://uploadkon.ir/uploads/0ac725_26Negar-1782400592249.jpg', alt: 'مشخصات اکانت' },
+        { src: 'https://uploadkon.ir/uploads/bac325_26Negar-1782401406142.jpg', alt: 'اکانت در حالت شب' },
+        { src: 'https://uploadkon.ir/uploads/b21325_26Negar-1782408406612.jpg', alt: 'شخصیت‌های بازی' }
+      ],
+      specs: [
+        'کاپ: 3750 (تا 3850 رفته)',
+        'لول: 28',
+        'دارای 26 قهرمان و سنگ سردیس',
+        'اسکین ها: 1 انحصاری، 5 سه ستاره، 1 یک ستاره'
+      ]
+    },
+    // ۳. اکانت کلش اف کلنز | عقرب
     {
       id: 1,
       name: 'اکانت کلش اف کلنز | عقرب',
@@ -1728,30 +1778,6 @@
         'Wiz 4 (Wizard)',
         'Drag 2 (Dragon)',
         'Lightning 5, Heal 4, Rage 2'
-      ]
-    },
-    {
-      id: 2,
-      name: 'اکانت پسرخوانده | تیزلایه',
-      tag: 'پسرخوانده',
-      price: 0,
-      shortDesc: 'اکانت پسر خوانده خیلی خفن با قیمت توافقی',
-      fullDesc: 'اکانت براش یه تومن خرج شده\nسه تا بلیط طلایی فعال شده و یک تبلیغ پر و بسته های پیشنهادی بعضی هاش رو گرفته\nاکانت روی شماره و گوگل سیو هست و بخاطر این تعهد کتبی و تصویری میدهم',
-      img: 'https://uploadkon.ir/uploads/20a726_26Negar-1782461251530.jpg',
-      badge: 'ویژه',
-      platform: 'pesar_khandeh',
-      icon: 'fa-star',
-      gallery: [
-        { src: 'https://uploadkon.ir/uploads/20a726_26Negar-1782461251530.jpg', alt: 'صفحه اصلی اکانت' },
-        { src: 'https://uploadkon.ir/uploads/0ac725_26Negar-1782400592249.jpg', alt: 'مشخصات اکانت' },
-        { src: 'https://uploadkon.ir/uploads/bac325_26Negar-1782401406142.jpg', alt: 'اکانت در حالت شب' },
-        { src: 'https://uploadkon.ir/uploads/b21325_26Negar-1782408406612.jpg', alt: 'شخصیت‌های بازی' }
-      ],
-      specs: [
-        'کاپ: 3750 (تا 3850 رفته)',
-        'لول: 28',
-        'دارای 26 قهرمان و سنگ سردیس',
-        'اسکین ها: 1 انحصاری، 5 سه ستاره، 1 یک ستاره'
       ]
     }
   ];
