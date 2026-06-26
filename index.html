@@ -610,48 +610,114 @@
     }
     .detail-actions .btn-detail:hover { background: #FF5F02; color: #fff; }
 
+    /* ===== محصولات مشابه (طراحی جدید) ===== */
     .related-products {
-      margin-top: 50px;
-      padding-top: 30px;
+      margin-top: 60px;
+      padding-top: 40px;
       border-top: 2px solid #f0ebe6;
     }
     .related-products h3 {
       font-size: 1.6rem;
       font-weight: 800;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
       display: flex;
       align-items: center;
       gap: 12px;
+      color: #1e1e1e;
     }
     .related-products h3 i { color: #FF5F02; }
+
     .related-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
     }
     .related-item {
       background: #fff;
       border-radius: 20px;
-      padding: 16px;
+      padding: 16px 16px 20px;
       border: 1px solid #f0ebe6;
       cursor: pointer;
-      transition: 0.2s;
+      transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
     }
     .related-item:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px) scale(1.02);
       border-color: #FF5F02;
-      box-shadow: 0 8px 24px rgba(255,95,2,0.1);
+      box-shadow: 0 16px 40px rgba(255,95,2,0.15);
     }
-    .related-item img {
+    .related-item .r-img-wrap {
       width: 100%;
-      height: 120px;
-      object-fit: cover;
-      border-radius: 12px;
+      aspect-ratio: 2 / 1;
+      border-radius: 14px;
+      overflow: hidden;
       background: #f5f0eb;
+      margin-bottom: 12px;
     }
-    .related-item h4 { font-size: 1rem; margin-top: 8px; }
-    .related-item .r-price { color: #FF5F02; font-weight: 700; }
+    .related-item .r-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+      display: block;
+    }
+    .related-item:hover .r-img-wrap img {
+      transform: scale(1.06);
+    }
+    .related-item h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #1e1e1e;
+      margin: 0 0 4px;
+      line-height: 1.4;
+    }
+    .related-item .r-tag {
+      display: inline-block;
+      background: #f0ece8;
+      padding: 0 12px;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #555;
+      margin-bottom: 6px;
+      align-self: center;
+    }
+    .related-item .r-price {
+      color: #FF5F02;
+      font-weight: 800;
+      font-size: 1.2rem;
+      margin: 4px 0 12px;
+      display: block;
+    }
+    .related-item .btn-view {
+      background: #f0ece8;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: #444;
+      cursor: pointer;
+      transition: 0.25s ease;
+      font-family: 'Vazirmatn', sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: auto;
+      width: fit-content;
+      align-self: center;
+    }
+    .related-item .btn-view i { font-size: 0.85rem; }
+    .related-item .btn-view:hover {
+      background: #FF5F02;
+      color: #fff;
+      transform: scale(1.04);
+      box-shadow: 0 4px 16px rgba(255,95,2,0.25);
+    }
 
     .cart-modal-overlay {
       display: none;
@@ -1374,6 +1440,11 @@
       .negotiation-actions { flex-direction: column; }
       .negotiation-actions .btn-call { flex: 1; }
       .negotiation-actions .btn-close-negotiation { flex: 1; }
+      .related-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .related-item .r-img-wrap { aspect-ratio: 2 / 1; }
+    }
+    @media (max-width: 450px) {
+      .related-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -1699,7 +1770,6 @@
 <script>
   // ===== محصولات (جدیدترین در بالای آرایه) =====
   const products = [
-    // ۱. جدیدترین محصول: اکانت پسرخوانده | امیر
     {
       id: 3,
       name: 'اکانت پسرخوانده | امیر',
@@ -1723,7 +1793,6 @@
         'چند تا جایزه هم داره'
       ]
     },
-    // ۲. اکانت پسرخوانده | تیزلایه
     {
       id: 2,
       name: 'اکانت پسرخوانده | تیزلایه',
@@ -1748,7 +1817,6 @@
         'اسکین ها: 1 انحصاری، 5 سه ستاره، 1 یک ستاره'
       ]
     },
-    // ۳. اکانت کلش اف کلنز | عقرب
     {
       id: 1,
       name: 'اکانت کلش اف کلنز | عقرب',
@@ -2168,17 +2236,27 @@
       addToCart(product);
     };
 
+    // ===== محصولات مشابه با طراحی جدید =====
     const related = products.filter(p => p.id !== product.id && p.platform === product.platform);
     if (related.length > 0) {
-      relatedGrid.innerHTML = related.map(p => `
-        <div class="related-item" onclick="showProductDetail(products.find(pr => pr.id === ${p.id}))">
-          <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.style.display='none'" draggable="false">
-          <h4>${p.name}</h4>
-          <div class="r-price">${p.price === 0 ? 'توافقی' : p.price.toLocaleString() + ' تومان'}</div>
-        </div>
-      `).join('');
+      relatedGrid.innerHTML = related.map(p => {
+        const priceText = p.price === 0 ? 'توافقی' : p.price.toLocaleString() + ' تومان';
+        return `
+          <div class="related-item" onclick="showProductDetail(products.find(pr => pr.id === ${p.id}))">
+            <div class="r-img-wrap">
+              <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.parentElement.innerHTML='<i class=\\'fas fa-gamepad\\' style=\\'font-size:2.5rem;color:#ccc;display:flex;align-items:center;justify-content:center;height:100%;\\'></i>'" draggable="false">
+            </div>
+            <h4>${p.name}</h4>
+            <span class="r-tag">${p.tag}</span>
+            <span class="r-price">${priceText}</span>
+            <button class="btn-view" onclick="event.stopPropagation(); showProductDetail(products.find(pr => pr.id === ${p.id}))">
+              <i class="fas fa-eye"></i> مشاهده
+            </button>
+          </div>
+        `;
+      }).join('');
     } else {
-      relatedGrid.innerHTML = '<p style="color:#888;">محصول مشابهی یافت نشد.</p>';
+      relatedGrid.innerHTML = '<p style="color:#888; text-align:center; padding:20px 0; grid-column:1/-1;">محصول مشابهی یافت نشد.</p>';
     }
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -2407,4 +2485,4 @@
   updateCartUI();
 </script>
 </body>
-  </html>
+        </html>
