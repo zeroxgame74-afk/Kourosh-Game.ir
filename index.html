@@ -1217,7 +1217,7 @@
     }
     .page-back-home:hover { background: #d94f00; transform: scale(1.02); }
 
-    /* ===== فوتر با آیکون‌های جدید ===== */
+    /* ===== فوتر ۴ ستونی ===== */
     footer {
       background: #1a1a1a;
       color: #d0cdc8;
@@ -1225,9 +1225,8 @@
       border-top: 6px solid #FF5F02;
     }
     .footer-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: 30px;
     }
     .footer-col h4 {
@@ -1251,9 +1250,32 @@
       cursor: pointer;
     }
     .footer-col ul li a:hover { color: #FF5F02; }
+
+    .footer-col .support-links {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 8px;
+      border-top: 1px solid #333;
+      padding-top: 10px;
+    }
+    .footer-col .support-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #FF5F02;
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: 0.2s;
+      padding: 4px 0;
+    }
+    .footer-col .support-links a i { color: #FF5F02; font-size: 1rem; width: 20px; }
+    .footer-col .support-links a:hover { color: #fff; }
+    .footer-col .support-links a:hover i { color: #fff; }
+
     .social-icons {
       display: flex;
-      gap: 16px;
+      gap: 12px;
       margin-top: 14px;
       flex-wrap: wrap;
     }
@@ -1261,8 +1283,8 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 48px;
-      height: 48px;
+      width: 44px;
+      height: 44px;
       border-radius: 12px;
       transition: 0.3s ease;
       background: #2e2e2e;
@@ -1280,6 +1302,7 @@
       pointer-events: none;
       -webkit-user-drag: none;
     }
+
     .copy {
       text-align: center;
       border-top: 1px solid #333;
@@ -1289,6 +1312,81 @@
       color: #8a8a8a;
     }
     .copy i { color: #FF5F02; }
+
+    /* ===== فیلترهای صفحه معاوضه ===== */
+    .exchange-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 16px 0 24px;
+      padding: 16px;
+      background: #f5f3f0;
+      border-radius: 16px;
+      border: 1px solid #e8e2dc;
+    }
+    .exchange-filters button {
+      background: #fff;
+      border: 2px solid transparent;
+      padding: 8px 20px;
+      border-radius: 40px;
+      font-weight: 600;
+      color: #444;
+      cursor: pointer;
+      transition: 0.2s;
+      font-family: 'Vazirmatn', sans-serif;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .exchange-filters button i { color: #FF5F02; font-size: 1rem; }
+    .exchange-filters button:hover {
+      border-color: #FF5F02;
+      background: #fff8f4;
+    }
+    .exchange-filters button.active {
+      border-color: #FF5F02;
+      background: #FF5F02;
+      color: #fff;
+    }
+    .exchange-filters button.active i { color: #fff; }
+    .exchange-search {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-right: auto;
+    }
+    .exchange-search input {
+      padding: 8px 16px;
+      border: 2px solid #e8e2dc;
+      border-radius: 40px;
+      font-family: 'Vazirmatn', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: 0.2s;
+      min-width: 160px;
+    }
+    .exchange-search input:focus { border-color: #FF5F02; }
+    .exchange-search button {
+      background: #FF5F02;
+      color: #fff;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 40px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Vazirmatn', sans-serif;
+      font-size: 0.9rem;
+      transition: 0.2s;
+    }
+    .exchange-search button:hover { background: #d94f00; }
+
+    .exchange-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 20px;
+    }
 
     .negotiation-modal-overlay {
       display: none;
@@ -1414,123 +1512,6 @@
       background: #e0d8d0;
     }
 
-    /* ===== فیلترهای صفحه معاوضه ===== */
-    .exchange-filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 16px 0 24px;
-      padding: 16px;
-      background: #f5f3f0;
-      border-radius: 16px;
-      border: 1px solid #e8e2dc;
-    }
-    .exchange-filters button {
-      background: #fff;
-      border: 2px solid transparent;
-      padding: 8px 20px;
-      border-radius: 40px;
-      font-weight: 600;
-      color: #444;
-      cursor: pointer;
-      transition: 0.2s;
-      font-family: 'Vazirmatn', sans-serif;
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .exchange-filters button i { color: #FF5F02; font-size: 1rem; }
-    .exchange-filters button:hover {
-      border-color: #FF5F02;
-      background: #fff8f4;
-    }
-    .exchange-filters button.active {
-      border-color: #FF5F02;
-      background: #FF5F02;
-      color: #fff;
-    }
-    .exchange-filters button.active i { color: #fff; }
-    .exchange-search {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-right: auto;
-    }
-    .exchange-search input {
-      padding: 8px 16px;
-      border: 2px solid #e8e2dc;
-      border-radius: 40px;
-      font-family: 'Vazirmatn', sans-serif;
-      font-size: 0.9rem;
-      outline: none;
-      transition: 0.2s;
-      min-width: 160px;
-    }
-    .exchange-search input:focus { border-color: #FF5F02; }
-    .exchange-search button {
-      background: #FF5F02;
-      color: #fff;
-      border: none;
-      padding: 8px 18px;
-      border-radius: 40px;
-      font-weight: 700;
-      cursor: pointer;
-      font-family: 'Vazirmatn', sans-serif;
-      font-size: 0.9rem;
-      transition: 0.2s;
-    }
-    .exchange-search button:hover { background: #d94f00; }
-
-    .exchange-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 24px;
-      margin-top: 20px;
-    }
-    .exchange-card {
-      background: #fff;
-      border-radius: 20px;
-      border: 1px solid #f0ebe6;
-      padding: 16px;
-      transition: 0.3s;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-      cursor: pointer;
-    }
-    .exchange-card:hover {
-      transform: translateY(-6px);
-      border-color: #FF5F02;
-      box-shadow: 0 12px 32px rgba(255,95,2,0.12);
-    }
-    .exchange-card img {
-      width: 100%;
-      aspect-ratio: 2 / 1;
-      object-fit: cover;
-      border-radius: 12px;
-      background: #f5f0eb;
-    }
-    .exchange-card h4 {
-      margin-top: 10px;
-      font-weight: 700;
-      font-size: 1rem;
-    }
-    .exchange-card .ex-tag {
-      display: inline-block;
-      background: #f0ece8;
-      padding: 0 12px;
-      border-radius: 40px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: #555;
-      margin-top: 4px;
-    }
-    .exchange-card .ex-price {
-      color: #FF5F02;
-      font-weight: 700;
-      margin-top: 6px;
-      font-size: 1.1rem;
-    }
-
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     @keyframes slideUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
@@ -1569,14 +1550,15 @@
       .negotiation-actions .btn-close-negotiation { flex: 1; }
       .related-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
       .related-item .r-img-wrap { aspect-ratio: 2 / 1; }
-      .social-icons a { width: 40px; height: 40px; }
       .exchange-filters { flex-direction: column; align-items: stretch; }
       .exchange-search { margin-right: 0; }
       .exchange-search input { flex: 1; }
       .exchange-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
     }
     @media (max-width: 450px) {
       .related-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 24px; }
     }
   </style>
 </head>
@@ -1891,55 +1873,63 @@
   <span id="toastMessage">افزوده شد</span>
 </div>
 
-<!-- ===== FOOTER با شماره، ساعت و ۲ آدرس روبیکا ===== -->
+<!-- ===== FOOTER ۴ ستونی ===== -->
 <footer>
-  <div class="container footer-grid">
-    <div class="footer-col">
-      <h4><i class="fas fa-gamepad"></i> Kourosh Game</h4>
-      <p>سایت فروشگاهی واسطه معتبر اکانت بازی کوروش گیم</p>
-      <div class="social-icons">
-        <a href="https://rubika.ir/@Kourosh_Game_ir" target="_blank" title="روبیکا">
-          <img src="https://uploadkon.ir/uploads/acea26_26IMG-20260620-174834-450.png" alt="روبیکا" loading="lazy">
-        </a>
-        <a href="https://eitaa.com/Kourosh_Game_iran" target="_blank" title="ایتا">
-          <img src="https://uploadkon.ir/uploads/fb7426_26IMG-20260620-175231-492.png" alt="ایتا" loading="lazy">
-        </a>
+  <div class="container">
+    <div class="footer-grid">
+      <!-- ستون ۱ -->
+      <div class="footer-col">
+        <h4><i class="fas fa-gamepad"></i> Kourosh Game</h4>
+        <p>سایت فروشگاهی واسطه معتبر اکانت بازی کوروش گیم</p>
+        <div class="social-icons">
+          <a href="https://rubika.ir/@Kourosh_Game_ir" target="_blank" title="روبیکا">
+            <img src="https://uploadkon.ir/uploads/acea26_26IMG-20260620-174834-450.png" alt="روبیکا" loading="lazy">
+          </a>
+          <a href="https://eitaa.com/Kourosh_Game_iran" target="_blank" title="ایتا">
+            <img src="https://uploadkon.ir/uploads/fb7426_26IMG-20260620-175231-492.png" alt="ایتا" loading="lazy">
+          </a>
+        </div>
       </div>
-    </div>
-    <div class="footer-col">
-      <h4><i class="fas fa-link"></i> لینک‌ها</h4>
-      <ul>
-        <li><i class="fas fa-chevron-left"></i> <a class="footer-link" data-page="rules">قوانین</a></li>
-        <li><i class="fas fa-chevron-left"></i> <a class="footer-link" data-page="about">درباره ما</a></li>
-        <li><i class="fas fa-chevron-left"></i> <a class="footer-link" data-page="contact">تماس با ما</a></li>
-        <li><i class="fas fa-chevron-left"></i> <a class="footer-link" data-page="exchange">معاوضه</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4><i class="fas fa-headset"></i> پشتیبانی</h4>
-      <ul>
-        <li><i class="fas fa-phone-alt"></i> <strong dir="ltr"><a href="tel:+989962594436" style="color:#d0cdc8;text-decoration:none;">+98 996 259 4436</a></strong></li>
-        <li><i class="fas fa-clock"></i> شنبه تا جمعه، ۹ تا ۱۱ شب</li>
-        <li style="margin-top:8px; border-top:1px solid #333; padding-top:8px; display:flex; flex-direction:column; gap:4px;">
-          <span style="font-size:0.8rem; color:#aaa;">🛒 خرید اکانت:</span>
-          <a href="https://rubika.ir/@admin_Kourosh_Game_ir" target="_blank" style="color:#FF5F02; font-size:0.85rem; direction:ltr; text-decoration:none;">
-            rubika.ir/@admin_Kourosh_Game_ir
+
+      <!-- ستون ۲ -->
+      <div class="footer-col">
+        <h4><i class="fas fa-link"></i> لینک‌ها</h4>
+        <ul>
+          <li><i class="fas fa-chevron-left"></i> <a class="footer-link" data-page="rules">قوانین</a></li>
+          <li><i class="fas fa-chevron-left"></i> <a class="footer-link" data-page="about">درباره ما</a></li>
+          <li><i class="fas fa-chevron-left"></i> <a class="footer-link" data-page="contact">تماس با ما</a></li>
+          <li><i class="fas fa-chevron-left"></i> <a class="footer-link" data-page="exchange">معاوضه</a></li>
+        </ul>
+      </div>
+
+      <!-- ستون ۳ -->
+      <div class="footer-col">
+        <h4><i class="fas fa-headset"></i> پشتیبانی</h4>
+        <ul>
+          <li><i class="fas fa-phone-alt"></i> <strong dir="ltr"><a href="tel:+989962594436" style="color:#d0cdc8;text-decoration:none;">+98 996 259 4436</a></strong></li>
+          <li><i class="fas fa-clock"></i> شنبه تا جمعه، ۹ تا ۱۱ شب</li>
+        </ul>
+        <div class="support-links">
+          <a href="https://rubika.ir/@admin_Kourosh_Game_ir" target="_blank">
+            <i class="fas fa-shopping-bag"></i> خرید اکانت
           </a>
-          <span style="font-size:0.8rem; color:#aaa; margin-top:4px;">💬 پاسخگویی:</span>
-          <a href="https://rubika.ir/@admin2_Kourosh_Game_ir" target="_blank" style="color:#FF5F02; font-size:0.85rem; direction:ltr; text-decoration:none;">
-            rubika.ir/@admin2_Kourosh_Game_ir
+          <a href="https://rubika.ir/@admin2_Kourosh_Game_ir" target="_blank">
+            <i class="fas fa-headset"></i> پاسخگویی
           </a>
-        </li>
-      </ul>
+        </div>
+      </div>
+
+      <!-- ستون ۴ (خالی) -->
+      <div class="footer-col"></div>
     </div>
-  </div>
-  <div class="container copy">
-    <i class="fas fa-copyright"></i> ۲۰۲۶ کلیه حقوق برای <strong class="text-orange">Kourosh Game.ir</strong> محفوظ است.
+    <div class="copy">
+      <i class="fas fa-copyright"></i> ۲۰۲۶ کلیه حقوق برای <strong class="text-orange">Kourosh Game.ir</strong> محفوظ است.
+    </div>
   </div>
 </footer>
 
 <script>
-  // ===== محصولات (بدون کلش رویال) =====
+  // ===== محصولات =====
   const products = [
     {
       id: 3,
@@ -2026,8 +2016,6 @@
   let searchQuery = '';
   let discountApplied = false;
   let currentProductId = null;
-  let currentExchangeFilter = 'all';
-  let exchangeSearchQuery = '';
 
   const productGrid = document.getElementById('productGrid');
   const cartModal = document.getElementById('cartModal');
@@ -2285,23 +2273,17 @@
     });
   });
 
-  // ===== فیلترهای معاوضه (فقط برای نمایش، هیچ محصولی نیست) =====
+  // ===== فیلترهای معاوضه =====
   document.querySelectorAll('#exchangeFilters button[data-exfilter]').forEach(btn => {
     btn.addEventListener('click', function() {
       document.querySelectorAll('#exchangeFilters button[data-exfilter]').forEach(b => b.classList.remove('active'));
       this.classList.add('active');
-      // صفحه معاوضه خالی است، فقط فیلترها فعال میشن
     });
   });
 
-  exchangeSearchBtn.addEventListener('click', function() {
-    // جستجو در صفحه خالی
-  });
-
+  exchangeSearchBtn.addEventListener('click', function() {});
   exchangeSearchInput.addEventListener('keyup', function(e) {
-    if (e.key === 'Enter') {
-      // جستجو در صفحه خالی
-    }
+    if (e.key === 'Enter') {}
   });
 
   function getSuggestions(query) {
