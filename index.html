@@ -1414,6 +1414,135 @@
       background: #e0d8d0;
     }
 
+    /* ===== فیلترهای صفحه معاوضه ===== */
+    .exchange-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 16px 0 24px;
+      padding: 16px;
+      background: #f5f3f0;
+      border-radius: 16px;
+      border: 1px solid #e8e2dc;
+    }
+    .exchange-filters button {
+      background: #fff;
+      border: 2px solid transparent;
+      padding: 8px 20px;
+      border-radius: 40px;
+      font-weight: 600;
+      color: #444;
+      cursor: pointer;
+      transition: 0.2s;
+      font-family: 'Vazirmatn', sans-serif;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .exchange-filters button i { color: #FF5F02; font-size: 1rem; }
+    .exchange-filters button:hover {
+      border-color: #FF5F02;
+      background: #fff8f4;
+    }
+    .exchange-filters button.active {
+      border-color: #FF5F02;
+      background: #FF5F02;
+      color: #fff;
+    }
+    .exchange-filters button.active i { color: #fff; }
+    .exchange-search {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-right: auto;
+    }
+    .exchange-search input {
+      padding: 8px 16px;
+      border: 2px solid #e8e2dc;
+      border-radius: 40px;
+      font-family: 'Vazirmatn', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: 0.2s;
+      min-width: 160px;
+    }
+    .exchange-search input:focus { border-color: #FF5F02; }
+    .exchange-search button {
+      background: #FF5F02;
+      color: #fff;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 40px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Vazirmatn', sans-serif;
+      font-size: 0.9rem;
+      transition: 0.2s;
+    }
+    .exchange-search button:hover { background: #d94f00; }
+
+    .exchange-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 20px;
+    }
+    .exchange-card {
+      background: #fff;
+      border-radius: 20px;
+      border: 1px solid #f0ebe6;
+      padding: 16px;
+      transition: 0.3s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      cursor: pointer;
+    }
+    .exchange-card:hover {
+      transform: translateY(-6px);
+      border-color: #FF5F02;
+      box-shadow: 0 12px 32px rgba(255,95,2,0.12);
+    }
+    .exchange-card img {
+      width: 100%;
+      aspect-ratio: 2 / 1;
+      object-fit: cover;
+      border-radius: 12px;
+      background: #f5f0eb;
+    }
+    .exchange-card h4 {
+      margin-top: 10px;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+    .exchange-card .ex-tag {
+      display: inline-block;
+      background: #f0ece8;
+      padding: 0 12px;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #555;
+      margin-top: 4px;
+    }
+    .exchange-card .ex-price {
+      color: #FF5F02;
+      font-weight: 700;
+      margin-top: 6px;
+      font-size: 1.1rem;
+    }
+    .exchange-card .ex-badge {
+      display: inline-block;
+      padding: 2px 12px;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      margin-top: 6px;
+    }
+    .ex-badge.old { background: #f0ece8; color: #888; }
+    .ex-badge.new { background: #d4edda; color: #155724; }
+    .ex-badge.stock { background: #cce5ff; color: #004085; }
+    .ex-badge.slash { background: #f8d7da; color: #721c24; }
+
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     @keyframes slideUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
@@ -1453,6 +1582,10 @@
       .related-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
       .related-item .r-img-wrap { aspect-ratio: 2 / 1; }
       .social-icons a { width: 40px; height: 40px; }
+      .exchange-filters { flex-direction: column; align-items: stretch; }
+      .exchange-search { margin-right: 0; }
+      .exchange-search input { flex: 1; }
+      .exchange-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 450px) {
       .related-grid { grid-template-columns: 1fr; }
@@ -1486,7 +1619,7 @@
   <div class="container hero-grid">
     <div class="hero-text">
       <h2><i class="fas fa-bolt"></i> به کوروش گیم <span class="highlight">خوش آمدید!</span></h2>
-      <p><i class="fas fa-check-circle"></i> تضمین اصالت &nbsp;|&nbsp; <i class="fas fa-shield-alt"></i> پشتیبانی ویژه</p>
+      <p><i class="fas fa-check-circle"></i> واسطه معتبر &nbsp;|&nbsp; <i class="fas fa-shield-alt"></i> پشتیبانی ویژه</p>
       <button class="hero-btn" onclick="document.querySelector('[data-tab=\"store\"]').click();"><i class="fas fa-rocket"></i> مشاهده اکانت‌ها</button>
     </div>
   </div>
@@ -1611,6 +1744,28 @@
           <a href="tel:+989962594436" style="color:#FF5F02; text-decoration:none;">+98 996 259 4436</a>
         </span>
       </div>
+
+      <div style="background:#f5f0eb; border-radius:16px; padding:16px 20px; margin:20px 0; border-right:3px solid #FF5F02;">
+        <h4 style="color:#FF5F02; margin-bottom:10px; font-weight:700;">
+          <i class="fas fa-send" style="margin-left:8px;"></i>
+          ارتباط با ما در روبیکا
+        </h4>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+            <span style="background:#FF5F02; color:#fff; padding:2px 12px; border-radius:40px; font-size:0.8rem; font-weight:600;">خرید اکانت</span>
+            <a href="https://rubika.ir/@admin_Kourosh_Game_ir" target="_blank" style="color:#FF5F02; font-weight:600; text-decoration:none; direction:ltr; font-size:1rem;">
+              <i class="fas fa-link" style="margin-left:6px;"></i> rubika.ir/@admin_Kourosh_Game_ir
+            </a>
+          </div>
+          <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+            <span style="background:#FF5F02; color:#fff; padding:2px 12px; border-radius:40px; font-size:0.8rem; font-weight:600;">پاسخگویی</span>
+            <a href="https://rubika.ir/@admin2_Kourosh_Game_ir" target="_blank" style="color:#FF5F02; font-weight:600; text-decoration:none; direction:ltr; font-size:1rem;">
+              <i class="fas fa-link" style="margin-left:6px;"></i> rubika.ir/@admin2_Kourosh_Game_ir
+            </a>
+          </div>
+        </div>
+      </div>
+
       <p>پشت این شماره، یه تیم متعهد و آماده به خدمته که <strong>شنبه تا جمعه ساعت ۹ تا ۱۱ شب</strong> پاسخگوی شماست. از پشتیبانی فنی تا راهنمای خرید، همه چیز با یک تماس حل میشه.</p>
       <div class="highlight-box"><p><strong>یادتون باشه:</strong> اینجا کوروش گیمه؛ جایی که پشتیبانی، فقط یه کلمه نیست، یه تعهد جدیه.</p></div>
       <button class="page-back-home" onclick="showHome()"><i class="fas fa-arrow-right"></i> بازگشت به خانه</button>
@@ -1618,23 +1773,28 @@
   </div>
 </div>
 
+<!-- ===== صفحه معاوضه ===== -->
 <div class="page-content" id="pageExchange">
   <div class="container">
-    <div class="page-header"><i class="fas fa-exchange-alt"></i><h2>معاوضه اکانت</h2></div>
+    <div class="page-header">
+      <i class="fas fa-exchange-alt"></i>
+      <h2>معاوضه اکانت</h2>
+    </div>
     <div class="page-body">
-      <div style="text-align:center; padding:40px 0;">
-        <i class="fas fa-tools" style="font-size:4rem; color:#FF5F02; margin-bottom:20px; display:block;"></i>
-        <h3 style="font-size:1.8rem; color:#1e1e1e; margin-bottom:12px;">🔧 در حال ساخت...</h3>
-        <p style="color:#777; font-size:1.1rem; max-width:500px; margin:0 auto;">
-          صفحه معاوضه اکانت به زودی راه‌اندازی میشود.
-        </p>
-        <div style="margin-top:24px;">
-          <span class="contact-number" style="font-size:1.2rem;">
-            <i class="fas fa-phone" style="color:#FF5F02; margin-left:10px;"></i>
-            <a href="tel:+989962594436" style="color:#FF5F02; text-decoration:none;">+98 996 259 4436</a>
-          </span>
+      <div class="exchange-filters" id="exchangeFilters">
+        <button class="active" data-exfilter="all"><i class="fas fa-list"></i> همه</button>
+        <button data-exfilter="old"><i class="fas fa-clock"></i> قدیمی</button>
+        <button data-exfilter="new"><i class="fas fa-flask"></i> جدید</button>
+        <button data-exfilter="stock"><i class="fas fa-boxes"></i> استوک</button>
+        <button data-exfilter="slash"><i class="fas fa-percent"></i> اسلش</button>
+        <div class="exchange-search">
+          <input type="text" id="exchangeSearchInput" placeholder="جستجو در معاوضه...">
+          <button id="exchangeSearchBtn"><i class="fas fa-search"></i></button>
         </div>
       </div>
+
+      <div class="exchange-grid" id="exchangeGrid"></div>
+
       <button class="page-back-home" onclick="showHome()"><i class="fas fa-arrow-right"></i> بازگشت به خانه</button>
     </div>
   </div>
@@ -1688,7 +1848,6 @@
         </div>
       </div>
 
-      <!-- پیام جدید تماس با پشتیبانی -->
       <div style="background: #fff3e8; border-right: 4px solid #FF5F02; border-radius: 12px; padding: 16px 18px; margin: 12px 0; text-align: right;">
         <p style="font-weight: 700; color: #1e1e1e; margin-bottom: 6px;">
           <i class="fas fa-phone-alt" style="color:#FF5F02; margin-left:8px;"></i>
@@ -1788,7 +1947,7 @@
       <h4><i class="fas fa-headset"></i> پشتیبانی</h4>
       <ul>
         <li><i class="fas fa-phone-alt"></i> <strong dir="ltr"><a href="tel:+989962594436" style="color:#d0cdc8;text-decoration:none;">+98 996 259 4436</a></strong></li>
-        <li><i class="fas fa-envelope"></i> support@kouroshgame.ir</li>
+        <!-- ایمیل حذف شد -->
         <li><i class="fas fa-clock"></i> شنبه تا جمعه، ۹ تا ۱۱ شب</li>
       </ul>
     </div>
@@ -1812,6 +1971,7 @@
       badge: null,
       platform: 'pesar_khandeh',
       icon: 'fa-star',
+      exchangeStatus: 'new',
       gallery: [
         { src: 'https://uploadkon.ir/uploads/e4a626_26Negar-1782470144741.jpg', alt: 'صفحه اصلی اکانت' },
         { src: 'https://uploadkon.ir/uploads/d6c026_26Negar-1782468678947.jpg', alt: 'مشخصات اکانت' },
@@ -1835,6 +1995,7 @@
       badge: 'ویژه',
       platform: 'pesar_khandeh',
       icon: 'fa-star',
+      exchangeStatus: 'stock',
       gallery: [
         { src: 'https://uploadkon.ir/uploads/20a726_26Negar-1782461251530.jpg', alt: 'صفحه اصلی اکانت' },
         { src: 'https://uploadkon.ir/uploads/0ac725_26Negar-1782400592249.jpg', alt: 'مشخصات اکانت' },
@@ -1859,6 +2020,7 @@
       badge: null,
       platform: 'clashofclans',
       icon: 'fa-chess-king',
+      exchangeStatus: 'old',
       gallery: [
         { src: 'https://uploadkon.ir/uploads/b77f26_26Negar-1782462755317.jpg', alt: 'صفحه اصلی اکانت' },
         { src: 'https://uploadkon.ir/uploads/2cfa25_26Negar-1782382677663.jpg', alt: 'مشخصات اکانت' },
@@ -1878,6 +2040,28 @@
         'Drag 2 (Dragon)',
         'Lightning 5, Heal 4, Rage 2'
       ]
+    },
+    {
+      id: 4,
+      name: 'اکانت کلش رویال | ویژه',
+      tag: 'Supercell',
+      price: 250000,
+      shortDesc: 'اکانت کلش رویال با تخفیف ویژه اسلش',
+      fullDesc: 'اکانت کلش رویال با تمام کارت‌های سطح ۱۳ و پادشاه ۱۳، با تخفیف ویژه اسلش فقط برای مدت محدود!',
+      img: 'https://play-lh.googleusercontent.com/BCVhv6aYH5CR5w0s4CJ7t8jLhJjZqVg8tCgYrn8tCgYrn8tCgYrn8tCgYrn8',
+      badge: 'اسلش',
+      platform: 'clashroyale',
+      icon: 'fa-chess-queen',
+      exchangeStatus: 'slash',
+      gallery: [
+        { src: 'https://play-lh.googleusercontent.com/BCVhv6aYH5CR5w0s4CJ7t8jLhJjZqVg8tCgYrn8tCgYrn8tCgYrn8tCgYrn8', alt: 'صفحه اصلی' }
+      ],
+      specs: [
+        'کارت‌های سطح ۱۳',
+        'پادشاه ۱۳',
+        '۵۰ کارت افسانه‌ای',
+        'رنک Champion'
+      ]
     }
   ];
 
@@ -1886,6 +2070,8 @@
   let searchQuery = '';
   let discountApplied = false;
   let currentProductId = null;
+  let currentExchangeFilter = 'all';
+  let exchangeSearchQuery = '';
 
   const productGrid = document.getElementById('productGrid');
   const cartModal = document.getElementById('cartModal');
@@ -1932,6 +2118,9 @@
   const pageAbout = document.getElementById('pageAbout');
   const pageContact = document.getElementById('pageContact');
   const pageExchange = document.getElementById('pageExchange');
+  const exchangeGrid = document.getElementById('exchangeGrid');
+  const exchangeSearchInput = document.getElementById('exchangeSearchInput');
+  const exchangeSearchBtn = document.getElementById('exchangeSearchBtn');
 
   function copyCardNumber() {
     const cardNumber = '6219861954504246';
@@ -2076,7 +2265,10 @@
     if (pageId === 'rules') pageRules.classList.add('active');
     else if (pageId === 'about') pageAbout.classList.add('active');
     else if (pageId === 'contact') pageContact.classList.add('active');
-    else if (pageId === 'exchange') pageExchange.classList.add('active');
+    else if (pageId === 'exchange') {
+      pageExchange.classList.add('active');
+      renderExchangeProducts();
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
@@ -2137,6 +2329,69 @@
       renderProducts();
     });
   });
+
+  // ===== فیلترهای معاوضه =====
+  document.querySelectorAll('#exchangeFilters button[data-exfilter]').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('#exchangeFilters button[data-exfilter]').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      currentExchangeFilter = this.dataset.exfilter;
+      renderExchangeProducts();
+    });
+  });
+
+  exchangeSearchBtn.addEventListener('click', function() {
+    exchangeSearchQuery = exchangeSearchInput.value.trim().toLowerCase();
+    renderExchangeProducts();
+  });
+
+  exchangeSearchInput.addEventListener('keyup', function(e) {
+    if (e.key === 'Enter') {
+      exchangeSearchQuery = this.value.trim().toLowerCase();
+      renderExchangeProducts();
+    }
+  });
+
+  function renderExchangeProducts() {
+    let filtered = [...products];
+    
+    if (currentExchangeFilter !== 'all') {
+      filtered = filtered.filter(p => p.exchangeStatus === currentExchangeFilter);
+    }
+    
+    if (exchangeSearchQuery) {
+      filtered = filtered.filter(p => 
+        multiWordSearch(exchangeSearchQuery, p.name + ' ' + p.tag + ' ' + p.shortDesc)
+      );
+    }
+
+    if (filtered.length === 0) {
+      exchangeGrid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:40px 0; color:#888;"><i class="fas fa-search" style="font-size:3rem; display:block; margin-bottom:12px;"></i> محصولی یافت نشد</div>`;
+      return;
+    }
+
+    const statusMap = {
+      old: { label: 'قدیمی', class: 'old' },
+      new: { label: 'جدید', class: 'new' },
+      stock: { label: 'استوک', class: 'stock' },
+      slash: { label: 'اسلش', class: 'slash' }
+    };
+
+    exchangeGrid.innerHTML = filtered.map(p => {
+      const status = p.exchangeStatus || 'old';
+      const statusInfo = statusMap[status] || statusMap.old;
+      const priceText = p.price === 0 ? 'توافقی' : p.price.toLocaleString() + ' تومان';
+      return `
+        <div class="exchange-card" onclick="showProductDetail(products.find(pr => pr.id === ${p.id}))">
+          <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.style.display='none'">
+          <h4>${p.name}</h4>
+          <span class="ex-tag">${p.tag}</span>
+          <div class="ex-price">${priceText}</div>
+          <span class="ex-badge ${statusInfo.class}">${statusInfo.label}</span>
+        </div>
+      `;
+    }).join('');
+  }
 
   function getSuggestions(query) {
     if (!query || query.length < 1) return [];
@@ -2294,7 +2549,7 @@
   function renderProducts() {
     let filtered = [...products];
     if (currentFilter === 'special') {
-      filtered = filtered.filter(p => p.badge && (p.badge === 'ویژه' || p.badge === 'طلایی' || p.badge === 'جدید'));
+      filtered = filtered.filter(p => p.badge && (p.badge === 'ویژه' || p.badge === 'طلایی' || p.badge === 'جدید' || p.badge === 'اسلش'));
     } else if (currentFilter !== 'all' && currentFilter !== 'pesar_khandeh') {
       filtered = filtered.filter(p => p.platform === currentFilter);
     } else if (currentFilter === 'pesar_khandeh') {
